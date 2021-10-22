@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technological University of the Philippines - Cavite | Applicant</title>
-</head>
-<body>
-    <h1>THIS IS THE PAGE FOR APPLICANT LOGIN PAGE</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Technological University of the Philippines - Cavite | Applicant Login
+    </title>
+    <!-- REMOVE STYLE LATER ON -->
+    <style>
+      body {
+        margin: 0%;
+        background: radial-gradient(circle at center, #FEF7F7 20%, #EC4845 80%);
+      }
+
+      .header {
+        background: #bd2031;
+      }
+      .footer{
+        background: #bd2031;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <img src="../res/tup_banner.png" alt="This is TUP banner" />
+    </header>
+    <div class="main-body">
+      <div class="left-container">
+        <!-- ANNOUNCEMENT BOX -->
+        <fieldset class="announcements">
+          <legend>Announcements</legend>
+          <ul>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
+          </ul>
+        </fieldset>
+        <!-- LOGIN FORM -->
+        <form action="">
+          <fieldset class="login-form">
+            <legend>Applicant Login</legend>
+            <label for="applicant-id">ID</label>
+            <input type="text" name="applicant-id" id="applicant-id" /><br />
+            <label for="applicant-pass">Password</label>
+            <input
+              type="password"
+              name="applicant-pass"
+              id="applicant-pass"
+            /><br />
+            <input type="submit" value="Login" /><br /><br />
+            <p>
+              If you are new applicant,
+              <a href="../applicant/applicant-reg.html">click here</a> to
+              register.
+            </p>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="right-container">
+      <!-- TUPC IMAGES SLIDESHOW -->
+      <div class="tupc-images">
+        <h1>THIS AREA IS FOR TUPC IMAGES SLIDESHOW</h1>
+      </div>
+      <!-- GUIDELINES -->
+      <fieldset class="guidelines-container">
+        <legend>Guidelines</legend>
+        <h3>For Freshmen <button id="freshmen-guidelines">\/</button></h3>
+        <h3>For Transferees <button id="freshmen-guidelines">\/</button></h3>
+      </fieldset>
+    </div>
+    <footer class="footer">
+      <h1>THIS IS FOOTER</h1>
+    </footer>
+  </body>
 </html>
