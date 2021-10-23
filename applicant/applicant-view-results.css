@@ -1,0 +1,40 @@
+.applicant-info-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-applicant-info-container {
+    float: left;
+    display: flex;
+}
+
+.right-applicant-info-container {
+    float: right;
+    display: flex;
+}
+
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.exam-result-container {
+    border: 1px solid black;
+    width: 200px;
+}
+
+.medical-result-container {
+    border: 1px solid black;
+    width: 200px;
+}
+
+.interview-result-container {
+    border: 1px solid black;
+    width: 200px;
+}
+
+.requirements-container {
+    border: 1px solid black;
+    width: 200px;
+}
+

@@ -4,34 +4,78 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" text="text/css" href="applicant-view-results.css" />
     <title>TUP - Cavite | Applicant Admmision Result</title>
   </head>
+
   <body>
     <!-- HEADER -->
     <header class="header-wrap">
-        <div class="header-logo-tupc-name">
-          <a class="logo" href="applicant-reg.html"
-            ><img
-              src="/res/tup_logo.png"
-              alt="This is TUP logo"
-              width="100px"
-              height="100px"
-          /></a>
-          <h4>Technological University of the Philippines - Cavite</h4>
+      <div class="header-logo-tupc-name">
+        <a class="logo" href="applicant-reg.html"
+          ><img
+            src="/res/tup_logo.png"
+            alt="This is TUP logo"
+            width="100px"
+            height="100px"
+        /></a>
+        <h1>Technological University of the Philippines - Cavite</h1>
+      </div>
+    </header>
+    <hr />
+    <!-- APPLICANT INFO CONTAINER -->
+    <div class="applicant-info-container"><span ></span>
+      <div class="left-applicant-info-container">
+        <div class="avatar">
+          <img src="/res/avatar-icon.png" alt="This is avatar" width="150" />
         </div>
-      </header>
-      <hr />
-    
+        <div class="applicant-info">
+          <h2 id="applicant-name">DORETE, RODIGO ROA</h2>
+          <h4 id="control-number">Control Number: 123456789</h4>
+        </div>
+      </div>
+      <div class="right-applicant-info-container">
+        <div class="download-btn">
+          <button>DOWNLOAD<br>RESULT (PDF)</button>
+        </div>
+        <div class="logout-btn">
+          <button>LOGOUT</button>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- RESULTS CONTAINER -->
+    <div class="admission-result-title">
+      <h2><b>ADMISSION RESULT</b></h2>
+    </div>
+    <!-- ----------- START HERE WHEN YOU BACK !------------- -->
+    <div class="course-shift-coor-container">
+      <h3>Course: BET - COET - NS</h3>
+    </div>
+    <div class="results-container">
+      <div class="exam-result-container">
+        <p><b>Entrance Exam</b></p>
+      </div>
+      <div class="medical-result-container">
+        <p><b>Medical</b></p>
+      </div>
+      <div class="interview-result-container">
+        <p><b>Interview</b></p>
+      </div>
+      <div class="requirements-container">
+        <p><b>Requirements</b></p>
+      </div>
+    </div>
     <!-- FOOTER -->
     <footer class="footer">
-        <h5>
-          (icon-tel) (046) 416-4920 (icon-email) cavite@tup.edu.ph (icon-web)
-          www.tup.edu.ph
-        </h5>
-        <h5>
-          (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
-          Philippines
-        </h5>
-      </footer>
+      <h5>
+        (icon-tel) (046) 416-4920 (icon-email) cavite@tup.edu.ph (icon-web)
+        www.tup.edu.ph
+      </h5>
+      <h5>
+        (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
+        Philippines
+      </h5>
+    </footer>
   </body>
 </html>
