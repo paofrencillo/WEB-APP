@@ -8,9 +8,23 @@
 
 </head>
 <body>
-    <h1>Technological University of the Philippines - Cavite</h1>
+    <!-- HEADER -->
+    <header class="header-wrap">
+        <div class="header-logo-tupc-name">
+          <a class="logo" href="applicant-login.html"
+            ><img
+              src="/res/tup_logo.png"
+              alt="This is TUP logo"
+              width="100px"
+              height="100px"
+          /></a>
+          <h1>Technological University of the Philippines - Cavite</h1>
+        </div>
+      </header>
     <hr>
-    <input type="checkbox"> <b>Select all</b>
+    <br>
+    <input type="checkbox" name="checkbox" id="checkbox"> 
+    <label for="checkbox">Select all</label>
     <input type="search" name="search" id="search" placeholder="Search">
     <form style="width:500px;float:right;text-align:right">
         <label for="Course"> Select Course</label>
@@ -18,9 +32,11 @@
             <option value="BS Civil Engineering">
                 BS Civil Engineering</option>
             <option value="BET-COET">
-                BET COET</option>
+                BET-COET</option>
             <option value="BET-ESET">
-                BET ESET</option>
+                BET-ESET</option>
+            <option value="BET-AT">
+                BET-AT</option>    
         </select>
     </form>
     <br>
@@ -34,6 +50,8 @@
             <th>Contact No.</th>
             <th>Course applied</th>
             <th>Date of interview</th>
+            <th>Venue</th>
+            <th>Interviewer</th>
             <th>Result</th>
         </tr>
         <tr>
@@ -44,6 +62,8 @@
             <td>097655598</td>
             <td>BET-COET</td>
             <td>October 24,2021</td>
+            <td>Industrial Department</td>
+            <td>Ms.Juliet Escalona</td>
             <td>Passed</td>
         </tr>
         <tr>
@@ -54,6 +74,8 @@
             <td>091515342</td>
             <td>BET-COET</td>
             <td>October 24,2021</td>
+            <td>Industrial Department</td>
+            <td>Ms.Juliet Escalona</td>
             <td>Passed</td>
         </tr>
         <tr>
@@ -64,6 +86,8 @@
             <td>090212412</td>
             <td>BET-ESET</td>
             <td>October 26,2021</td>
+            <td>TNC Salawag</td>
+            <td>Mr.Dominique Fetalbo</td>
             <td>Failed</td>
         </tr>
         <tr>
@@ -74,12 +98,25 @@
             <td>098851232</td>
             <td>BS Civil Engineering</td>
             <td>October 29,2021</td>
+            <td>TBA</td>
+            <td>Mr.Jay Victor Gumboc</td>
             <td>No result</td>
         </tr>
     </table>
     <br>
     <input name="form" type="submit" value="Passed"/>
     <input name="form" type="submit" value="Failed"/>
-
+    <hr>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h5>
+          (icon-tel) (046) 416-4920 (icon-email) cavite@tup.edu.ph (icon-web)
+          www.tup.edu.ph
+        </h5>
+        <h5>
+          (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
+          Philippines
+        </h5>
+      </footer>
 </body>
 </html>
