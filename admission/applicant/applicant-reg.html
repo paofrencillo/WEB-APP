@@ -21,29 +21,48 @@
       </div>
     </header>
     <hr />
+    <button id="back-btn">Back</button>
     <!-- REGISTRATION FORM -->
-    <div class="registration-form">
-      <form action="">
-        <div class="left-container">
-          <label for="email">Email Address</label><br />
-          <input type="text" name="email" id="email" /><br />
-          <label for="password">Password</label><br />
-          <input type="password" name="password" id="password" /><br />
-          <label for="confirm-password">Confirm Password</label><br />
-          <input
-            type="password"
-            name="confirm-password"
-            id="confirm-password"
-          /><br />
-        </div>
-        <div class="right-container">
-          <label for="contact-number">Contact Number</label><br />
-          <input type="tel" name="contact-number" id="contact-number" /><br />
-          <label for="birthdate">Birth Date</label><br />
-          <input type="date" name="birthdate" id="birthdate" /><br />
-          <input type="submit" value="Register" />
-        </div>
-      </form>
+    <div class="main-container">
+      <fieldset id="applicant-reg-form-container">
+        <legend>Applicant Registration</legend>
+        <form action="">
+          <div class="applicant-reg-form">
+            <label for="status">Admission Status</label><br />
+            <input type="radio" name="freshmen" id="status" />Freshmen
+            <input type="radio" name="transferee" id="status" />Transferee<br />
+            <label for="name">Name</label><br />
+            <input type="text" name="name" id="name" /><br />
+            <label for="age">Age</label><br />
+            <input type="text" name="age" id="age" /><br />
+            <label for="sex">Sex</label><br />
+            <input type="radio" name="male" id="sex" />Freshmen
+            <input type="radio" name="female" id="sex" />Transferee<br />
+            <label for="course">Course</label><br />
+            <select name="course" id="course">
+              <option value="bet-coet">
+                BET-COET (Bachelor of Engineering Technology major in Computer
+                Engineering Technology
+              </option>
+              <option value="bs-civil">BS - Civil Engineering</option></select
+            ><br />
+            <label for="strand">Strand</label><br />
+            <input type="text" name="strand" id="strand" /><br />
+            <label for="email">Email Address</label><br />
+            <input type="text" name="email" id="email" /><br />
+            <label for="password">Password</label><br />
+            <input type="password" name="password" id="password" /><br />
+            <label for="confirm-password">Confirm Password</label><br />
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+            /><br />
+            <button id="register-btn">Register</button>
+            <button id="clear-form-btn">Clear Form</button>
+          </div>
+        </form>
+      </fieldset>
     </div>
     <hr />
     <!-- FOOTER -->
