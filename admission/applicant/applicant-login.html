@@ -4,70 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Technological University of the Philippines - Cavite | Applicant Login
-    </title>
+    <title>Technological University of the Philippines - Cavite | Applicant Login</title>
   </head>
   <body>
     <!-- HEADER -->
     <header class="header-wrap">
       <div class="header-logo-tupc-name">
-        <a class="logo" href="applicant-login.html"
+        <a class="logo" href="applicant-view-result.html"
           ><img
             src="/res/tup_logo.png"
             alt="This is TUP logo"
-            width="100px"
-            height="100px"
+            width="150px"
+            height="150px"
         /></a>
         <h1>Technological University of the Philippines - Cavite</h1>
       </div>
     </header>
-    <hr />
-    <div class="main-body">
-      <div class="left-container">
-        <!-- ANNOUNCEMENT BOX -->
-        <fieldset class="announcements">
-          <legend>Announcements</legend>
-          <ul>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-          </ul>
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+      <button>Back</button>
+      <!-- LOGIN FORM -->
+      <form action="">
+        <fieldset class="login-form">
+          <legend>Applicant Login</legend>
+          <label for="applicant-id">ID</label><br>
+          <input type="text" name="applicant-id" id="applicant-id" /><br />
+          <label for="applicant-pass">Password</label><br>
+          <input
+            type="password"
+            name="applicant-pass"
+            id="applicant-pass"
+          /><br />
+          <input type="submit" value="Login" /><br /><br />
+          <p>
+            If you are new applicant,
+            <a href="../applicant/applicant-reg.html">click here</a> to
+            register.
+          </p>
         </fieldset>
-        <!-- LOGIN FORM -->
-        <form action="">
-          <fieldset class="login-form">
-            <legend>Applicant Login</legend>
-            <label for="applicant-id">ID</label>
-            <input type="text" name="applicant-id" id="applicant-id" /><br />
-            <label for="applicant-pass">Password</label>
-            <input
-              type="password"
-              name="applicant-pass"
-              id="applicant-pass"
-            /><br />
-            <input type="submit" value="Login" /><br /><br />
-            <p>
-              If you are new applicant,
-              <a href="../applicant/applicant-reg.html">click here</a> to
-              register.
-            </p>
-          </fieldset>
-        </form>
-      </div>
+      </form>
     </div>
-    <div class="right-container">
-      <!-- TUPC IMAGES SLIDESHOW -->
-      <div class="tupc-images">
-        <h1>THIS AREA IS FOR TUPC IMAGES SLIDESHOW</h1>
-      </div>
-      <!-- GUIDELINES -->
-      <fieldset class="guidelines-container">
-        <legend>Guidelines</legend>
-        <h3>For Freshmen <button id="freshmen-guidelines">\/</button></h3>
-        <h3>For Transferees <button id="freshmen-guidelines">\/</button></h3>
-      </fieldset>
-    </div>
-    <hr />
     <!-- FOOTER -->
     <footer class="footer">
       <h5>
