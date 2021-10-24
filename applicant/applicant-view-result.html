@@ -16,15 +16,14 @@
           ><img
             src="/res/tup_logo.png"
             alt="This is TUP logo"
-            width="100px"
-            height="100px"
+            width="150px"
+            height="150px"
         /></a>
         <h1>Technological University of the Philippines - Cavite</h1>
       </div>
     </header>
-    <hr />
     <!-- APPLICANT INFO CONTAINER -->
-    <div class="applicant-info-container"><span ></span>
+    <div class="applicant-info-container">
       <div class="left-applicant-info-container">
         <div class="avatar">
           <img src="/res/avatar-icon.png" alt="This is avatar" width="150" />
@@ -36,34 +35,54 @@
       </div>
       <div class="right-applicant-info-container">
         <div class="download-btn">
-          <button>DOWNLOAD<br>RESULT (PDF)</button>
+          <button>DOWNLOAD<br />RESULT (PDF)</button>
         </div>
         <div class="logout-btn">
           <button>LOGOUT</button>
         </div>
       </div>
     </div>
-    <hr />
     <!-- RESULTS CONTAINER -->
-    <div class="admission-result-title">
-      <h2><b>ADMISSION RESULT</b></h2>
-    </div>
-    <!-- ----------- START HERE WHEN YOU BACK !------------- -->
-    <div class="course-shift-coor-container">
-      <h3>Course: BET - COET - NS</h3>
-    </div>
-    <div class="results-container">
-      <div class="exam-result-container">
-        <p><b>Entrance Exam</b></p>
+    <div class="admission-result-container">
+      <div class="admission-result-title">
+        <h2><b>ADMISSION RESULT</b></h2>
       </div>
-      <div class="medical-result-container">
-        <p><b>Medical</b></p>
+      <div class="course-shift-coor-container">
+        <h3>Course: BET - COET - NS</h3>
       </div>
-      <div class="interview-result-container">
-        <p><b>Interview</b></p>
-      </div>
-      <div class="requirements-container">
-        <p><b>Requirements</b></p>
+      <div class="results-container">
+        <div class="exam-result-container">
+          <h3 id="exam-title"><b>Entrance Exam</b></h3>
+          <p><b>Exam Date: </b>mm/dd/yyy</p>
+          <p><b>Exam Time: </b>10:00AM - 12:00PM</p>
+          <p><b>Room Assignment: </b>Room 124</p>
+          <h2 id="exam-result-remarks">PASSED</h2>
+        </div>
+        <div class="medical-result-container">
+          <h3 id="medical-title"><b>Medical</b></h3>
+          <p><b>Date Taken: </b> mm/dd/yyyy</p>
+          <p><b>Venue:</b> TUPC Court</p>
+          <h2 id="medical-result-remarks">FAILED</h2>
+        </div>
+        <div class="interview-result-container">
+          <h3 id="interview-title"><b>Interview</b></h3>
+          <p><b>Date: </b>mm/dd/yyyy</p>
+          <p><b>Venue: </b> COET Shop</p>
+          <p><b>Interviewer: </b> Juan Dela Cruz</p>
+          <h2 id="interview-result-remarks">FAILED</h2>
+        </div>
+        <div class="requirements-container">
+          <h3 id="requirements-title"><b>Requirements</b></h3>
+          <input type="checkbox" name="shs-card" id="shs-card" />
+          <label for="shs-card">Senior High School Card</label><br />
+          <input type="checkbox" name="gm-character" id="gm-character" />
+          <label for="gm-character">Good Moral Characer</label><br />
+          <input type="checkbox" name="brgy-clearance" id="brgy-clearance" />
+          <label for="brgy-clearance">Barangay Clearance</label><br />
+          <input type="checkbox" name="bc-psa" id="bc-psa" />
+          <label for="bc-psa">Birth Certificate (PSA)</label>
+          <h2 id="requirements-result-remarks">INCOMPLETE</h2>
+        </div>
       </div>
     </div>
     <!-- FOOTER -->
