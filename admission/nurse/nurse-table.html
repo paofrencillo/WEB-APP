@@ -4,75 +4,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC</title>
+    <title>
+        Technological University of the Philippines - Cavite | Nurse Table
+    </title>
 
 </head>
 <body>
-    
-    <input type="search" name="search" id="search">
-    <form style="width:500px;float:right;text-align:right">
-        <label for="Course"> Select Course</label>
-        <select name="course" id="course">
-            <option value="BS Civil Engineering">
-                BS Civil Engineering</option>
-            <option value="BET COET">
-                BET COET</option>
-            <option value="BET ESET">
-                BET ESET</option>
-        </select>
-    </form>
+    <!-- HEADER -->
+    <header class="header-wrap">
+        <div class="header-logo-tupc-name">
+          <a class="logo" href="applicant-login.html"
+            ><img
+              src="/res/tup_logo.png"
+              alt="This is TUP logo"
+              width="100px"
+              height="100px"
+          /></a>
+          <h1>Technological University of the Philippines - Cavite</h1>
+        </div>
+      </header>
     <br>
     <br>
-    <table border="5" cellpadding="10">
-        <tr>
-            <th></th>
-            <th>name</th>
-            <th>ID</th>
-            <th>email</th>
-            <th>contact #</th>
-            <th>medical result</th>
-            <th>medical file</th>
-        </tr>
-        <tr>
-            <td><input type="radio"></td>
-            <td>monta</td>
-            <td>0192</td>
-            <td>213@gmail.com</td>
-            <td>090214012412</td>
-            <td>Passed</td>
-            <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-            <td><input type="radio"></td>
-            <td>cef</td>
-            <td>0185</td>
-            <td>qwer@gmail.com</td>
-            <td>0915152342</td>
-            <td>Passed</td>
-            <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-            <td><input type="radio"></td>
-            <td>pao</td>
-            <td>0197</td>
-            <td>asd@gmail.com</td>
-            <td>090214012412</td>
-            <td>Passed</td>
-            <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-            <td><input type="radio"></td>
-            <td>Ron</td>
-            <td>108</td>
-            <td>zxc@gmail.com</td>
-            <td>098851232</td>
-            <td><ed/td>
-            <td><input type="file" name="image" id="image"></td>
-        </tr>
-    </table>
+    <!--search-->
+    <header class="header-wrap">
+        <div class="search-combo">
+            <input type="search" 
+            name="search" id="search" 
+            placeholder="Search here">
+            <!--select course-->
+            <form style="float:right;text-align:left">
+                <label for="Course"> Select Course</label>
+                <select name="course" id="course">
+                    <option value="BS Civil Engineering">
+                        BS Civil Engineering</option>
+                    <option value="BET COET">
+                        BET COET</option>
+                    <option value="BET ESET">
+                        BET ESET</option>
+                </select>
+            </form>
+        </div>
+    </header>
     <br>
-    <input name="form" type="submit" value="Passed"/>
-    <input name="form" type="submit" value="Failed"/>
-
+    <div class="table">
+        <table border="5" cellpadding="10">
+            <tr>
+                <th></th>
+                <th>name</th>
+                <th>ID</th>
+                <th>email</th>
+                <th>contact #</th>
+                <th>medical result</th>
+                <th>medical file</th>
+            </tr>
+            <tr>
+                <td><input type="radio"></td>
+                <td>monta</td>
+                <td>0192</td>
+                <td>213@gmail.com</td>
+                <td>090214012412</td>
+                <td>Passed</td>
+                <td><input type="file" name="image" id="image"></td>
+            </tr>
+            <tr>
+                <td><input type="radio"></td>
+                <td>cef</td>
+                <td>0185</td>
+                <td>qwer@gmail.com</td>
+                <td>0915152342</td>
+                <td>Passed</td>
+                <td><input type="file" name="image" id="image"></td>
+            </tr>
+            <tr>
+                <td><input type="radio"></td>
+                <td>pao</td>
+                <td>0197</td>
+                <td>asd@gmail.com</td>
+                <td>090214012412</td>
+                <td>Passed</td>
+                <td><input type="file" name="image" id="image"></td>
+            </tr>
+            <tr>
+                <td><input type="radio"></td>
+                <td>Ron</td>
+                <td>108</td>
+                <td>zxc@gmail.com</td>
+                <td>098851232</td>
+                <td>Passed</td>
+                <td><input type="file" name="image" id="image"></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="submit">
+        <input name="form" type="submit" value="Passed"/>
+        <input name="form" type="submit" value="Failed"/>
+    </div>
+    <br>
+    <br>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h5>
+          (icon-tel) (046) 416-4920 (icon-email) cavite@tup.edu.ph (icon-web)
+          www.tup.edu.ph
+        </h5>
+        <h5>
+          (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
+          Philippines
+        </h5>
+      </footer>
 </body>
 </html>
