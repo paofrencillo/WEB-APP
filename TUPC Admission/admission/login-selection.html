@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TUP - Cavite | Applicant Login</title>
+    <title>TUP - Cavite | Login Selection</title>
   </head>
   <body>
     <!-- HEADER -->
@@ -18,29 +18,20 @@
         <h1>Technological University of the Philippines - Cavite</h1>
       </div>
     </header>
-    <!-- MAIN CONTAINER -->
-    <div class="main-container">
-      <button name="back-btn">Back</button>
-      <!-- LOGIN FORM -->
-      <form action="">
-        <fieldset class="login-form">
-          <legend>Applicant Login</legend>
-          <label for="applicant-id">ID</label><br>
-          <input type="text" name="applicant-id" id="applicant-id" /><br />
-          <label for="applicant-pass">Password</label><br>
-          <input
-            type="password"
-            name="applicant-pass"
-            id="applicant-pass"
-          /><br />
-          <input type="submit" value="Login" /><br /><br />
-          <p>
-            If you are new applicant,
-            <a href="../applicant/applicant-reg.html">click here</a> to
-            register.
-          </p>
-        </fieldset>
-      </form>
+    <hr />
+    <button type="submit" id="home-btn">HOME</button>
+    <!-- BOXES -->
+    <div class="login-choices-container">
+      <div class="upper-container">
+        <div class="login-as-applicant-box">Login as APPLICANT</div>
+        <div class="login-as-admission-coor-box">
+          Login as ADMISSION COORDINATE
+        </div>
+      </div>
+      <div class="lower-container">
+        <div class="login-as-nurse-box">Login as NURSE</div>
+        <div class="login-as-interviewer-box">Login as INTERVIEWER</div>
+      </div>
     </div>
     <!-- FOOTER -->
     <footer class="footer">
@@ -52,6 +43,7 @@
         (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
         Philippines
       </h5>
+      <hr />
     </footer>
   </body>
 </html>

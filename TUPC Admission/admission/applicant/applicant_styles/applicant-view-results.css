@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+}
+
+.header-wrap {
+    background-color: rgb(243, 169, 169);
+    }
+
+.header-logo-tupc-name {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+}
+
+.applicant-info-container {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-applicant-info-container {
+    margin: 0;
+    background-color: rgb(214, 198, 183);
+    width: 70%;
+    float: left;
+    display: flex;
+}
+
+.right-applicant-info-container {
+    background-color: burlywood;
+    width: 30%;
+    float: right;
+    display: flex;
+}
+
+.admission-result-container {
+    padding-bottom: 1%;
+    border-bottom: 1px solid black;
+    margin: 0 auto;
+}
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+#exam-title {
+    text-align: center;
+}
+
+.exam-result-container {
+    border: 1px solid black;
+    width: 250px;
+}
+
+#exam-result-remarks {
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    border: 5px solid black;
+}
+
+#medical-title {
+    text-align: center;
+}
+
+.medical-result-container {
+    border: 1px solid black;
+    width: 250px;
+}
+
+#medical-result-remarks {
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    border: 5px solid black;
+}
+
+#interview-title {
+    text-align: center;
+}
+
+.interview-result-container {
+    border: 1px solid black;
+    width: 250px;
+}
+
+#interview-result-remarks {
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    border: 5px solid black;
+}
+
+#requirements-title {
+    text-align: center;
+}
+
+.requirements-container {
+    border: 1px solid black;
+    width: 250px;
+}
+
+#requirements-result-remarks {
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    border: 5px solid black;
+}
