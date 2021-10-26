@@ -18,22 +18,32 @@
           <h1>Technological University of the Philippines - Cavite</h1>
         </div>
       </header>
-    <HR></HR>
+    <hr>
+    <div class="admission-coor-info">
+      <div class="admission-coor-name">
+        <h2>Admission Coordination: ROY G BIV</h2>
+      </div>
+      <div class="download-logout-btn">
+        <button>DOWNLOAD<br>RESULT (PDF)</button>
+        <button>LOGOUT</button>
+      </div>
+    </div>
+    <hr>
       <!-- combo box -->
-    <label for="course"></label>
-        <select name="course" id="course">
-          <option value="volvo">COURSE</option>
-        </select><br>
-        <select name="shift" id="shift">
-          <option value="volvo">SHIFT</option>  
-        </select><br>
-      <!-- NAME -->
-        <label for="admission-coordination">
-          <h2>admissioncoordination</h2>
-        </label>
-      <!-- button -->
+    <div class="course-shift-cb">
+      <select name="course" id="course">
+        <option value="bet-coet">BET-COET</option>
+        <option value="bet-eset">BET-ESET</option>
+      </select><br>
+      <select name="shift" id="shift">
+        <option value="volvo">SHIFT</option>  
+      </select><br>
+    </div>
+      <!-- SELECT ROW BUTTON -->
+      <div class="select-row-btn">
         <button>SELECT ROW TO MODIFY</button><br>
-        <button>LOGOUT</button><BR></BR>
+      </div>
+        
       <!-- TABLE -->
         <style>
             table, th, td {
@@ -120,12 +130,11 @@
                           <td></td>
                           <td></td>
               </tr>
-
             </table>
-    
-    <button>Passed</button>
-    <button>Failed</button>
-
+    <div class="passed-failed-btn">
+      <button>Passed</button>
+      <button>Failed</button>
+    </div>
     <HR></HR>
 
     </div>
