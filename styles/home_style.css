@@ -9,6 +9,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: gray;
 }
 
 header {
@@ -55,7 +56,7 @@ nav a {
     font-size: 0.9em;
 }
 
-nav a:not(#admission-text):hover  {
+nav a:not(#admission-text):hover {
     border-bottom: 5px solid rgb(189, 32, 49);
 }
 
@@ -75,11 +76,12 @@ nav a:not(#admission-text):hover  {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 10vw;
+    margin: 1vw 10vw;
 }
 
-.hero .hero-left {
+.hero-left {
     width: 30%;
+    margin-right: 2%;
 }
 
 .jump-links {
@@ -100,34 +102,79 @@ nav a:not(#admission-text):hover  {
     background-image: linear-gradient(to right, rgba(189, 32, 49, 0.6), rgba(189, 32, 49, 0.2));
 }
 
-.hero .hero-right {
-    width: 70%;
-    background-color: red;
+.headers {
+    color: rgb(255, 255, 255);
+    background-color: rgb(189, 32, 49);
+    border-radius: 15px;
+    padding: 0.75rem;
 }
 
-.tupc-images {
+.announcement-container {
+    margin-top: 2.5rem;
+}
+
+.announcement-container li {
+    font-size: 1rem;
+    padding-bottom: 0.75rem;
+}
+/* .tupc-images {
+    padding: 0;
+} */
+
+
+/* .tupc-images .images-top{
+    height: 50%; 
+} */
+
+/* .tupc-images .images-top img{
+    margin: 0;
+    width: 100%;
+} */
+
+.hero-right {
+    width: 68%;
+    padding: 0;
+    margin: 0;
+    background-color: red;  
+}
+
+figure {
     padding: 0;
     margin: 0;
 }
 
-.tupc-images .images-top{
-    display: flex;
-    
+.tupc-images {
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-template-rows: (2, auto);
 }
 
-.tupc-images .images-top img{
-    margin: 0;
-    width: 100%;
+.tupc-images img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
-.tupc-images .images-bottom{
-    display: flex;
+.tupc-images .item-1 {
+    grid-column: 1 / 4;
+    grid-row: 1;
 }
 
-.tupc-images .images-bottom img{
-    margin: 0;
-    width: 33.33%;
+.tupc-images .item-2 {
+    grid-column: 1 / 2;
+    grid-row: 2;
 }
+
+.tupc-images .item-3 {
+    grid-column: 2 / 3;
+    grid-row: 2;
+}
+
+.tupc-images .item-4 {
+    grid-column: 3 / 4;
+    grid-row: 2;
+}
+
 
 footer {
     background-color: #BD2031;
