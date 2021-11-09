@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: gray;
+    /* background-color: gray; */
 }
 
 header {
@@ -72,14 +72,17 @@ nav a:not(#admission-text):hover {
     font-weight: 750;
 }
 
-.hero {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.main-container {
     margin: 1vw 10vw;
 }
 
-.hero-left {
+.top-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.top-container-left-side {
     width: 30%;
     margin-right: 2%;
 }
@@ -90,15 +93,21 @@ nav a:not(#admission-text):hover {
 }
 
 .jump-links .links {
-    padding-left: 1rem;   
+    padding-left: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 }
 
-.jump-links .links h2{
-    font-size: 1.3rem;   
+.jump-links .links a{
+    font-size: 1.3rem;
+    text-decoration: none; 
+    color: #181818;
+    font-weight: 550;
+    cursor: pointer;
 }
 
 .jump-links .links:hover {
-    border-left: 5px solid #bd2031;
+    border-left: 5px solid rgb(189, 32, 49);
     background-image: linear-gradient(to right, rgba(189, 32, 49, 0.6), rgba(189, 32, 49, 0.2));
 }
 
@@ -109,33 +118,20 @@ nav a:not(#admission-text):hover {
     padding: 0.75rem;
 }
 
-.announcement-container {
+#announcement-section {
     margin-top: 2.5rem;
 }
 
-.announcement-container li {
+#announcement-container li {
     font-size: 1rem;
     padding-bottom: 0.75rem;
+    color: #181818;
 }
-/* .tupc-images {
-    padding: 0;
-} */
 
-
-/* .tupc-images .images-top{
-    height: 50%; 
-} */
-
-/* .tupc-images .images-top img{
-    margin: 0;
-    width: 100%;
-} */
-
-.hero-right {
+.top-container-right-side {
     width: 68%;
     padding: 0;
     margin: 0;
-    background-color: red;  
 }
 
 figure {
@@ -175,9 +171,58 @@ figure {
     grid-row: 2;
 }
 
+.bottom-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2vw;
+}
+
+.bottom-container-left-side {
+    width: 35%;
+}
+
+.bottom-container-right-side {
+    width: 60%;
+    margin-left: 5%;
+}
+
+#guidelines li {
+    font-size: 1rem;
+    padding-bottom: 0.75rem;
+    color: #181818;
+}
+
+#requirements h3 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: #181818;
+}
+
+#requirements ul {
+    margin-top: 0.3rem;
+}
+
+#requirements li {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    color: #181818;
+}
+
+.freshmen-requirements, .transferees-requirements {
+    padding-left: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+hr {
+    background-color: rgb(189, 32, 49);
+    height: 5px;
+    border: none;
+    margin: 0;
+}
 
 footer {
-    background-color: #BD2031;
+    background-color: rgb(189, 32, 49);
     display: flex;
     padding: 0 5vw;
     justify-content: center;

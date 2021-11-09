@@ -67,13 +67,71 @@ nav a:not(#admission-text):hover  {
     color: #FFFFFF;
 }
 
-/* ***************************************** */
-/* ***************************************** */
-/*                                           */
-/* DITO I-COCODE YUNG PARA SA MAIN CONTAINER */
-/*                                           */
-/* ***************************************** */
-/* ***************************************** */
+.main-container {
+    padding: 9vh 34vw;
+    background-image: linear-gradient(180deg, #FFA5A5 0%, rgba(252, 232, 232, 0) 100%);
+    display: block;
+    align-items: center;
+}
+
+fieldset {
+    border: 5px solid rgb(189, 32, 49);
+    border-radius: 20px;
+
+}
+legend {
+    background-color: rgb(189, 32, 49);
+    color: rgb(255, 255,255);
+    padding: 0.75rem 1.25rem;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+form {
+    display: block;
+    text-align: center;
+    margin: auto 2rem;
+}
+
+form label {
+    font-weight: 1000;
+    font-size: 1rem;
+    color: #181818;
+}
+
+#applicant-id, #applicant-pass {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    outline: none;
+    margin-bottom: 1.25rem;
+    box-sizing: border-box;
+    padding-left: 5%;
+
+}
+
+#login-btn {
+    background-color: rgba(189, 32, 49, 0.5);
+    color: rgb(255, 255,255);
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+}
+
+form p {
+    color: #181818;
+    font-size: 0.75rem;
+    text-align: left;
+    margin: 0;
+}
+
+form p a{
+    color: rgb(189, 32, 49);
+    font-weight: 1000;
+}
 
 /* FOOTER */
 footer {
