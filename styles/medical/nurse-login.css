@@ -1,0 +1,58 @@
+
+footer {
+    background-color: #BD2031;
+    display: flex;
+    padding: 0 5vw;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .left-footer {
+    margin: 0;
+    padding: 2.5vw;
+    width: 60%;
+    height: 100%;
+}
+
+fieldset > legend {
+    padding: 0 1rem;
+    border-style: solid;
+}
+
+#applicant-id{
+    align-items: center;
+}
+
+input {
+    margin: 5px;
+}
+
+footer .left-footer h3 {
+    margin: 0;
+    color: #FFFFFF;
+    padding-bottom: 0.75rem;
+}
+
+footer a {
+    font-size: 0.85rem;
+    padding-left: 2.5rem;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+footer a:hover span{
+   text-decoration: underline;
+}
+
+footer span {
+    padding-left: 0.7em;
+}
+
+footer .right-footer {
+    width: 40%;
+    height: 100%;
+}
+
+footer img {
+    width: 100%;
+}

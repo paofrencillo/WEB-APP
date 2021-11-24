@@ -8,6 +8,13 @@
         TUP - Cavite | Nurse Table
     </title>
 </head>
+
+    <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/styles/medical/nurse-table.css">
+
 <body>
     <!-- HEADER -->
     <header class="header-wrap">
@@ -48,8 +55,8 @@
         </div>
     </div>
     <br>
-    <div class="table">
-        <table border="1" cellpadding="5">
+    <div class="container">
+        <table class="table table-bordered table-hover">
             <tr>
                 <th></th>
                 <th>name</th>
@@ -98,9 +105,9 @@
         </table>
     </div>
     <br>
-    <div class="submit">
-        <input name="form" type="submit" value="Passed"/>
-        <input name="form" type="submit" value="Failed"/>
+    <div class="container-fluid row">
+        <button type="button" class="btn-success"> Passed </button>
+        <button type="button" class="btn-success"> Failed </button>
     </div>
     <HR></HR>
     <!-- FOOTER -->

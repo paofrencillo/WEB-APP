@@ -1,57 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TUP - Cavite | Applicant Login</title>
-  </head>
-  <body>
-    <!-- HEADER -->
-    <header class="header-wrap">
-      <div class="header-logo-tupc-name">
-        <img
-            src="../../res/tup_logo.png"
-            alt="This is TUP logo"
-            width="150px"
-            height="150px"/>
-        <h1>Technological University of the Philippines - Cavite</h1>
-      </div>
-    </header>
-    <!-- MAIN CONTAINER -->
-    <div class="main-container">
-      <button name="back-btn">Back</button>
-      <!-- LOGIN FORM -->
-      <form action="">
-        <fieldset class="login-form">
-          <legend>Applicant Login</legend>
-          <label for="applicant-id">ID</label><br>
-          <input type="text" name="applicant-id" id="applicant-id" /><br />
+<meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../res/tup_logo.png" />
+  <title>TUP - Cavite | Applicant Login Page</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="../../styles/applicant/applicant_login_style.css" />
+  <link rel="icon" href="../res/tup_logo.png" />
+  <title>TUP - Cavite | Admission Home Page</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="../../res/tup_logo.png" alt="This is TUP logo" width="125px" height="125px" />
+    <h1>TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - CAVITE</h1>
+
+  <!-- ================= HEADER ================= -->
+  <header class="container-fluid">
+    <div id="header" class="col-12 py-2 no-gutter">
+      <img src="../../res/tup_logo.png" alt="This is TUP logo" />
+      <span id="tupc-name">TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - CAVITE</span>
+    </div>
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <!-- ================= NAVIGATION BAR ================= -->
+  <nav>
+    <ul>
+      <li><a id="admission-text" href="../../admission/home.html">ADMISSION</a></li>
+      <li><a href="../../admission/applicant/applicant-login.html">APPLICANT</a></li>
+      <li><a href="../../admission/admission-coor/admission-coor-login.html">ADMISSION COORDINATOR</a></li>
+      <li><a href="../../admission/interviewer/interviewer-login.html">INTERVIEW</a></li>
+      <li><a href="../../admission/medical/nurse-login.html">MEDICAL</a></li>
+    <ul class="nav justify-content-center">
+      <li class="nav-item"><a class="nav-link px-4" href="../../admission/home.html">HOME</a></li>
+      <li class="nav-item"><a class="nav-link px-4" id="applicant-link" href="../../admission/applicant/applicant-login.html">APPLICANT</a>
+      </li>
+      <li class="nav-item"><a class="nav-link px-4"
+          href="../../admission/admission-coor/admission-coor-login.html">COORDINATOR</a></li>
+      <li class="nav-item"><a class="nav-link px-4"
+          href="../../admission/interviewer/interviewer-login.html">INTERVIEW</a></li>
+      <li class="nav-item"><a class="nav-link px-4" href="../../admission/medical/nurse-login.html">MEDICAL</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <!-- ================= MAIN CONTAINER ================= -->
+  <div class="main-container">
+    <!-- LOGIN FORM -->
+    <!-- ================= LOGIN FORM ================= -->
+    <fieldset>
+      <legend>Applicant Login</legend>
+      <div class="form">
+@@ -39,56 +51,69 @@ <h1>TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - CAVITE</h1>
+          <input type="email" name="applicant-id" id="applicant-id" /><br />
           <label for="applicant-pass">Password</label><br>
-          <input
-            type="password"
-            name="applicant-pass"
-            id="applicant-pass"
-          /><br />
-          <input type="submit" value="Login" /><br /><br />
+          <input type="password" name="applicant-pass" id="applicant-pass" /><br />
+          <input type="submit" value="LOGIN" id="login-btn"/><br /><br />
+          <input type="submit" value="LOGIN" id="login-btn" /><br /><br />
           <p>
             If you are new applicant,
             <a href="../applicant/applicant-reg.html">click here</a> to
             register.
           </p>
-        </fieldset>
-      </form>
+        </form>
+      </div>   
+    </fieldset> 
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="left-footer">
+      <h3>Contact Us</h3>
+      <a href="(046)416-4920">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+        </svg>
+        <span>(046) 416-4920</span><br>
+      </a>
+      <a href="mailto:cavite@tup.edu.ph">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill"
+          viewBox="0 0 16 16">
+          <path
+            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+        </svg>
+        <span>cavite@tup.edu.ph</span><br>
+      </a>
+      <a href="http://www.tup.edu.ph/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe"
+          viewBox="0 0 16 16">
+          <path
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+        </svg>
+        <span>www.tup.edu.ph</span><br>
+      </a>
+      <a href="https://goo.gl/maps/fBbW2s4u5fNMW67G7" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill"
+          viewBox="0 0 16 16">
+          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+        </svg><span>Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite 4114</span>
+      </a>
     </div>
-    <!-- FOOTER -->
-    <footer class="footer">
-      <h5>
-        (icon-tel) (046) 416-4920 (icon-email) cavite@tup.edu.ph (icon-web)
-        www.tup.edu.ph
-      </h5>
-      <h5>
-        (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
-        Philippines
-      </h5>
-    </footer>
-  </body>
-</html>
+    <div class="right-footer">
+      <img src="../../res/tup_banner.jpg" alt="This is TUP Banner">
+
+   <!-- ================= FOOTER ================= -->
+   <footer class="container-fluid" id="footer">
+    <div class="row justify-content-center align-items-center px-5 py-2">
+      <div class="col col-6" id="left-footer">
+        <h3>Contact Us</h3>
+        <a href="(046)416-4920">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+          </svg>
+          <span>(046) 416-4920</span><br>
+        </a>
+        <a href="mailto:cavite@tup.edu.ph">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+          </svg>
+          <span>cavite@tup.edu.ph</span><br>
+        </a>
+        <a href="http://www.tup.edu.ph/" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+          </svg>
+          <span>www.tup.edu.ph</span><br>
+        </a>
+        <a href="https://goo.gl/maps/fBbW2s4u5fNMW67G7" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill"
+            viewBox="0 0 16 16">
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+          </svg><span>Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite 4114</span>
+        </a>
+      </div>
+      <div class="col col-6" id="right-footer">
+        <img src="../../res/tup_banner.jpg" alt="This is TUP Banner">
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT FOR BOOTSTRAP (kopyahin to sa bawat html files!!!) ================= -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html> 

@@ -1,0 +1,19 @@
+.table tr:hover > td {
+    background-color: #d46f78;
+}
+
+.table tr:hover > th {
+    background-color: none;   
+}
+
+table, td, th {
+    background-color:rgb(190, 188, 188);
+    
+}
+
+.btn-success {
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
