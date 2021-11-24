@@ -17,26 +17,31 @@
 </head>
 
 <body>
-  <!-- ================= HEADER ================= -->
-  <header class="container-fluid">
-    <div id="header" class="col-12 py-2 no-gutter">
-      <img src="../../res/tup_logo.png" alt="This is TUP logo" />
-      <span id="tupc-name">TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - CAVITE</span>
+  <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
+  <nav class="navbar navbar-expand-lg sticky-top px-5 py-0">
+      <img class="navbar-brand p-0" src="../res/tupc-banner.png" alt="this is TUPC banner" width="500px">
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li id="home-link" class="nav-item">
+          <a class="nav-link" href="../../admission/home.html">Home</a>
+        </li>
+        <li class="nav-item pl-3">
+          <a class="nav-link" href="../../admission/applicant/applicant-login.html">Applicant</a>
+        </li>
+        <li class="nav-item pl-3">
+          <a class="nav-link" href="../../admission/admission-coor/admission-coor-login.html">Coordinator</a>
+        </li>
+        <li class="nav-item pl-3">
+          <a class="nav-link" href="../admission/interviewer/interviewer-login.html">Interview</a>
+        </li>
+        <li class="nav-item pl-3">
+          <a class="nav-link" href="../../admission/medical/nurse-login.html">Medical</a>
+        </li>
+      </ul>
     </div>
-  </header>
-
-  <!-- ================= NAVIGATION BAR ================= -->
-  <nav>
-    <ul class="nav justify-content-center">
-      <li class="nav-item"><a class="nav-link px-4" id="home-link" href="../../admission/home.html">HOME</a></li>
-      <li class="nav-item"><a class="nav-link px-4" href="../../admission/applicant/applicant-login.html">APPLICANT</a>
-      </li>
-      <li class="nav-item"><a class="nav-link px-4"
-          href="../../admission/admission-coor/admission-coor-login.html">COORDINATOR</a></li>
-      <li class="nav-item"><a class="nav-link px-4"
-          href="../../admission/interviewer/interviewer-login.html">INTERVIEW</a></li>
-      <li class="nav-item"><a class="nav-link px-4" href="../../admission/medical/nurse-login.html">MEDICAL</a></li>
-    </ul>
   </nav>
 
   <!-- ================= MAIN CONTAINER ================= -->
@@ -46,22 +51,22 @@
       <div class="carousel-caption px-0 py-0">
         <div class="container px-0">
           <div class="row justify-content-center px-0">
-            <div class="col col-3 jump-links mx-4 py-2"><a href="../admission/applicant/applicant-reg.html"><img
+            <div class="col col-3 jump-links mx-1 py-2"><a href="../admission/applicant/applicant-reg.html"><img
                   src="../res/registration.jpg" alt="registation image">
                 <h3>Registration</h3>
               </a>
             </div>
-            <div class="col col-3 jump-links mx-3 py-2"><a href="#guidelines"><img src="../res/guidelines.png"
+            <div class="col col-3 jump-links mx-1 py-2"><a href="#guidelines"><img src="../res/guidelines.png"
                   alt="guidelines image">
                 <h3>Guidelines</h3>
               </a>
             </div>
-            <div class="col col-3 jump-links mx-3 py-2"><a href="#requirements"><img src="../res/requirement.png"
+            <div class="col col-3 jump-links mx-1 py-2"><a href="#requirements"><img src="../res/requirement.png"
                   alt="requirements image">
                 <h3>Requirements</h3>
               </a>
             </div>
-            <div class="col col-3 jump-links mx-3 py-2"><a href="#footer"><img src="../res/contact-us.png"
+            <div class="col col-3 jump-links mx-1 py-2"><a href="#footer"><img src="../res/contact-us.png"
                   alt="contact-us image">
                 <h3>Contact Us</h3>
               </a>
