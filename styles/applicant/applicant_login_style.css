@@ -8,55 +8,36 @@ body {
     padding: 0;
 }
 
-/* ========== HEADER ========== */
-header {
-    background-color: #DDDDDD;
-    border-bottom: 7px solid rgb(189, 32, 49);
+.page-container {
+    min-height: 100vh;
 }
 
-header #tupc-name {
-    letter-spacing: 0.05rem;
-    font-size: 2.3rem;
-    font-weight: 1000;
-    color: rgb(189, 32, 49);
-    justify-content: center;
-    text-align: center;
-}
 
-header div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header img {
-    width: 100px;
-    height: 100px;
-}
-
-/* ========== NAVBAR (tatangalin to sa ibang module) ========== */
+/* ========== HEADER w/ NAVBAR ========== */
 nav {
     background-color: #DDDDDD;
 }
 
-nav li {
-    list-style: none;
+.custom-toggler.navbar-toggler {
+    border-color: rgb(20, 20, 20);
 }
 
-nav a {
-    text-decoration: none;
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(58, 58, 58, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-link {
     color: rgb(30, 30, 30);
     font-weight: 600;
-    font-size: 1.1rem;
-}
-
-nav a:not(#admission-text):hover  {
-    color: white;
+    font-size: 1.25rem;
 }
 
 #applicant-link {
-    border-radius: 0 0 1rem 1rem;
-    background-color: #bd2031;
+    border-bottom: 5px solid #bd2031;
+    color: white;
+}
+
+nav a:hover  {
     color: white;
 }
 
@@ -132,13 +113,6 @@ form p a{
     background-color: rgb(189, 32, 49);
 }
 
-#footer #left-footer {
-    margin: 0;
-    padding: 2.5vw;
-    width: 60%;
-    height: 100%;
-}
-
 #footer #left-footer h3 {
     margin: 0;
     color: #FFFFFF;
@@ -160,72 +134,9 @@ form p a{
     padding-left: 0.7em;
 }
 
-#footer #right-footer {
-    width: 40%;
-    height: 100%;
-}
-
 #footer img {
     width: 100%;
 }
 
+
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
-@media screen and (max-width: 1160px) {
-    header #tupc-name {
-        letter-spacing: 0.05rem;
-        font-size: 1.8rem;
-        font-weight: 1000;
-        color: rgb(189, 32, 49);
-        display: flex;
-        justify-content: center;
-    }
-    
-    header img {
-        width: 90px;
-        height: 90px;
-    }
-}
-
-@media screen and (max-width: 582px) {
-    header {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-    }
-
-    header #tupc-name {
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: rgb(189, 32, 49);
-        display: flex;
-        justify-content: center;
-    }
-    
-    header img {
-        width: 90px;
-        height: 90px;
-    }   
-}
-
-@media screen and (max-width: 500px) {
-    header #header {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-    }
-
-    header #tupc-name {
-        font-size: 1.2rem;
-        font-weight: 900;
-        color: rgb(189, 32, 49);
-        display: flex;
-        justify-content: center;
-    }
-    
-    header img {
-        width: 75px;
-        height: 75px;
-    }
-}
