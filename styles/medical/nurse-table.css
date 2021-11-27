@@ -28,14 +28,16 @@ nav a:hover  {
 
 /* ========== NAME ========== */
 h2 {
-    color: #d46f78;
+    color: rgb(189, 32, 49);
     text-align: justify;
 }
 .nurse-name {
+    margin: 0 0 0 13.7%;
     float:left;
 }
 
 .search-combo {
+    margin: 0 13.7% 0 0;
     float:right;
 }
 /* ========== TABLE ========== */
@@ -48,10 +50,10 @@ h2 {
     background-color: white;   
 }
 
-.btn-link {
+.container-fluid {
+    margin:0 0 0 13%;
     display:inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
 }
 
