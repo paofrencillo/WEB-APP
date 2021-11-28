@@ -43,18 +43,24 @@ h2 {
 /* ========== TABLE ========== */
 
 .table tr:hover > td {
-    background-color: #d46f78;
+    background-color: rgb(189, 32, 49);
+    color: white;
 }
 
 .table tr:first-child:hover {
     background-color: white;   
 }
 
-.container-fluid {
-    margin:0 0 0 13%;
+.buttons {
+    margin:0 0 16px 14%;
     display:inline-block;
-    font-size: 16px;
+}
+
+.btn-space {
+    margin-right: 5px;
+    color: white;
     cursor: pointer;
+    font-size: 16px;
 }
 
 /* ========== FOOTER ========== */
