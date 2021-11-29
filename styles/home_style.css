@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 
 
-html body {
-    overflow-x: hidden;
+body {
+    overflow-x: hidden !important;
     font-family: "Source Sans Pro", sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 /* ========== HEADER w/ NAVBAR ========== */
@@ -37,9 +35,8 @@ nav a:hover  {
 }
 
 /* ========== MAIN CONTAINER ========== */
-.main-container {
-    padding-bottom: 2.5rem;
-    min-height: calc(100vh - 58.9167px - 157.6px);   
+#main-container {
+    min-height: calc(100vh - 58.9167px - 157.6px);
 }
 
 .headers {
@@ -49,6 +46,7 @@ nav a:hover  {
     background-color: rgb(189, 32, 49);
     border-radius: 15px;
     padding: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 #tupc-images {
@@ -100,12 +98,13 @@ nav a:hover  {
     text-align: center;
     border-radius: 0px;
     padding: 0.5rem;
+    width: 100%;
 }
 
 #announcement-section p {
     margin-bottom: 0;
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     padding: 0 5rem;
 }
@@ -149,7 +148,7 @@ nav a:hover  {
 
 #guidelines li {
     font-size: 1rem;
-    padding-bottom: 0.75rem;
+    padding-bottom: 1.5rem;
     color: #181818;
 }
 
@@ -165,25 +164,30 @@ nav a:hover  {
 
 #requirements li {
     font-size: 1rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1.5rem;
     color: #181818;
+}
+
+#requirements h3 {
+    font-weight: 600;
+    margin-left: 20px;
 }
 
 hr {
     background-color: rgb(189, 32, 49);
     height: 5px;
     border: none;
-    margin: 0;
+    margin-left: 20px;
 }
 
-/* ========= FOOTER ========= */
+/* ========== FOOTER ========== */
 footer {
     bottom: 0;
     background-color: rgb(189, 32, 49);
 }
 
 footer #left-footer h3 {
-   margin: 0;
+    margin: 0;
     color: #FFFFFF;
     padding-bottom: 0.75rem;
 }
@@ -195,12 +199,12 @@ footer a {
     color: #FFFFFF;
 }
 
-footer a:hover span{
+footer a:hover{
    text-decoration: underline;
 }
 
-footer span {
-    padding-left: 0.7em;
+footer i {
+    padding-right: 0.7em;
 }
 
 footer img {
@@ -211,9 +215,8 @@ footer img {
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
 @media screen and (max-width: 984px) {
     .carousel-caption {
-        top: 0;
-        right: 0;
-        margin-top: 20px;
+        bottom: 0;
+        right: 0;     
     }
 
     .carousel-caption > .container-fluid > .row{
@@ -239,4 +242,11 @@ footer img {
         color: #fff;
         font-weight: 500;
     }
+}
+
+
+@media screen and (max-width: 650px) {
+    #announcement-section p {
+        font-size: 1.5rem;
+    }     
 }

@@ -1,97 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 
-:root {
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 20px;
-}
 
 body {
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden !important;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
-/* HEADER */
-header {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #DDDDDD;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    padding: 0 10vw;
-    border-bottom: 7px solid rgb(189, 32, 49);
-}
-
-header h1 {
-    font-size: 1.82rem;
-    font-weight: 1000;
-    color: rgb(189, 32, 49);
-    padding-bottom: 2rem;
-}
-
-/* NAVBAR (tatangalin to sa ibang module */
+/* ========== HEADER w/ NAVBAR ========== */
 nav {
-    height: 10vh;
     background-color: #DDDDDD;
 }
 
-nav ul {
-    padding-top: 0.9rem;
-    margin-right: 10vw;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 0;
+.bi-download, .bi-box-arrow-right {
+    padding-right: 0.4rem;
+    font-size: 1.5rem;
 }
 
-nav li {
-    padding-left: 2vw;
-    list-style: none;
+.custom-toggler.navbar-toggler {
+    border-color: rgb(20, 20, 20);
 }
 
-nav a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 1000;
-    font-size: 0.9em;
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(58, 58, 58, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-nav a:not(#admission-text):hover  {
-    border-bottom: 5px solid rgb(189, 32, 49);
+#download {
+    margin-left: 2rem;
+    color: rgb(30, 30, 30);
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
-#admission-text {
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    background: linear-gradient(97.1deg, #DC9EA8 0%, #BD2031 100%);
-    color: #FFFFFF;
+#logout {
+    margin-left: 2rem;
+    color: #bd2031;
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
-/* ***************************************** */
-/* ***************************************** */
-/*                                           */
-/* DITO I-COCODE YUNG PARA SA MAIN CONTAINER */
-/*                                           */
-/* ***************************************** */
-/* ***************************************** */
+#applicant-link {
+    border-bottom: 5px solid #bd2031;
+    color: white;
+}
 
-/* FOOTER */
+#download:hover, #logout:hover  {
+    color: white;
+}
+
+/* ========== MAIN CONTAINER ========== */
+#main-container {
+    min-height: calc(100vh - 58.9167px - 157.6px);
+}
+
+#applicant-name-number > *, #applicant-course-shift > * {
+    color: white;
+}
+ 
+#applicant-course-shift > * {
+    text-decoration: underline;
+    margin-bottom: 0;
+    font-size: 1.15rem;
+}
+
+#applicant-info {
+    background-color: rgba(189, 32, 49, 0.5);
+}
+
+#applicant-name, #control-number {
+    margin-bottom: 0;
+}
+
+#applicant-name {
+    font-weight: 600;
+}
+
+#admission-result-text {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.results {
+    background-color: skyblue;
+}
+
+#exam-box, #medical-box, #interview-box, #requirements-box {
+    background-color: skyblue;
+    max-height: 100%;
+}
+
+
+/* ========== FOOTER ========== */
 footer {
-    background-color: #BD2031;
-    display: flex;
-    padding: 0 5vw;
-    justify-content: center;
-    align-items: center;
+    bottom: 0;
+    background-color: rgb(189, 32, 49);
 }
 
-footer .left-footer {
-    margin: 0;
-    padding: 2.5vw;
-    width: 60%;
-    height: 100%;
-}
-
-footer .left-footer h3 {
+footer #left-footer h3 {
     margin: 0;
     color: #FFFFFF;
     padding-bottom: 0.75rem;
@@ -104,19 +108,17 @@ footer a {
     color: #FFFFFF;
 }
 
-footer a:hover span{
+footer a:hover{
    text-decoration: underline;
 }
 
-footer span {
-    padding-left: 0.7em;
-}
-
-footer .right-footer {
-    width: 40%;
-    height: 100%;
+footer i {
+    padding-right: 0.7em;
 }
 
 footer img {
     width: 100%;
 }
+
+
+/* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */

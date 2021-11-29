@@ -2,7 +2,7 @@
 
 
 body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0;
     padding: 0;
@@ -40,6 +40,7 @@ nav a:hover  {
 #main-container {
     padding: 10vh 20vw;
     min-height: calc(100vh - 58.9167px - 157.6px);
+    background: linear-gradient(180deg, #FFA5A5 0%, rgba(252, 232, 232, 0) 100%);
 }
 
 .container {
@@ -62,6 +63,10 @@ fieldset > form > div {
     text-align: center;
 }
 
+fieldset {
+    background: rgba(189, 32, 49, 0.1)
+}
+
 label {
     color:rgb(30, 30, 30);
     font-size: 1.2rem;
@@ -73,7 +78,6 @@ label {
     border-radius: 10px;
     margin-bottom: 1.25rem;
     padding-left: 5%;
-
 }
 
 #login-btn {
@@ -101,6 +105,7 @@ form p {
 form p a{
     color: rgb(189, 32, 49);
     font-weight: 1000;
+    text-decoration: underline;
 }
 
 /* ========== FOOTER ========== */
@@ -122,12 +127,12 @@ footer a {
     color: #FFFFFF;
 }
 
-footer a:hover span{
+footer a:hover{
    text-decoration: underline;
 }
 
-footer span {
-    padding-left: 0.7em;
+footer i {
+    padding-right: 0.7em;
 }
 
 footer img {

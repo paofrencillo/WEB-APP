@@ -2,111 +2,144 @@
 
 
 body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* ========== HEADER ========== */
-header {
-    background-color: #DDDDDD;
-    border-bottom: 7px solid rgb(189, 32, 49);
-}
-
-header #tupc-name {
-    letter-spacing: 0.05rem;
-    font-size: 2.3rem;
-    font-weight: 1000;
-    color: rgb(189, 32, 49);
-    justify-content: center;
-    text-align: center;
-}
-
-header div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header img {
-    width: 100px;
-    height: 100px;
-}
-
-/* ========== NAVBAR (tatangalin to sa ibang module) ========== */
+/* ========== HEADER w/ NAVBAR ========== */
 nav {
     background-color: #DDDDDD;
 }
 
-nav li {
-    list-style: none;
+.custom-toggler.navbar-toggler {
+    border-color: rgb(20, 20, 20);
 }
 
-nav a {
-    text-decoration: none;
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(58, 58, 58, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-link {
     color: rgb(30, 30, 30);
     font-weight: 600;
-    font-size: 1.1rem;
-}
-
-nav a:not(#admission-text):hover  {
-    color: white;
+    font-size: 1.15rem;
 }
 
 #applicant-link {
-    border-radius: 0 0 1rem 1rem;
-    background-color: #bd2031;
+    border-bottom: 5px solid #bd2031;
     color: white;
 }
 
-/* ***************************************** */
-/* ***************************************** */
-/*                                           */
-/* DITO I-COCODE YUNG PARA SA MAIN CONTAINER */
-/*                                           */
-/* ***************************************** */
-/* ***************************************** */
+nav a:hover  {
+    color: white;
+}
 
-/* ========= FOOTER ========= */
-#footer {
+/* ========== MAIN CONTAINER ========== */
+#main-container {
+    padding: 10vh 20vw;
+    min-height: calc(100vh - 58.9167px - 157.6px);
+    background: linear-gradient(180deg, #FFA5A5 0%, rgba(252, 232, 232, 0) 100%);
+}
+
+.container {
+    border: 5px solid rgb(189, 32, 49);
+    border-radius: 20px;
+    max-width: 500px;
+}
+
+legend {
+    background-color: rgb(189, 32, 49);
+    font-size: 1.3rem;
+    color: rgb(255, 255,255);
+    padding: 0.75rem 1.25rem;
+    border-radius: 15px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+fieldset {
+    background: rgba(255, 255, 255, 0.5)
+}
+
+label {
+    color:rgb(30, 30, 30);
+    font-size: 1.2rem;
+}
+
+fieldset > form > div {
+    text-align: start;
+}
+
+.custom-radio label, .custome-radio label {
+    font-size: 0.85rem;
+}
+
+hr {
+    border: 2px solid #bd2031;
+}
+
+#course {
+    background-color: rgb(210, 210, 210);
+}
+
+label {
+    font-weight: 550;
+}
+
+h5 {
+    font-weight: 550;
+}
+
+.form-check label {
+    font-size: 0.85rem;
+    align-items: center;
+}
+
+#register-btn {
+    background-color: rgba(189, 32, 49, 0.5);
+    color: rgb(255, 255,255);
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+}
+
+#register-btn:hover {
+    align-items: center;
+    background-color: rgba(189, 32, 49, 0.8);
+}
+
+/* ========== FOOTER ========== */
+footer {
+    bottom: 0;
     background-color: rgb(189, 32, 49);
 }
 
-#footer #left-footer {
-    margin: 0;
-    padding: 2.5vw;
-    width: 60%;
-    height: 100%;
-}
-
-#footer #left-footer h3 {
+footer #left-footer h3 {
     margin: 0;
     color: #FFFFFF;
     padding-bottom: 0.75rem;
 }
 
-#footer a {
+footer a {
     font-size: 0.85rem;
     padding-left: 2.5rem;
     text-decoration: none;
     color: #FFFFFF;
 }
 
-#footer a:hover span{
+footer a:hover{
    text-decoration: underline;
 }
 
-#footer span {
-    padding-left: 0.7em;
+footer i {
+    padding-right: 0.7em;
 }
 
-#footer #right-footer {
-    width: 40%;
-    height: 100%;
-}
-
-#footer img {
+footer img {
     width: 100%;
 }
 
