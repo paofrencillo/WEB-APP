@@ -101,9 +101,14 @@ nav {
 }
 
 .results .details {
+    font-size: 1.2rem;
     text-align: center;
     margin-top: 2px;
     margin-bottom: 15px;
+}
+
+#requirements-box label {
+    font-size: 1.2rem;
 }
 
 .remarks {
@@ -175,5 +180,11 @@ footer img {
 @media (min-width: 1920px) {
     * {
         font-size: 1.125em;
+    }
+}
+
+@media (min-width: 995px) and (max-width: 1148px) {
+    #requirements-box label {
+        font-size: 0.95rem;
     }
 }
