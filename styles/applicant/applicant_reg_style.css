@@ -46,7 +46,7 @@ nav a:hover  {
 .container {
     border: 5px solid rgb(189, 32, 49);
     border-radius: 20px;
-    max-width: 500px;
+    max-width: 550px;
 }
 
 legend {
@@ -67,6 +67,7 @@ label {
     color:rgb(30, 30, 30);
     font-size: 1.2rem;
 }
+
 
 fieldset > form > div {
     text-align: start;

@@ -50,6 +50,7 @@ nav {
 /* ========== MAIN CONTAINER ========== */
 #main-container {
     min-height: calc(100vh - 58.9167px - 157.6px);
+    background: rgba(189, 32, 49, 0.2);
 }
 
 #applicant-name-number > *, #applicant-course-shift > * {
@@ -63,7 +64,9 @@ nav {
 }
 
 #applicant-info {
-    background-color: rgba(189, 32, 49, 0.5);
+    background-color: rgba(189, 32, 49, 0.7);
+    border-top: 5px solid #bd2031;
+    border-bottom: 5px solid #bd2031;
 }
 
 #applicant-name, #control-number {
@@ -80,12 +83,62 @@ nav {
 }
 
 .results {
-    background-color: skyblue;
+    height: 85%;
+    padding: 1.2rem;
+    background-color: white;
+    border-top: 2px solid red;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-radius: 10px 10px 0 0;
 }
 
-#exam-box, #medical-box, #interview-box, #requirements-box {
-    background-color: skyblue;
-    max-height: 100%;
+.results > h5 {
+    width: fit-content;
+    margin: 0;
+    padding: 0 5px;
+    border-bottom: 2px solid #bd2031;
+    font-weight: 600;
+}
+
+.results .details {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 15px;
+}
+
+#requirements-box label {
+    font-size: 1.2rem;
+}
+
+.remarks {
+    text-align: center;
+    margin: 0;
+    background-color: white;
+    border-bottom: 2px solid red;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-radius: 0 0 10px 10px
+}
+
+
+/* === REMARKS COLOR IF FAILED/INCOMPLETE=== */
+#medical-result-remarks, #interview-result-remarks, #requirements-result-remarks {
+    padding: 15px 25px;
+    background-color: rgb(223, 191, 191);
+    border: 3px solid red;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* === REMARKS COLOR IF PASSED/COMPLETE === */
+.remarks > h3 {
+    font-size: 1.25rem;
+    padding: 15px 20px;
+    background-color: rgb(189, 230, 189);
+    border: 3px solid green;
+    border-radius: 10px;
+    font-weight: 600;
 }
 
 
@@ -122,3 +175,16 @@ footer img {
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1920px) {
+    * {
+        font-size: 1.125em;
+    }
+}
+
+@media (min-width: 995px) and (max-width: 1148px) {
+    #requirements-box label {
+        font-size: 0.95rem;
+    }
+}
