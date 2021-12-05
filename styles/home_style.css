@@ -8,37 +8,29 @@ body {
 
 /* ========== HEADER w/ NAVBAR ========== */
 nav {
-    background-color: #DDDDDD;
-}
-
-.custom-toggler.navbar-toggler {
-    border-color: rgb(20, 20, 20);
+    background-color: #bd2031;
 }
 
 .custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(58, 58, 58, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .nav-link {
-    color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
     font-weight: 600;
     font-size: 1.25rem;
 }
 
 #home-link {
-    border-bottom: 5px solid #bd2031;
+    border-bottom: 5px solid white;
     color: white;
 }
 
 nav a:hover  {
-    color: white;
+    color: gray;
 }
 
 /* ========== MAIN CONTAINER ========== */
-#main-container {
-    min-height: calc(100vh - 58.9167px - 157.6px);
-}
-
 .headers {
     font-size: 25px;
     font-weight: 750;
@@ -183,20 +175,24 @@ hr {
 /* ========== FOOTER ========== */
 footer {
     bottom: 0;
-    background-color: rgb(189, 32, 49);
+    background-color: gray;
 }
 
-footer #left-footer h3 {
+footer p {
     margin: 0;
-    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
     padding-bottom: 0.75rem;
+    text-align: center;
 }
 
 footer a {
     font-size: 0.85rem;
-    padding-left: 2.5rem;
+    padding: 0 1.5rem;
     text-decoration: none;
-    color: #FFFFFF;
+    color: white;
+    text-align: start;    
 }
 
 footer a:hover{
