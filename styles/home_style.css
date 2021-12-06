@@ -4,6 +4,11 @@
 body {
     overflow-x: hidden !important;
     font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-bottom: 160px;
+    min-height: 100vh;
 }
 
 /* ========== HEADER w/ NAVBAR ========== */
@@ -174,6 +179,7 @@ hr {
 
 /* ========== FOOTER ========== */
 footer {
+    position: absolute;
     bottom: 0;
     background-color: gray;
 }
@@ -196,17 +202,13 @@ footer a {
 }
 
 footer a:hover{
-   text-decoration: underline;
+    color: white;
+    text-decoration: underline;
 }
 
 footer i {
     padding-right: 0.7em;
 }
-
-footer img {
-    width: 100%;
-}
-
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
 @media screen and (max-width: 984px) {
