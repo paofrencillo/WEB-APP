@@ -42,6 +42,7 @@ h2 {
 }
 /* ========== TABLE ========== */
 
+
 .table tr:hover > td {
     background-color: rgb(189, 32, 49);
     color: white;
