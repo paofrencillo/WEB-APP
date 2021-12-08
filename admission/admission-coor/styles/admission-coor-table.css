@@ -26,9 +26,9 @@ nav {
     font-size: 1.25rem;
 }
 
-#home-link {
-    border-bottom: 5px solid white;
-    color: white;
+#coordinator-link {
+  border-bottom: 5px solid white;
+  color: white;
 }
 
 nav a:hover  {
