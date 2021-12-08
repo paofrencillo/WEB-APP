@@ -2,44 +2,44 @@
 
 
 body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0;
     padding: 0;
+    position: relative;
+    padding-bottom: 160px;
+    min-height: 100vh;
+    background-color: rgba(189, 32, 49, 0.2);
 }
 
 /* ========== HEADER w/ NAVBAR ========== */
 nav {
-    background-color: #DDDDDD;
-}
-
-.custom-toggler.navbar-toggler {
-    border-color: rgb(20, 20, 20);
+    background-color: #bd2031;
 }
 
 .custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(58, 58, 58, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .nav-link {
-    color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
     font-weight: 600;
     font-size: 1.25rem;
 }
 
-#medical-link {
-    border-bottom: 5px solid #bd2031;
+#applicant-link {
+    border-bottom: 5px solid white;
     color: white;
 }
 
 nav a:hover  {
-    color: white;
+    color: gray;
 }
 
 /* ========== MAIN CONTAINER ========== */
 #main-container {
     padding: 10vh 20vw;
-    min-height: calc(100vh - 58.9167px - 157.6px);
+    background: linear-gradient(180deg, #FFA5A5 0%, rgba(252, 232, 232, 0) 100%);
 }
 
 .container {
@@ -52,16 +52,18 @@ legend {
     background-color: rgb(189, 32, 49);
     font-size: 1.3rem;
     color: rgb(255, 255,255);
-    margin: auto;
-    padding: 5px 20px;
+    padding: 0.75rem 1.25rem;
     border-radius: 15px;
-    font-weight: 500;
+    font-weight: 600;
     width: fit-content;
 }
 
 fieldset > form > div {
     text-align: center;
+}
 
+fieldset {
+    background: rgba(189, 32, 49, 0.1)
 }
 
 label {
@@ -75,7 +77,6 @@ label {
     border-radius: 10px;
     margin-bottom: 1.25rem;
     padding-left: 5%;
-
 }
 
 #login-btn {
@@ -103,37 +104,40 @@ form p {
 form p a{
     color: rgb(189, 32, 49);
     font-weight: 1000;
+    text-decoration: underline;
 }
 
 /* ========== FOOTER ========== */
 footer {
+    position: absolute;
     bottom: 0;
-    background-color: rgb(189, 32, 49);
+    background-color: gray;
 }
 
-footer #left-footer h3 {
+footer p {
     margin: 0;
-    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
     padding-bottom: 0.75rem;
+    text-align: center;
 }
 
 footer a {
     font-size: 0.85rem;
-    padding-left: 2.5rem;
+    padding: 0 1.5rem;
     text-decoration: none;
-    color: #FFFFFF;
+    color: white;
+    text-align: start;
 }
 
-footer a:hover span{
-   text-decoration: underline;
+footer a:hover{
+    color: white;
+    text-decoration: underline;
 }
 
-footer span {
-    padding-left: 0.7em;
-}
-
-footer img {
-    width: 100%;
+footer i {
+    padding-right: 0.7em;
 }
 
 

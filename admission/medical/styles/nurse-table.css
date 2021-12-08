@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
+
+
+body {
+    overflow-x: hidden !important;
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-bottom: 160px;
+    min-height: 100vh;
+}
+
+/* ========== HEADER w/ NAVBAR ========== */
+nav {
+    background-color: #bd2031;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-link {
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+#dl-pdf, #logout{
+    color: white;
+}
+
+nav a:hover  {
+    color: gray;
+}
+
+/* ========== NAME ========== */
+h2 {
+    color: rgb(189, 32, 49);
+    text-align: justify;
+}
+.nurse-name {
+    margin: 0 0 0 13.7%;
+    float:left;
+}
+
+.search-combo {
+    margin: 0 13.7% 0 0;
+    float:right;
+}
+
+/* ========== TABLE ========== */
+
+
+.table tr:hover > td {
+    background-color: rgb(189, 32, 49);
+    color: white;
+}
+
+.table tr:first-child:hover {
+    background-color: white;   
+}
+
+.buttons {
+    margin:0 0 16px 14%;
+    display:inline-block;
+}
+
+.btn-space {
+    margin-right: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: gray;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+    padding-bottom: 0.75rem;
+    text-align: center;
+}
+
+footer a {
+    font-size: 0.85rem;
+    padding: 0 1.5rem;
+    text-decoration: none;
+    color: white;
+    text-align: start;    
+}
+
+footer a:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+footer i {
+    padding-right: 0.7em;
+}
+
+
+/* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
