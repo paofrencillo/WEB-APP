@@ -1,153 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technological University of the Philippines - Cavite | Admission</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../res/tup_logo.png" />
+  <title>TUP - Cavite | Admission Home Page</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="../../admission/admission-coor/styles/admission-coor-table.css" />
 </head>
+
+
 <body>
-     <!-- HEADER -->
-     <header class="header-wrap">
-        <div class="header-logo-tupc-name">
-          <img
-            src="../../res/tup_logo.png"
-            alt="This is TUP logo"
-            width="150px"
-            height="150px"/>
-          <h1>Technological University of the Philippines - Cavite</h1>
-        </div>
-      </header>
-    <hr>
-    <div class="admission-coor-info">
-      <div class="admission-coor-name">
-        <h2>Admission Coordinator: ROY G BIV</h2>
-      </div>
-      <div class="download-logout-btn">
-        <button>DOWNLOAD<br>RESULT (PDF)</button>
-        <button>LOGOUT</button>
-      </div>
+  <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
+  <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
+    <img class="navbar-brand p-0 m-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li id="home-link" class="nav-item ml-3">
+          <a class="nav-link" href="../home/home.html">Home</a>
+        </li>
+        <li id="applicant-link" class="nav-item ml-3">
+          <a class="nav-link" href="../applicant/applicant-login.html">Applicant</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../admission-coor/admission-coor-login.html">Coordinator</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../interviewer/interviewer-login.html">Interview</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../medical/nurse-login.html">Medical</a>
+        </li>
+      </ul>
     </div>
-    <hr>
-      <!-- combo box -->
-    <div class="course-shift-cb">
-      <select name="course" id="course">
-        <option value="bet-coet">BET-COET</option>
-        <option value="bet-eset">BET-ESET</option>
-      </select><br>
-      <select name="shift" id="shift">
-        <option value="volvo">SHIFT</option>  
-      </select><br>
-    </div>
-      <!-- SELECT ROW BUTTON -->
-      <div class="select-row-btn">
-        <button>SELECT ROW TO MODIFY</button><br>
-      </div>
-        
+  </nav>
+<br>
+
+  <div style="padding-left:100px">
+    <h1>Hello, Juan Dela Cruz</h1>
+  </div>
+  <div class="search-combo">
+    <input type="search" name="search" id="search" placeholder="Search here">
+    <!-- ================= SELECT COURSE ================= -->
+    <label for="Course"> Select Course</label>
+    <select name="course" id="course">
+      <option value="BS Civil Engineering">
+        BS Civil Engineering</option>
+      <option value="BET COET">
+        BET COET</option>
+      <option value="BET ESET">
+        BET ESET</option>
+    </select>
+    <label for="Course"> Shift</label>
+    <select name="course" id="course">
+      <option value="AM">
+        AM</option>
+      <option value="PM">
+        BET COET</option>
+    </select>
+  </div>
+  
       <!-- TABLE -->
-        <style>
-            table, th, td {
-              border: 1px solid black;
-              border-collapse: collapse;
-            }
-            </style>
-            <table style="width:100%">
+      <div id = "lalagyan" class="container-fluid">
+        <div class="table-responsive-">
+          <table class="table table-bordered table table-hover">
+            <thead class="thead-light">
               <tr>
-                          <th rowspan="2"></th> 
-                          <th rowspan="2">Name of Applicant</th>
-                          <th rowspan="2">Sex</th>
-                          <th rowspan="2">Score</th>
-                          <th rowspan="2">Strand</th>
-                          <th rowspan="2">Medical</th>
-                          <th rowspan="2">Interview</th>
-                          <th colspan="4">requirements</th>
-                            </tr>
-                                <tr>
-                                  <th>card</th>
-                                  <th>bc</th>
-                                  <th>gmc</th>
-                                  <th>psa</th>
-                                </tr>
-                            <tr>
-                <td>
-                              <input type="checkbox" name="" id="">
-                          </td>
-                          <td>FRENCILLO, PAOLO M</td>
-                          <td>M</td>
-                          <td>100/100</td>
-                          <td>tvl-css</td>
-                          <td>passed</td>
-                          <td>passed</td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          
-              </tr>
-              <tr>
-                <td>
-                              <input type="checkbox" name="" id="">
-                          </td>
-                          <td>KILARIO, RONIEL C.</td>
-                          <td>M</td>
-                          <td>100/100</td>
-                          <td>tvl-css</td>
-                          <td>passed</td>
-                          <td>passed</td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-              </tr>
-              <tr>
-                <td>
-                              <input type="checkbox" name="" id="">
-                          </td>
-                          <td>MONTARIL, VINCENT JAKE F.</td>
-                          <td>M</td>
-                          <td>100/100</td>
-                          <td>tvl-css</td>
-                          <td>passed</td>
-                          <td>passed</td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          
-              </tr>
-              <tr>
-                <td>
-                              <input type="checkbox" name="" id="">
-                          </td>
-                          <td>PAANOD, CEFRIN E.</td>
-                          <td>M</td>
-                          <td>100/100</td>
-                          <td>tvl-css</td>
-                          <td>passed</td>
-                          <td>passed</td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-              </tr>
-            </table>
-    <div class="passed-failed-btn">
-      <button>Passed</button>
-      <button>Failed</button>
+                <th rowspan="2" ></th></th> 
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">Name of Applicant</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">Sex</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">Score</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">Strand</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">Medical</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">Interview</th>
+                <th colspan="4" style="vertical-align: middle;" class="text-center">requirements</th>
+                  </tr>
+                      <tr>
+                        <th class="text-center">card</th>
+                        <th class="text-center">bc</th>
+                        <th class="text-center">gmc</th>
+                        <th class="text-center">psa</th>
+                      </tr>
+                  <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>FRENCILLO, PAOLO M</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>KILARIO, RONIEL C.</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>MONTARIL, VINCENT JAKE F.</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>PAANOD, CEFRIN E.</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>Nikol Kostas</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>Nik Vissarion</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>Nikolaos Artemis</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>Xenofon Nikoletta</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+    <tr>
+      <td>
+                    <input type="checkbox" name="" id="">
+                </td>
+                <td>Spiros Gavriil</td>
+                <td>M</td>
+                <td>100/100</td>
+                <td>tvl-css</td>
+                <td>passed</td>
+                <td>passed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+    </tr>
+          </table>
+        </div>
+      </div>
+
+    <div id="admission" class="container-fluid">
+        <button type="button" class="admission-buttons"> Passed </button>
+          &nbsp;
+        <button type="button" class="admission-buttons"> Failed </button>
+    </div>
     </div>
     <HR></HR>
 
     </div>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <h5>
-          (icon-tel) (046) 416-4920 (icon-email) cavite@tup.edu.ph (icon-web)
-          www.tup.edu.ph
-        </h5>
-        <h5>
-          (icon-add) Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite,
-          Philippines
-        </h5>
-      </footer>
+      <!-- ================= FOOTER ================= -->
+  <footer class="container-fluid row px-0 py-2 m-0">
+    <p class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 p-0">Contact Us</p>
+    <div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 px-3">
+      <div class="container-fluid row mx-0 px-0 py-2">
+        <a href="(046)416-4920" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+          <i class="bi bi-telephone-fill"></i>(046) 416-4920
+        </a>
+        <a href="mailto:cavite@tup.edu.ph" target="_blank"
+          class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+          <i class="bi bi-envelope-fill"></i>cavite@tup.edu.ph
+        </a>
+        <a href="http://www.tup.edu.ph/" target="_blank" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+          <i class="bi bi-globe"></i>www.tup.edu.ph
+        </a>
+        <a href="https://goo.gl/maps/fBbW2s4u5fNMW67G7" target="_blank"
+          class="col col-xl-6 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+          <i class="bi bi-geo-alt-fill"></i>Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite 4114
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT FOR BOOTSTRAP ================= -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
