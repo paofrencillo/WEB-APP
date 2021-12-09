@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
+
+
+body {
+    overflow-x: hidden !important;
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-bottom: 160px;
+    min-height: 100vh;
+    background-color: rgba(189, 32, 49, 0.2);
+}
+
+/* ========== HEADER w/ NAVBAR ========== */
+nav {
+    background-color: #bd2031;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-link {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+#coordinator-link {
+    border-bottom: 5px solid white;
+    color: white;
+}
+
+nav a:hover  {
+    color: gray;
+}
+
+/* ========== MAIN CONTAINER ========== */
+.headers {
+    font-size: 25px;
+    font-weight: 750;
+    color: rgb(255, 255, 255);
+    background-color: rgb(189, 32, 49);
+    border-radius: 15px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+#main-container {
+    padding: 10vh 20vw;
+    background: linear-gradient(180deg, #FFA5A5 0%, rgba(252, 232, 232, 0) 100%);
+}
+
+.container {
+    border: 5px solid rgb(189, 32, 49);
+    border-radius: 20px;
+    max-width: 400px;
+}
+
+legend {
+    background-color: rgb(189, 32, 49);
+    font-size: 1.3rem;
+    color: rgb(255, 255,255);
+    padding: 0.75rem 1.25rem;
+    border-radius: 15px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+fieldset > form > div {
+    text-align: center;
+}
+
+fieldset {
+    background: rgba(189, 32, 49, 0.1)
+}
+
+label {
+    color:rgb(30, 30, 30);
+    font-size: 1.2rem;
+}
+
+#applicant-email, #applicant-pass {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    padding-left: 5%;
+}
+
+
+form p {
+    color: #181818;
+    font-size: 0.9rem;
+    text-align: left;
+    margin: 0;
+}
+
+form p a{
+    color: rgb(189, 32, 49);
+    font-weight: 1000;
+    text-decoration: underline;
+}
+
+/*button*/
+.btn-flip {
+    opacity: 1;
+    outline: 0;
+    color: #EFB5B9;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    
+  }
+  .btn-flip:hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+  .btn-flip:hover:before {
+    opacity: 0;
+    transform: translateY(50%) rotateX(90deg);
+  }
+  .btn-flip:after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: #323237;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    background: #b69799;
+    content: attr(data-back);
+    transform: translateY(-50%) rotateX(90deg);
+    border-radius: 5px 5px 5px 5px ;
+    padding: 5px ;
+  }
+  .btn-flip:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: #000000;
+    display: block;
+    padding: 0 30px;
+    line-height: 40px;
+    transition: 0.5s;
+    position: relative;
+    background: #BD2031;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
+    border-radius: 5px 5px 5px 5px ;
+    padding: 5px 30px;
+  }
+/* ========== FOOTER ========== */
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: gray;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+    padding-bottom: 0.75rem;
+    text-align: center;
+}
+
+footer a {
+    font-size: 0.85rem;
+    padding: 0 1.5rem;
+    text-decoration: none;
+    color: white;
+    text-align: start;
+}
+
+footer a:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+footer i {
+    padding-right: 0.7em;
+}
+
+/* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
