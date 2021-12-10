@@ -37,20 +37,20 @@ nav a:hover  {
 }
 
 /* ========== NAME ========== */
-h2 {
+#interviewer-name {
     color: rgb(189, 32, 49);
-    text-align: justify;
-}
-.interviewer-name {
-    margin: 0 0 0 13.7%;
-    float:left;
+    font-weight: 550;
 }
 
-.search-combo {
-    margin: 0 13.7% 0 0;
-    float:right;
-}
 /* ========== TABLE ========== */
+.container-fluid {
+    padding: 0 7vw;
+}
+
+/* ========== TABLE ========== */
+.table td, tr{
+    text-align: center;
+}
 
 .table tr:hover > td {
     background-color: rgb(189, 32, 49);
@@ -59,11 +59,6 @@ h2 {
 
 .table tr:first-child:hover {
     background-color: white;   
-}
-
-.buttons {
-    margin:0 0 16px 14%;
-    display:inline-block;   
 }
 
 .btn-space {
@@ -111,14 +106,6 @@ h2 {
 
 .btn-space:hover:before {
     width: 100%;
-}
-
-.btn-space2 {
-    margin-right: 5px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    float:right;
 }
 
 /* ========== FOOTER ========== */

@@ -45,24 +45,29 @@
     <label for="checkbox">Select all</label> 
     -->
   <!-- ================= SEARCH , COMBO, NAME ================= -->
-  <h2 class="interviewer-name">Hello, Lebron James</h2>
-  <div class="search-combo">
-    <input type="search" name="search" id="search" placeholder="Search name">
-    <!-- ================= SELECT COURSE ================= -->
-    <label for="Course"> Select Course</label>
-    <select name="course" id="course">
-      <option value="BS Civil Engineering">
-        BS Civil Engineering</option>
-      <option value="BET COET">
-        BET COET</option>
-      <option value="BET ESET">
-        BET ESET</option>
-    </select>
+  <div class="container-fluid row mx-0 justify-content-between align-items-center">
+    <h2 id="interviewer-name">Hello, Juan Dela Cruz</h2>
+    <div class="row px-0 mx-0 justify-content-end search-combo">
+      <input type="search" name="search" id="search" placeholder="Search name">
+      <!-- ================= SELECT COURSE ================= -->
+      <label for="Course"> Select Course</label>
+      <select name="course" id="course">
+        <option value="BS Civil Engineering">
+          BS Civil Engineering</option>
+        <option value="BET COET">
+          BET COET</option>
+        <option value="BET ESET">
+          BET ESET</option>
+      </select>
+    </div>
+
   </div>
+
   <br>
   <br>
-  <div class="container">
-    <div class="table-responsive-md">
+  
+  <div class="container-fluid">
+    <div class="table-responsive">
       <table class="table table-bordered table table-hover">
         <thead class="thead-light">
           <tr>
@@ -86,7 +91,7 @@
           <td>October 24,2021</td>
           <td>Industrial Department</td>
           <td>Ms.Juliet Escalona</td>
-          <td>Passed</td>
+          <td>PASSED</td>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
@@ -97,7 +102,7 @@
           <td>October 24,2021</td>
           <td>Industrial Department</td>
           <td>Ms.Juliet Escalona</td>
-          <td>Passed</td>
+          <td>PASSED</td>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
@@ -108,7 +113,7 @@
           <td>October 26,2021</td>
           <td>TNC Salawag</td>
           <td>Mr.Dominique Fetalbo</td>
-          <td>Failed</td>
+          <td>FAILED</td>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
@@ -147,7 +152,7 @@
     </div>
   </div>
   <br>
-  <div class="buttons">
+  <div class="container-fluid row justify-content-center buttons">
     <button type="button" class="btn-space"> Passed </button>
     &nbsp;
     <button type="button" class="btn-space"> Failed </button>

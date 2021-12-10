@@ -37,27 +37,14 @@ nav a:hover  {
 }
 
 /* ========== NAME ========== */
-h2 {
-    color: rgb(189, 32, 49);
-    text-align: justify;
-}
 #nurse-name {
-    margin: 0 0 0 13%;
-    float:left;
-}
-
-#search {
-    margin-right: 20px;
-}
-.search-combo {
-    margin: 0 100px 0 0;
-    float:right;
+    color: rgb(189, 32, 49);
+    font-weight: 550;
 }
 
 /* ========== TABLE ========== */
-
 .container-fluid {
-    padding: 0 100px;
+    padding: 0 7vw;
 }
 
 .table td, tr{
@@ -75,11 +62,6 @@ h2 {
 
 .table tr:first-child:hover {
     background-color: white;   
-}
-
-.buttons {
-    margin-left: 100px;
-    display:inline-block;
 }
 
 .btn-space {
