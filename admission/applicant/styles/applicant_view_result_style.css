@@ -38,18 +38,19 @@ nav {
 }
 
 /* ========== MAIN CONTAINER ========== */
-#applicant-name-number > *, #applicant-course-shift > * {
+#applicant-name-number > *, #applicant-course > * {
     color: white;
 }
  
-#applicant-course-shift > * {
+#course {
     text-decoration: underline;
     margin-bottom: 0;
     font-size: 1.15rem;
+    font-weight: 550;
 }
 
 #applicant-info {
-    background-color: rgba(189, 32, 49, 0.7);
+    background-color: rgba(189, 32, 49, 0.5);
     border-top: 5px solid #bd2031;
     border-bottom: 5px solid #bd2031;
 }
