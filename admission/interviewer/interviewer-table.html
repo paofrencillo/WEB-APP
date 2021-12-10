@@ -28,10 +28,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li id="dl-pdf" class="nav-item ml-3">
-          <a class="nav-link" href="">DOWNLOAD (PDF)</a>
+          <a id="download" class="nav-link" href="#">
+            <i class="bi bi-download"></i>DOWNLOAD PDF
+          </a>
         </li>
         <li id="logout" class="nav-item ml-3">
-          <a class="nav-link" href="../../admission/interviewer/interviewer-login.html">Logout</a>
+          <a class="nav-link" href="../../admission/interviewer/interviewer-login.html"><i
+              class="bi bi-box-arrow-right"></i>LOGOUT</a>
         </li>
       </ul>
     </div>
@@ -42,9 +45,9 @@
     <label for="checkbox">Select all</label> 
     -->
   <!-- ================= SEARCH , COMBO, NAME ================= -->
-  <h2 class="interviewer-name">Hello, Juan Dela Cruz</h2>
+  <h2 class="interviewer-name">Hello, Lebron James</h2>
   <div class="search-combo">
-    <input type="search" name="search" id="search" placeholder="Search here">
+    <input type="search" name="search" id="search" placeholder="Search name">
     <!-- ================= SELECT COURSE ================= -->
     <label for="Course"> Select Course</label>
     <select name="course" id="course">
@@ -65,9 +68,8 @@
           <tr>
             <th><input type="checkbox"></th>
             <th>NAME</th>
-            <th>ID</th>
+            <th>CONTROL NUMBER</th>
             <th>EMAIL</th>
-            <th>CONTACT NO.</th>
             <th>COURSE APPLIED</th>
             <th>DATE OF INTERVIEW</th>
             <th>VENUE</th>
@@ -80,7 +82,6 @@
           <td>Vincent Jake Montaril</td>
           <td>190187</td>
           <td>abc@gmail.com</td>
-          <td>097655598</td>
           <td>BET-COET</td>
           <td>October 24,2021</td>
           <td>Industrial Department</td>
@@ -92,7 +93,6 @@
           <td>Cefrin Paanod</td>
           <td>190699</td>
           <td>qwer@gmail.com</td>
-          <td>091515342</td>
           <td>BET-COET</td>
           <td>October 24,2021</td>
           <td>Industrial Department</td>
@@ -104,7 +104,6 @@
           <td>Paolo Frencillo</td>
           <td>190113</td>
           <td>asd@gmail.com</td>
-          <td>090212412</td>
           <td>BET-ESET</td>
           <td>October 26,2021</td>
           <td>TNC Salawag</td>
@@ -116,7 +115,6 @@
           <td>Roneil Kilario</td>
           <td>190666</td>
           <td>zxc@gmail.com</td>
-          <td>098851232</td>
           <td>BS Civil Engineering</td>
           <td>October 29,2021</td>
           <td>TBA</td>
@@ -128,7 +126,6 @@
           <td>Steph Curry</td>
           <td>109655</td>
           <td>steph@gmail.com</td>
-          <td>098851232</td>
           <td>BS Civil Engineering</td>
           <td>October 29,2021</td>
           <td>TBA</td>
@@ -140,7 +137,6 @@
           <td>Pokwang</td>
           <td>109655</td>
           <td>pok@gmail.com</td>
-          <td>091151232</td>
           <td>BS Civil Engineering</td>
           <td>October 29,2021</td>
           <td>TBA</td>
@@ -152,9 +148,9 @@
   </div>
   <br>
   <div class="buttons">
-    <button type="button" class="btn-danger btn-space"> Passed </button>
+    <button type="button" class="btn-space"> Passed </button>
     &nbsp;
-    <button type="button" class="btn-danger btn-space"> Failed </button>
+    <button type="button" class="btn-space"> Failed </button>
   </div>
 
   <!-- ================= FOOTER ================= -->
