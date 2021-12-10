@@ -11,6 +11,19 @@ body {
     min-height: 100vh;
 }
 
+.bi-download, .bi-box-arrow-right {
+    padding-right: 0.4rem;
+    font-size: 1.5rem;
+}
+
+#download, #logout {
+    margin-left: 2rem;
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+
 /* ========== HEADER w/ NAVBAR ========== */
 nav {
     background-color: #bd2031;
@@ -39,7 +52,7 @@ h2 {
     color: rgb(189, 32, 49);
     text-align: justify;
 }
-.nurse-name {
+#nurse-name {
     margin: 0 0 0 13.7%;
     float:left;
 }
@@ -50,6 +63,10 @@ h2 {
 }
 
 /* ========== TABLE ========== */
+
+.container-fluid {
+    padding: 0 100px;
+}
 
 .table tr:hover > td {
     background-color: rgb(189, 32, 49);

@@ -38,6 +38,7 @@ nav a:hover  {
 /* ========== MAIN CONTAINER ========== */
 #main-container {
     padding: 10vh 20vw;
+    background: linear-gradient(180deg, #FFA5A5 0%, rgba(252, 232, 232, 0) 100%);
 }
 
 .container {

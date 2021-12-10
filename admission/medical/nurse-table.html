@@ -29,21 +29,23 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li id="dl-pdf" class="nav-item ml-3">
-          <a class="nav-link" href="">DOWNLOAD (PDF)</a>
+          <a class="nav-link" href=""> <i class="bi bi-download"></i> DOWNLOAD (PDF)</a>
         </li>
         <li id="logout" class="nav-item ml-3">
-          <a class="nav-link" href="../../admission/medical/nurse-login.html">Logout</a>
+          <a class="nav-link" href="../../admission/medical/nurse-login.html"> 
+            <i class="bi bi-box-arrow-right"></i>LOGOUT</a>
         </li>
       </ul>
     </div>
   </nav>
   <br>
   <!-- ================= SEARCH , COMBO, NAME ================= -->
-  <h2 class="nurse-name">Hello, Juan Dela Cruz</h2>
+  <h2 id="nurse-name">Hello, Juan Dela Cruz</h2>
       <div class="search-combo">
           <input type="search" 
               name="search" id="search" 
               placeholder="Search here">
+              &nbsp;
           <!-- ================= SELECT COURSE ================= -->
               <label for="Course"> Select Course</label>
               <select name="course" id="course">
@@ -53,12 +55,14 @@
                       BET COET</option>
                   <option value="BET ESET">
                       BET ESET</option>
+                  <option value="BET PPET">
+                      BET ESET</option>
               </select>
       </div>
     <br>
     <br>
-    <div class="container">
-      <div class="table-responsive-md">
+    <div class="container-fluid">
+      <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead class="thead-light">
             <tr>
