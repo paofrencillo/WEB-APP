@@ -42,12 +42,15 @@ h2 {
     text-align: justify;
 }
 #nurse-name {
-    margin: 0 0 0 13.7%;
+    margin: 0 0 0 13%;
     float:left;
 }
 
+#search {
+    margin-right: 20px;
+}
 .search-combo {
-    margin: 0 13.7% 0 0;
+    margin: 0 100px 0 0;
     float:right;
 }
 
@@ -55,6 +58,14 @@ h2 {
 
 .container-fluid {
     padding: 0 100px;
+}
+
+.table td, tr{
+    text-align: center;
+}
+
+#image {
+    margin-left: 50px;
 }
 
 .table tr:hover > td {
@@ -67,7 +78,7 @@ h2 {
 }
 
 .buttons {
-    margin:0 0 16px 14%;
+    margin-left: 100px;
     display:inline-block;
 }
 
@@ -116,6 +127,10 @@ h2 {
 
 .btn-space:hover:before {
     width: 100%;
+    margin-right: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 /* ========== FOOTER ========== */
