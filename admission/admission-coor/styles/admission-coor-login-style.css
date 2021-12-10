@@ -160,7 +160,7 @@ form p a{
 footer {
     position: absolute;
     bottom: 0;
-    background-color: #5F5F5F;
+    background-color: gray;
 }
 
 footer p {
