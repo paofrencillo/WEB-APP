@@ -64,6 +64,20 @@ h2 {
 .table td, tr{
     text-align: center;
 }
+
+#image {
+    margin-left: 50px;
+}
+
+.table tr:hover > td {
+    background-color: rgb(189, 32, 49);
+    color: white;
+}
+
+.table tr:first-child:hover {
+    background-color: white;   
+}
+
 /* ========== Buttons ========== */
 
 .admission-buttons {
