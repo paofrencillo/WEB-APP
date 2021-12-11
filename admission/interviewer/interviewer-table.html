@@ -28,10 +28,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li id="dl-pdf" class="nav-item ml-3">
-          <a class="nav-link" href="">DOWNLOAD (PDF)</a>
+          <a id="download" class="nav-link" href="#">
+            <i class="bi bi-download"></i>DOWNLOAD PDF
+          </a>
         </li>
         <li id="logout" class="nav-item ml-3">
-          <a class="nav-link" href="../../admission/interviewer/interviewer-login.html">Logout</a>
+          <a class="nav-link" href="../../admission/interviewer/interviewer-login.html"><i
+              class="bi bi-box-arrow-right"></i>LOGOUT</a>
         </li>
       </ul>
     </div>
@@ -42,32 +45,36 @@
     <label for="checkbox">Select all</label> 
     -->
   <!-- ================= SEARCH , COMBO, NAME ================= -->
-  <h2 class="interviewer-name">Hello, Juan Dela Cruz</h2>
-  <div class="search-combo">
-    <input type="search" name="search" id="search" placeholder="Search here">
-    <!-- ================= SELECT COURSE ================= -->
-    <label for="Course"> Select Course</label>
-    <select name="course" id="course">
-      <option value="BS Civil Engineering">
-        BS Civil Engineering</option>
-      <option value="BET COET">
-        BET COET</option>
-      <option value="BET ESET">
-        BET ESET</option>
-    </select>
+  <div class="container-fluid row mx-0 justify-content-between align-items-center">
+    <h2 id="interviewer-name">Hello, Juan Dela Cruz</h2>
+    <div class="row px-0 mx-0 justify-content-end search-combo">
+      <input type="search" name="search" id="search" placeholder="Search name">
+      <!-- ================= SELECT COURSE ================= -->
+      <label for="Course"> Select Course</label>
+      <select name="course" id="course">
+        <option value="BS Civil Engineering">
+          BS Civil Engineering</option>
+        <option value="BET COET">
+          BET COET</option>
+        <option value="BET ESET">
+          BET ESET</option>
+      </select>
+    </div>
+
   </div>
+
   <br>
   <br>
-  <div class="container">
-    <div class="table-responsive-md">
+
+  <div class="container-fluid">
+    <div class="table-responsive">
       <table class="table table-bordered table table-hover">
         <thead class="thead-light">
           <tr>
             <th><input type="checkbox"></th>
             <th>NAME</th>
-            <th>ID</th>
+            <th>CONTROL NUMBER</th>
             <th>EMAIL</th>
-            <th>CONTACT NO.</th>
             <th>COURSE APPLIED</th>
             <th>DATE OF INTERVIEW</th>
             <th>VENUE</th>
@@ -80,45 +87,41 @@
           <td>Vincent Jake Montaril</td>
           <td>190187</td>
           <td>abc@gmail.com</td>
-          <td>097655598</td>
           <td>BET-COET</td>
-          <td>October 24,2021</td>
+          <td>11/06/2021</td>
           <td>Industrial Department</td>
           <td>Ms.Juliet Escalona</td>
-          <td>Passed</td>
+          <td>PASSED</td>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
           <td>Cefrin Paanod</td>
           <td>190699</td>
           <td>qwer@gmail.com</td>
-          <td>091515342</td>
           <td>BET-COET</td>
-          <td>October 24,2021</td>
+          <td>11/06/2021</td>
           <td>Industrial Department</td>
           <td>Ms.Juliet Escalona</td>
-          <td>Passed</td>
+          <td>PASSED</td>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
           <td>Paolo Frencillo</td>
           <td>190113</td>
           <td>asd@gmail.com</td>
-          <td>090212412</td>
           <td>BET-ESET</td>
-          <td>October 26,2021</td>
+          <td>11/06/2021</td>
           <td>TNC Salawag</td>
           <td>Mr.Dominique Fetalbo</td>
-          <td>Failed</td>
+          <td>FAILED</td>
         </tr>
         <tr>
           <td><input type="checkbox"></td>
           <td>Roneil Kilario</td>
           <td>190666</td>
           <td>zxc@gmail.com</td>
-          <td>098851232</td>
           <td>BS Civil Engineering</td>
-          <td>October 29,2021</td>
+          <td>11/06/2021</td>
           <td>TBA</td>
           <td>Mr.Jay Victor Gumboc</td>
           <td>No result</td>
@@ -128,9 +131,8 @@
           <td>Steph Curry</td>
           <td>109655</td>
           <td>steph@gmail.com</td>
-          <td>098851232</td>
           <td>BS Civil Engineering</td>
-          <td>October 29,2021</td>
+          <td>11/06/2021</td>
           <td>TBA</td>
           <td>Mr.Jay Victor Gumboc</td>
           <td>No result</td>
@@ -140,9 +142,8 @@
           <td>Pokwang</td>
           <td>109655</td>
           <td>pok@gmail.com</td>
-          <td>091151232</td>
           <td>BS Civil Engineering</td>
-          <td>October 29,2021</td>
+          <td>11/06/2021</td>
           <td>TBA</td>
           <td>Mr.Jay Victor Gumboc</td>
           <td>No result</td>
@@ -151,10 +152,11 @@
     </div>
   </div>
   <br>
-  <div class="buttons">
-    <button type="button" class="btn-danger btn-space"> Passed </button>
-    &nbsp;
-    <button type="button" class="btn-danger btn-space"> Failed </button>
+  <div class="container-fluid row justify-content-center buttons">
+      <button type="button" class="btn-space"> Passed </button>
+      &nbsp; &nbsp;
+      <button type="button" class="btn-space"> Failed </button>
+      <button type="button" id="modify-btn" class="btn-space"> Modify </button>  
   </div>
 
   <!-- ================= FOOTER ================= -->

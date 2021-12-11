@@ -19,7 +19,7 @@ nav {
 
 .bi-download, .bi-box-arrow-right {
     padding-right: 0.4rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -27,10 +27,10 @@ nav {
 }
 
 #download, #logout {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
     color: white;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
 }
 
 #download:hover, #logout:hover  {
@@ -38,18 +38,19 @@ nav {
 }
 
 /* ========== MAIN CONTAINER ========== */
-#applicant-name-number > *, #applicant-course-shift > * {
+#applicant-name-number > *, #applicant-course > * {
     color: white;
 }
  
-#applicant-course-shift > * {
+#course {
     text-decoration: underline;
     margin-bottom: 0;
     font-size: 1.15rem;
+    font-weight: 550;
 }
 
 #applicant-info {
-    background-color: rgba(189, 32, 49, 0.7);
+    background-color: rgba(189, 32, 49, 0.5);
     border-top: 5px solid #bd2031;
     border-bottom: 5px solid #bd2031;
 }

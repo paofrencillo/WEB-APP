@@ -22,77 +22,65 @@
 <body>
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0 m-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li id="home-link" class="nav-item ml-3">
-          <a class="nav-link" href="../home/home.html">Home</a>
+        <li id="dl-pdf" class="nav-item ml-3">
+          <a class="nav-link" href=""> <i class="bi bi-download"></i> DOWNLOAD PDF</a>
         </li>
-        <li id="applicant-link" class="nav-item ml-3">
-          <a class="nav-link" href="../applicant/applicant-login.html">Applicant</a>
-        </li>
-        <li id="coordinator-link"class="nav-item ml-3">
-          <a class="nav-link" href="../admission-coor/admission-coor-login.html">Coordinator</a>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link" href="../interviewer/interviewer-login.html">Interview</a>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link" href="../medical/nurse-login.html">Medical</a>
+        <li id="logout" class="nav-item ml-3">
+          <a class="nav-link" href="../../admission/admission-coor/admission-coor-login.html">
+            <i class="bi bi-box-arrow-right"></i>LOGOUT</a>
         </li>
       </ul>
     </div>
   </nav>
-<br>
 
-  <div style="padding-left:100px">
-    <h1>Hello, Juan Dela Cruz</h1>
-  </div>
-  <div class="search-combo">
+  <br>
+
+<!-- ================= SELECT COURSE ================= -->
+<div class="container-fluid mx-0 row justify-content-between align-items-center">
+  <h2 id="nurse-name">HELLO, JUAN DELA CRUZ</h2>
+  <div class="row px-0 mx-0 justify-content-start search-combo">
     <input type="search" name="search" id="search" placeholder="Search here">
-    <!-- ================= SELECT COURSE ================= -->
-    <label for="Course"> Select Course</label>
-    <select name="course" id="course">
-      <option value="BS Civil Engineering">
-        BS Civil Engineering</option>
-      <option value="BET COET">
-        BET COET</option>
-      <option value="BET ESET">
-        BET ESET</option>
-    </select>
-    <label for="Course"> Shift</label>
-    <select name="course" id="course">
-      <option value="AM">
-        AM</option>
-      <option value="PM">
-        BET COET</option>
-    </select>
-  </div>
-  
+    &nbsp;&nbsp;&nbsp;
+          <!-- ================= SELECT COURSE ================= -->
+              <label for="Course"> Select Course &nbsp;</label>
+              <select name="course" id="course">
+                  <option value="BS Civil Engineering">
+                      BS Civil Engineering</option>
+                  <option value="BET COET">
+                      BET COET</option>
+                  <option value="BET ESET">
+                      BET ESET</option>
+              </select>
+      </div>
+</div>
       <!-- TABLE -->
-      <div id = "lalagyan" class="container-fluid">
-        <div class="table-responsive-">
+      <BR></BR>
+      <div class="container-fluid">
+        <div class="table-responsive-md">
           <table class="table table-bordered table table-hover">
             <thead class="thead-light">
               <tr>
                 <th rowspan="2" ></th></th> 
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">Name of Applicant</th>
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">Sex</th>
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">Score</th>
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">Strand</th>
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">Medical</th>
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">Interview</th>
-                <th colspan="4" style="vertical-align: middle;" class="text-center">requirements</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">NAME OF APPLICANT</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">SEX</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">SCORE</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">STRAND</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">MEDICAL</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">INTERVIEW</th>
+                <th colspan="4" style="vertical-align: middle;" class="text-center">REQUIREMENT</th>
                   </tr>
                       <tr>
-                        <th class="text-center">card</th>
-                        <th class="text-center">bc</th>
-                        <th class="text-center">gmc</th>
-                        <th class="text-center">psa</th>
+                        <th class="text-center">Card</th>
+                        <th class="text-center">BC</th>
+                        <th class="text-center">GMC</th>
+                        <th class="text-center">PSA</th>
                       </tr>
                   <tr>
       <td>
@@ -234,10 +222,10 @@
           </table>
         </div>
       </div>
-
-    <div id="admission" class="container-fluid">
+    <br>
+    <div id="admission" class="container-fluid ">
         <button type="button" class="admission-buttons"> Passed </button>
-          &nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="admission-buttons"> Failed </button>
     </div>
     </div>
@@ -245,28 +233,27 @@
 
     </div>
       <!-- ================= FOOTER ================= -->
-  <footer class="container-fluid row px-0 py-2 m-0">
-    <p class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 p-0">Contact Us</p>
-    <div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 px-3">
-      <div class="container-fluid row mx-0 px-0 py-2">
-        <a href="(046)416-4920" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-telephone-fill"></i>(046) 416-4920
-        </a>
-        <a href="mailto:cavite@tup.edu.ph" target="_blank"
-          class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-envelope-fill"></i>cavite@tup.edu.ph
-        </a>
-        <a href="http://www.tup.edu.ph/" target="_blank" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-globe"></i>www.tup.edu.ph
-        </a>
-        <a href="https://goo.gl/maps/fBbW2s4u5fNMW67G7" target="_blank"
-          class="col col-xl-6 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-geo-alt-fill"></i>Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite 4114
-        </a>
-      </div>
-    </div>
-  </footer>
-
+      <footer class="container-fluid row px-0 py-2 m-0">
+        <p class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 p-0">Contact Us</p>
+        <div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 px-3">
+          <div class="container-fluid row mx-0 px-0 py-2">
+            <a href="(046)416-4920" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+              <i class="bi bi-telephone-fill"></i>(046) 416-4920
+            </a>
+            <a href="mailto:cavite@tup.edu.ph" target="_blank"
+              class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+              <i class="bi bi-envelope-fill"></i>cavite@tup.edu.ph
+            </a>
+            <a href="http://www.tup.edu.ph/" target="_blank" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+              <i class="bi bi-globe"></i>www.tup.edu.ph
+            </a>
+            <a href="https://goo.gl/maps/fBbW2s4u5fNMW67G7" target="_blank"
+              class="col col-xl-6 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
+              <i class="bi bi-geo-alt-fill"></i>Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite 4114
+            </a>
+          </div>
+        </div>
+      </footer>
   <!-- ================= JAVASCRIPT FOR BOOTSTRAP ================= -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -35,38 +35,47 @@ nav a:hover  {
     color: gray;
 }
 
+#header-name{
+    box-shadow: 0 0 30px black;
+}
+
+
 /* ========== NAME ========== */
-h1 {
+h2 {
     color: rgb(189, 32, 49);
     text-align: justify;
+    font-size: 2.5rem;
 }
-.interviewer-name {
-    margin: 0 0 0 13.7%;
+.coordinator-name {
+    margin: 0 0 0 11%;
     float:left;
 }
 
 .search-combo {
-    margin: 0 5.5% 0 0;
+    margin: 0 13.7% 0 0;
     float:right;
+    padding-left: 50px;
 }
-
 /* ========== Main container ========== */
-
-#selection{
-    padding-right: 0px;
-
+.container-fluid{
+    padding: 0 7vw;
 }
 
-#lalagyan{
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-top: 50px;
-    font-size: 1.1rem;
+.table td, tr{
     text-align: center;
 }
 
-#admission{
-    padding-left: 10%;
+#image {
+    margin-left: 50px;
+}
+
+.table tr:hover > td {
+    background-color: rgb(189, 32, 49);
+    color: white;
+}
+
+.table tr:first-child:hover {
+    background-color: white;   
 }
 
 /* ========== Buttons ========== */
@@ -113,6 +122,10 @@ h1 {
   .admission-buttons:hover:before {
     width: 100%;
   }
+  #admission{
+    width: 500px;
+    padding-left: 13px;
+}
 
 
 
@@ -120,7 +133,7 @@ h1 {
 footer {
     position: absolute;
     bottom: 0;
-    background-color: #5F5F5F;
+    background-color: gray;
 }
 
 footer p {

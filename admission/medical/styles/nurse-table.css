@@ -11,19 +11,6 @@ body {
     min-height: 100vh;
 }
 
-.bi-download, .bi-box-arrow-right {
-    padding-right: 0.4rem;
-    font-size: 1.5rem;
-}
-
-#download, #logout {
-    margin-left: 2rem;
-    color: white;
-    font-weight: 600;
-    font-size: 1.25rem;
-}
-
-
 /* ========== HEADER w/ NAVBAR ========== */
 nav {
     background-color: #bd2031;
@@ -34,13 +21,15 @@ nav {
 }
 
 .nav-link {
+    margin-left: 1.5rem;
     color: white;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
 }
 
-#dl-pdf, #logout{
-    color: white;
+.bi-download, .bi-box-arrow-right {
+    padding-right: 0.4rem;
+    font-size: 1.25rem;
 }
 
 nav a:hover  {
@@ -48,27 +37,14 @@ nav a:hover  {
 }
 
 /* ========== NAME ========== */
-h2 {
-    color: rgb(189, 32, 49);
-    text-align: justify;
-}
 #nurse-name {
-    margin: 0 0 0 13%;
-    float:left;
-}
-
-#search {
-    margin-right: 20px;
-}
-.search-combo {
-    margin: 0 100px 0 0;
-    float:right;
+    color: rgb(189, 32, 49);
+    font-weight: 550;
 }
 
 /* ========== TABLE ========== */
-
 .container-fluid {
-    padding: 0 100px;
+    padding: 0 7vw;
 }
 
 .table td, tr{
@@ -88,12 +64,51 @@ h2 {
     background-color: white;   
 }
 
-.buttons {
-    margin-left: 100px;
-    display:inline-block;
+.btn-space {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+.btn-space:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(189, 32, 49);
+    border-radius: 10rem;
+    z-index: -2;
 }
 
-.btn-space {
+.btn-space:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgb(128, 128, 128);
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.btn-space:hover {
+    color: #fff;
+}
+
+.btn-space:hover:before {
+    width: 100%;
     margin-right: 10px;
     color: white;
     cursor: pointer;

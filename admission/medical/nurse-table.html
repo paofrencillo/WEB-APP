@@ -3,10 +3,10 @@
 
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  TUP - Cavite | Nurse Table </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> TUP - Cavite | Nurse Table </title>
 
   <!-- ================= BOOTSTRAP ================= -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <!-- ================= TUP-C BANNER w/ DL PDF & LOGOUT ================= -->
+  <!-- ================= TUP-C BANNER w/ DL PDF & LOGOUT ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
     <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -29,17 +29,20 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li id="dl-pdf" class="nav-item ml-3">
-          <a class="nav-link" href=""> <i class="bi bi-download"></i> DOWNLOAD (PDF)</a>
+          <a class="nav-link" href=""> <i class="bi bi-download"></i> DOWNLOAD PDF</a>
         </li>
         <li id="logout" class="nav-item ml-3">
-          <a class="nav-link" href="../../admission/medical/nurse-login.html"> 
+          <a class="nav-link" href="../../admission/medical/nurse-login.html">
             <i class="bi bi-box-arrow-right"></i>LOGOUT</a>
         </li>
       </ul>
     </div>
   </nav>
+
   <br>
+
   <!-- ================= SEARCH , COMBO, NAME ================= -->
+<<<<<<< HEAD
   <h2 id="nurse-name">Hello, Juan Dela Cruz</h2>
       <div class="search-combo">
           <input type="search" 
@@ -158,13 +161,135 @@
             </tr>
         </table>
       </div>
+=======
+  <div class="container-fluid mx-0 row justify-content-between align-items-center">
+    <h2 id="nurse-name">Hello, Juan Dela Cruz</h2>
+    <div class="row px-0 mx-0 justify-content-end search-combo">
+      <input type="search" name="search" id="search" placeholder="Search here">
+      &nbsp;
+      <!-- ================= SELECT COURSE ================= -->
+      <label for="Course">Select Course</label>
+      <select name="course" id="course">
+        <option value="BS Civil Engineering">
+          BS Civil Engineering</option>
+        <option value="BET COET">
+          BET COET</option>
+        <option value="BET ESET">
+          BET ESET</option>
+        <option value="BET PPET">
+          BET ESET</option>
+      </select>
+>>>>>>> 12d2d595152742261c73c0fc68f1db25b2a86bdb
     </div>
-    <div class="buttons">
-        <button type="button" class="btn-danger btn-space"> Passed </button>
-        &nbsp;
-        <button type="button" class="btn-danger btn-space"> Failed </button>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="container-fluid">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th></th>
+            <th>NAME</th>
+            <th>CONTROL NUMBER</th>
+            <th>EMAIL</th>
+            <th>COURSE</th>
+            <th>MEDICAL RESULT</th>
+            <th class=col-2>MEDICAL FILE</th>
+          </tr>
+        </thead>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio1"></td>
+          <td>VJ Montaril</td>
+          <td>000000</td>
+          <td>monti@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio2"></td>
+          <td>CB Paanod</td>
+          <td>111111</td>
+          <td>xcef@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio2"></td>
+          <td>PP Frencillo</td>
+          <td>222222</td>
+          <td>paolito@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio3"></td>
+          <td>RK Kilario</td>
+          <td>333333</td>
+          <td>zxc@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio4"></td>
+          <td>DD Fetalbo</td>
+          <td>444444</td>
+          <td>domi@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio5"></td>
+          <td>JP Quiza</td>
+          <td>555555</td>
+          <td>quizalab@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio6"></td>
+          <td>xDN Andwae</td>
+          <td>666666</td>
+          <td>andwae@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio7"></td>
+          <td>Nam Yujeong</td>
+          <td>777777</td>
+          <td>turtle@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+        <tr>
+          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio8"></td>
+          <td>Lee Yuna</td>
+          <td>888888</td>
+          <td>yunahair@gmail.com</td>
+          <td>BET-COET</td>
+          <td>Passed</td>
+          <td><input type="file" name="image" id="image"></td>
+        </tr>
+      </table>
     </div>
-    
+  </div>
+  <div class="container-fluid row justify-content-center buttons">
+    <button type="button" class="btn-space"> Passed </button>
+    &nbsp;
+    <button type="button" class="btn-space"> Failed </button>
+  </div>
+
   <!-- ================= FOOTER ================= -->
   <footer class="container-fluid row px-0 py-2 m-0">
     <p class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 p-0">Contact Us</p>
@@ -199,4 +324,5 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 </body>
+
 </html>
