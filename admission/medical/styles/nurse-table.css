@@ -42,6 +42,14 @@ nav a:hover  {
     font-weight: 550;
 }
 
+#search {
+    margin-right: 20px;
+}
+
+#select-course {
+    margin: 5px;
+}
+
 /* ========== TABLE ========== */
 .container-fluid {
     padding: 0 7vw;
