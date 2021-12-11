@@ -108,6 +108,10 @@ nav a:hover  {
     width: 100%;
 }
 
+#modify-btn {
+    margin-left: auto;
+}
+
 /* ========== FOOTER ========== */
 footer {
     position: absolute;
