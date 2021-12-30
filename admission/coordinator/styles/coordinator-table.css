@@ -41,11 +41,11 @@ nav a:hover  {
 
 
 /* ========== NAME ========== */
-h2 {
+#coor-name {
     color: rgb(189, 32, 49);
-    text-align: justify;
-    font-size: 2.5rem;
+    font-weight: 550;
 }
+
 .coordinator-name {
     margin: 0 0 0 11%;
     float:left;

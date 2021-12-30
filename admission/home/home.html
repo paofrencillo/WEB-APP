@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
   <!-- ================= CSS ================= -->
-  <link rel="stylesheet" href="../home/styles/home_style.css" />
+  <link rel="stylesheet" href="../home/styles/home.css" />
 </head>
 
 
@@ -35,7 +35,7 @@
           <a class="nav-link" href="../applicant/applicant-login.html">Applicant</a>
         </li>
         <li class="nav-item ml-3">
-          <a class="nav-link" href="../admission-coor/admission-coor-login.html">Coordinator</a>
+          <a class="nav-link" href="../coordinator/coordinator-login.html">Coordinator</a>
         </li>
         <li class="nav-item ml-3">
           <a class="nav-link" href="../interviewer/interviewer-login.html">Interview</a>
@@ -86,13 +86,13 @@
           <img class="d-block w-100 img-fluid" src="../../res/tupc-img2.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100 img-fluid" src="../../res/tupc-img3.jpg" alt="Fouth slide">
+          <img class="d-block w-100 img-fluid" src="../../res/tupc-img3.jpg" alt="Third slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100 img-fluid" src="../../res/tupc-img4.jpeg" alt="Fifth slide">
+          <img class="d-block w-100 img-fluid" src="../../res/tupc-img4.jpeg" alt="Fourth slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100 img-fluid" src="../../res/tupc-img5.jpeg" alt="Sixth slide">
+          <img class="d-block w-100 img-fluid" src="../../res/tupc-img5.jpeg" alt="Fifth slide">
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@
     <!-- ================= ANNOUNCEMENT BOX ================= -->
     <div id="announcement-section" class="container-fluid mx-0 p-0">
       <h4 class="headers">ANNOUNCEMENTS</h4>
-      <p class="col col-12">TUP-C now accepting new applicants for A.Y 2022-2023</p>
+      <p id="announcements" class="col col-12">No Announcements</p>
       <div id="next-prev-btn" class="col col-12 my-3">
         <button type="button" id="triangle-left"></button>
         <button type="button" id="triangle-right"></button>
@@ -123,7 +123,7 @@
       <!-- ================= REQUIREMENTS ================= -->
       <div id="requirements" class="col col-md-8 col-12">
         <h4 class="headers">Requirements</h4>
-        <p>In order to be admitted in this university, the applicant must be able to comply/pass the following:</p>
+        <p><b>In order to be admitted in this university, the applicant must be able to comply/pass the following:</b></p>
         <div id="freshmen-requirements">
           <h3>For Freshmen</h3>
           <hr>
@@ -178,7 +178,6 @@
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT FOR BOOTSTRAP (kopyahin to sa bawat html files!!!) ================= -->
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -187,6 +186,9 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
+  <script src="js/home-script.js"></script>
 </body>
 
 

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="../../res/tup_logo.png" />
-  <title>TUP - Cavite | Applicant Login Page</title>
+  <title>TUP - Cavite | Nurse Login</title>
 
   <!-- ================= BOOTSTRAP ================= -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -36,7 +36,7 @@
           <a class="nav-link" href="../applicant/applicant-login.html">Applicant</a>
         </li>
         <li class="nav-item ml-3">
-          <a class="nav-link" href="../admission-coor/admission-coor-login.html">Coordinator</a>
+          <a class="nav-link" href="../coordinator/coordinator-login.html">Coordinator</a>
         </li>
         <li class="nav-item ml-3">
           <a class="nav-link" href="../interviewer/interviewer-login.html">Interview</a>
@@ -52,18 +52,17 @@
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Nurse Login</legend>
-      <form action="">
+      <form action="" class="was-validated">
         <div class="form-group">
-          <label for="applicant-email">Email Address</label>
-          <input type="email" id="applicant-email" class="form-control" name="applicant-email" />
+          <label for="nurse-email">Email Address</label>
+          <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
         </div>
         <div class="form-group">
-          <label for="applicant-pass">Password</label>
-          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" />
+          <label for="nurse-pass">Password</label>
+          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
         </div>
         <div class="container-fluid">
           <a href="#" class="btn-flip" data-back="Proceed" data-front="Login"></a>
-          <BR></BR>
         </div>
       </form>
     </fieldset>
@@ -92,7 +91,6 @@
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT FOR BOOTSTRAP ================= -->
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -101,5 +99,9 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
 </body>
+
+
 </html>

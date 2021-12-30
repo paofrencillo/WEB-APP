@@ -1,0 +1,1 @@
+document.getElementById("announcements").innerHTML = "This is announcement"

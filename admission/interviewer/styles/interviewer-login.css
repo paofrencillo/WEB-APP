@@ -9,6 +9,7 @@ body {
     position: relative;
     padding-bottom: 160px;
     min-height: 100vh;
+    background-color: rgba(189, 32, 49, 0.2);
 }
 
 /* ========== HEADER w/ NAVBAR ========== */
@@ -91,17 +92,21 @@ label {
     text-decoration: none;
     font-family: "Open Sans";
     text-transform: uppercase;
-    
-  }
-  .btn-flip:hover:after {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.btn-flip:hover:after {
     opacity: 1;
     transform: translateY(0) rotateX(0);
-  }
-  .btn-flip:hover:before {
+}
+
+.btn-flip:hover:before {
     opacity: 0;
     transform: translateY(50%) rotateX(90deg);
-  }
-  .btn-flip:after {
+}
+
+.btn-flip:after {
     top: 0;
     left: 0;
     opacity: 0;
@@ -115,8 +120,9 @@ label {
     transform: translateY(-50%) rotateX(90deg);
     border-radius: 5px 5px 5px 5px ;
     padding: 5px ;
-  }
-  .btn-flip:before {
+}
+
+.btn-flip:before {
     top: 0;
     left: 0;
     opacity: 1;
@@ -131,7 +137,7 @@ label {
     transform: translateY(0) rotateX(0);
     border-radius: 5px 5px 5px 5px ;
     padding: 5px 30px;
-  }
+}
 
 form p {
     color: #181818;

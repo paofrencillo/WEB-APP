@@ -14,37 +14,37 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
   <!-- ================= CSS ================= -->
-  <link rel="stylesheet" href="../applicant/styles/applicant_reg_style.css" />
+  <link rel="stylesheet" href="../applicant/styles/applicant-reg.css" />
 </head>
 
 
 <body>
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-      <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
-      <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="../home/home.html">Home</a>
-          </li>
-          <li id="applicant-link" class="nav-item ml-3">
-            <a class="nav-link" href="../applicant/applicant-login.html">Applicant</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="../admission-coor/admission-coor-login.html">Coordinator</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="../interviewer/interviewer-login.html">Interview</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="../medical/nurse-login.html">Medical</a>
-          </li>
-        </ul>
-      </div>
+    <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../home/home.html">Home</a>
+        </li>
+        <li id="applicant-link" class="nav-item ml-3">
+          <a class="nav-link" href="../applicant/applicant-login.html">Applicant</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../coordinator/coordinator-login.html">Coordinator</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../interviewer/interviewer-login.html">Interview</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="../medical/nurse-login.html">Medical</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <!-- ================= REGISTRATION FORM ================= -->
@@ -120,10 +120,23 @@
         <div class="form-group">
           <label for="course">Course (1st Choice)</label>
           <select name="course" id="course" class="custom-select" required>
-            <option value="">-</option>
-            <option value="bet-coet">BET - Computer Engineering Technology
-            </option>
-            <option value="bs-civil">BS - Civil Engineering</option>
+            <option value="">Select Course</option>
+            <option value="bsce">BS - Civil Engineering</option>
+            <option value="bsee">BS - Electrical Engineering</option>
+            <option value="bsme">BS - Mechanical Engineering</option>
+            <option value="bet-et">BET - Electrical Technology</option>
+            <option value="bet-eset">BET - Electronics Technology Track: Industrial Automation Technology</option>
+            <option value="bet-coet">BET - Computer Engineering Technology</option>
+            <option value="bet-ct">BET - Civil Technology</option>
+            <option value="bet-mt">BET - Mechanical Technology</option>
+            <option value="bet-at">BET - Mechanical Engineering Technology Track: Automative Technology</option>
+            <option value="bet-ppt">BET - Mechanical Engineering Technology Track: Power Plant Technology</option>
+            <option value="bsie-ict">BSIE - Information and Communication Technology</option>
+            <option value="btte-au">BTTE - Automative</option>
+            <option value="btte-el">BTTE - Electrical</option>
+            <option value="btte-e">BTTE - Electronics</option>
+            <option value="btte-hvact">BTTE - Heating, Ventilation, and Air Conditioning</option>
+            <option value="btte-cp">BTTE - Computer Programming</option>
           </select>
         </div>
 
@@ -187,7 +200,6 @@
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT FOR BOOTSTRAP (kopyahin to sa bawat html files!!!) ================= -->
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -196,6 +208,9 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
+  
 </body>
 
 
