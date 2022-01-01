@@ -51,7 +51,7 @@
   <div id="main-container" class="container-fluid">
     <fieldset class="container">
       <legend>Applicant Registration</legend>
-      <form action="" class="was-validated">
+      <form name="reg-form" action="javascript:register();" class="was-validated">
         <div class="form-group">
           <label for="f-name">First Name</label>
           <input type="text" name="f-name" id="f-name" class="form-control" placeholder="Juan" required />
@@ -141,8 +141,8 @@
         </div>
 
         <div class="form-group">
-          <label for="shs-strand">Senior High School Strand</label>
-          <input type="text" name="shs-strand" id="shs-strand" class="form-control"
+          <label for="strand">Senior High School Strand</label>
+          <input type="text" name="strand" id="strand" class="form-control"
             placeholder="Science, Technology, Engineering and Mathematics" required />
         </div>
 
@@ -159,7 +159,7 @@
 
         <div class="form-group">
           <label for="pass">Confirm Password</label>
-          <input type="password" name="pass" id="pass" class="form-control" required />
+          <input type="password" name="confirm-pass" id="confirm-pass" class="form-control" required />
         </div>
 
         <div class="form-check form-check-inline">
