@@ -52,7 +52,7 @@
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Applicant Login</legend>
-      <form action="" class="was-validated">
+      <form name="login-form" action="javascript:validateLogin()" class="was-validated">
         <div class="form-group">
           <label for="applicant-email">Email Address</label>
           <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
@@ -61,9 +61,9 @@
           <label for="applicant-pass">Password</label>
           <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
         </div>
-        <div class="container-fluid">
-          <a href="#" class="btn-flip" data-back="Proceed" data-front="Login"></a>
-        </div>
+        <div class="form-group">
+          <input type="submit" value="Login">
+        </div>   
         <p>
           If you are new applicant,
           <a href="../applicant/applicant-reg.html">click here</a> to
@@ -106,6 +106,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
+  <script src="js/applicant-login.js"></script>
   
 </body>
 
