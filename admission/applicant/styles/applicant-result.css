@@ -108,21 +108,10 @@ nav {
 }
 
 
-/* === REMARKS COLOR IF FAILED/INCOMPLETE=== */
-#medical-result-remarks, #interview-result-remarks, #requirements-result-remarks {
-    padding: 15px 25px;
-    background-color: rgb(223, 191, 191);
-    border: 3px solid red;
-    border-radius: 10px;
-    font-weight: 600;
-}
-
 /* === REMARKS COLOR IF PASSED/COMPLETE === */
 .remarks > h3 {
     font-size: 1.25rem;
     padding: 15px 20px;
-    background-color: rgb(189, 230, 189);
-    border: 3px solid green;
     border-radius: 10px;
     font-weight: 600;
 }

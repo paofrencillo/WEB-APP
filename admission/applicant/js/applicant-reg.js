@@ -1,6 +1,7 @@
 function register() {
     // Get all inputs
     const APPLICANT_REG_INFO = {
+        controlNumber : getControlNumber(),
         firstName : document.forms["reg-form"]["f-name"].value,
         middleName : document.forms["reg-form"]["m-name"].value,
         lastName : document.forms["reg-form"]["l-name"].value,
@@ -14,7 +15,9 @@ function register() {
         password : matchPassword()
     };
 
-    console.log(APPLICANT_REG_INFO)
+    console.log(APPLICANT_REG_INFO);
+    alert("Registration Complete!");
+    location.href = "../../admission/applicant/applicant-login.html";
 }
 
 function matchPassword() {
@@ -28,6 +31,19 @@ function matchPassword() {
     else {
         return a;
     }
+}
+
+function getControlNumber() {
+    // Control Number Format : Year + number of applicants in current year+1
+    // Ex.: 220001 (Year 2022 + applicant number)
+    let year = new Date().getFullYear().toString();
+    year = year.slice(2);
+
+    // temporary applicant number
+    let applicant_num = "0001";
+
+    let control_number = year + applicant_num;
+    return control_number;
 }
 
 function getSex() {
