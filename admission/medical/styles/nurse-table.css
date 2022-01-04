@@ -51,6 +51,7 @@ nav a:hover  {
 }
 
 /* ========== TABLE ========== */
+
 .container-fluid {
     padding: 0 7vw;
 }
@@ -70,8 +71,9 @@ nav a:hover  {
 
 .table tr:first-child:hover {
     background-color: white;   
-}
+} 
 
+/*
 .btn-space {
     display: inline-block;
     padding: 10px 25px;
@@ -121,7 +123,7 @@ nav a:hover  {
     color: white;
     cursor: pointer;
     font-size: 16px;
-}
+} */
 
 /* ========== FOOTER ========== */
 footer {

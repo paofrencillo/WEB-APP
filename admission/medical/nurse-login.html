@@ -52,14 +52,14 @@
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Nurse Login</legend>
-      <form action="" class="was-validated">
+      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
         <div class="form-group">
           <label for="nurse-email">Email Address</label>
-          <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
+          <input type="email" id="nurse-email" class="form-control" name="nurse-email" required />
         </div>
         <div class="form-group">
           <label for="nurse-pass">Password</label>
-          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
+          <input type="password" id="nurse-pass" class="form-control" name="nurse-pass" required />
         </div>
         <div class="form-group">
           <input type="submit" value="Login">

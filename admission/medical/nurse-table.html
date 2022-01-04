@@ -45,7 +45,7 @@
   <div class="container-fluid mx-0 row justify-content-between align-items-center">
     <h2 id="nurse-name">Hello, Juan Dela Cruz</h2>
     <div class="row px-0 mx-0 justify-content-end search-combo">
-      <input type="search" name="search" id="search" placeholder="Search here">
+      <input type="search" id="myinput" onkeyup="tableSearch()" placeholder="Search Name">
       &nbsp;
       <!-- ================= SELECT COURSE ================= -->
       <label id="select-course"> Select Course </label>
@@ -66,106 +66,28 @@
 
   <div class="container-fluid">
     <div class="table-responsive">
-      <table class="table table-bordered">
+      <table id="mytable" class="table table-bordered">
         <thead class="thead-light">
           <tr>
             <th></th>
             <th>NAME</th>
             <th>CONTROL NUMBER</th>
-            <th>EMAIL</th>
             <th>COURSE</th>
+            <th>EMAIL</th>
             <th>MEDICAL RESULT</th>
-            <th class=col-2>MEDICAL FILE</th>
+            <th>MEDICAL FILE</th>
           </tr>
         </thead>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio1"></td>
-          <td>VJ Montaril</td>
-          <td>0165</td>
-          <td>monti@gmail.com</td>
-          <td>BET-COET</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio2"></td>
-          <td>CB Paanod</td>
-          <td>0185</td>
-          <td>xcef@gmail.com</td>
-          <td>BET-COET</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio2"></td>
-          <td>PP Frencillo</td>
-          <td>0194</td>
-          <td>paolito@gmail.com</td>
-          <td>BET-COET</td>
-          <td> </td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio3"></td>
-          <td>RK Kilario</td>
-          <td>0169</td>
-          <td>zxc@gmail.com</td>
-          <td>BET-COET</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio4"></td>
-          <td>DD Fetalbo</td>
-          <td>0177</td>
-          <td>domi@gmail.com</td>
-          <td>BET-COET</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio5"></td>
-          <td>JP Quiza</td>
-          <td>0149</td>
-          <td>quizalab@gmail.com</td>
-          <td>BS CIVIL ENGINEERING</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio6"></td>
-          <td>xDN Andwae</td>
-          <td>0195</td>
-          <td>andwae@gmail.com</td>
-          <td>BET-ESET</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio7"></td>
-          <td>Nam Yujeong</td>
-          <td>0158</td>
-          <td>turtle@gmail.com</td>
-          <td>BET-PPT</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
-        <tr>
-          <td><input class="radio" type="radio" name="flexRadio" id="flexRadio8"></td>
-          <td>Lee Yuna</td>
-          <td>0177</td>
-          <td>yunahair@gmail.com</td>
-          <td>BET-ESET</td>
-          <td>PASSED</td>
-          <td><input type="file" name="image" id="image"></td>
-        </tr>
+        
+        <tbody id="tabledata"></tbody>
+
       </table>
     </div>
   </div>
   <div class="container-fluid row justify-content-center buttons">
-    <button type="button" class="btn-space"> PASSED </button>
+    <button type="button" id="button" value="PASSED"> PASSED </button>
     &nbsp;
-    <button type="button" class="btn-space"> Failed </button>
+    <button type="button" id="button" value="FAILED"> FAILED </button>
   </div>
 
   <!-- ================= FOOTER ================= -->
@@ -201,6 +123,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
+  <script src="../../admission/medical/js/nurse-table.js"></script>
 
 </body>
 
