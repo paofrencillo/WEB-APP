@@ -39,6 +39,19 @@ $('#mytable tr').click(function() {
 })
 
 //pass-fail function
+function clickedPassed() {
+  /* BLOCK OF CODE HERE WHEN RADIO BUTTON IS CHECKED
+  AND PASSED BUTTON IS CLICKED */
+  console.log("Yamete");
+
+}
+
+function clickedFailed() {
+  /* BLOCK OF CODE HERE WHEN RADIO BUTTON IS CHECKED
+  AND FAILED BUTTON IS CLICKED */
+  console.log("Kudasai");
+
+}
 
 //search table
 function tableSearch() {
