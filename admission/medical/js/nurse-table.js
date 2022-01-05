@@ -130,18 +130,12 @@ function tableSearch() {
 
 //select course
 var rows = $("#tabledata tr");
-
 $("#select-course").on("change", function() {
-
     var selected = this.value;
-
     if (selected != "All") {
-
         rows.filter("[course=" + selected + "]").show();
         rows.not("[course=" + selected + "]").hide();
-        
     } else {
         rows.show();
     }
-
 });
