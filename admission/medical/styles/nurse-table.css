@@ -63,22 +63,16 @@ nav a:hover  {
 #image {
     margin-left: 50px;
 }
- 
- .selected {
-    background-color: rgb(189, 32, 49);
-    color: #FFF;
- }
-
 .table tr:hover > td {
     background-color: rgb(7, 5, 5);
     color: white;
     cursor: pointer;
 }
 
-.table tr:first-child:hover {
-    background-color: white;   
-} 
-
+.selected {
+    background-color: rgb(189, 32, 49);
+    color: #FFF;
+}
 /*
 .btn-space {
     display: inline-block;

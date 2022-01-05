@@ -1,4 +1,5 @@
 var rowdata = undefined;
+var a = undefined;
 //JS FOR NURSE TABLE
 
 //Student Info----
@@ -9,7 +10,9 @@ let studentData = [
   file:'<input type="file" name="image" id="0185" onclick="test(event)"></input>'},
   {name:'Montaril, Vincent Jake', number:'0175', course:'BET-PPET', email:'monta@gmail.com', mresult:'', 
   file:'<input type="file" name="image" id="0175"  onclick="test(event)"></input>'},
-  {name:'Kilario, Roniel', number:'0195', course:'BS Civil Engineering', email:'kilario@gmail.com', mresult:'', 
+  {name:'Kilario, Roniel', number:'0195', course:'BSCE', email:'kilario@gmail.com', mresult:'', 
+  file:'<input type="file" name="image" id="0195" onclick="test(event)"></input>'},
+  {name:'Fediablo, Demonic', number:'0195', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
   file:'<input type="file" name="image" id="0195" onclick="test(event)"></input>'}
 ];
 
@@ -23,13 +26,13 @@ function loadTableData(studentData) {
   let dataHtml = '';
 
   for(let student of studentData) {
-    dataHtml += `<tr id="${student.number}" onclick="selectedrow(event)">
+    dataHtml += `<tr course = "${student.course}" id="${student.number}" onclick="selectedrow(event)">
                   <td>${student.name}</td>
                   <td>${student.number}</td>
-                  <td id="course">${student.course}</td>
+                  <td>${student.course}</td>
                   <td>${student.email}</td>
                   <td class="row-result">${student.mresult}</td>
-                  <td class="upload-file">${student.file}</td>
+                  <td>${student.file}</td>
                 </tr>`;
   }
 
@@ -37,35 +40,62 @@ function loadTableData(studentData) {
 }
 
 //row selected
-var table = document.getElementById('mytable'),
-   selected = table.getElementsByClassName('selected');
-table.onclick = highlight;
+highlight_row();
+function highlight_row() {
+    var table = document.getElementById('mytable');
+    var cells = table.getElementsByTagName('td');
 
-function highlight(e) {
-   if (selected[0]) selected[0].className = '';
-   e.target.parentNode.className = 'selected';
+    for (var i = 0; i < cells.length; i++) {
+        // Take each cell
+        var cell = cells[i];
+        // do something on onclick event for cell
+        cell.onclick = function () {
+            // Get the row id where the cell exists
+            var rowId = this.parentNode.rowIndex;
+
+            var rowsNotSelected = table.getElementsByTagName('tr');
+            for (var row = 0; row < rowsNotSelected.length; row++) {
+                rowsNotSelected[row].style.backgroundColor = "";
+                rowsNotSelected[row].classList.remove('selected');
+            }
+            var rowSelected = table.getElementsByTagName('tr')[rowId];
+           // rowSelected.style.backgroundColor = "rgb(189, 32, 49)";
+            rowSelected.className += " selected";
+
+        }
+    }
 }
+
+function test(event) {
+  var rowId2 = event.target.parentNode.parentNode.id;
+  if(event.target) {
+    a = rowId2
+    console.log(a)
+  }
+}
+
 
 function selectedrow(event) {
     var rowId = event.target.parentNode.id;
+    if ( a == undefined) {
+      rowdata = rowId;
+    }
+    else if ( a != undefined) {
+      rowdata = a;
+    }
   //this gives id of tr whose button was clicked
   /*returns array of all elements with 
   "row-data" class within the row with given id*/
-    console.log(rowId);
+    console.log(rowdata);
     rowdata = rowId;
 }
-
 
 //pass-fail function
 function clickedPassed() {
   //this gives id of tr whose button was clicked
   var data = document.getElementById(rowdata).querySelectorAll(".row-result");
-  data[0].innerHTML = "PASSED";
-}
 
-function test(event) {
-  var files = event.target.parentNode.parentNode.id;
-  console.log(files);
+  data[0].innerHTML = "PASSED";
 }
 
 function clickedFailed() {
@@ -77,7 +107,7 @@ function clickedFailed() {
 
 //search table
 function tableSearch() {
-  let input, filter, table, tr, td, i, txtValue;
+  let input, filter, table, tr, td, txtValue;
 
   input = document.getElementById("myinput");
   filter = input.value;
@@ -85,7 +115,7 @@ function tableSearch() {
   tr = table.getElementsByTagName('tr');
 
   for(let i = 0; i < tr.length; i++){
-    td = tr[i].getElementsByTagName('td')[1]
+    td = tr[i].getElementsByTagName('td')[0]
     if(td) {
       txtValue = td.textContent || td.innerText;
       if(txtValue.indexOf(filter) > -1){
@@ -99,17 +129,19 @@ function tableSearch() {
 }
 
 //select course
-function onCourseSelected() {
-  var course = document.getElementById("select-course").value;
-  if (course == "course"){
-    document.getElementById("course").style.display = ""
-    document.getElementById("course").style.display = "none"
-    document.getElementById("course").style.display = "none"
-  }
-  else {
-    document.getElementById("course").style.display = "none"
-    document.getElementById("course").style.display = "none"
-    document.getElementById("course").style.display = ""
-  }
+var rows = $("#tabledata tr");
 
-}
+$("#select-course").on("change", function() {
+
+    var selected = this.value;
+
+    if (selected != "All") {
+
+        rows.filter("[course=" + selected + "]").show();
+        rows.not("[course=" + selected + "]").hide();
+        
+    } else {
+        rows.show();
+    }
+
+});
