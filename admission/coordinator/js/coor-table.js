@@ -28,7 +28,8 @@ function loadTableData(studentData) {
     let dataHtml = '';
   
     for(let student of studentData) {
-      dataHtml += `<tr><td>${student.num}</td>
+      dataHtml += `<tr course = "${student.course}" id="${student.number}">
+                       <td>${student.num}</td>
                        <td>${student.name}</td>
                        <td>${student.sex}</td>
                        <td contenteditable='true'>${student.score}</td>
