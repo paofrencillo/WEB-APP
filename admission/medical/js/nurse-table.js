@@ -12,7 +12,7 @@ let studentData = [
   file:'<input type="file" name="image" id="0175"  onclick="test(event)"></input>'},
   {name:'Kilario, Roniel', number:'0195', course:'BSCE', email:'kilario@gmail.com', mresult:'', 
   file:'<input type="file" name="image" id="0195" onclick="test(event)"></input>'},
-  {name:'Fediablo, Demonic', number:'0195', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
+  {name:'Fediablo, Demonic', number:'0155', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
   file:'<input type="file" name="image" id="0195" onclick="test(event)"></input>'}
 ];
 
@@ -83,11 +83,11 @@ function selectedrow(event) {
     else if ( a != undefined) {
       rowdata = a;
     }
+    a = undefined;
   //this gives id of tr whose button was clicked
   /*returns array of all elements with 
   "row-data" class within the row with given id*/
     console.log(rowdata);
-    rowdata = rowId;
 }
 
 //pass-fail function
