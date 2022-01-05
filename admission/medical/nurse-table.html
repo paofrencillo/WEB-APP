@@ -48,8 +48,8 @@
       <input type="search" id="myinput" onkeyup="tableSearch()" placeholder="Search Name">
       &nbsp;
       <!-- ================= SELECT COURSE ================= -->
-      <label id="select-course"> Select Course </label>
-      <select name="course" id="course">
+      <label id="label-course"> Select Course </label>
+      <select name="course" id="select-course" onchange="onCourseSelected()">
         <option value="BS Civil Engineering">
           BS Civil Engineering</option>
         <option value="BET COET">
@@ -69,13 +69,12 @@
       <table id="mytable" class="table table-bordered">
         <thead class="thead-light">
           <tr>
-            <th></th>
-            <th>NAME</th>
-            <th>CONTROL NUMBER</th>
-            <th>COURSE</th>
-            <th>EMAIL</th>
-            <th>MEDICAL RESULT</th>
-            <th>MEDICAL FILE</th>
+            <th col-index = 1>NAME</th>
+            <th col-index = 2>CONTROL NUMBER</th>
+            <th col-index = 3>COURSE</th>
+            <th col-index = 4>EMAIL</th>
+            <th col-index = 5>MEDICAL RESULT</th>
+            <th col-index = 6>MEDICAL FILE</th>
           </tr>
         </thead>
         

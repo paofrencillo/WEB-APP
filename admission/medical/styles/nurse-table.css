@@ -46,7 +46,7 @@ nav a:hover  {
     margin-right: 20px;
 }
 
-#select-course {
+#label-course {
     margin: 5px;
 }
 
@@ -63,12 +63,17 @@ nav a:hover  {
 #image {
     margin-left: 50px;
 }
+ 
+ .selected {
+    background-color: rgb(189, 32, 49);
+    color: #FFF;
+ }
 
 .table tr:hover > td {
-    background-color: rgb(189, 32, 49);
+    background-color: rgb(7, 5, 5);
     color: white;
+    cursor: pointer;
 }
-
 
 .table tr:first-child:hover {
     background-color: white;   
