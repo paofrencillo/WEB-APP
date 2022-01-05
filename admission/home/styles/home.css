@@ -87,60 +87,9 @@ nav a:hover  {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-#announcement-section {
-    border-bottom: 5px solid #bd2031;
-}
-
-#announcement-section > .headers{
-    text-align: center;
-    border-radius: 0px;
-    padding: 0.5rem;
-    width: 100%;
-}
-
-#announcement-section p {
-    margin-bottom: 0;
-    list-style: none;
-    font-size: 2rem;
-    text-align: center;
-    padding: 0 5rem;
-}
-
-#next-prev-btn {
-    display: flex;
-    justify-content: center;
-}
-
-#triangle-left {
-	width: 0;
-	height: 0;
-	border-top: 15px solid transparent;
-	border-right: 40px solid #555;
-    border-left: none;
-	border-bottom: 15px solid transparent;
-    margin-right: 10px;
-    background-color: white;
-    cursor: pointer;
-}
-
-#triangle-right {
-	width: 0;
-	height: 0;
-	border-top: 15px solid transparent;
-	border-left: 40px solid #bd2031;
-    border-right: none;
-	border-bottom: 15px solid transparent;
-    margin-left: 10px;
-    background-color: white;
-    cursor: pointer;
-}
-
-#announcement-section button:hover{
-    background-color: white;
-}
-
-#announcement-section button:focus{
-    outline: 0 !important;
+#lower-section {
+    padding-top: 18vh;
+    padding-bottom: 10vh;
 }
 
 #guidelines li {
