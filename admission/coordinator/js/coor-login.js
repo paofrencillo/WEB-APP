@@ -1,11 +1,11 @@
 //Temporary login credentials
-var emailAdd = "asd@email.com";
-var password = "asdasd";
+var emailAdd = "qwerty@email.com";
+var password = "qwerty";
 
 function validateLogin() {
     //Get the entries from the input boxes
-    let a = document.forms["login-form"]['nurse-email'].value;
-    let b = document.forms["login-form"]['nurse-pass'].value;
+    let a = document.forms["login-form"]['coordinator-email'].value;
+    let b = document.forms["login-form"]['coordinator-pass'].value;
     // if credentials not matched
     if (( a != emailAdd ) || ( b != password )) {
         alert("Incorrect credentials");
@@ -13,6 +13,6 @@ function validateLogin() {
     }
     //if credentials are matched
     else if (( a == emailAdd ) && ( b == password )) {
-        location.href = "../medical/nurse-table.html";
+        location.href = "../coordinator/coordinator-table.html";
     }
 }
