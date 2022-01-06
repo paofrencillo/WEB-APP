@@ -3,17 +3,23 @@ var a = undefined;
 
 //Student Info
 let studentData = [
-  {haha:'Checkbox' , name:'Montaril, Vincent Jake', number:'190187', course:'BET-COET', email:'monta@gmail.com', date:'11/06/2021', 
+  {cb:'<input type="checkbox" id="int-cb" name="cb" value="int-cb">',
+  name:'Montaril, Vincent Jake', number:'190187', course:'BET-COET', email:'monta@gmail.com', date:'11/06/2021', 
   venue:'Industrial Department', interviewer:'Ms.Dela cruz', mresult:'',},
-  {haha:'Checkbox'  , name:'Frencillo, Paolo', number:'190666', course:'BET-COET', email:'pao@gmail.com', date:'11/06/2021', 
+  {cb:'<input type="checkbox" id="int-cb" name="cb" value="int-cb">',
+  name:'Frencillo, Paolo', number:'190666', course:'BET-COET', email:'pao@gmail.com', date:'11/06/2021', 
   venue:'Industrial Department', interviewer:'Ms.Dela cruz', mresult:'',},
-  {haha:'Checkbox'  , name:'Paanod, Cefrin', number:'190123', course:'BET-ESET', email:'cef@gmail.com', date:'11/10/2021', 
+  {cb:'<input type="checkbox" id="int-cb" name="cb" value="int-cb">',
+  name:'Paanod, Cefrin', number:'190123', course:'BET-ESET', email:'cef@gmail.com', date:'11/10/2021', 
   venue:'Vulcanizing Department', interviewer:'Ms.Nalalabuan', mresult:'',},
-  {haha:'Checkbox'  , name:'Kilario, Roniel', number:'190321', course:'BET-PPET', email:'ron@gmail.com', date:'11/15/2021', 
+  {cb:'<input type="checkbox" id="int-cb" name="cb" value="int-cb">',
+  name:'Kilario, Roniel', number:'190321', course:'BET-PPET', email:'ron@gmail.com', date:'11/15/2021', 
   venue:'TBA', interviewer:'Mr.Johnny Simp', mresult:'',},
-  {haha:'Checkbox'  , name:'Curry, Steph', number:'190030', course:'BSCE', email:'step@gmail.com', date:'11/20/2021', 
+  {cb:'<input type="checkbox" id="int-cb" name="cb" value="int-cb">',
+  name:'Curry, Steph', number:'190030', course:'BSCE', email:'step@gmail.com', date:'11/20/2021', 
   venue:'Engineering Department', interviewer:'Ms.Sana', mresult:'',},
-  {haha:'Checkbox'  , name:'James, Lebron', number:'190623', course:'BSCE', email:'bron@gmail.com', date:'11/20/2021', 
+  {cb:'<input type="checkbox" id="int-cb" name="cb" value="int-cb">',
+  name:'James, Lebron', number:'190623', course:'BSCE', email:'bron@gmail.com', date:'11/20/2021', 
   venue:'Engineering Department', interviewer:'Ms.Sana', mresult:'',},
   
 ];
@@ -27,7 +33,7 @@ function loadTableData(studentData) {
 
   for(let student of studentData) {
     dataHtml += `<tr course = "${student.course}" id="${student.number}" onclick="selectedrow(event)">
-                  <td>${student.haha}</td>  
+                  <td>${student.cb}</td>  
                   <td>${student.name}</td>
                   <td>${student.number}</td>
                   <td>${student.course}</td>
