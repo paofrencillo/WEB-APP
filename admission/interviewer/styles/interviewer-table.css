@@ -42,6 +42,14 @@ nav a:hover  {
     font-weight: 550;
 }
 
+#search {
+    margin-right: 10px;
+}
+
+#label-course {
+    margin: 10px;
+}
+
 /* ========== TABLE ========== */
 .container-fluid {
     padding: 0 7vw;
@@ -53,13 +61,24 @@ nav a:hover  {
 }
 
 .table tr:hover > td {
+    background-color: rgb(7, 5, 5);
+    color: white;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgb(189, 32, 49);
+    color: #FFF;
+}
+
+/* .table tr:hover > td {
     background-color: rgb(189, 32, 49);
     color: white;
 }
 
 .table tr:first-child:hover {
     background-color: white;   
-}
+} */
 
 .btn-space {
     display: inline-block;
