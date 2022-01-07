@@ -1,5 +1,5 @@
 let studentData = [
-    {num:'',name:'KILARIO, RONIEL C.',sex:'M',score:'0/100',course:'BSCE',medical:'PASSED',interview:'PASSED',
+    {num:'',name:'Kilario, Roniel',sex:'M',score:'0/100',course:'BSCE',medical:'PASSED',interview:'PASSED',
     card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
     bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
     gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
@@ -15,6 +15,30 @@ let studentData = [
     gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
     psa:'<input type="checkbox" id="coor-table-psa" name="psa" value="coor-table-psa">'},
     {num:'',name:'JABAR, ABDUL',sex:'M',score:'0/100',course:'BET-PPET',medical:'PASSED',interview:'PASSED',
+    card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
+    bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
+    gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
+    psa:'<input type="checkbox" id="coor-table-psa" name="psa" value="coor-table-psa">'}
+    ,
+    {num:'',name:'VEGA, RAY JUSTINE ',sex:'M',score:'0/100',course:'BET-PPET',medical:'PASSED',interview:'PASSED',
+    card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
+    bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
+    gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
+    psa:'<input type="checkbox" id="coor-table-psa" name="psa" value="coor-table-psa">'}
+    ,
+    {num:'',name:'OSORIO, CYRINE',sex:'M',score:'0/100',course:'BSCE',medical:'PASSED',interview:'PASSED',
+    card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
+    bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
+    gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
+    psa:'<input type="checkbox" id="coor-table-psa" name="psa" value="coor-table-psa">'}
+    ,
+    {num:'',name:'MORADA, REJAY',sex:'M',score:'0/100',course:'BSEE',medical:'PASSED',interview:'PASSED',
+    card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
+    bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
+    gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
+    psa:'<input type="checkbox" id="coor-table-psa" name="psa" value="coor-table-psa">'}
+    ,
+    {num:'',name:'LOREM IPSUM',sex:'M',score:'0/100',course:'BTTE-CP',medical:'PASSED',interview:'PASSED',
     card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
     bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
     gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
@@ -47,11 +71,12 @@ function loadTableData(studentData) {
 
 
 
-function tableSearch() {
+  function tableSearch() {
     let input, filter, table, tr, td, txtValue;
   
+    //initializing variables
     input = document.getElementById("search");
-    filter = input.toUpperCase().value;
+    filter = input.value.toUpperCase();
     table = document.getElementById("coor-table");
     tr = table.getElementsByTagName('tr');
   
