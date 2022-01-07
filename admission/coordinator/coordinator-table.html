@@ -46,26 +46,35 @@
   <h2 id="coor-name">Hello, Juan Dela Cruz</h2>
   <div class="row px-0 mx-0 justify-content-start search-combo">
     <input type="search" name="search" id="search" onkeyup="tableSearch()" placeholder="Search here">
-    &nbsp;&nbsp;&nbsp;
-          <!-- ================= SELECT COURSE ================= -->
-          <label id="label-course"> Filter by Course &nbsp;</label>
-          <select id="select-course">
-            <option value="All" selected> All</option>
-            <option value="BSCE">
-              BSCE</option>
-            <option value="BET-COET">
-              BET-COET</option>
-            <option value="BET-ESET">
-              BET-ESET</option>
-            <option value="BET-PPET">
-              BET-PPET</option>
-          </select>
+      <!-- ================= SELECT COURSE ================= -->
+      <div>
+        <label id="label-course">Filter by Course</label>
+        <select id="select-course">
+          <option value="All" selected>All</option>
+          <option value="BSCE">BSCE</option>
+          <option value="BSEE">BSEE</option>
+          <option value="BSME">BSME</option>
+          <option value="BET-ET">BET-ET</option>
+          <option value="BET-ESET">BET-ESET</option>
+          <option value="BET-COET">BET-COET</option>
+          <option value="BET-CT">BET-CT</option>
+          <option value="BET-MT">BET-MT</option>
+          <option value="BET-AT">BET-AT</option>
+          <option value="BET-PPT">BET-PPT</option>
+          <option value="BSIE-ICT">BSIE-ICT</option>
+          <option value="BTTE-AU">BTTE-AU</option>
+          <option value="BTTE-EL">BTTE-EL</option>
+          <option value="BTTE-E">BTTE-E</option>
+          <option value="BTTE-HVACT">BTTE-HVACT</option>
+          <option value="BTTE-CP">BTTE-CP</option>
+        </select>
       </div>
-</div>
+    </div>
+  </div>
       <!-- TABLE -->
       <BR></BR>
       <div class="container-fluid">
-        <div class="table-responsive">
+        <div class="table-responsive" style = "overflow-y: scroll; height:60vh;">
           <table id="coor-table" class="table table-bordered table table-hover">
             <thead class="thead-dark">
               <tr>
