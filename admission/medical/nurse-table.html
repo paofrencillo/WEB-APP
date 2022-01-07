@@ -29,9 +29,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li id="dl-pdf" class="nav-item ml-3">
-          <div id="pdf">
-            <a class="nav-link"><button id="pdfclick"></button> DOWNLOAD PDF</a>
-          </div>
+          <a id="download" class="nav-link" href="#"><i class="bi bi-download"></i>DOWNLOAD PDF</a>
         </li>
         <li id="logout" class="nav-item ml-3">
           <a class="nav-link" href="../../admission/medical/nurse-login.html">
@@ -48,7 +46,7 @@
     <h2 id="nurse-name">Hello, Juan Dela Cruz</h2>
     <div class="row px-0 mx-0 justify-content-end search-combo">
       <input type="search" id="myinput" onkeyup="tableSearch()" placeholder="Search Name">
-      &nbsp;
+
       <!-- ================= SELECT COURSE ================= -->
       <label id="label-course"> Filter by Course </label>
       <select id="select-course">
@@ -66,11 +64,18 @@
   </div>
 
   <br>
+  <div class="container-fluid row justify-content-center buttons">
+    <button type="button" onclick="clickedPassed()" class="btn-space" id="button" value="Passed"> PASSED </button>
+    &nbsp;
+    <button type="button" onclick="clickedFailed()" class="btn-space" id="button" value="Failed"> FAILED </button>
+  </div>
+
+  <br>
 
   <div class="container-fluid">
-    <div class="table-responsive">
+    <div class="table-responsive" style = "overflow-y: scroll; height:60vh;">
       <table id="mytable" class="table table-bordered">
-        <thead class="thead-light">
+        <thead class="thead-dark">
           <tr>
             <th col-index = 1>NAME</th>
             <th col-index = 2>CONTROL NUMBER</th>
@@ -85,11 +90,6 @@
 
       </table>
     </div>
-  </div>
-  <div class="container-fluid row justify-content-center buttons">
-    <button type="button" onclick="clickedPassed()" class="btn-space" id="button" value="Passed"> PASSED </button>
-    &nbsp;
-    <button type="button" onclick="clickedFailed()" class="btn-space" id="button" value="Failed"> FAILED </button>
   </div>
 
   <!-- ================= FOOTER ================= -->
