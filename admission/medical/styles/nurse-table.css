@@ -73,57 +73,6 @@ nav a:hover  {
     background-color: rgb(189, 32, 49);
     color: #FFF;
 }
-/*
-.btn-space {
-    display: inline-block;
-    padding: 10px 25px;
-    border-radius: 10rem;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 0.15rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-.btn-space:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(189, 32, 49);
-    border-radius: 10rem;
-    z-index: -2;
-}
-
-.btn-space:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: rgb(128, 128, 128);
-    transition: all 0.3s;
-    border-radius: 10rem;
-    z-index: -1;
-}
-
-.btn-space:hover {
-    color: #fff;
-}
-
-.btn-space:hover:before {
-    width: 100%;
-    margin-right: 10px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-} */
 
 /* ========== FOOTER ========== */
 footer {
@@ -160,3 +109,12 @@ footer i {
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+
+    #nurse-table {
+        padding: 0 10vw;
+    }
+}

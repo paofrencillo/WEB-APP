@@ -130,19 +130,15 @@ function tableSearch() {
 
 //select course
 var rows = $("#tabledata tr");
-
 $("#select-course").on("change", function() {
-
     var selected = this.value;
-
     if (selected != "All") {
-
         rows.filter("[course=" + selected + "]").show();
         rows.not("[course=" + selected + "]").hide();
-        
     } else {
         rows.show();
     }
+<<<<<<< HEAD
 
 });
 
@@ -160,4 +156,6 @@ $('#pdfclick').click(function () {
             'elementHandlers': specialElementHandlers
     });
     doc.save('bokpdf.pdf');
+=======
+>>>>>>> d1cc3fb0f2c339faf379520493b3dc6801a75b59
 });

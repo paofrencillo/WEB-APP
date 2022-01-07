@@ -21,7 +21,7 @@
 <body>
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <img class="navbar-brand p-0 m-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
           <a class="nav-link" href=""> <i class="bi bi-download"></i> DOWNLOAD PDF</a>
         </li>
         <li id="logout" class="nav-item ml-3">
-          <a class="nav-link" href="../../admission/admission-coor/coordinator-login.html">
+          <a class="nav-link" href="../../admission/coordinator/coordinator-login.html">
             <i class="bi bi-box-arrow-right"></i>LOGOUT</a>
         </li>
       </ul>
@@ -42,35 +42,38 @@
   <br>
 
 <!-- ================= SELECT COURSE ================= -->
-<div class="container-fluid mx-0 row justify-content-between align-items-center">
+<div  class="container-fluid mx-0 row justify-content-between align-items-center">
   <h2 id="coor-name">Hello, Juan Dela Cruz</h2>
   <div class="row px-0 mx-0 justify-content-start search-combo">
-    <input type="search" name="search" id="search" placeholder="Search here">
+    <input type="search" name="search" id="search" onkeyup="tableSearch()" placeholder="Search here">
     &nbsp;&nbsp;&nbsp;
           <!-- ================= SELECT COURSE ================= -->
-              <label for="Course"> Select Course &nbsp;</label>
-              <select name="course" id="course">
-                  <option value="BS Civil Engineering">
-                      BS Civil Engineering</option>
-                  <option value="BET COET">
-                      BET COET</option>
-                  <option value="BET ESET">
-                      BET ESET</option>
-              </select>
+          <label id="label-course"> Filter by Course &nbsp;</label>
+          <select id="select-course">
+            <option value="All" selected> All</option>
+            <option value="BSCE">
+              BSCE</option>
+            <option value="BET-COET">
+              BET-COET</option>
+            <option value="BET-ESET">
+              BET-ESET</option>
+            <option value="BET-PPET">
+              BET-PPET</option>
+          </select>
       </div>
 </div>
       <!-- TABLE -->
       <BR></BR>
       <div class="container-fluid">
-        <div class="table-responsive-md">
-          <table class="table table-bordered table table-hover">
+        <div class="table-responsive">
+          <table id="coor-table" class="table table-bordered table table-hover">
             <thead class="thead-light">
               <tr>
-                <th rowspan="2" ></th></th> 
+                <th rowspan="2" ></th>&nbsp;</th> 
                 <th rowspan="2" style="vertical-align: middle;" class="text-center">NAME OF APPLICANT</th>
                 <th rowspan="2" style="vertical-align: middle;" class="text-center">SEX</th>
                 <th rowspan="2" style="vertical-align: middle;" class="text-center">SCORE</th>
-                <th rowspan="2" style="vertical-align: middle;" class="text-center">STRAND</th>
+                <th rowspan="2" style="vertical-align: middle;" class="text-center">COURSE</th>
                 <th rowspan="2" style="vertical-align: middle;" class="text-center">MEDICAL</th>
                 <th rowspan="2" style="vertical-align: middle;" class="text-center">INTERVIEW</th>
                 <th colspan="4" style="vertical-align: middle;" class="text-center">REQUIREMENT</th>
@@ -80,153 +83,15 @@
                         <th class="text-center">BC</th>
                         <th class="text-center">GMC</th>
                         <th class="text-center">PSA</th>
-                      </tr>
-                  <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>FRENCILLO, PAOLO M</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>KILARIO, RONIEL C.</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>MONTARIL, VINCENT JAKE F.</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>PAANOD, CEFRIN E.</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>Nikol Kostas</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>Nik Vissarion</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>Nikolaos Artemis</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>Xenofon Nikoletta</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
-    <tr>
-      <td>
-                    <input type="checkbox" name="" id="">
-                </td>
-                <td>Spiros Gavriil</td>
-                <td>M</td>
-                <td>100/100</td>
-                <td>tvl-css</td>
-                <td>PASSED</td>
-                <td>PASSED</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-    </tr>
+                      </tr>      
+            </thead>
+
+            <tbody id="tabledata"></tbody>
+
           </table>
         </div>
       </div>
     <br>
-    <div id="admission" class="container-fluid ">
-        <button type="button" class="admission-buttons"> PASSED </button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="admission-buttons"> Failed </button>
-    </div>
     </div>
     <HR></HR>
 
@@ -264,6 +129,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
+  <script src="../../admission/coordinator/js/coor-table.js"></script>
   
 </body>
 

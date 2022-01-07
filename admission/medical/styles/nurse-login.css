@@ -93,65 +93,6 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: rgb(189, 32, 49);
 }
-/* button
-.btn-flip {
-    opacity: 1;
-    outline: 0;
-    color: #EFB5B9;
-    line-height: 40px;
-    position: relative;
-    text-align: center;
-    letter-spacing: 1px;
-    display: inline-block;
-    text-decoration: none;
-    font-family: "Open Sans";
-    text-transform: uppercase;
-    margin-top: 2rem;
-    margin-bottom: 1rem;  
-}
-
-.btn-flip:hover:after {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-}
-
-.btn-flip:hover:before {
-    opacity: 0;
-    transform: translateY(50%) rotateX(90deg);
-}
-
-.btn-flip:after {
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    color: #323237;
-    display: block;
-    transition: 0.5s;
-    position: absolute;
-    background: #b69799;
-    content: attr(data-back);
-    transform: translateY(-50%) rotateX(90deg);
-    border-radius: 5px 5px 5px 5px ;
-    padding: 5px ;
-}
-  
-.btn-flip:before {
-    top: 0;
-    left: 0;
-    opacity: 1;
-    color: #000000;
-    display: block;
-    padding: 0 30px;
-    line-height: 40px;
-    transition: 0.5s;
-    position: relative;
-    background: #BD2031;
-    content: attr(data-front);
-    transform: translateY(0) rotateX(0);
-    border-radius: 5px 5px 5px 5px ;
-    padding: 5px 30px;
-} */
 
 form p {
     color: #181818;
@@ -199,3 +140,12 @@ footer i {
 }
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+
+    #main-container {
+        padding: 10vh 10vw;
+    }
+}

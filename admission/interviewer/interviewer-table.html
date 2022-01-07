@@ -19,7 +19,7 @@
 <body>
   <!-- ================= TUP-C BANNER w/ DL PDF & LOGOUT ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <img class="navbar-brand p-0 m-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,42 +41,54 @@
   <br>
 
   <!-- ================= SEARCH , COMBO, NAME ================= -->
-  <div class="container-fluid row mx-0 justify-content-between align-items-center">
+  <div id="inter-table" class="container-fluid row mx-0 justify-content-between align-items-center ">
     <h2 id="interviewer-name">Hello, Juan Dela Cruz</h2>
     <div class="row px-0 mx-0 justify-content-end search-combo">
-      <input type="search" name="search" id="search" placeholder="Search name">
+      <input type="search" id="searchInput" onkeyup="tableSearch()" placeholder="Search name">
+      
       <!-- ================= SELECT COURSE ================= -->
-      <label for="Course"> Select Course</label>
-      <select name="course" id="course">
-        <option value="BS Civil Engineering">
-          BS Civil Engineering</option>
-        <option value="BET COET">
+      <label id="label-course"> Filter by Course</label>
+      
+      <select id="select-course">
+        <option value="All" selected> All</option>
+        <option value="BSCE">
+          BSCE</option>
+        <option value="BET-COET">
           BET COET</option>
-        <option value="BET ESET">
+        <option value="BET-ESET">
           BET ESET</option>
+        <option value="BET-PPET">
+          BET-PPET</option>
       </select>
     </div>
+      
+  <div class="container-fluid row justify-content-center buttons">
+    <button type="button" class="btn-space" onclick="clickedPassed()" id="button" value="Passed"> PASSED </button>
+    &nbsp;
+    <button type="button" class="btn-space" onclick="clickedFailed()" id="button" value="Failed"> FAILED </button>
+  </div>
   </div>
   <br>
-  <br>
+  
 
-  <div class="container-fluid">
-    <div class="table-responsive">
-      <table class="table table-bordered table table-hover">
+
+  <div class="container-fluid mt-2 " >
+    <div class="table-responsive" style = "overflow-y: scroll; height:60vh;">
+      <table id = "mytable" class="table table-bordered">
         <thead class="thead-light">
           <tr>
-            <th><input type="checkbox"></th>
+            <th></th>
             <th>NAME</th>
             <th>CONTROL NUMBER</th>
+            <th>COURSE</th>
             <th>EMAIL</th>
-            <th>COURSE APPLIED</th>
             <th>DATE OF INTERVIEW</th>
             <th>VENUE</th>
             <th>INTERVIEWER</th>
             <th>RESULT</th>
           </tr>
         </thead>
-        <tr>
+        <!-- <tr>
           <td><input type="checkbox"></td>
           <td>Vincent Jake Montaril</td>
           <td>190187</td>
@@ -141,17 +153,19 @@
           <td>TBA</td>
           <td>Mr.Jay Victor Gumboc</td>
           <td>No result</td>
-        </tr>
+        </tr> -->
+        <tbody id="tabledata"></tbody>
       </table>
     </div>
   </div>
   <br>
-  <div class="container-fluid row justify-content-center buttons">
+  
+  <!-- <div class="container-fluid row justify-content-center buttons">
       <button type="button" class="btn-space"> Passed </button>
       &nbsp; &nbsp;
       <button type="button" class="btn-space"> Failed </button>
       <button type="button" id="modify-btn" class="btn-space"> Modify </button>  
-  </div>
+  </div> -->
 
   <!-- ================= FOOTER ================= -->
   <footer class="container-fluid row px-0 py-2 m-0">
@@ -186,6 +200,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
+  <script src="../../admission/interviewer/js/interviewer-table.js"></script>
+  
 
 </body>
 

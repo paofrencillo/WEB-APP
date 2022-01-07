@@ -161,3 +161,14 @@ footer a:hover{
 footer i {
     padding-right: 0.7em;
 }
+
+
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+
+    #coor-table {
+        padding: 0 10vw;
+    }
+}

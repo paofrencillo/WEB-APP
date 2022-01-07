@@ -139,3 +139,14 @@ footer a:hover{
 footer i {
     padding-right: 0.7em;
 }
+
+
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+
+    #main-container {
+        padding: 10vh 10vw;
+    }
+}

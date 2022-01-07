@@ -22,7 +22,7 @@
 <body>
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <img class="navbar-brand p-0 m-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -52,18 +52,18 @@
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Coordinator Login</legend>
-      <form action="" class="was-validated">
+      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
         <div class="form-group">
-          <label for="coordinator-email">Email Address</label>
-          <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
+          <label for="nurse-email">Email Address</label>
+          <input type="email" id="coordinator-email" class="form-control" name="coordinator-email" required />
         </div>
         <div class="form-group">
-          <label for="coordinator-pass">Password</label>
-          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
+          <label for="nurse-pass">Password</label>
+          <input type="password" id="coordinator-pass" class="form-control" name="coordinator-pass" required />
         </div>
         <div class="form-group">
           <input type="submit" value="Login">
-        </div> 
+        </div>   
       </form>
     </fieldset>
   </div>
@@ -101,6 +101,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
+  <script src="js/coor-login.js"></script>
   
 </body>
 

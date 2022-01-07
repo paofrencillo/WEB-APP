@@ -32,6 +32,11 @@ nav {
     font-size: 1.25rem;
 }
 
+.bi-pencil-square{
+    color:green;
+    cursor:pointer;
+}
+
 nav a:hover  {
     color: gray;
 }
@@ -42,9 +47,17 @@ nav a:hover  {
     font-weight: 550;
 }
 
+#search {
+    margin-right: 5px;
+}
+
+#label-course {
+    margin: 10px;
+}
+
 /* ========== TABLE ========== */
 .container-fluid {
-    padding: 0 7vw;
+    padding: 0 5vw;
 }
 
 /* ========== TABLE ========== */
@@ -53,12 +66,8 @@ nav a:hover  {
 }
 
 .table tr:hover > td {
-    background-color: rgb(189, 32, 49);
+    background-color: rgba(189, 32, 49, 0.6);
     color: white;
-}
-
-.table tr:first-child:hover {
-    background-color: white;   
 }
 
 .btn-space {
@@ -147,3 +156,12 @@ footer i {
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+
+    #inter-table {
+        padding: 0 10vw;
+    }
+}
