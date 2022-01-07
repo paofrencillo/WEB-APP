@@ -90,14 +90,18 @@ function selectedrow(event) {
 
 //pass-fail function
 function clickedPassed() {
-  //this gives id of tr whose button was clicked
-  var data = document.getElementById(rowdata).querySelectorAll(".row-result");
-  data[0].innerHTML = "PASSED";
+  if(rowdata != undefined) {
+    //this gives id of tr whose button was clicked
+    var data = document.getElementById(rowdata).querySelectorAll(".row-result");
+    data[0].innerHTML = "PASSED";
+  }
 }
 function clickedFailed() {
+  if(rowdata != undefined) {
   //this gives id of tr whose button was clicked
   var data = document.getElementById(rowdata).querySelectorAll(".row-result"); 
   data[0].innerHTML = "FAILED";
+  }
 }
 
 //search table
@@ -137,7 +141,7 @@ $("#select-course").on("change", function() {
 $(document).ready(function(){
   $('input[type="file"]').change(function(e){
       var fileName = e.target.files[0].name;
-      filelists.push(fileName);
+      filelists.push(fileName + ", " + rowdata);
       console.log(filelists);
   });
 });
