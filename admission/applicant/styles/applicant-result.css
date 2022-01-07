@@ -164,3 +164,9 @@ footer i {
         font-size: 0.95rem;
     }
 }
+
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+}

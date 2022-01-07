@@ -73,7 +73,20 @@ function editFunction(event){
     selectedRowData.result = result;
     console.log(selectedRowData);
 
-    data[0].innerHTML='<i class="bi bi-save" onclick="saveFunction(event)" ></i> <span> <i class="bi bi-x" onclick="cancelFunction(event)"></i> </span>';
+    data[0].innerHTML='<i class="bi bi-save" onclick="saveFunction(event)" ></i><span><i class="bi bi-x" onclick="cancelFunction(event)"></i></span>';
+
+    // disable other row
+    var rows = document.getElementById(studentData.number);
+    var attr = rows.firstElementChild.firstElementChild.getAttributeNode("onclick");
+    console.log("asdasdsadasd", rows);
+    for (let row of rows) {
+      if ( row.id != rowId ){
+        console.log("ajshdhasd", row)
+        
+        row.firstElementChild.firstElementChild.removeAttributeNode(attr);
+
+      }
+    }
 
     if (highlightedRow != undefined) {
       var rowSelected2 = document.getElementById(highlightedRow); 
@@ -96,12 +109,11 @@ function editFunction(event){
 
       console.log(returnToPreviousState);
       returnToPreviousState[7].contentEditable = false;
-
-    }
+    } 
 
     highlightedRow = rowId;
-    
   }
+
   //5,6,7
   var edit = document.getElementById(rowId).querySelectorAll("td");
   console.log(edit);
@@ -112,8 +124,6 @@ function editFunction(event){
 
   console.log(edit);
   edit[7].contentEditable = true;
-
-
 }
  
 function saveFunction(event){
@@ -141,22 +151,21 @@ function saveFunction(event){
     console.log(rowId);
     var edit = document.getElementById(highlightedRow).querySelectorAll("td");
     console.log(edit);
-    edit[5].firstElementChild.disabled = true;
-
-    
+    edit[5].firstElementChild.disabled = true;  
   }
 
-
+  rowId = undefined;
+  highlightedRow = undefined;
 }
 
-function cancelFunction(event){
+function cancelFunction(event) {
   var cancelData = document.getElementById(rowId).querySelectorAll("td");
   cancelData[5].firstElementChild.value = selectedRowData.date;
   cancelData[6].innerHTML = selectedRowData.venue;
   cancelData[7].innerHTML = selectedRowData.interviewer;
   cancelData[8].innerHTML = selectedRowData.result;
 
-  if (highlightedRow != undefined) {
+  if ( highlightedRow != undefined ) {
     var rowSelected2 = document.getElementById(highlightedRow);
     console.log("highlightedRow", highlightedRow);
     rowSelected2.style.backgroundColor = "rgb(255, 255, 255)";
@@ -168,6 +177,9 @@ function cancelFunction(event){
     console.log(edit);
     edit[5].firstElementChild.disabled = true;
   }
+
+  rowId = undefined;
+  highlightedRow = undefined;
 }
 
 //pass-fail function
@@ -182,7 +194,6 @@ function clickedFailed() {
   //this gives id of tr whose button was clicked
   var data = document.getElementById(rowId).querySelectorAll("td"); 
   data[8].innerHTML = "FAILED";
-
 }
 
 //search table
@@ -194,20 +205,20 @@ function tableSearch() {
   table = document.getElementById("mytable");
   tr = table.getElementsByTagName('tr');
 
-  for(let i = 0; i < tr.length; i++){
+  for( let i = 0; i < tr.length; i++ ){
     td = tr[i].getElementsByTagName('td')[1]
-    if(td) {
+
+    if ( td ) {
       txtValue = td.textContent || td.innerText;
-      if(txtValue.indexOf(filter) > -1){
+
+      if( txtValue.indexOf(filter) > -1 ){
         tr[i].style.display = "";
-      }
-      else {
+      } else {
         tr[i].style.display = "none";
       }
     }
   }
 }
-
 
 //select course
 var rows = $("#tabledata tr");
@@ -217,12 +228,9 @@ $("#select-course").on("change", function() {
     var selected = this.value;
 
     if (selected != "All") {
-
         rows.filter("[course=" + selected + "]").show();
-        rows.not("[course=" + selected + "]").hide();
-        
+        rows.not("[course=" + selected + "]").hide();   
     } else {
         rows.show();
     }
-
 });

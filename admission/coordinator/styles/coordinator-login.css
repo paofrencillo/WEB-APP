@@ -138,3 +138,12 @@ footer i {
 }
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+
+    #main-container {
+        padding: 10vh 10vw;
+    }
+}

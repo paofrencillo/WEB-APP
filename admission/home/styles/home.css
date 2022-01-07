@@ -88,8 +88,7 @@ nav a:hover  {
 }
 
 #lower-section {
-    padding-top: 18vh;
-    padding-bottom: 10vh;
+    padding: 10vh 70px;
 }
 
 #guidelines li {
@@ -188,3 +187,19 @@ footer i {
         font-size: 1.5rem;
     }     
 }
+
+@media screen and (max-width: 550px) {
+    nav img {
+        width: 80%;
+    }
+    
+    .carousel-inner {
+        height: 450px;
+    }
+
+    #lower-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
