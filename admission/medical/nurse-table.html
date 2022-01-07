@@ -11,6 +11,7 @@
   <!-- ================= BOOTSTRAP ================= -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
   <!-- ================= CSS ================= -->
   <link rel="stylesheet" href="../medical/styles/nurse-table.css" />
@@ -29,7 +30,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li id="dl-pdf" class="nav-item ml-3">
-          <a class="nav-link" href="#"> <i class="bi bi-download"></i> DOWNLOAD PDF</a>
+          <div id="pdf">
+            <a class="nav-link"><button id="pdfclick"></button> DOWNLOAD PDF</a>
+          </div>
         </li>
         <li id="logout" class="nav-item ml-3">
           <a class="nav-link" href="../../admission/medical/nurse-login.html">
@@ -124,7 +127,7 @@
 
   <!-- Other scripts -->
   <script src="../../admission/medical/js/nurse-table.js"></script>
-
+  
 </body>
 
 </html>
