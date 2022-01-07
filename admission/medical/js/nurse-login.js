@@ -1,6 +1,6 @@
 //Temporary login credentials
-var emailAdd = "asd@email.com";
-var password = "asdasd";
+var emailAdd = "test@email.com";
+var password = "123";
 
 function validateLogin() {
     //Get the entries from the input boxes
