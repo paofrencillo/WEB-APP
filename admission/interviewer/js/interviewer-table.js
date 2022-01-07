@@ -76,14 +76,15 @@ function editFunction(event){
     data[0].innerHTML='<i class="bi bi-save" onclick="saveFunction(event)" ></i><span><i class="bi bi-x" onclick="cancelFunction(event)"></i></span>';
 
     // disable other row
-    var rows = document.getElementById(studentData.number);
-    var attr = rows.firstElementChild.firstElementChild.getAttributeNode("onclick");
-    console.log("asdasdsadasd", rows);
-    for (let row of rows) {
-      if ( row.id != rowId ){
-        console.log("ajshdhasd", row)
+    var rows = document.getElementsByTagName("tr");
+    
+    for (var i = 1; i < rows.length; i++) {
+      if ( rows[i].id != highlightedRow ){
+        console.log("ajshdhasd", rows[i])
+        console.log("1st child", rows[i].firstElementChild.firstElementChild);
         
-        row.firstElementChild.firstElementChild.removeAttributeNode(attr);
+        rows[i].firstElementChild.firstElementChild.removeAttribute("onclick");
+        console.log("sucess")
 
       }
     }
