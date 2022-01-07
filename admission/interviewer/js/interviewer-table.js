@@ -184,7 +184,7 @@ function tableSearch() {
   let input, filter, table, tr, td, txtValue;
 
   input = document.getElementById("searchInput");
-  filter = input.value;
+  filter = input.value.toUpperCase();
   table = document.getElementById("mytable");
   tr = table.getElementsByTagName('tr');
 
@@ -194,7 +194,7 @@ function tableSearch() {
     if ( td ) {
       txtValue = td.textContent || td.innerText;
 
-      if( txtValue.indexOf(filter) > -1 ){
+      if( txtValue.toUpperCase().indexOf(filter) > -1 ){
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";

@@ -11,11 +11,19 @@ let studentData = [
   file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
   {name:'Montaril, Vincent Jake', number:'0175', course:'BET-PPET', email:'monta@gmail.com', mresult:'', 
   file:'<input type="file" accept=".jpg, .png" id="fileupload"  onclick="test(event)"></input>'},
-  {name:'Kilario, Roniel', number:'0195', course:'BSCE', email:'kilario@gmail.com', mresult:'', 
+  {name:'Kilario, Roniel', number:'0195', course:'BSME', email:'kilario@gmail.com', mresult:'', 
   file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
   {name:'Fetalbo, Dominic', number:'0155', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
   file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Pastor, Jonathan', number:'0205', course:'BET-PPET', email:'Pastor@gmail.com', mresult:'', 
+  {name:'Lagasca, Neil', number:'0206', course:'BSME', email:'lagasca@gmail.com', mresult:'', 
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
+  {name:'Jean, Paul', number:'0211', course:'BET-CT', email:'paulpaul@gmail.com', mresult:'', 
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
+  {name:'Quiza, James', number:'0208', course:'BSIE-ICT', email:'jamesQ@gmail.com', mresult:'', 
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
+  {name:'Honor, Ranzel', number:'0215', course:'BTTE-E', email:'Honor@gmail.com', mresult:'', 
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
+  {name:'Xqc, Felix', number:'0225', course:'BSIE-ICT', email:'pepega@gmail.com', mresult:'', 
   file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'}
 ];
 
@@ -108,7 +116,7 @@ function clickedFailed() {
 function tableSearch() {
   let input, filter, table, tr, td, txtValue;
   input = document.getElementById("myinput");
-  filter = input.value;
+  filter = input.value.toUpperCase();
   table = document.getElementById("mytable");
   tr = table.getElementsByTagName('tr');
 
@@ -116,7 +124,7 @@ function tableSearch() {
     td = tr[i].getElementsByTagName('td')[0]
     if(td) {
       txtValue = td.textContent || td.innerText;
-      if(txtValue.indexOf(filter) > -1){
+      if(txtValue.toUpperCase().indexOf(filter) > -1){
         tr[i].style.display = "";
       }
       else {

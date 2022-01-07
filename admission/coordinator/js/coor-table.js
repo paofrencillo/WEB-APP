@@ -51,7 +51,7 @@ function tableSearch() {
     let input, filter, table, tr, td, i, txtValue;
   
     input = document.getElementById("search");
-    filter = input.value;
+    filter = input.toUpperCase().value;
     table = document.getElementById("coor-table");
     tr = table.getElementsByTagName('tr');
   
@@ -59,7 +59,7 @@ function tableSearch() {
       td = tr[i].getElementsByTagName('td')[1]
       if(td) {
         txtValue = td.textContent || td.innerText;
-        if(txtValue.indexOf(filter) > -1){
+        if(txtValue.toUpperCase().indexOf(filter) > -1){
           tr[i].style.display = "";
         }
         else {
