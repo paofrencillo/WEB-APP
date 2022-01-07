@@ -15,6 +15,7 @@ body {
 /* ========== HEADER w/ NAVBAR ========== */
 nav {
     background-color: #bd2031;
+    box-shadow: 0px 5px 7px rgb(0 0 0 / 30%);
 }
 
 .bi-download, .bi-box-arrow-right {

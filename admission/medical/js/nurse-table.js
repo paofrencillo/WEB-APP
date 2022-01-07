@@ -1,5 +1,6 @@
 var rowdata = undefined;
 var a = undefined;
+var filelists = [];
 //JS FOR NURSE TABLE
 
 //Student Info----
@@ -34,7 +35,7 @@ function loadTableData(studentData) {
                   <td>${student.course}</td>
                   <td>${student.email}</td>
                   <td class="row-result">${student.mresult}</td>
-                  <td>${student.file}</td>
+                  <td class="inputfile">${student.file}</td>
                 </tr>`;
   }
 
@@ -69,8 +70,8 @@ function highlight_row() {
 function test(event) {
   var rowId2 = event.target.parentNode.parentNode.id;
   if(event.target) {
-    a = rowId2
-    console.log(a)
+    a = rowId2;
+    console.log(a);
   }
 }
 
@@ -131,4 +132,12 @@ $("#select-course").on("change", function() {
     } else {
         rows.show();
     }
+});
+//select file
+$(document).ready(function(){
+  $('input[type="file"]').change(function(e){
+      var fileName = e.target.files[0].name;
+      filelists.push(fileName);
+      console.log(filelists);
+  });
 });
