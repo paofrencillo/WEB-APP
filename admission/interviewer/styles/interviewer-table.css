@@ -54,12 +54,20 @@ nav a:hover  {
     font-weight: 550;
 }
 
-#search {
-    margin-right: 5px;
+#searchInput {
+    width: 205px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px
+}
+
+#select-course {
+    height: 40px;
 }
 
 #label-course {
-    margin: 10px;
+    border-radius: 30px;
+    padding-left: 15px;
 }
 
 /* ========== TABLE ========== */
@@ -98,7 +106,6 @@ nav a:hover  {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(189, 32, 49);
     border-radius: 10rem;
     z-index: -2;
 }
@@ -110,7 +117,6 @@ nav a:hover  {
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: rgb(128, 128, 128);
     transition: all 0.3s;
     border-radius: 10rem;
     z-index: -1;
@@ -122,6 +128,22 @@ nav a:hover  {
 
 .btn-space:hover:before {
     width: 100%;
+}
+
+#passed-btn:after {
+    background-color: rgb(45, 146, 59);
+}
+
+#passed-btn:before {
+    background-color: rgb(71, 230, 92);
+}
+
+#failed-btn:after {
+    background-color: rgb(197, 73, 73);
+}
+
+#failed-btn:before {
+    background-color: rgb(228, 10, 10);
 }
 
 /* ========== FOOTER ========== */

@@ -46,26 +46,27 @@
     <div class="row px-0 mx-0 justify-content-end search-combo">
       <input type="search" id="searchInput" onkeyup="tableSearch()" placeholder="Search name">
       
-      <!-- ================= SELECT COURSE ================= -->
-      <label id="label-course"> Filter by Course</label>
-      
-      <select id="select-course">
-        <option value="All" selected> All</option>
-        <option value="BSCE">
-          BSCE</option>
-        <option value="BET-COET">
-          BET COET</option>
-        <option value="BET-ESET">
-          BET ESET</option>
-        <option value="BET-PPET">
-          BET-PPET</option>
-      </select>
+      <!-- ================= SELECT COURSE ================= --> 
+      <div>
+        <label id="label-course"> Filter by Course</label>
+        <select id="select-course">
+          <option value="All" selected> All</option>
+          <option value="BSCE">
+            BSCE</option>
+          <option value="BET-COET">
+            BET COET</option>
+          <option value="BET-ESET">
+            BET ESET</option>
+          <option value="BET-PPET">
+            BET-PPET</option>
+        </select>
+      </div>
     </div>
       
   <div class="container-fluid row justify-content-center buttons">
-    <button type="button" class="btn-space" onclick="clickedPassed()" id="button" value="Passed"> PASSED </button>
+    <button type="button" class="btn-space" onclick="clickedPassed()" id="passed-btn" value="Passed"> PASSED </button>
     &nbsp;
-    <button type="button" class="btn-space" onclick="clickedFailed()" id="button" value="Failed"> FAILED </button>
+    <button type="button" class="btn-space" onclick="clickedFailed()" id="failed-btn" value="Failed"> FAILED </button>
   </div>
   </div>
   <br>

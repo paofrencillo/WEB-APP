@@ -46,26 +46,27 @@
   <h2 id="coor-name">Hello, Juan Dela Cruz</h2>
   <div class="row px-0 mx-0 justify-content-start search-combo">
     <input type="search" name="search" id="search" onkeyup="tableSearch()" placeholder="Search here">
-    &nbsp;&nbsp;&nbsp;
-          <!-- ================= SELECT COURSE ================= -->
-          <label id="label-course"> Filter by Course &nbsp;</label>
-          <select id="select-course">
-            <option value="All" selected> All</option>
-            <option value="BSCE">
-              BSCE</option>
-            <option value="BET-COET">
-              BET-COET</option>
-            <option value="BET-ESET">
-              BET-ESET</option>
-            <option value="BET-PPET">
-              BET-PPET</option>
-          </select>
+      <!-- ================= SELECT COURSE ================= -->
+      <div>
+        <label id="label-course">Filter by Course</label>
+        <select id="select-course">
+          <option value="All" selected>All</option>
+          <option value="BSCE">
+            BSCE</option>
+          <option value="BET-COET">
+            BET-COET</option>
+          <option value="BET-ESET">
+            BET-ESET</option>
+          <option value="BET-PPET">
+            BET-PPET</option>
+        </select>
       </div>
-</div>
+    </div>
+  </div>
       <!-- TABLE -->
       <BR></BR>
       <div class="container-fluid">
-        <div class="table-responsive">
+        <div class="table-responsive" style = "overflow-y: scroll; height:60vh;">
           <table id="coor-table" class="table table-bordered table table-hover">
             <thead class="thead-dark">
               <tr>

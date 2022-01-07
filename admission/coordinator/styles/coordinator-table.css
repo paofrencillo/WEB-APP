@@ -39,6 +39,22 @@ nav a:hover  {
     box-shadow: 0 0 30px black;
 }
 
+#search {
+    width: 205px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px
+}
+
+#select-course {
+    height: 40px;
+}
+
+#label-course {
+    border-radius: 30px;
+    padding-left: 15px;
+}
+
 
 /* ========== NAME ========== */
 #coor-name {
@@ -78,7 +94,7 @@ nav a:hover  {
     background-color: white;   
 }
 
-/* ========== Buttons ========== */
+/* ========== Buttons ==========
 
 .admission-buttons {
     display: inline-block;
@@ -92,8 +108,9 @@ nav a:hover  {
     position: relative;
     overflow: hidden;
     z-index: 1;
-  }
-  .admission-buttons:after {
+}
+
+.admission-buttons:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -103,8 +120,9 @@ nav a:hover  {
     background-color: rgb(189, 32, 49);
     border-radius: 10rem;
     z-index: -2;
-  }
-  .admission-buttons:before {
+}
+
+.admission-buttons:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -115,18 +133,20 @@ nav a:hover  {
     transition: all 0.3s;
     border-radius: 10rem;
     z-index: -1;
-  }
-  .admission-buttons:hover {
-    color: #fff;
-  }
-  .admission-buttons:hover:before {
-    width: 100%;
-  }
-  #admission{
-    width: 500px;
-    padding-left: 13px;
 }
 
+.admission-buttons:hover {
+    color: #fff;
+}
+    
+.admission-buttons:hover:before {
+    width: 100%;
+    }
+
+#admission{
+    width: 500px;
+    padding-left: 13px;
+} */
 
 
 /* ========== FOOTER ========== */
