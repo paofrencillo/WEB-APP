@@ -32,9 +32,16 @@ nav {
     font-size: 1.25rem;
 }
 
-.bi-pencil-square{
-    color:green;
-    cursor:pointer;
+.bi-pencil-square {
+    font-size: 20px;
+    color: green;
+    cursor: pointer;
+}
+
+.bi-x, .bi-save {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
 }
 
 nav a:hover  {
@@ -115,10 +122,6 @@ nav a:hover  {
 
 .btn-space:hover:before {
     width: 100%;
-}
-
-#modify-btn {
-    margin-left: auto;
 }
 
 /* ========== FOOTER ========== */

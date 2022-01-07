@@ -1,31 +1,30 @@
-
-
 var rowId = undefined;
-var highlightedRow = undefined;
+
 //Student Info
 var studentData = [
-  {edit:'<i class="bi bi-pencil-square" onclick="editFunction(event)" ></i>',
+  {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
   name:'Montaril, Vincent Jake', number:'190187', course:'BET-COET', email:'monta@gmail.com', date:'<input type="date" id="190187" disabled>' , 
   venue:'Industrial Department', interviewer:'Ms.Dela cruz', result:'',},
-  {edit:'<i class="bi bi-pencil-square" onclick="editFunction(event)" ></i>',
+  {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
   name:'Frencillo, Paolo', number:'190666', course:'BET-COET', email:'pao@gmail.com', date:'<input type="date" id="190666" disabled>', 
   venue:'Industrial Department', interviewer:'Ms.Dela cruz', result:'',},
-  {edit:'<i class="bi bi-pencil-square" onclick="editFunction(event)" ></i>',
+  {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
   name:'Paanod, Cefrin', number:'190123', course:'BET-ESET', email:'cef@gmail.com', date:'<input type="date" id="190123" disabled>',
   venue:'Vulcanizing Department', interviewer:'Ms.Nalalabuan', result:'',}, 
-  {edit:'<i class="bi bi-pencil-square" onclick="editFunction(event)" ></i>',
+  {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
   name:'Kilario, Roniel', number:'190321', course:'BET-PPET', email:'ron@gmail.com', date:'<input type="date" id="190321" disabled>', 
   venue:'TBA', interviewer:'Mr.Johnny Simp', result:'',},
-  {edit:'<i class="bi bi-pencil-square" onclick="editFunction(event)" ></i>',
+  {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
   name:'Curry, Steph', number:'190030', course:'BSCE', email:'step@gmail.com', date:'<input type="date" id="190030" disabled>', 
   venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
-  {edit:'<i class="bi bi-pencil-square" onclick="editFunction(event)" ></i>',
+  {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
   name:'James, Lebron', number:'190623', course:'BSCE', email:'bron@gmail.com', date:'<input type="date" id="190623" disabled>', 
   venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
 ];
 
+// Selected Row Data
 var selectedRowData = [
-  {date:'', venue:'', interviewer:'', result:'' }
+  {id : '', date:'', venue:'', interviewer:'', result:'' }
 ]
 
 loadTableData(studentData)
@@ -52,148 +51,119 @@ function loadTableData(studentData) {
   tableBody.innerHTML = dataHtml
 }
 
-function editFunction(event){
+// When edit icon is pressed, this will execute
+function editFunction(event) {
+  // Get the ID of the row
   var rowdata = event.target.parentNode.parentNode.id;
-  if (event.target) {
+  if ( event.target ) {
     rowId = rowdata;
     var rowSelected = document.getElementById(rowId);
     console.log("rowId", rowId);
+    // Change the Bg-color and font color of selected row
     rowSelected.style.backgroundColor = "rgb(189, 32, 49)";
     rowSelected.style.color = "rgb(255, 255, 255)";
+    // Get the value of the specific cells
+    // Store first the data of cell in the object selectedRowData{}
     var data = document.getElementById(rowId).querySelectorAll("td");
     console.log(data);
     var date = data[5].firstElementChild.value;
     var venue = data[6].innerHTML;
     var interviewer = data[7].innerHTML;
     var result = data[8].innerHTML;
-    
+    selectedRowData.id = rowId;
     selectedRowData.date = date;
     selectedRowData.venue = venue;
     selectedRowData.interviewer = interviewer;
     selectedRowData.result = result;
-    console.log(selectedRowData);
+    console.log("Selected Row Data: ", selectedRowData);
 
-    data[0].innerHTML='<i class="bi bi-save" onclick="saveFunction(event)" ></i><span><i class="bi bi-x" onclick="cancelFunction(event)"></i></span>';
+    // Change the icon of the selected row
+    data[0].innerHTML='<i class="bi bi-save" data-toggle="tooltip" data-placement="top" title="Save changes" onclick="saveFunction(event)" ></i><span><i class="bi bi-x" data-toggle="tooltip" data-placement="top" title="Cancel" onclick="cancelFunction(event)"></i></span>';
 
-    // disable other row
+    // Remove the onclick attribute on other edit icon in other rows
     var rows = document.getElementsByTagName("tr");
-    
-    for (var i = 1; i < rows.length; i++) {
-      if ( rows[i].id != highlightedRow ){
-        console.log("ajshdhasd", rows[i])
+    for ( var i = 1; i < rows.length; i++ ) {
+      if ( rows[i].id != rowId ){
         console.log("1st child", rows[i].firstElementChild.firstElementChild);
-        
         rows[i].firstElementChild.firstElementChild.removeAttribute("onclick");
-        console.log("sucess")
-
       }
     }
-
-    if (highlightedRow != undefined) {
-      var rowSelected2 = document.getElementById(highlightedRow); 
-      console.log("highlightedRow", highlightedRow);
-      rowSelected2.style.backgroundColor = "rgb(255, 255, 255)";
-      rowSelected2.style.color = "rgb(0, 0, 0)";
-      var data = document.getElementById(highlightedRow).querySelectorAll("td");
-      data[0].innerHTML='<i class="bi bi-pencil-square" onclick="editFunction(event)"></i>';
-      console.log(rowId);
-      var edit = document.getElementById(highlightedRow).querySelectorAll("td");
-      console.log(edit);
-      edit[5].firstElementChild.disabled = true;
-
-      var returnToPreviousState = document.getElementById(highlightedRow).querySelectorAll("td");
-      console.log(returnToPreviousState);
-      returnToPreviousState[5].firstElementChild.disabled = true;
-
-      console.log(returnToPreviousState);
-      returnToPreviousState[6].contentEditable = false;
-
-      console.log(returnToPreviousState);
-      returnToPreviousState[7].contentEditable = false;
-    } 
-
-    highlightedRow = rowId;
   }
 
-  //5,6,7
-  var edit = document.getElementById(rowId).querySelectorAll("td");
-  console.log(edit);
+  // Set the attribute value of cells to edit
+  let edit = document.getElementById(rowId).querySelectorAll("td");
   edit[5].firstElementChild.disabled = false;
-
-  console.log(edit);
   edit[6].contentEditable = true;
-
-  console.log(edit);
   edit[7].contentEditable = true;
 }
  
 function saveFunction(event){
-  var saveData = document.getElementById(rowId).querySelectorAll("td");
-  console.log(saveData);
-  saveData[5].firstElementChild.value;
-  console.log(saveData[5].firstElementChild.value);
+  // Get the changed data in specific cells and display it on console
+  let saveData = document.getElementById(rowId).querySelectorAll("td");
+  let date = saveData[5].firstElementChild.value;
+  let venue = saveData[6].innerText;
+  let interviewer = saveData[7].innerText;
+  let result = saveData[8].innerText;
+  console.log("Saved Data of ID", rowId, ": ", date, venue, interviewer, result);
 
-  var venue = saveData[6].innerText;
-  console.log(venue);
+  // Set the row into its default properties
+  let rowId2 = document.getElementById(rowId);
+  let data = document.getElementById(rowId).querySelectorAll("td");
+  rowId2.style.backgroundColor = "rgb(255, 255, 255)";
+  rowId2.style.color = "rgb(0, 0, 0)";
+  data[0].innerHTML='<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)"></i>';
+  data[5].firstElementChild.disabled = true;
+  data[6].contentEditable = false;
+  data[7].contentEditable = false;
 
-  var interviewer = saveData[7].innerText;
-  console.log(interviewer);
-
-  var result = saveData[8].innerText;
-  console.log(result);
-
-  if (highlightedRow != undefined) {
-    var rowSelected2 = document.getElementById(highlightedRow);
-    console.log("highlightedRow", highlightedRow);
-    rowSelected2.style.backgroundColor = "rgb(255, 255, 255)";
-    rowSelected2.style.color = "rgb(0, 0, 0)";
-    var data = document.getElementById(highlightedRow).querySelectorAll("td");
-    data[0].innerHTML='<i class="bi bi-pencil-square" onclick="editFunction(event)"></i>';
-    console.log(rowId);
-    var edit = document.getElementById(highlightedRow).querySelectorAll("td");
-    console.log(edit);
-    edit[5].firstElementChild.disabled = true;  
+  // Return the onclick attribute on every edit icon
+  let rows = document.getElementsByTagName("tr");
+  for (let i = 1; i < rows.length; i++) { 
+      rows[i].firstElementChild.firstElementChild.setAttribute("onclick", "editFunction(event)");
   }
 
+  // Set the global variable rowId to undefined
   rowId = undefined;
-  highlightedRow = undefined;
 }
 
 function cancelFunction(event) {
-  var cancelData = document.getElementById(rowId).querySelectorAll("td");
+  // Return stored data if user cancels the edit
+  let cancelData = document.getElementById(rowId).querySelectorAll("td");
   cancelData[5].firstElementChild.value = selectedRowData.date;
   cancelData[6].innerHTML = selectedRowData.venue;
   cancelData[7].innerHTML = selectedRowData.interviewer;
   cancelData[8].innerHTML = selectedRowData.result;
 
-  if ( highlightedRow != undefined ) {
-    var rowSelected2 = document.getElementById(highlightedRow);
-    console.log("highlightedRow", highlightedRow);
-    rowSelected2.style.backgroundColor = "rgb(255, 255, 255)";
-    rowSelected2.style.color = "rgb(0, 0, 0)";
-    var data = document.getElementById(highlightedRow).querySelectorAll("td");
-    data[0].innerHTML='<i class="bi bi-pencil-square" onclick="editFunction(event)"></i>';
-    console.log(rowId);
-    var edit = document.getElementById(highlightedRow).querySelectorAll("td");
-    console.log(edit);
-    edit[5].firstElementChild.disabled = true;
+  // Set the row into its default properties
+  let rowId2 = document.getElementById(rowId);
+  let data = document.getElementById(rowId).querySelectorAll("td");
+  rowId2.style.backgroundColor = "rgb(255, 255, 255)";
+  rowId2.style.color = "rgb(0, 0, 0)";
+  data[0].innerHTML='<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)"></i>';
+  data[5].firstElementChild.disabled = true;
+  data[6].contentEditable = false;
+  data[7].contentEditable = false;
+
+  // Return the onclick attribute on every edit icon
+  let rows = document.getElementsByTagName("tr");
+  for (let i = 1; i < rows.length; i++) { 
+      rows[i].firstElementChild.firstElementChild.setAttribute("onclick", "editFunction(event)");
   }
 
+  // Set the global variable rowId to undefined
   rowId = undefined;
-  highlightedRow = undefined;
 }
 
 //pass-fail function
 function clickedPassed() {
   //this gives id of tr whose button was clicked
-  var data = document.getElementById(rowId).querySelectorAll("td");
-
+  let data = document.getElementById(rowId).querySelectorAll("td");
   data[8].innerHTML = "PASSED";
 }
 
 function clickedFailed() {
   //this gives id of tr whose button was clicked
-  var data = document.getElementById(rowId).querySelectorAll("td"); 
+  let data = document.getElementById(rowId).querySelectorAll("td"); 
   data[8].innerHTML = "FAILED";
 }
 
