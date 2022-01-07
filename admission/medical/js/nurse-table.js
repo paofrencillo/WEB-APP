@@ -5,15 +5,15 @@ var a = undefined;
 //Student Info----
 let studentData = [
   {name:'Frencillo, Paolo', number:'0165', course:'BET-COET', email:'pao@gmail.com', mresult:'', 
-  file:'<input type="file" name="image" id="0165" onclick="test(event)"></input>'},
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
   {name:'Paanod, Cefrin', number:'0185', course:'BET-ESET', email:'cef@gmail.com', mresult:'', 
-  file:'<input type="file" name="image" id="0185" onclick="test(event)"></input>'},
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
   {name:'Montaril, Vincent Jake', number:'0175', course:'BET-PPET', email:'monta@gmail.com', mresult:'', 
-  file:'<input type="file" name="image" id="0175"  onclick="test(event)"></input>'},
+  file:'<input type="file" accept=".jpg, .png" id="fileupload"  onclick="test(event)"></input>'},
   {name:'Kilario, Roniel', number:'0195', course:'BSCE', email:'kilario@gmail.com', mresult:'', 
-  file:'<input type="file" name="image" id="0195" onclick="test(event)"></input>'},
-  {name:'Fediablo, Demonic', number:'0155', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
-  file:'<input type="file" name="image" id="0195" onclick="test(event)"></input>'}
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
+  {name:'Fetalbo, Dominic', number:'0155', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
+  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'}
 ];
 
 loadTableData(studentData)
@@ -144,4 +144,20 @@ $("#select-course").on("change", function() {
         rows.show();
     }
 
+});
+
+//pdf
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#pdf': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#pdfclick').click(function () {
+    doc.fromHTML($('#tabledata tr').html(), 15, 15, {
+        'width': 150,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('bokpdf.pdf');
 });
