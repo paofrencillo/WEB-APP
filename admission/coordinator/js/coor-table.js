@@ -48,7 +48,7 @@ function loadTableData(studentData) {
 
 
 function tableSearch() {
-    let input, filter, table, tr, td, i, txtValue;
+    let input, filter, table, tr, td, txtValue;
   
     input = document.getElementById("search");
     filter = input.toUpperCase().value;
