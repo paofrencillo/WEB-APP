@@ -99,14 +99,14 @@ function selectedrow(event) {
 //pass-fail function
 function clickedPassed() {
   if(rowdata != undefined) {
-    //this gives id of tr whose button was clicked
+    //this gives id of table row whose button was clicked
     var data = document.getElementById(rowdata).querySelectorAll(".row-result");
     data[0].innerHTML = "PASSED";
   }
 }
 function clickedFailed() {
   if(rowdata != undefined) {
-  //this gives id of tr whose button was clicked
+  //this gives id of table row whose button was clicked
   var data = document.getElementById(rowdata).querySelectorAll(".row-result"); 
   data[0].innerHTML = "FAILED";
   }
@@ -115,6 +115,8 @@ function clickedFailed() {
 //search table
 function tableSearch() {
   let input, filter, table, tr, td, txtValue;
+
+  //initializing variables
   input = document.getElementById("myinput");
   filter = input.value.toUpperCase();
   table = document.getElementById("mytable");
