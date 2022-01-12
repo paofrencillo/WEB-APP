@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="../../res/tup_logo.png" />
+  <link rel="icon" href="{% static 'Media/tup_logo.png'}" />
   <title>TUP - Cavite | Admission Home Page</title>
 
   <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
@@ -14,14 +16,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
   <!-- ================= CSS ================= -->
-  <link rel="stylesheet" href="../home/styles/home.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 
 
 <body>
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0 " src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
+    <img class="navbar-brand p-0 " src="../../../../res/tup_banner.jpg" alt="this is TUPC banner" width="375px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
