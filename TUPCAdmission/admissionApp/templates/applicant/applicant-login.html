@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="{% static 'res/tup_logo.png' %}" />
+  <title>TUP - Cavite | Applicant Login</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="{% static 'css/applicant-login.css' %}" />
+</head>
+
+
+<body>
+  <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
+  {% include 'navbar1.html' %}
+
+  <div id="main-container" class="container-fluid">
+    <!-- ================= LOGIN FORM ================= -->
+    <fieldset class="container">
+      <legend>Applicant Login</legend>
+      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
+        <div class="form-group">
+          <label for="applicant-email">Email Address</label>
+          <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
+        </div>
+        <div class="form-group">
+          <label for="applicant-pass">Password</label>
+          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Login">
+        </div>   
+        <p>
+          If you are new applicant,
+          <a href="{% url 'applicant-registration' %}">click here</a> to
+          register.
+        </p>
+      </form>
+    </fieldset>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  {% include 'footer-scripts.html' %}
+
+  <!-- Other scripts -->
+  <script src="{% static 'js/applicant-login.js' %}"></script>
+  
+</body>
+
+
+</html>
