@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
 
+# Create your views here.
 def home(request):
     return render(request, 'home/home.html')
 
-
-
+def coordinator_login(request):
+    return render(request, 'coordinator/coordinator-login.html')
