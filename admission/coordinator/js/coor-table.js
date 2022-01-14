@@ -1,5 +1,5 @@
 let studentData = [
-    {num:'',name:'Kilario, Roniel',sex:'M',score:'0/100',course:'BSCE',medical:'PASSED',interview:'PASSED',
+    {num:'',name:'KILARIO, RONIEL',sex:'M',score:'0/100',course:'BSCE',medical:'PASSED',interview:'PASSED',
     card:'<input type="checkbox" id="coor-table-card" name="card" value="coor-table-card">',
     bc:'<input type="checkbox" id="coor-table-bc" name="bc" value="coor-table-bc">',
     gmc:'<input type="checkbox" id="coor-table-gmc" name="gmc" value="coor-table-gmc">',
