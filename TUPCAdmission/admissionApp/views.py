@@ -17,3 +17,9 @@ def applicant_result(request):
 
 def coordinator_login(request):
     return render(request, 'coordinator/coordinator-login.html')
+
+def medical_login(request):
+    return render(request, 'medical/nurse-login.html')
+
+def medical_table(request):
+    return render(request, 'medical/nurse-table.html')
