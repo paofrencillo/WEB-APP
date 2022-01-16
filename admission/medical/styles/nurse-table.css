@@ -189,3 +189,9 @@ footer i {
         padding: 0 10vw;
     }
 }
+
+@media screen and (max-width: 456px) {
+    nav img {
+        width: 70%;
+    }
+}
