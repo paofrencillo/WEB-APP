@@ -18,5 +18,7 @@ urlpatterns = [
      # Medical table Page
     path('medical-table/', views.medical_table, name='nurse-table'),
     # Interview Login Page
-    path('interviewer-login/', views.home, name='interviewer-login'),
+    path('interviewer-login/', views.interviewer_login, name='interviewer-login'),
+    # Interview table Page
+    path('interviewer-table/', views.interviewer_table, name='interviewer-table'),
 ]
