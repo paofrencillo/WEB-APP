@@ -23,3 +23,9 @@ def medical_login(request):
 
 def medical_table(request):
     return render(request, 'medical/nurse-table.html')
+
+def interviewer_login(request):
+    return render(request, 'interviewer/interviewer-login.html')
+
+def interviewer_table(request):
+    return render(request, 'interviewer/interviewer-table.html')
