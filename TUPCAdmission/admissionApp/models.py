@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Applicant(models.Model):
     control_number = models.IntegerField(verbose_name="control_number")
@@ -32,16 +33,11 @@ class Interviewer(models.Model):
 
 
 class Accounts_Admins(models.Model):
-    pass
-    # type = models.CharField()
-    # email = models.CharField()
-    # password = models.CharField()
+    account_type = models.CharField(max_length=10, verbose_name="account_type")
+    email = models.CharField(max_length=100, verbose_name="email")
+    password = models.CharField(max_length=255, verbose_name="password")
 
 
 class Courses(models.Model):
-    pass
-    # course_code = models.CharField()
-    # course = models.CharField()
-
-
-
+    course_code = models.CharField(max_length=10, verbose_name="course_code")
+    course = models.CharField(max_length=100, verbose_name="course")
