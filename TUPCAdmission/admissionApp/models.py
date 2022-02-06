@@ -20,5 +20,15 @@ class Interviewer(models.Model):
 
 class Accounts_Admins(models.Model):
     pass
+    # type = models.CharField()
+    # email = models.CharField()
+    # password = models.CharField()
+
+
+class Courses(models.Model):
+    pass
+    # course_code = models.CharField()
+    # course = models.CharField()
+
 
 
