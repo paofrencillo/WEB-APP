@@ -35,7 +35,7 @@ class Medical(models.Model):
     medical_file = models.ImageField(upload_to = 'image/')
 
     class Meta:
-        db_table = "MedicalInfoTable",
+        db_table = "MedicalInfoTable"
 
 class Interviewer(models.Model):
     pass
