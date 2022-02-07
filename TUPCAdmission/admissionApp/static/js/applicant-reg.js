@@ -1,23 +1,52 @@
-function register() {
-    // Get all inputs
-    const APPLICANT_REG_INFO = {
-        controlNumber : getControlNumber(),
-        firstName : document.forms["reg-form"]["f-name"].value,
-        middleName : document.forms["reg-form"]["m-name"].value,
-        lastName : document.forms["reg-form"]["l-name"].value,
-        suffix : document.forms["reg-form"]["suffix"].value,
-        birthDate : document.forms["reg-form"]["birthdate"].value,
-        sex : getSex(),
-        status : getStatus(),
-        course : document.forms["reg-form"]["course"].value,
-        strand : document.forms["reg-form"]["strand"].value,
-        email : document.forms["reg-form"]["email"].value,
-        password : matchPassword()
-    };
+var CSRF_TOKEN = '{{ csrf_token }}';
 
-    console.log(APPLICANT_REG_INFO);
-    alert("Registration Complete!");
-    location.href = "../../admission/applicant/applicant-login.html";
+function register() {
+    let firstName = document.forms["reg-form"]["firstName"].value
+    let middleName = document.forms["reg-form"]["middleName"].value
+    let lastName = document.forms["reg-form"]["lastName"].value
+    let suffix = document.forms["reg-form"]["suffix"].value
+
+    if ( suffix != '' ) {
+        get_fullName = lastName + ', ' + firstName + ' ' + middleName + ' ' + suffix + '.'
+    } else {
+        get_fullName = lastName + ', ' + firstName + ' ' + middleName
+    }
+    // Get all inputs
+    // const APPLICANT_REG_INFO = {
+    //     control_number : getControlNumber(),
+    //     fullName : get_fullName,
+    //     suffix : document.forms["reg-form"]["suffix"].value,
+    //     birthDate : document.forms["reg-form"]["birthdate"].value,
+    //     sex : getSex(),
+    //     status : getStatus(),
+    //     course : document.forms["reg-form"]["course"].value,
+    //     strand : document.forms["reg-form"]["strand"].value,
+    //     email : document.forms["reg-form"]["email"].value,
+    //     password : matchPassword(),
+    //     csrfmiddlewaretoken : CSRF_TOKEN
+    // };
+
+    $.ajax({
+        url: 'create_applicant/',
+        type: 'POST',
+        data: {
+            control_number : getControlNumber(),
+            fullName : get_fullName,
+            suffix : document.forms["reg-form"]["suffix"].value,
+            birthdate : document.forms["reg-form"]["birthdate"].value,
+            sex : getSex(),
+            status : getStatus(),
+            course : document.forms["reg-form"]["course"].value,
+            strand : document.forms["reg-form"]["strand"].value,
+            email : document.forms["reg-form"]["email"].value,
+            password : matchPassword(),
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+        },
+    });
+
+    // console.log(APPLICANT_REG_INFO);
+    
+    // location.href = "../templates/applicants/applicant-login.html";
 }
 
 function matchPassword() {
@@ -32,6 +61,7 @@ function matchPassword() {
         return a;
     }
 }
+
 
 function getControlNumber() {
     // Control Number Format : Year + number of applicants in current year+1

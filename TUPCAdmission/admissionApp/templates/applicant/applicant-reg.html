@@ -28,21 +28,22 @@
   <div id="main-container" class="container-fluid">
     <fieldset class="container">
       <legend>Applicant Registration</legend>
-      <form name="reg-form" action="javascript:register();" class="was-validated">
+      <form method="POST" name="reg-form" class="was-validated">
+        {% csrf_token %}
         <div class="form-group">
-          <label for="f-name">First Name</label>
-          <input type="text" name="f-name" id="f-name" class="form-control" placeholder="Juan" required />
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Juan" required />
         </div>
 
         <div class="form-group">
-          <label for="m-name">Middle Name</label>
-          <input type="text" name="m-name" id="m-fname" class="form-control" placeholder="-" />
+          <label for="middleName">Middle Name</label>
+          <input type="text" name="middleName" id="middleName" class="form-control" placeholder="-" />
           <small class="form-text mb-0 pb-0"><i>Leave it blank if has nothing to input.</i></small>
         </div>
 
         <div class="form-group">
-          <label for="l-name">Last Name</label>
-          <input type="text" name="l-name" id="l-name" class="form-control" placeholder="Dela Cruz" required />
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Dela Cruz" required />
         </div>
 
         <div class="container-fluid row justify-content-between m-0 p-0">
@@ -97,22 +98,22 @@
           <label for="course">Course (1st Choice)</label>
           <select name="course" id="course" class="custom-select" required>
             <option value="">Select Course</option>
-            <option value="bsce">BS - Civil Engineering</option>
-            <option value="bsee">BS - Electrical Engineering</option>
-            <option value="bsme">BS - Mechanical Engineering</option>
-            <option value="bet-et">BET - Electrical Technology</option>
-            <option value="bet-eset">BET - Electronics Technology Track: Industrial Automation Technology</option>
-            <option value="bet-coet">BET - Computer Engineering Technology</option>
-            <option value="bet-ct">BET - Civil Technology</option>
-            <option value="bet-mt">BET - Mechanical Technology</option>
-            <option value="bet-at">BET - Mechanical Engineering Technology Track: Automative Technology</option>
-            <option value="bet-ppt">BET - Mechanical Engineering Technology Track: Power Plant Technology</option>
-            <option value="bsie-ict">BSIE - Information and Communication Technology</option>
-            <option value="btte-au">BTTE - Automative</option>
-            <option value="btte-el">BTTE - Electrical</option>
-            <option value="btte-e">BTTE - Electronics</option>
-            <option value="btte-hvact">BTTE - Heating, Ventilation, and Air Conditioning</option>
-            <option value="btte-cp">BTTE - Computer Programming</option>
+            <option value="BSCE">BS - Civil Engineering</option>
+            <option value="BSEE">BS - Electrical Engineering</option>
+            <option value="BSME">BS - Mechanical Engineering</option>
+            <option value="BET-ET">BET - Electrical Technology</option>
+            <option value="BET-ESET">BET - Electronics Technology Track: Industrial Automation Technology</option>
+            <option value="BET-COET">BET - Computer Engineering Technology</option>
+            <option value="BET-CT">BET - Civil Technology</option>
+            <option value="BET-MT">BET - Mechanical Technology</option>
+            <option value="BET-AT">BET - Mechanical Engineering Technology Track: Automative Technology</option>
+            <option value="BET-PPT">BET - Mechanical Engineering Technology Track: Power Plant Technology</option>
+            <option value="BSIE-ICT">BSIE - Information and Communication Technology</option>
+            <option value="BTTE-AU">BTTE - Automative</option>
+            <option value="BTTE-EL">BTTE - Electrical</option>
+            <option value="BTTE-E">BTTE - Electronics</option>
+            <option value="BTTE-HVACT">BTTE - Heating, Ventilation, and Air Conditioning</option>
+            <option value="BTTE-CP">BTTE - Computer Programming</option>
           </select>
         </div>
 
@@ -147,7 +148,7 @@
         <br>
         <br>
         <div class="form-group">
-          <input type="submit" value="Register">
+          <input type="submit" onclick="register();" value="Register">
         </div>
       </form>
     </fieldset>
@@ -157,7 +158,9 @@
   {% include 'footer-scripts.html' %}
 
   <!-- Other scripts -->
+  {% block javascript %}
   <script src="{% static 'js/applicant-reg.js' %}"></script>
+  {% endblock javascript %}
 
 </body>
 

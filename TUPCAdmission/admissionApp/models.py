@@ -1,29 +1,24 @@
-from distutils.command.upload import upload
-from typing_extensions import Required
 from django.db import models
 
 
 # Create your models here.
-class Applicant(models.Model):
+class ApplicantInfo(models.Model):
     control_number = models.IntegerField(verbose_name="control_number")
-    lastName = models.CharField(max_length=100, verbose_name="lastName")
-    firstName = models.CharField(max_length=150, verbose_name="firstName")
-    middleName = models.CharField(max_length=100,verbose_name="middleName")
-    suffix = models.CharField(max_length=5, verbose_name="suffix")
+    fullName = models.CharField(max_length=255, verbose_name="fullName")
     birthdate  = models.DateField(verbose_name="birthdate")
     sex =  models.CharField(max_length=6, verbose_name="sex")
     status = models.CharField(max_length=30, verbose_name="status")
     course = models.CharField(max_length=100,verbose_name="course")
     strand = models.CharField(max_length=100, verbose_name="strand")
-    email = models.CharField(max_length=255, verbose_name="email")
+    email = models.EmailField(max_length=255, verbose_name="email")
     password = models.CharField(max_length=255, verbose_name="password")
 
-    class Meta:
-        db_table = "ApplicantInfoTable"
+
 
 
 class Coordinator(models.Model):
     pass
+    
 
 
 class Medical(models.Model):
@@ -34,8 +29,7 @@ class Medical(models.Model):
     medical_result = models.CharField(max_length=50, verbose_name="result")
     medical_file = models.ImageField(upload_to = 'image/')
 
-    class Meta:
-        db_table = "MedicalInfoTable"
+
 
 class Interviewer(models.Model):
     pass
@@ -43,7 +37,7 @@ class Interviewer(models.Model):
 
 class Accounts_Admins(models.Model):
     account_type = models.CharField(max_length=10, verbose_name="account_type")
-    email = models.CharField(max_length=100, verbose_name="email")
+    email = models.EmailField(max_length=100, verbose_name="email")
     password = models.CharField(max_length=255, verbose_name="password")
 
 
