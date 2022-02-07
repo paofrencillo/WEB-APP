@@ -1,3 +1,4 @@
+from distutils import bcppcompiler
 from distutils.command.upload import upload
 from typing_extensions import Required
 from django.db import models
@@ -23,7 +24,16 @@ class Applicant(models.Model):
 
 
 class Coordinator(models.Model):
-    pass
+    control_number = models.IntegerField(verbose_name="control_number")
+    score =  models.IntegerField(verbose_name="control_number")
+    card = models.BooleanField()
+    bc = models.BooleanField()
+    gmc = models.BooleanField()
+    psa = models.BooleanField()
+    
+    class Meta:
+        db_table = "CoordinatorInfoTable"
+
 
 
 class Medical(models.Model):
