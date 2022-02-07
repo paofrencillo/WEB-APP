@@ -14,12 +14,14 @@ class ApplicantInfo(models.Model):
     password = models.CharField(max_length=255, verbose_name="password")
 
 
-
-
 class Coordinator(models.Model):
-    pass
+    control_number = models.IntegerField(verbose_name="control_number")
+    score =  models.IntegerField(verbose_name="control_number")
+    card = models.BooleanField()
+    bc = models.BooleanField()
+    gmc = models.BooleanField()
+    psa = models.BooleanField()
     
-
 
 class Medical(models.Model):
     name = models.CharField(max_length=50, verbose_name="name")
@@ -28,7 +30,6 @@ class Medical(models.Model):
     email = models.EmailField(max_length=100, verbose_name="email")
     medical_result = models.CharField(max_length=50, verbose_name="result")
     medical_file = models.ImageField(upload_to = 'image/')
-
 
 
 class Interviewer(models.Model):
