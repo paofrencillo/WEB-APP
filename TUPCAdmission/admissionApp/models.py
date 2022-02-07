@@ -32,8 +32,15 @@ class Medical(models.Model):
 
 
 class Interviewer(models.Model):
-    pass
+    name = models.CharField(max_length=50, verbose_name="name")
+    control_number = models.IntegerField(verbose_name="control_number")
+    interview_date  = models.DateField(verbose_name="interview_date")
+    venue = models.CharField(max_length=50, verbose_name="venue")
+    interviewer = models.CharField(max_length=50, verbose_name="interviewer")
+    interviewer_result = models.CharField(max_length=50, verbose_name="result")
 
+    class Meta:
+        db_table = "InterviewerInfoTable"
 
 class Accounts_Admins(models.Model):
     account_type = models.CharField(max_length=10, verbose_name="account_type")
