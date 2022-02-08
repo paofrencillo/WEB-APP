@@ -40,7 +40,7 @@
           <input type="password" id="nurse-pass" class="form-control" name="nurse-pass" required />
         </div>
         <div class="form-group">
-          <input type="submit" value="Login">
+          <input type="submit" value="Login" href="{% static 'medical/nurse-table.html'}">
         </div>   
       </form>
     </fieldset>
@@ -48,15 +48,6 @@
 
   <!-- ================= FOOTER ================= -->
   {% include 'footer-scripts.html' %}
-
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
   <script src="{% static 'js/nurse-login.js' %}"></script>

@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('admissionApp.urls')),
     path('admin/', admin.site.urls),
     re_path('create_applicant/', views.create_applicant, name="create_applicant"),
+    re_path('medical_table/',views.medical_table, name="medical_table"),
 ]

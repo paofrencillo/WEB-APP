@@ -83,7 +83,18 @@
           </tr>
         </thead>
         
-        <tbody id="tabledata"></tbody>
+        <tbody id="tabledata">
+          {% for stud in student %}  
+            <tr>
+              <td>{{stud.fullname}}</td>
+              <td>{{stud.control_number}}</td>
+              <td>{{stud.course}}</td>
+              <td>{{stud.emaai}}</td>
+              <td>{{''}}</td>
+              <td>{{''}} </td>
+            </tr>
+          {% endfor %} 
+        </tbody>
 
       </table>
     </div>
@@ -91,15 +102,6 @@
 
   <!-- ================= FOOTER ================= -->
   {% include 'footer-scripts.html' %}
-
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Other scripts -->
   <script src="{% static 'js/nurse-table.js' %}"></script>
