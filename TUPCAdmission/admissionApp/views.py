@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.http import JsonResponse
 from .models import ApplicantInfo
 
 
 # Create your views here.
-
-
 def home(request):
     return render(request, 'home/home.html')
 
@@ -29,7 +28,6 @@ def create_applicant(request):
         )
 
         return render(request, 'applicant/applicant-login.html')
-
 
 def applicant_result(request):
     return render(request, 'applicant/applicant-result.html')

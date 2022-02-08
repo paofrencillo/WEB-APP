@@ -1,4 +1,4 @@
-var CSRF_TOKEN = '{{ csrf_token }}';
+
 
 function register() {
     let firstName = document.forms["reg-form"]["firstName"].value
@@ -11,24 +11,11 @@ function register() {
     } else {
         get_fullName = lastName + ', ' + firstName + ' ' + middleName
     }
-    // Get all inputs
-    // const APPLICANT_REG_INFO = {
-    //     control_number : getControlNumber(),
-    //     fullName : get_fullName,
-    //     suffix : document.forms["reg-form"]["suffix"].value,
-    //     birthDate : document.forms["reg-form"]["birthdate"].value,
-    //     sex : getSex(),
-    //     status : getStatus(),
-    //     course : document.forms["reg-form"]["course"].value,
-    //     strand : document.forms["reg-form"]["strand"].value,
-    //     email : document.forms["reg-form"]["email"].value,
-    //     password : matchPassword(),
-    //     csrfmiddlewaretoken : CSRF_TOKEN
-    // };
-
+    
+    // Ipapadala sa database
     $.ajax({
-        url: 'create_applicant/',
-        type: 'POST',
+        url : 'create_applicant/',
+        type : 'POST',
         data: {
             control_number : getControlNumber(),
             fullName : get_fullName,
@@ -42,11 +29,15 @@ function register() {
             password : matchPassword(),
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
         },
-    });
 
-    // console.log(APPLICANT_REG_INFO);
-    
-    // location.href = "../templates/applicants/applicant-login.html";
+        // MAY BUG PA DITO SA SUCCESS AT ERROR !!!
+        success : function() {
+            alert("ACCOUNT REGISTRATION SUCCESSFULL!");
+        },
+        error : function() {
+            alert("akjdusahkhdjashjd");
+        }
+    });
 }
 
 function matchPassword() {
