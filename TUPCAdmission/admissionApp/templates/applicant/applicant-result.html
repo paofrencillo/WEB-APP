@@ -22,7 +22,14 @@
 
 <body>
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
-  {% include 'navbar2.html' %}
+  <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
+    <img class="navbar-brand p-0" src="{% static 'res/tupc-banner-red.png' %}" alt="this is TUPC banner" width="375px">
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li id="dl-pdf" class="nav-item ml-3">
             <a id="download" class="nav-link" href="#">
               <i class="bi bi-download"></i>DOWNLOAD RESULT
             </a>

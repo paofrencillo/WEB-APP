@@ -32,9 +32,9 @@ function getApplicantInfo() {
     DATA IN DATABASE */
 
     // TEMPORARY DATA TO USE
-    let firstName = "Cardo";
-    let middleName = "Unkillable";
-    let lastName = "Dalisay";
+    let firstName = "Juan";
+    let middleName = "Ramos";
+    let lastName = "Dela Cruz";
     let suffix = "";
     let fullName = undefined;
 
