@@ -1,35 +1,22 @@
+var CSRF_TOKEN = '{{ csrf_token }}';
+
 var rowdata = undefined;
 var a = undefined;
 var filelists = [];
 //JS FOR NURSE TABLE
 
 //Student Info----
-let studentData = [
-  {name:'Frencillo, Paolo', number:'0165', course:'BET-COET', email:'pao@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Paanod, Cefrin', number:'0185', course:'BET-ESET', email:'cef@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Montaril, Vincent Jake', number:'0175', course:'BET-PPET', email:'monta@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload"  onclick="test(event)"></input>'},
-  {name:'Kilario, Roniel', number:'0195', course:'BSME', email:'kilario@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Fetalbo, Dominic', number:'0155', course:'BET-COET', email:'Fetable@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Lagasca, Neil', number:'0206', course:'BSME', email:'lagasca@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Jean, Paul', number:'0211', course:'BET-CT', email:'paulpaul@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Quiza, James', number:'0208', course:'BSIE-ICT', email:'jamesQ@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Honor, Ranzel', number:'0215', course:'BTTE-E', email:'Honor@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'},
-  {name:'Xqc, Felix', number:'0225', course:'BSIE-ICT', email:'pepega@gmail.com', mresult:'', 
-  file:'<input type="file" accept=".jpg, .png" id="fileupload" onclick="test(event)"></input>'}
-];
-
-loadTableData(studentData)
-
-
+$(document).ready(function() {
+    $.ajax({    //create an ajax request to display.php
+      type: "GET",
+      url: "create_applicant/",             
+      dataType: "html",   //expect html to be returned                
+      success: function(response){                    
+          $("#tabledata").html(response); 
+          //alert(response);
+      }
+  });
+});
 
 //insert data function
 function loadTableData(studentData) {

@@ -39,7 +39,8 @@ def medical_login(request):
     return render(request, 'medical/nurse-login.html')
 
 def medical_table(request):
-    return render(request, 'medical/nurse-table.html')
+    students = ApplicantInfo.objects.all()
+    return render(request, 'medical/nurse-table.html', {'student':students})
 
 def interviewer_login(request):
     return render(request, 'interviewer/interviewer-login.html')
