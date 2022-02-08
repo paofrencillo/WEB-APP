@@ -28,7 +28,7 @@
   <div id="main-container" class="container-fluid">
     <fieldset class="container">
       <legend>Applicant Registration</legend>
-      <form method="POST" name="reg-form" class="was-validated">
+      <form method="POST" action="{% url 'applicant-login' %}" name="reg-form" class="was-validated">
         {% csrf_token %}
         <div class="form-group">
           <label for="firstName">First Name</label>
