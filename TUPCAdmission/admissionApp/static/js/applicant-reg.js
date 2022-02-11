@@ -33,9 +33,10 @@ function register() {
         // MAY BUG PA DITO SA SUCCESS AT ERROR !!!
         success : function() {
             alert("ACCOUNT REGISTRATION SUCCESSFULL!");
+            location.reload();
         },
         error : function() {
-            alert("akjdusahkhdjashjd");
+            alert("ACCOUNT REGISTRATION FAILED!");
         }
     });
 }

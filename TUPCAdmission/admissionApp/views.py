@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
 from .models import ApplicantInfo
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -8,7 +8,22 @@ def home(request):
     return render(request, 'home/home.html')
 
 def applicant_login(request):
-    return render(request, 'applicant/applicant-login.html')
+    if request.method == 'POST':
+        try:
+
+            applicant_email = request.POST['applicant_email']
+            applicant_pass = request.POST['applicant_pass']
+
+            ApplicantInfo.objects.get(email=applicant_email)
+            ApplicantInfo.objects.get(password=applicant_pass)
+
+            return render(request, 'applicant/applicant-result.html')
+
+        except ObjectDoesNotExist:
+            return redirect('applicant-login.html/')
+    
+    else:
+        return render(request, 'applicant/applicant-login.html')
 
 def applicant_registration(request):
     return render(request, 'applicant/applicant-reg.html')

@@ -28,7 +28,8 @@
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Applicant Login</legend>
-      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
+      <form method="POST" name="login-form" class="was-validated">
+        {% csrf_token %}
         <div class="form-group">
           <label for="applicant-email">Email Address</label>
           <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
@@ -53,7 +54,7 @@
   {% include 'footer-scripts.html' %}
 
   <!-- Other scripts -->
-  <script src="{% static 'js/applicant-login.js' %}"></script>
+  <!-- <script src="{% static 'js/applicant-login.js' %}"></script> -->
   
 </body>
 

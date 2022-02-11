@@ -72,7 +72,7 @@ label {
     font-size: 1.2rem;
 }
 
-#applicant-email, #applicant-pass {
+#applicant_email, #applicant_pass {
     width: 100%;
     height: 40px;
     border-radius: 10px;
