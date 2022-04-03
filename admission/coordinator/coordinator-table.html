@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../res/tup_logo.png" />
+  <title>TUP - Cavite | Admission Coordinator Table</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="../../admission/coordinator/styles/coordinator-table.css" />
+</head>
+
+
+<body id="body">
+  <!-- sidenav -->
+  <div class="sidebar" id="sidebar">
+    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
+    <div class="sidebar-brand" id="sidebar-brand">
+      <span><img class="tup-logo" id="tup-logo" src="../../res/tup_logo.png" alt="tup logo">
+      </span>TUP - Cavite Campus
+    </div>
+    <div class="sidebar-things">
+      <img src="../../res/avatar-male.png" alt="avatar" id="avatar" />
+      <div id="coordinator-info">
+        <div id="coor-name-wrapper">
+          <h6 id="coor-name">Ako, Si Coordinator X.</h6>
+        </div>
+      </div>
+      <div id="download-wrapper">
+        <a id="download" href="#">
+          <i class="bi bi-download"></i><span id="download-text"> Download Result</span>
+        </a>
+      </div>
+      <div id="logout-wrapper">
+        <a id="logout" href="#">
+          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <div class="main-content" id="main-content">
+    <div class="main-container">
+      <div class="row justify-content-between header" id="header">
+        <div class="coor-text-wrapper">
+          <i class="bi bi-list" onclick="hamburgerToggle()"></i><span class="coor-table-text">
+            COORDINATOR TABLE</span>
+        </div>
+        <!-- ================= SEARCH ================= -->
+        <div class="search-combo-wrapper">
+          <div class="search-wrapper">
+            <i class="bi bi-search"></i>
+            <input type="search" name="search"
+              id="search-input" onkeyup="tableSearch()" placeholder="Search here">
+          </div>
+          <!-- ================= SELECT COURSE ================= -->
+          <div class="select-wrapper">
+            <label id="label-course">Course</label>
+            <select id="select-course">
+              <option label="--Select Course--" disabled></option>
+              <option value="All" selected>All</option>
+              <option value="BSCE">BSCE</option>
+              <option value="BSEE">BSEE</option>
+              <option value="BSME">BSME</option>
+              <option value="BET-ET">BET-ET</option>
+              <option value="BET-ESET">BET-ESET</option>
+              <option value="BET-COET">BET-COET</option>
+              <option value="BET-CT">BET-CT</option>
+              <option value="BET-MT">BET-MT</option>
+              <option value="BET-AT">BET-AT</option>
+              <option value="BET-PPET">BET-PPET</option>
+              <option value="BSIE-ICT">BSIE-ICT</option>
+              <option value="BTTE-AU">BTTE-AU</option>
+              <option value="BTTE-EL">BTTE-EL</option>
+              <option value="BTTE-E">BTTE-E</option>
+              <option value="BTTE-HVACT">BTTE-HVACT</option>
+              <option value="BTTE-CP">BTTE-CP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- ================= TABLE ================= -->
+      <div class="container-fluid table-wrapper">
+        <div class="table-responsive">
+          <table id="coor-table" class="table table-bordered table-hover table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th rowspan="2" style="vertical-align: middle;"></th>
+                <th rowspan="2" style="vertical-align: middle;">NAME OF APPLICANT</th>
+                <th rowspan="2" style="vertical-align: middle;">SEX</th>
+                <th rowspan="2" style="vertical-align: middle;">SCORE</th>
+                <th rowspan="2" style="vertical-align: middle;">COURSE</th>
+                <th rowspan="2" style="vertical-align: middle;">MEDICAL</th>
+                <th rowspan="2" style="vertical-align: middle;">INTERVIEW</th>
+                <th colspan="4" style="vertical-align: middle;">REQUIREMENT</th>
+              </tr>
+              <tr>
+                <th>Card</th>
+                <th>BC</th>
+                <th>GMC</th>
+                <th>PSA</th>
+              </tr>
+            </thead>
+            <tbody id="tabledata"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
+  <script src="../../admission/coordinator/js/coor-table.js"></script>
+
+
+</body>
+
+
+</html>
