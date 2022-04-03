@@ -18,114 +18,97 @@
 </head>
 
 
-<body>
-  <!-- ================= TUP-C BANNER w/ DL PDF & LOGOUT ================= -->
-  <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0" src="../../res/tupc-banner-white.png" alt="this is TUPC banner" width="375px">
-    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li id="dl-pdf" class="nav-item ml-3">
-          <a id="download" class="nav-link" href="#"><i class="bi bi-download"></i>DOWNLOAD PDF</a>
-        </li>
-        <li id="logout" class="nav-item ml-3">
-          <a class="nav-link" href="../../admission/medical/nurse-login.html">
-            <i class="bi bi-box-arrow-right"></i>LOGOUT</a>
-        </li>
-      </ul>
+<body id="body">
+  <!-- sidenav -->
+  <div class="sidebar" id="sidebar">
+    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
+    <div class="sidebar-brand" id="sidebar-brand">
+      <span><img class="tup-logo" id="tup-logo" src="../../res/tup_logo.png" alt="tup logo">
+      </span>TUP - Cavite Campus
     </div>
-  </nav>
-
-  <br>
-
-  <!-- ================= SEARCH , COMBO, NAME ================= -->
-  <div class="container-fluid mx-0 row justify-content-between align-items-center">
-    <h2 id="nurse-name">Hello, Juan Dela Cruz</h2>
-    <div class="row px-0 mx-0 justify-content-end search-combo">
-      <input type="search" id="myinput" onkeyup="tableSearch()" placeholder="Search Name">
-
-      <!-- ================= SELECT COURSE ================= -->
-      <div>
-        <label id="label-course"> Filter by Course </label>
-        <select id="select-course">
-          <option value="All" selected> All</option>
-          <option value="BSCE">BSCE</option>
-          <option value="BSEE">BSEE</option>
-          <option value="BSME">BSME</option>
-          <option value="BET-ET">BET-ET</option>
-          <option value="BET-ESET">BET-ESET</option>
-          <option value="BET-COET">BET-COET</option>
-          <option value="BET-CT">BET-CT</option>
-          <option value="BET-MT">BET-MT</option>
-          <option value="BET-AT">BET-AT</option>
-          <option value="BET-PPT">BET-PPT</option>
-          <option value="BSIE-ICT">BSIE-ICT</option>
-          <option value="BTTE-AU">BTTE-AU</option>
-          <option value="BTTE-EL">BTTE-EL</option>
-          <option value="BTTE-E">BTTE-E</option>
-          <option value="BTTE-HVACT">BTTE-HVACT</option>
-          <option value="BTTE-CP">BTTE-CP</option>
-        </select>
-
+    <div class="sidebar-things">
+      <img src="../../res/avatar-male.png" alt="avatar" id="avatar" />
+      <div id="nurse-info">
+        <div id="nurse-name-wrapper">
+          <h6 id="nurse-name">Ako, Si Nurse X.</h6>
+        </div>
       </div>
-
-    </div>
-  </div>
-
-  <br>
-  <div class="container-fluid row justify-content-center buttons">
-    <button type="button" onclick="clickedPassed()" class="btn-space" id="passed-btn" value="Passed"> PASSED </button>
-    &nbsp;
-    <button type="button" onclick="clickedFailed()" class="btn-space" id="failed-btn" value="Failed"> FAILED </button>
-  </div>
-
-  <br>
-
-  <div class="container-fluid">
-    <div class="table-responsive" style = "overflow-y: scroll; height:60vh;">
-      <table id="mytable" class="table table-bordered">
-        <thead class="thead-dark">
-          <tr>
-            <th col-index = 1>NAME</th>
-            <th col-index = 2>CONTROL NUMBER</th>
-            <th col-index = 3>COURSE</th>
-            <th col-index = 4>EMAIL</th>
-            <th col-index = 5>MEDICAL RESULT</th>
-            <th col-index = 6>MEDICAL FILE</th>
-          </tr>
-        </thead>
-        
-        <tbody id="tabledata"></tbody>
-
-      </table>
-    </div>
-  </div>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="container-fluid row px-0 py-2 m-0">
-    <p class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 p-0">Contact Us</p>
-    <div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 px-3">
-      <div class="container-fluid row mx-0 px-0 py-2">
-        <a href="(046)416-4920" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-telephone-fill"></i>(046) 416-4920
+      <div id="download-wrapper">
+        <a id="download" href="#">
+          <i class="bi bi-download"></i><span id="download-text"> Download Result</span>
         </a>
-        <a href="mailto:cavite@tup.edu.ph" target="_blank"
-          class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-envelope-fill"></i>cavite@tup.edu.ph
-        </a>
-        <a href="http://www.tup.edu.ph/" target="_blank" class="col col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-globe"></i>www.tup.edu.ph
-        </a>
-        <a href="https://goo.gl/maps/fBbW2s4u5fNMW67G7" target="_blank"
-          class="col col-xl-6 col-lg-3 col-md-12 col-sm-12 col-12 px-1">
-          <i class="bi bi-geo-alt-fill"></i>Carlos Q. Trinidad Avenue, Salawag, Dasmariñas City, Cavite 4114
+      </div>
+      <div id="logout-wrapper">
+        <a id="logout" href="#">
+          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span>
         </a>
       </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <div class="main-content" id="main-content">
+    <div class="main-container">
+      <div class="row justify-content-between header" id="header">
+        <div class="nurse-text-wrapper">
+          <i class="bi bi-list" onclick="hamburgerToggle()"></i><span class="nurse-table-text">
+            NURSE TABLE</span>
+        </div>
+        <!-- ================= SEARCH ================= -->
+        <div class="search-combo-wrapper">
+          <div class="search-wrapper">
+            <i class="bi bi-search"></i>
+            <input type="search" name="search"
+              id="search-input" onkeyup="tableSearch()" placeholder="Search here">
+          </div>
+          <!-- ================= SELECT COURSE ================= -->
+          <div class="select-wrapper">
+            <label id="label-course">Course</label>
+            <select id="select-course">
+              <option label="--Select Course--" disabled></option>
+              <option value="All" selected>All</option>
+              <option value="BSCE">BSCE</option>
+              <option value="BSEE">BSEE</option>
+              <option value="BSME">BSME</option>
+              <option value="BET-ET">BET-ET</option>
+              <option value="BET-ESET">BET-ESET</option>
+              <option value="BET-COET">BET-COET</option>
+              <option value="BET-CT">BET-CT</option>
+              <option value="BET-MT">BET-MT</option>
+              <option value="BET-AT">BET-AT</option>
+              <option value="BET-PPET">BET-PPET</option>
+              <option value="BSIE-ICT">BSIE-ICT</option>
+              <option value="BTTE-AU">BTTE-AU</option>
+              <option value="BTTE-EL">BTTE-EL</option>
+              <option value="BTTE-E">BTTE-E</option>
+              <option value="BTTE-HVACT">BTTE-HVACT</option>
+              <option value="BTTE-CP">BTTE-CP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- ================= TABLE ================= -->
+      <div class="container-fluid table-wrapper">
+        <div class="table-responsive">
+          <table id="nurse-table" class="table table-bordered table-hover table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th></th>
+                <th>NAME</th>
+                <th>CONTROL NUMBER</th>
+                <th>COURSE</th>
+                <th>EMAIL</th>
+                <th>MEDICAL RESULT</th>
+                <th>MEDICAL FILE</th>
+              </tr>
+            </thead>
+            <tbody id="tabledata"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

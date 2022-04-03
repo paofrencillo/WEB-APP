@@ -109,7 +109,7 @@ function editFunction(event) {
   edit[7].contentEditable = true;
 }
  
-function saveFunction(event){
+function saveFunction() {
   // Get the changed data in specific cells and display it on console
   let saveData = document.getElementById(rowId).querySelectorAll("td");
   let date = saveData[5].firstElementChild.value;
@@ -138,7 +138,7 @@ function saveFunction(event){
   rowId = undefined;
 }
 
-function cancelFunction(event) {
+function cancelFunction() {
   // Return stored data if user cancels the edit
   let cancelData = document.getElementById(rowId).querySelectorAll("td");
   cancelData[5].firstElementChild.value = selectedRowData.date;
