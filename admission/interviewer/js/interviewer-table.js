@@ -1,37 +1,36 @@
-var rowId = undefined;
 
 //Student Info
 var studentData = [
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Montaril, Vincent Jake', number:'190187', course:'BET-COET', email:'monta@gmail.com', date:'<input type="date" id="190187" disabled>' , 
-  venue:'Industrial Department', interviewer:'Ms.Dela cruz', result:'',},
+  name:'Montaril, Vincent Jake', number:'190187', course:'BET-COET', date:'<input type="date" id="190187" disabled>' , 
+  venue:'Industrial Department', interviewer:'Ms.Dela cruz', iresult:'PASSED',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Frencillo, Paolo', number:'190666', course:'BET-COET', email:'pao@gmail.com', date:'<input type="date" id="190666" disabled>', 
-  venue:'Industrial Department', interviewer:'Ms.Dela cruz', result:'',},
+  name:'Frencillo, Paolo', number:'190666', course:'BET-COET', date:'<input type="date" id="190666" disabled>', 
+  venue:'Industrial Department', interviewer:'Ms.Dela cruz', iresult:'FAILED',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Paanod, Cefrin', number:'190123', course:'BET-ESET', email:'cef@gmail.com', date:'<input type="date" id="190123" disabled>',
-  venue:'Vulcanizing Department', interviewer:'Ms.Nalalabuan', result:'',}, 
+  name:'Paanod, Cefrin', number:'190123', course:'BET-ESET', date:'<input type="date" id="190123" disabled>',
+  venue:'Vulcanizing Department', interviewer:'Ms.Nalalabuan', iresult:'FAILED',}, 
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Kilario, Roniel', number:'190321', course:'BET-PPET', email:'ron@gmail.com', date:'<input type="date" id="190321" disabled>', 
-  venue:'TBA', interviewer:'Mr.Johnny Simp', result:'',},
+  name:'Kilario, Roniel', number:'190321', course:'BET-PPET', date:'<input type="date" id="190321" disabled>', 
+  venue:'TBA', interviewer:'Mr.Johnny Simp', iresult:'undefined',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Curry, Steph', number:'190030', course:'BSCE', email:'step@gmail.com', date:'<input type="date" id="190030" disabled>', 
-  venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
+  name:'Curry, Steph', number:'190030', course:'BSCE', date:'<input type="date" id="190030" disabled>', 
+  venue:'Engineering Department', interviewer:'Ms.Sana', iresult:'undefined',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'James, Lebron', number:'190623', course:'BSEE', email:'bron@gmail.com', date:'<input type="date" id="190623" disabled>', 
-  venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
+  name:'James, Lebron', number:'190623', course:'BSEE', date:'<input type="date" id="190623" disabled>', 
+  venue:'Engineering Department', interviewer:'Ms.Sana', iresult:'FAILED',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Lapu, Lapu', number:'190543', course:'BET-ET', email:'lapu@gmail.com', date:'<input type="date" id="190543" disabled>', 
-  venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
+  name:'Lapu, Lapu', number:'190543', course:'BET-ET', date:'<input type="date" id="190543" disabled>', 
+  venue:'Engineering Department', interviewer:'Ms.Sana', iresult:'PASSED',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Layla, Smith', number:'190777', course:'BET-CT', email:'layla@gmail.com', date:'<input type="date" id="190777" disabled>', 
-  venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
+  name:'Layla, Smith', number:'190777', course:'BET-CT', date:'<input type="date" id="190777" disabled>', 
+  venue:'Engineering Department', interviewer:'Ms.Sana', iresult:'PASSED',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Bean, Johnny', number:'190888', course:'BET-MT', email:'bean@gmail.com', date:'<input type="date" id="190888" disabled>', 
-  venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
+  name:'Bean, Johnny', number:'190888', course:'BET-MT', date:'<input type="date" id="190888" disabled>', 
+  venue:'Engineering Department', interviewer:'Ms.Sana', iresult:'FAILED',},
   {edit:'<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)" ></i>',
-  name:'Monk, Malik', number:'190697', course:'BET-AT', email:'monk@gmail.com', date:'<input type="date" id="190697" disabled>', 
-  venue:'Engineering Department', interviewer:'Ms.Sana', result:'',},
+  name:'Monk, Malik', number:'190697', course:'BET-AT', date:'<input type="date" id="190697" disabled>', 
+  venue:'Engineering Department', interviewer:'Ms.Sana', iresult:'undefined',},
 ];
 
 // Selected Row Data
@@ -40,152 +39,223 @@ var selectedRowData = [
 ]
 
 loadTableData(studentData)
-
 //insert data function
 function loadTableData(studentData) {
   const tableBody = document.getElementById('tabledata');
   let dataHtml = '';
 
-  for(let student of studentData) {
-    dataHtml += `<tr course = "${student.course}" id="${student.number}">
+  for ( let student of studentData ) {
+    if ( student.iresult == 'FAILED' ) {
+      dataHtml += `<tr course="${student.course}" id="${student.number}">
                   <td>${student.edit}</td>  
                   <td>${student.name}</td>
                   <td>${student.number}</td>
                   <td>${student.course}</td>
-                  <td>${student.email}</td>
                   <td>${student.date}</td>
                   <td>${student.venue}</td>
                   <td>${student.interviewer}</td>
-                  <td class="row-result">${student.result}</td>
+                  <td class="result-col" id="failed">FAILED</td>
+                  </tr>`;
+    } else if ( student.iresult == 'PASSED' ) {
+      dataHtml += `<tr course="${student.course}" id="${student.number}">
+                <td>${student.edit}</td>  
+                <td>${student.name}</td>
+                <td>${student.number}</td>
+                <td>${student.course}</td>
+                <td>${student.date}</td>
+                <td>${student.venue}</td>
+                <td>${student.interviewer}</td>
+                <td class="result-col" id="passed">PASSED</td>
                 </tr>`;
-  }
 
+    } else if ( student.iresult == 'undefined' ) {
+       dataHtml += `<tr course="${student.course}" id="${student.number}">
+                  <td>${student.edit}</td>  
+                  <td>${student.name}</td>
+                  <td>${student.number}</td>
+                  <td>${student.course}</td>
+                  <td>${student.date}</td>
+                  <td>${student.venue}</td>
+                  <td>${student.interviewer}</td>
+                  <td class="result-col" id="undefined">-</td>
+                  </tr>`;
+    }
+  }
   tableBody.innerHTML = dataHtml
 }
 
+var rowId = undefined;
+var data = undefined;
+var selected_row_data  = {id: '',
+                          date: '',
+                          venue: '',
+                          interviewer: '',
+                          result: ''}
 // When edit icon is pressed, this will execute
 function editFunction(event) {
-  // Get the ID of the row
-  var rowdata = event.target.parentNode.parentNode.id;
   if ( event.target ) {
-    rowId = rowdata;
-    var rowSelected = document.getElementById(rowId);
-    console.log("rowId", rowId);
+    // Get the ID of the row
+    rowId = event.target.parentNode.parentNode.id;
     // Change the Bg-color and font color of selected row
-    rowSelected.style.backgroundColor = "rgb(189, 32, 49)";
-    rowSelected.style.color = "rgb(255, 255, 255)";
+    document.getElementById(rowId).style.border = "3px solid red";
     // Get the value of the specific cells
-    // Store first the data of cell in the object selectedRowData{}
-    var data = document.getElementById(rowId).querySelectorAll("td");
-    console.log(data);
-    var date = data[5].firstElementChild.value;
-    var venue = data[6].innerHTML;
-    var interviewer = data[7].innerHTML;
-    var result = data[8].innerHTML;
-    selectedRowData.id = rowId;
-    selectedRowData.date = date;
-    selectedRowData.venue = venue;
-    selectedRowData.interviewer = interviewer;
-    selectedRowData.result = result;
-    console.log("Selected Row Data: ", selectedRowData);
+    data = document.getElementById(rowId).querySelectorAll("td");
+    var date = data[4].firstElementChild.value;
+    var venue = data[5].innerHTML;
+    var interviewer = data[6].innerHTML;
+    var result = data[7].id;
+
+    selected_row_data.id = rowId;
+    selected_row_data.date = date;
+    selected_row_data.venue = venue;
+    selected_row_data.interviewer = interviewer;
+    selected_row_data.result = result;
+    console.log("Selected Row Data: ", selected_row_data);
 
     // Change the icon of the selected row
-    data[0].innerHTML='<i class="bi bi-save" data-toggle="tooltip" data-placement="top" title="Save changes" onclick="saveFunction(event)" ></i><span><i class="bi bi-x" data-toggle="tooltip" data-placement="top" title="Cancel" onclick="cancelFunction(event)"></i></span>';
+    data[0].innerHTML = '<i class="bi bi-save" data-toggle="tooltip" data-placement="top" title="Save changes" \
+                      onclick="saveFunction()" ></i><span><i class="bi bi-x" data-toggle="tooltip" \
+                      data-placement="top" title="Cancel" onclick="cancelFunction()"></i></span>';
 
     // Remove the onclick attribute on other edit icon in other rows
     var rows = document.getElementsByTagName("tr");
     for ( var i = 1; i < rows.length; i++ ) {
       if ( rows[i].id != rowId ){
-        console.log("1st child", rows[i].firstElementChild.firstElementChild);
         rows[i].firstElementChild.firstElementChild.removeAttribute("onclick");
       }
     }
   }
+  // Passed anf Failed buttons
+  if ( data[7].id == 'passed' ) {
+    data[7].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" disabled>\
+                        <span><i class="bi bi-x-circle" id="change-result" onclick="changeResult()"></i></span></div>';
+  } else if ( data[7].id == 'failed' ) {
+    data[7].innerHTML = '<div class="passedorfailed"><input type="button" id="failed-btn" value="FAILED" disabled>\
+                        <span><i class="bi bi-x-circle" id="change-result" onclick="changeResult()"></i></span></div>';
+  } else if ( data[7].id == 'undefined' ) {
+    data[7].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" onclick="passed()">\
+                        <input type="button" id="failed-btn" value="FAILED" onclick="failed()"></div>';
+  }
 
   // Set the attribute value of cells to edit
-  let edit = document.getElementById(rowId).querySelectorAll("td");
-  edit[5].firstElementChild.disabled = false;
-  edit[6].contentEditable = true;
-  edit[7].contentEditable = true;
+  data[4].firstElementChild.disabled = false;
+  data[5].contentEditable = true;
+  data[6].contentEditable = true;
 }
- 
+
+function passed() {
+  // id passed is selected, the id of the selected td will change to 'passed'
+  data[7].id = 'passed';
+  // selected_row_data.file = data[5].id;
+  data[7].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" disabled>\
+                      <span><i class="bi bi-x-circle" id="change-result" onclick="changeResult()"></i></span></div>';
+}
+
+function failed() {
+  // id passed is selected, the id of the selected td will change to 'passed'
+  data[7].id = 'failed';
+  // Set the values in selected_row_data Object(dictionary)
+  data[7].innerHTML = '<div class="passedorfailed"><input type="button" id="failed-btn" value="FAILED" disabled>\
+                      <span><i class="bi bi-x-circle" id="change-result" onclick="changeResult()"></i></span></div>';
+}
+
+function changeResult() {
+  data[7].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" onclick="passed()">\
+                      <input type="button" id="failed-btn" value="FAILED" onclick="failed()"></div>';
+}
+
 function saveFunction() {
-  // Get the changed data in specific cells and display it on console
-  let saveData = document.getElementById(rowId).querySelectorAll("td");
-  let date = saveData[5].firstElementChild.value;
-  let venue = saveData[6].innerText;
-  let interviewer = saveData[7].innerText;
-  let result = saveData[8].innerText;
-  console.log("Saved Data of ID", rowId, ": ", date, venue, interviewer, result);
+  // Get the values for data to save
+  saved_data = {id: '',
+                date: '',
+                venue: '',
+                interviewer: '',
+                result: ''}
+
+  saved_data.id = rowId;
+  saved_data.date = data[4].firstElementChild.value;
+  saved_data.venue = data[5].innerHTML;
+  saved_data.interviewer = data[6].innerHTML;
+  saved_data.result = data[7].id;
+
+  // Custom buttons according to result
+  if ( saved_data.result == 'passed' ) {
+    data[7].innerHTML = 'PASSED';
+  } else if ( saved_data.result == 'failed' ) {
+    data[7].innerHTML = 'FAILED';
+  } else if ( saved_data.result == 'undefined' ) {
+    data[7].innerHTML = '-';
+  }
 
   // Set the row into its default properties
-  let rowId2 = document.getElementById(rowId);
-  let data = document.getElementById(rowId).querySelectorAll("td");
-  rowId2.style.backgroundColor = "rgb(255, 255, 255)";
-  rowId2.style.color = "rgb(0, 0, 0)";
-  data[0].innerHTML='<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)"></i>';
-  data[5].firstElementChild.disabled = true;
-  data[6].contentEditable = false;
-  data[7].contentEditable = false;
+  data[4].firstElementChild.disabled = true;
+  document.getElementById(rowId).style.border= "none";
+  data[0].innerHTML = '<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row"\
+                      onclick="editFunction(event)"></i>';
 
   // Return the onclick attribute on every edit icon
   let rows = document.getElementsByTagName("tr");
   for (let i = 1; i < rows.length; i++) { 
       rows[i].firstElementChild.firstElementChild.setAttribute("onclick", "editFunction(event)");
   }
-
-  // Set the global variable rowId to undefined
+  // Set the global variable rowId to undefined and blank
   rowId = undefined;
+  data = undefined;
+  selected_row_data  = {id: '',
+                        date: '',
+                        venue: '',
+                        interviewer: '',
+                        result: ''}
+  console.log(saved_data);
+  saved_data = {id: '',
+                date: '',
+                venue: '',
+                interviewer: '',
+                result: ''}
 }
 
 function cancelFunction() {
   // Return stored data if user cancels the edit
-  let cancelData = document.getElementById(rowId).querySelectorAll("td");
-  cancelData[5].firstElementChild.value = selectedRowData.date;
-  cancelData[6].innerHTML = selectedRowData.venue;
-  cancelData[7].innerHTML = selectedRowData.interviewer;
-  cancelData[8].innerHTML = selectedRowData.result;
+  if ( selected_row_data.result == 'passed' ) {
+    data[7].id = 'passed';
+    data[7].innerHTML = 'PASSED';
+  } else if ( selected_row_data.result == 'failed' ) {
+    data[7].id = 'failed';
+    data[7].innerHTML = 'FAILED';
+  } else if ( selected_row_data.result == 'undefined' ) {
+    data[7].id = 'undefined';
+    data[7].innerHTML = '-';
+  }
+
+  // Disable the input tags
+  data[4].firstElementChild.value = '';
+  data[4].firstElementChild.disabled = true;
 
   // Set the row into its default properties
-  let rowId2 = document.getElementById(rowId);
-  let data = document.getElementById(rowId).querySelectorAll("td");
-  rowId2.style.backgroundColor = "rgb(255, 255, 255)";
-  rowId2.style.color = "rgb(0, 0, 0)";
-  data[0].innerHTML='<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)"></i>';
-  data[5].firstElementChild.disabled = true;
-  data[6].contentEditable = false;
-  data[7].contentEditable = false;
+  document.getElementById(rowId).style.border= "none";
+  data[0].innerHTML = '<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)"></i>';
 
   // Return the onclick attribute on every edit icon
   let rows = document.getElementsByTagName("tr");
   for (let i = 1; i < rows.length; i++) { 
       rows[i].firstElementChild.firstElementChild.setAttribute("onclick", "editFunction(event)");
   }
-
-  // Set the global variable rowId to undefined
+  // Set the global variable rowId to undefined and blank
   rowId = undefined;
+  data = undefined;
+  selected_row_data  = {id: '',
+                        date: '',
+                        venue: '',
+                        interviewer: '',
+                        result: ''}
 }
-
-//pass-fail function
-function clickedPassed() {
-  //this gives id of tr whose button was clicked
-  let data = document.getElementById(rowId).querySelectorAll("td");
-  data[8].innerHTML = "PASSED";
-}
-
-function clickedFailed() {
-  //this gives id of tr whose button was clicked
-  let data = document.getElementById(rowId).querySelectorAll("td"); 
-  data[8].innerHTML = "FAILED";
-}
-
 //search table
 function tableSearch() {
   let input, filter, table, tr, td, txtValue;
 
-  input = document.getElementById("searchInput");
+  input = document.getElementById("search-input");
   filter = input.value.toUpperCase();
-  table = document.getElementById("mytable");
+  table = document.getElementById("interviewer-table");
   tr = table.getElementsByTagName('tr');
 
   for( let i = 0; i < tr.length; i++ ){
@@ -202,10 +272,8 @@ function tableSearch() {
     }
   }
 }
-
 //select course
 var rows = $("#tabledata tr");
-
 $("#select-course").on("change", function() {
 
     var selected = this.value;
@@ -217,3 +285,44 @@ $("#select-course").on("change", function() {
         rows.show();
     }
 });
+
+function hamburgerToggle() {
+  let body_width = document.getElementById("body").offsetWidth;
+  let sidebar_width = document.getElementById("sidebar").offsetWidth;
+
+  if ( body_width <= 656 ) {
+    document.getElementById("sidebar").style.left= "0px";
+  }
+
+  if ( sidebar_width == 100 ) {
+    document.getElementById("close-btn").style.display = "inline";
+    document.getElementById("sidebar").style.width = "290px";
+    document.getElementById("sidebar-brand").style.color = "white";
+    document.getElementById("interviewer-name").style.color = "white";
+    document.getElementById("download-text").style.color = "white";
+    document.getElementById("logout-text").style.color = "white";
+    document.getElementById("download-text").style.display = "inline";
+    document.getElementById("logout-text").style.display = "inline";
+    document.getElementById("download-wrapper").style.justifyContent = "start";
+    document.getElementById("logout-wrapper").style.justifyContent = "start";
+  }
+}
+
+function closeBtn() {
+  let body_width = document.getElementById("body").offsetWidth;
+  let sidebar_width = document.getElementById("sidebar").offsetWidth;
+    
+  if ( sidebar_width == 290 && body_width <= 656 ) {
+    document.getElementById("sidebar").style.width = "100px"
+    document.getElementById("sidebar").style.left = "-100px";
+  }
+
+  document.getElementById("close-btn").style.display = "none";
+  document.getElementById("sidebar").style.width = "100px";
+  document.getElementById("sidebar-brand").style.color = "#a7545c";
+  document.getElementById("interviewer-name").style.color = "#a7545c";
+  document.getElementById("download-text").style.display = "none";
+  document.getElementById("logout-text").style.display = "none";
+  document.getElementById("download-wrapper").style.justifyContent = "center";
+  document.getElementById("logout-wrapper").style.justifyContent = "center";
+}

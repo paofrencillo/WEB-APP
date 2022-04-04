@@ -186,7 +186,7 @@ hr {
 }
 
 th {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 td {
@@ -228,6 +228,16 @@ td {
     justify-content: center;
 }
 
+#passed {
+    color: green;
+    font-weight: 700
+}
+
+#failed {
+    color: red;
+    font-weight: 700
+}
+
 #passed-btn {
     color: white;
     font-size: 10px;
@@ -250,10 +260,6 @@ td {
 
 .table td, tr{
     text-align: center;
-}
-
-.table tr:first-child:hover {
-    background-color: white;   
 }
 
 

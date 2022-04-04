@@ -36,8 +36,7 @@ function loadTableData(studentData) {
                   <td>${student.number}</td>
                   <td>${student.course}</td>
                   <td>${student.email}</td>
-                  <td class="row-result" id="failed"><div class="passedorfailed">
-                          <input type="button" id="failed-btn" value="FAILED" disabled></div></td>
+                  <td class="result-col" id="failed">FAILED</td>
                   <td class="inputfile">${student.file}</td>
                   </tr>`;
     }
@@ -49,8 +48,7 @@ function loadTableData(studentData) {
                 <td>${student.number}</td>
                 <td>${student.course}</td>
                 <td>${student.email}</td>
-                <td class="row-result" id="passed"><div class="passedorfailed">
-                          <input type="button" id="passed-btn" value="PASSED" disabled></div></td>
+                <td class="result-col" id="passed">PASSED</td>
                 <td class="inputfile">${student.file}</td>
                 </tr>`;
 
@@ -61,8 +59,7 @@ function loadTableData(studentData) {
                   <td>${student.number}</td>
                   <td>${student.course}</td>
                   <td>${student.email}</td>
-                  <td class="row-result" id="undefined"><div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" onclick="passed()" disabled>
-                          <input type="button" id="failed-btn" value="FAILED" onclick="failed()" disabled></div></td>
+                  <td class="result-col" id="undefined">-</td>
                   <td class="inputfile">${student.file}</td>
                   </tr>`;
     }
@@ -82,7 +79,6 @@ var selected_row_data  = {id: '',
 function editFunction(event) {
   // Get the ID of the row
   rowId = event.target.parentNode.parentNode.id;
-  console.log(rowId);
   data = document.getElementById(rowId).querySelectorAll("td");
 
   if ( event.target ) {
@@ -105,7 +101,7 @@ function editFunction(event) {
     selected_row_data.id = rowId;
     selected_row_data.result = data[5].id;
     selected_row_data.file = data[6].value;
-    // selected_row_data.file = data[5].id;
+  
     console.log(selected_row_data);
 
     if ( data[5].id == 'passed' ) {
@@ -114,6 +110,9 @@ function editFunction(event) {
     } else if ( data[5].id == 'failed' ) {
       data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="failed-btn" value="FAILED" disabled>\
                           <span><i class="bi bi-x-circle" id="change-result" onclick="changeResult()"></i></span></div>';
+    } else if ( data[5].id == 'undefined' ) {
+      data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" onclick="passed()">\
+                          <input type="button" id="failed-btn" value="FAILED" onclick="failed()"></div>';
     }
 
     // Remove the onclick attribute on other edit icon in other rows
@@ -159,24 +158,19 @@ function saveFunction() {
 
   // Custom buttons according to result
   if ( saved_data.result == 'passed' ) {
-    data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" disabled><span></div>';
+    data[5].innerHTML = 'PASSED';
   } else if ( saved_data.result == 'failed' ) {
-    data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="failed-btn" value="FAILED" disabled><span></div>';
+    data[5].innerHTML = 'FAILED';
   } else if ( saved_data.result == 'undefined' ) {
-    data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" onclick="passed()" disabled>\
-                        <input type="button" id="failed-btn" value="FAILED" onclick="failed()" disabled></div>';
-  }
-
-  // Disable the input tags
-  for ( var i = 0; i < data[5].querySelectorAll("input").length; i++ ) {
-    pf_btns[i].disabled = true;
+    data[5].innerHTML = '-';
   }
 
   data[6].childNodes[0].disabled = true;
 
   // Set the row into its default properties
   document.getElementById(rowId).style.border= "none";
-  data[0].innerHTML = '<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row" onclick="editFunction(event)"></i>';
+  data[0].innerHTML = '<i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="top" title="Edit Row"\
+                      onclick="editFunction(event)"></i>';
 
   // Return the onclick attribute on every edit icon
   let rows = document.getElementsByTagName("tr");
@@ -198,12 +192,14 @@ function saveFunction() {
 function cancelFunction() {
   // Return stored data if user cancels the edit
   if ( selected_row_data.result == 'passed' ) {
-    data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" disabled><span></div>';
+    data[5].id = 'passed';
+    data[5].innerHTML = 'PASSED';
   } else if ( selected_row_data.result == 'failed' ) {
-    data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="failed-btn" value="FAILED" disabled><span></div>';
+    data[5].id = 'failed';
+    data[5].innerHTML = 'FAILED';
   } else if ( selected_row_data.result == 'undefined' ) {
-    data[5].innerHTML = '<div class="passedorfailed"><input type="button" id="passed-btn" value="PASSED" onclick="passed()" disabled>\
-                        <input type="button" id="failed-btn" value="FAILED" onclick="failed()" disabled></div>';
+    data[5].id = 'undefined';
+    data[5].innerHTML = '-';
   }
 
   // Disable the input tags
