@@ -1,0 +1,239 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <title>TUP - Cavite | Applicant Result</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="{% static 'css/a-styles/a-result.css' %}" />
+</head>
+
+
+<body id="body">
+  <!-- sidenav -->
+  <div class="sidebar" id="sidebar">
+    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
+    <div class="sidebar-brand" id="sidebar-brand">
+      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo">
+      </span>TUP - Cavite Campus
+    </div>
+    <div class="sidebar-things">
+      <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
+      <div id="applicant-info"> 
+        <div id="applicant-name-wrapper">
+          <h6 id="applicant-name">FRENCILLO, PAOLO M.</h6>
+        </div>
+      </div>
+      <div id="download-wrapper"> 
+        <a id="download" href="#">
+          <i class="bi bi-download"></i><span id="download-text"> Download Result</span> 
+        </a>
+      </div>
+      <div id="logout-wrapper">
+        <a id="logout" href="#">
+          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span> 
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================ MAIN CONTAINER ================ -->
+  <div class="main-content" id="main-content">
+    <div class="main-container">
+      <div class="header" id="header">
+        <div>
+          <i class="bi bi-list" onclick="hamburgerToggle()"></i><span id="dashboard-text">
+           APPLICANT DASHBOARD</span>
+        </div>
+        <div class="welcome-applicant">
+          <h6 id="fullname">Welcome, PAOLO</h6>
+        </div>
+      </div>
+      <hr>
+      <div class="container">
+        <div class="row justify-content-between my-5">
+          <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 applicant-details-wrapper">
+            <div class="applicant-details">
+              <h6>Last Name: <span id="lastname">FRENCILLO</span></h6>
+              <h6>First Name: <span id="firstname">PAOLO</span></h6>
+              <h6>Middle Name: <span>MANGUBAT</span></h6>
+              <h6>Suffix: <span id="suffix"></span></h6>
+              <h6>Control Number: <span id="control-number">220001</span></h6>
+              <h6>Course: <span id="course">BET - Computer Engineering Technology</span></h6>
+            </div>  
+          </div>
+          <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 applicant-remarks-wrapper">
+            <div class="applicant-remarks">
+              <h6>Entrance Exam:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="ee-result">PASSED</span></h6>
+              <h6>Medical:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="med-result">PASSED</span></h6>
+              <h6>Interview:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="interv-result">PASSED</span></h6>
+              <h6>Requirements:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="req-result">PASSED</span></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid result-details">
+        <div class="results-text">
+          <h4>RESULTS DETAILS</h4>
+        </div>
+        <hr>
+        <br>
+        <div class="table-details" id="ee-details">
+          <h5>Entrance Exam</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Room Assignment</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>March 20, 2022</td>
+                  <td>1:00AM - 2:00AM</td>
+                  <td>ROOM 202</td>
+                  <td>
+                    <div class="remarks-box">
+                      PASSED
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-details" id="med-details">
+          <h5>Medical Examination</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Date</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MARCH 30, 2022</td>
+                  <td>
+                    <div class="remarks-box">
+                      FAILED
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-details" id="interv-details">
+          <h5>Interview</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Date</th>
+                  <th>Venue</th>
+                  <th>Interviewer</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MAY 10, 2022</td>
+                  <td>Sa CR</td>
+                  <td>MR. SUAVE</td>
+                  <td>
+                    <div class="remarks-box">
+                      FAILED
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-details" id="req-table">
+          <h5>Requiments Submitted</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Requirements</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Senior High School Card</td>
+                  <td>
+                    <div class="submitted-box">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span> SUBMITTED</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Good Moral Characer</td>
+                  <td>
+                    <div class="submitted-box">
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span> SUBMITTED</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Barangay Clearance</td>
+                  <td>
+                    <div class="submitted-box">
+                      <i class="bi bi-x-circle-fill"></i>
+                      <span> NOT YET SUBMITTED</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Birth Certificate (PSA)</td>
+                  <td>
+                    <div class="submitted-box">
+                      <i class="bi bi-x-circle-fill"></i>
+                      <span> NOT YET SUBMITTED</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
+  <script src="{% static 'js/a-js/a-result.js' %}"></script>
+  
+</body>
+
+
+</html>

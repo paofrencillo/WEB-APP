@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <title>TUP - Cavite | Applicant Login</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="{% static 'css/a-styles/a-login.css' %}" />
+</head>
+
+
+<body>
+  <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
+  <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
+    <img class="navbar-brand p-0 m-0" src="{% static 'imgs/tupc-banner-white.png' %}" alt="this is TUPC banner" width="325px">
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li id="applicant-link" class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'applicant_login' %}">Applicant</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'coordinator_login' %}">Coordinator</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'interviewer_login' %}">Interview</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'nurse_login' %}">Medical</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main-container" class="container-fluid">
+    <!-- ================= LOGIN FORM ================= -->
+    <fieldset class="container">
+      <legend>Applicant Login</legend>
+      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="applicant-email">Email Address</label>
+          <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
+        </div>
+        <div class="form-group">
+          <label for="applicant-pass">Password</label>
+          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Login">
+        </div>   
+        <p class="register-here">
+          If you are new applicant,
+          <a href="{% url 'applicant_registration' %}">click here</a> to
+          register.
+        </p>
+      </form>
+    </fieldset>
+  </div>
+
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
+  <script src="{% static 'js/a-js/a-login.js' %}"></script>
+  
+</body>
+
+
+</html>

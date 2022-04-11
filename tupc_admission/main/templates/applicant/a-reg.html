@@ -1,0 +1,198 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <title>TUP - Cavite | Applicant Registration</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="{% static 'css/a-styles/a-reg.css' %}" />
+</head>
+
+
+<body>
+  <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
+  <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
+    <img class="navbar-brand p-0 m-0" src="{% static 'imgs/tupc-banner-white.png' %}" alt="this is TUPC banner" width="325px">
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li id="applicant-link" class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'applicant_login' %}">Applicant</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'coordinator_login' %}">Coordinator</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'interviewer_login' %}">Interview</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="{% url 'nurse_login' %}">Medical</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================= REGISTRATION FORM ================= -->
+  <div id="main-container" class="container-fluid">
+    <fieldset class="container">
+      <legend>Applicant Registration</legend>
+      <form method="POST" action="{% url 'applicant_registration' %}" name="reg-form" class="was-validated">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="f-name">First Name*</label>
+          <input type="text" name="f-name" id="f-name" class="form-control" placeholder="Juan" required />
+        </div>
+
+        <div class="form-group">
+          <label for="m-name">Middle Name</label>
+          <input type="text" name="m-name" id="m-fname" class="form-control" placeholder="-" />
+          <small class="form-text mb-0 pb-0"><i>Leave it blank if has nothing to input.</i></small>
+        </div>
+
+        <div class="form-group">
+          <label for="l-name">Last Name*</label>
+          <input type="text" name="l-name" id="l-name" class="form-control" placeholder="Dela Cruz" required />
+        </div>
+
+        <div class="container-fluid row justify-content-between m-0 p-0">
+          <div class="form-group col col-md-4 col-12 pl-0">
+            <label for="suffix">Suffix</label>
+            <input type="text" name="suffix" id="suffix" class="form-control" placeholder="e.g. III, Jr." />
+            <small class="form-text mb-0 pb-0"><i>Leave it blank if has nothing to input.</i></small>
+          </div>
+          <div class="form-group col col-md-5 col-12 pl-0">
+            <label for="name">Birthdate*</label>
+            <input type="date" name="birthdate" id="birthdate" class="form-control" required />
+          </div>
+          <div id="sex" class="form-group col col-md-3 col-12 pl-0">
+            <h5>Sex*</h5>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="sex-male" name="sex" value="MALE" required>
+              <label class="custom-control-label" for="sex-male">Male</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="sex-female" name="sex" value="FEMALE" required>
+              <label class="custom-control-label" for="sex-female">Female</label>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <div id="admission-status" class="form-group">
+          <h5>Admission Status</h5>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="freshmen" name="status" value=FRESHMEN required>
+            <label class="custom-control-label" for="freshmen">Freshmen</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="transferee" name="status" value=TRANSFEREE required>
+            <label class="custom-control-label" for="transferee">Transferee</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="returnee" name="status" value=RETURNEE required>
+            <label class="custom-control-label" for="returnee">Returnee</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="cross-enrollee" name="status" value=CROSS-ENROLEE required>
+            <label class="custom-control-label" for="cross-enrollee">Cross-Enrollee</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="als" name="status" value=ALS required>
+            <label class="custom-control-label" for="als">Alternative Learning System (ALS)</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Course (1st Choice)</label>
+          <select name="course" id="course" class="custom-select" required>
+            <option value="">Select Course</option>
+            <option value="BSCE">BS - Civil Engineering</option>
+            <option value="BSEE">BS - Electrical Engineering</option>
+            <option value="BSME">BS - Mechanical Engineering</option>
+            <option value="BET-ET">BET - Electrical Technology</option>
+            <option value="BET-ESET">BET - Electronics Technology Track: Industrial Automation Technology</option>
+            <option value="BET-COET">BET - Computer Engineering Technology</option>
+            <option value="BET-CT">BET - Civil Technology</option>
+            <option value="BET-MT">BET - Mechanical Technology</option>
+            <option value="BET-AT">BET - Mechanical Engineering Technology Track: Automative Technology</option>
+            <option value="BET-PPT">BET - Mechanical Engineering Technology Track: Power Plant Technology</option>
+            <option value="BSIE-ICT">BSIE - Information and Communication Technology</option>
+            <option value="BTTE-AU">BTTE - Automative</option>
+            <option value="BTTE-EL">BTTE - Electrical</option>
+            <option value="BTTE-E">BTTE - Electronics</option>
+            <option value="BTTE-HVACT">BTTE - Heating, Ventilation, and Air Conditioning</option>
+            <option value="BTTE-CP">BTTE - Computer Programming</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="strand">Senior High School Strand</label>
+          <input type="text" name="strand" id="strand" class="form-control"
+            placeholder="Science, Technology, Engineering and Mathematics" required />
+        </div>
+
+        <div class="form-group">
+          {{ form.email|as_crispy_field }}
+        </div>
+
+        <div class="form-group">
+          {{ form.username|as_crispy_field }}
+        </div>
+
+        <div class="form-group">
+          {{ form.password1|as_crispy_field }}
+          <small class="form-text mb-0 pb-0"><i>Password should contain at least 8 characters.</i></small>
+        </div>
+
+        <div class="form-group">
+          {{ form.password2|as_crispy_field }}
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="" id="check" required>
+          <label class="form-check-label" for="check">
+            All information given above was all true and correct.
+          </label>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </fieldset>
+  </div>
+
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other scripts -->
+  <script src="{% static 'js/a-js/a-reg.js' %}"></script>
+
+</body>
+
+
+</html>
