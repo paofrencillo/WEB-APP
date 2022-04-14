@@ -288,6 +288,7 @@ function hamburgerToggle() {
     document.getElementById("sidebar").style.width = "290px";
     document.getElementById("sidebar-brand").style.color = "white";
     document.getElementById("nurse-name").style.color = "white";
+    document.getElementById("nurse-name").style.visibilty = "visible";
     document.getElementById("download-text").style.color = "white";
     document.getElementById("logout-text").style.color = "white";
     document.getElementById("download-text").style.display = "inline";
@@ -310,6 +311,9 @@ function closeBtn() {
   document.getElementById("sidebar").style.width = "100px";
   document.getElementById("sidebar-brand").style.color = "#a7545c";
   document.getElementById("nurse-name").style.color = "#a7545c";
+  document.getElementById("nurse-name").style.visibilty = "hidden";
+  document.getElementById("download-text").style.color = "#a7545c";
+  document.getElementById("logout-text").style.color = "#a7545c";
   document.getElementById("download-text").style.display = "none";
   document.getElementById("logout-text").style.display = "none";
   document.getElementById("download-wrapper").style.justifyContent = "center";

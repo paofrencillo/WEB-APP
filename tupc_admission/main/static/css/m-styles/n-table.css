@@ -63,6 +63,7 @@ img {
     margin-bottom: 100px;
     text-align: center;
     color: #a7545c;
+    visibility: hidden;
 }
 
 #download-wrapper, #logout-wrapper {

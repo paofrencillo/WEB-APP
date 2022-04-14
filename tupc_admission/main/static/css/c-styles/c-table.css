@@ -62,7 +62,9 @@ img {
     margin-bottom: 100px;
     text-align: center;
     color: #a7545c;
+    visibility: hidden;
 }
+
 
 #overview-wrapper, #exam-details-wrapper, #download-wrapper, #logout-wrapper {
     display: flex;

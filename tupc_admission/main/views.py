@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import *
 from .forms import RegistrationCredetials
@@ -7,7 +6,7 @@ from .forms import RegistrationCredetials
 
 # Create your views here.
 def blank_page(request):
-    return HttpResponse("<h1>NO RESULT</h1>")
+    return render(request, "applicant/a-login.html")
 
 
 def applicant_login(request):
@@ -19,13 +18,16 @@ def applicant_registration(request):
         form = RegistrationCredetials(request.POST)
 
         if form.is_valid():
+            form.instance.user_type = 'APPLICANT'
+            f_name = form.cleaned_data.get('first_name')
+            l_name = form.cleaned_data.get('last_name')
             form.save()
 
             ApplicantDetails.objects.create(
                 applicant_id = User.objects.get(id=User.objects.latest('id').id),
-                first_name = request.POST.get('f-name'),
+                first_name = f_name,
                 middle_name = request.POST.get('m-name'),
-                last_name = request.POST.get('l-name'),
+                last_name = l_name,
                 suffix = request.POST.get('suffix'),
                 birth_date = request.POST.get('birthdate'),
                 sex = request.POST.get('sex'),
