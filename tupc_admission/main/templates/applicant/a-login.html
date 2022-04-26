@@ -46,20 +46,39 @@
     </div>
   </nav>
 
+  <!-- Message if successfully login -->
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success">
+          {{ message }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
   <div id="main-container" class="container-fluid">
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Applicant Login</legend>
-      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
+      <form method="POST" name="login-form" class="was-validated" action="{% url 'applicant_login' %}" >
         {% csrf_token %}
         <div class="form-group">
-          <label for="applicant-email">Email Address</label>
-          <input type="email" id="applicant-email" class="form-control" name="applicant-email" required />
+          <label for="applicant-username">Username</label>
+          <input type="text" id="applicant-username" class="form-control" name="applicant-username" required />
         </div>
         <div class="form-group">
-          <label for="applicant-pass">Password</label>
-          <input type="password" id="applicant-pass" class="form-control" name="applicant-pass" required />
+          <label for="applicant-password">Password</label>
+          <input type="password" id="applicant-password" class="form-control" name="applicant-password" required />
         </div>
+        {% if messages %}
+          {% for message in messages %}
+            {% if message.tags == 'error' %}
+              <div class="alert alert-danger">
+                {{ message }}
+              </div>
+            {% endif %} 
+          {% endfor %}
+        {% endif %}
         <div class="form-group">
           <input type="submit" value="Login">
         </div>   
@@ -82,9 +101,6 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- Other scripts -->
-  <script src="{% static 'js/a-js/a-login.js' %}"></script>
-  
 </body>
 
 

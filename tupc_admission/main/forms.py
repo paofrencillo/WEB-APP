@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import MedicalResult, User
 
 
 class RegistrationCredetials(UserCreationForm):
@@ -36,3 +36,16 @@ class RegistrationCredetials(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+
+
+class UpdateNurseTable(forms.ModelForm):
+    CHOICES=[('PASSED','PASSED'),
+            ('FAILED','FAILED')]
+
+    medical_result = forms.CharField(label='Medical Result', widget=forms.RadioSelect(choices=CHOICES))
+    medical_file = forms.FileField(allow_empty_file=True, widget=forms.ClearableFileInput())
+    
+
+    class Meta:
+        model = MedicalResult
+        fields = ['medical_result', 'medical_file']

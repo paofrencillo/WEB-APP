@@ -190,36 +190,13 @@ th {
 }
 
 td {
-    font-size: 12px;
+    font-size: 14px;
 }
+
 
 .table-responsive {
     overflow-y: scroll;
     height: 82vh;
-}
-
-.bi-pencil-square {
-    cursor: pointer;
-    font-size: 18px;
-    color: green;
-}
-
-.bi-save, .bi-x {
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.bi-save {
-    color: blue;
-}
-
-.bi-x {
-    color: red;
-}
-
-.passedorfailed {
-    display: flex;
-    justify-content: center;
 }
 
 .passed {
@@ -231,27 +208,6 @@ td {
     color: red;
     font-weight: 700
 }
-
-#passed-btn {
-    color: white;
-    font-size: 10px;
-    border-radius: 10px;
-    font-weight: 600;
-    padding: 5px 10px;
-    margin: 0px 5px;
-    background-color:rgb(133, 221, 133);
-}
-
-#failed-btn {
-    font-size: 10px;
-    color: white;
-    border-radius: 10px;
-    font-weight: 600;
-    padding: 5px 10px;
-    margin: 0px 5px;
-    background-color: rgb(218, 112, 112);
-}
-
 
 .table td, tr{
     text-align: center;

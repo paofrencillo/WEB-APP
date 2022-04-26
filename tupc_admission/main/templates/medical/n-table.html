@@ -1,5 +1,8 @@
 {% load static %}
 
+{% load crispy_forms_tags %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +28,8 @@
   <div class="sidebar" id="sidebar">
     <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
     <div class="sidebar-brand" id="sidebar-brand">
-      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo">
-      </span>TUP - Cavite Campus
+      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo" onclick="hamburgerToggle()">
+      </span><span id="tupc-text">TUP - Cavite Campus</span>
     </div>
     <div class="sidebar-things">
       <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
@@ -52,7 +55,7 @@
     <div class="main-container">
       <div class="row justify-content-between header" id="header">
         <div class="nurse-text-wrapper">
-          <i class="bi bi-list" onclick="hamburgerToggle()"></i><span class="nurse-table-text">
+          <i class="bi bi-list" id="hamburger" onclick="hamburgerToggle()"></i><span class="nurse-table-text">
             NURSE TABLE</span>
         </div>
         <!-- ================= SEARCH ================= -->
@@ -90,6 +93,34 @@
       </div>
       <hr>
       <!-- ================= TABLE ================= -->
+      <!-- Modal -->
+      <div class="modal fade" id="nurse-table-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="{% url 'nurse_update_table' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  {{ form.medical_result|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                  {{ form.medical_file|as_crispy_field }}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid table-wrapper">
         <div class="table-responsive">
           <table id="nurse-table" class="table table-bordered table-hover table-striped">
@@ -97,14 +128,26 @@
               <tr>
                 <th></th>
                 <th>NAME</th>
-                <th>CONTROL #</th>
                 <th>COURSE</th>
-                <th>EMAIL</th>
                 <th>MEDICAL RESULT</th>
                 <th>MEDICAL FILE</th>
               </tr>
             </thead>
-            <tbody id="tabledata"></tbody>
+            <tbody id="tabledata">
+              {% for a, b in data %}
+              <tr course = {{a.course}} id={{a.applicant_id_id}}>
+                <td>
+                  <button type="button" class="btn btn-primary update-btn" data-toggle="modal" data-target="#nurse-table-modal">
+                  Update
+                  </button>
+                </td> 
+                <td style="vertical-align: middle;">{{ a.fullname }}</td>
+                <td style="vertical-align: middle;">{{ a.course }}</td>
+                <td style="vertical-align: middle;">{{ b.result }}</td>
+                <td style="vertical-align: middle;">No file</td>
+              </tr>
+              {% endfor %}
+            </tbody>
           </table>
         </div>
       </div>

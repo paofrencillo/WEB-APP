@@ -38,9 +38,14 @@ body {
     position: absolute;
 }
 
-.sidebar-brand {
-    color: #a7545c;
+.tup-logo {
+    cursor: pointer;
+}
+
+#tupc-text {
+    color: white;
     font-weight: 700;
+    visibility: hidden;
 }
 
 img {
@@ -62,7 +67,7 @@ img {
     font-size: 16px;
     margin-bottom: 100px;
     text-align: center;
-    color: #a7545c;
+    color: white;
     visibility: hidden;
 }
 
@@ -117,6 +122,7 @@ img {
     padding-left: 6px;
     padding-right: 6px;
     border-radius: 20px;
+    display: none;
 }
 
 .nurse-table-text {
@@ -187,11 +193,12 @@ hr {
 }
 
 th {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 td {
-    font-size: 12px;
+    font-size: 14px;
+    text-align: center;
 }
 
 .table-responsive {
@@ -199,34 +206,8 @@ td {
     height: 82vh;
 }
 
-.bi-pencil-square {
-    cursor: pointer;
-    font-size: 18px;
-    color: green;
-}
-
-.bi-save, .bi-x {
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.bi-save {
-    color: blue;
-}
-
-.bi-x {
-    color: red;
-}
-
-.bi-x-circle {
-    cursor: pointer;
-    color: red;
-    font-size: 20px;
-}
-
-.passedorfailed {
-    display: flex;
-    justify-content: center;
+.btn {
+    font-size: 12px;
 }
 
 #passed {
@@ -239,29 +220,11 @@ td {
     font-weight: 700
 }
 
-#passed-btn {
-    color: white;
-    font-size: 10px;
-    border-radius: 10px;
-    font-weight: 600;
-    padding: 5px 10px;
-    margin: 0px 5px;
-    background-color:rgb(133, 221, 133);
-}
-
-#failed-btn {
-    font-size: 10px;
-    color: white;
-    border-radius: 10px;
-    font-weight: 600;
-    padding: 5px 10px;
-    margin: 0px 5px;
-    background-color: rgb(218, 112, 112);
-}
-
 .table td, tr{
     text-align: center;
 }
+
+
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */

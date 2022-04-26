@@ -23,16 +23,15 @@
 <body id="body">
   <!-- sidenav -->
   <div class="sidebar" id="sidebar">
-    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
     <div class="sidebar-brand" id="sidebar-brand">
-      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo">
-      </span>TUP - Cavite Campus
+      <img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo" onclick="expandSidebar()" />
+      <span id="tupc-text">TUP - Cavite Campus</span>
     </div>
     <div class="sidebar-things">
       <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
       <div id="applicant-info"> 
         <div id="applicant-name-wrapper">
-          <h6 id="applicant-name">FRENCILLO, PAOLO M.</h6>
+          <h6 id="applicant-name">{{ ad.fullname }}</h6>
         </div>
       </div>
       <div id="download-wrapper"> 
@@ -41,7 +40,7 @@
         </a>
       </div>
       <div id="logout-wrapper">
-        <a id="logout" href="#">
+        <a id="logout" href="{% url 'applicant_logout' %}">
           <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span> 
         </a>
       </div>
@@ -53,39 +52,72 @@
     <div class="main-container">
       <div class="header" id="header">
         <div>
-          <i class="bi bi-list" onclick="hamburgerToggle()"></i><span id="dashboard-text">
+          <i class="bi bi-list" id="hamburger" onclick="hamburgerToggle()"></i><span id="dashboard-text">
            APPLICANT DASHBOARD</span>
         </div>
         <div class="welcome-applicant">
-          <h6 id="fullname">Welcome, PAOLO</h6>
+          <h6 id="fname">Welcome, {{ ad.first_name }}</h6>
         </div>
       </div>
       <hr>
       <div class="container">
         <div class="row justify-content-between my-5">
-          <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 applicant-details-wrapper">
+          <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 applicant-details-wrapper">
             <div class="applicant-details">
-              <h6>Last Name: <span id="lastname">FRENCILLO</span></h6>
-              <h6>First Name: <span id="firstname">PAOLO</span></h6>
-              <h6>Middle Name: <span>MANGUBAT</span></h6>
-              <h6>Suffix: <span id="suffix"></span></h6>
-              <h6>Control Number: <span id="control-number">220001</span></h6>
-              <h6>Course: <span id="course">BET - Computer Engineering Technology</span></h6>
+              <h6>Last Name: <span id="lastname">{{ ad.last_name }}</span></h6>
+              <h6>First Name: <span id="firstname">{{ ad.first_name }}</span></h6>
+              {% if ad.middle_name == '' %}
+              <h6>Middle Name: <span id="middlename">N/A</span></h6>
+              {% else %}
+              <h6>Middle Name: <span id="middlename">{{ ad.middle_name }}</span></h6>
+              {% endif %}
+              {% if ad.suffix == '' %}
+              <h6>Suffix: <span id="suffix">N/A</span></h6>
+              {% else %}
+              <h6>Suffix: <span id="suffix">{{ ad.suffix }}</span></h6>
+              {% endif %}
+              <h6>Course: <span id="course">{{ ad.course }}</span></h6>
             </div>  
           </div>
-          <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 applicant-remarks-wrapper">
+          <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 applicant-remarks-wrapper">
             <div class="applicant-remarks">
-              <h6>Entrance Exam:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="ee-result">PASSED</span></h6>
-              <h6>Medical:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="med-result">PASSED</span></h6>
-              <h6>Interview:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="interv-result">PASSED</span></h6>
-              <h6>Requirements:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results remarks-box" id="req-result">PASSED</span></h6>
+              {% if ed.exam_result == '' %}
+              <h6>Entrance Exam:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results">
+              No Result</span>
+              </h6>
+              {% else %}
+              <h6>Entrance Exam:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results">
+              {{ ed.exam_result }}</span>
+              </h6>
+              {% endif %}
+              {% if md.medical_result == '' %}
+              <h6>Medical:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results">
+              No Result</span>
+              </h6>
+              {% else %}
+              <h6>Medical:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results">
+              {{ md.medical_result }}</span>
+              </h6>
+              {% endif %}
+              {% if intd.interview_result == '' %}
+              <h6>Interview:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results">
+              No Result</span>
+              </h6>
+              {% else %}
+              <h6>Interview:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results">
+              {{ intd.interview_result }}</span>
+              </h6>
+              {% endif %}
+              <h6>Requirements:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="results" id="req-result">
+              {{ res }}</span>
+              </h6>
             </div>
           </div>
         </div>
       </div>
       <div class="container-fluid result-details">
         <div class="results-text">
-          <h4>RESULTS DETAILS</h4>
+          <h4><b>RESULTS DETAILS</b></h4>
         </div>
         <hr>
         <br>
@@ -103,12 +135,28 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>March 20, 2022</td>
-                  <td>1:00AM - 2:00AM</td>
-                  <td>ROOM 202</td>
+                  {% if ed.date_taken == None %}
+                  <td>-</td>
+                  {% else %}
+                  <td>{{ ed.date_taken }}</td>
+                  {% endif %}
+                  {% if ed.time_taken == None or ed.time_finished == None %}
+                  <td>-</td>
+                  {% else %}
+                  <td>{{ ed.time_taken }} - {{ ed.time_finished }}</td>
+                  {% endif %}
+                  {% if ed.room == '' %}
+                  <td>-</td>
+                  {% else %}
+                  <td>{{ ed.room }}</td>
+                  {% endif %}
                   <td>
-                    <div class="remarks-box">
-                      PASSED
+                    <div class="remarks-box" id="e-remarks">
+                      {% if ed.exam_result == '' %}
+                      -
+                      {% else %}
+                      {{ ed.exam_result }}
+                      {% endif %}
                     </div>
                   </td>
                 </tr>
@@ -122,16 +170,18 @@
             <table class="table table-bordered">
               <thead class="thead-dark">
                 <tr>
-                  <th>Date</th>
                   <th>Remarks</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>MARCH 30, 2022</td>
                   <td>
-                    <div class="remarks-box">
-                      FAILED
+                    <div class="remarks-box" id="i-remarks">
+                      {% if md.medical_result == '' %}
+                      -
+                      {% else %}
+                      {{ md.medical_result }}
+                      {% endif %}
                     </div>
                   </td>
                 </tr>
@@ -153,12 +203,28 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>MAY 10, 2022</td>
-                  <td>Sa CR</td>
-                  <td>MR. SUAVE</td>
+                  {% if intd.date_taken == None %}
+                  <td>-</td>
+                  {% else %}
+                  <td>{{ intd.date_taken }}</td>
+                  {% endif %}
+                  {% if intd.venue == '' %}
+                  <td>-</td>
+                  {% else %}
+                  <td>{{ intd.venue }}</td>
+                  {% endif %}
+                  {% if intd.interviewer == '' %}
+                  <td>-</td>
+                  {% else %}
+                  <td>{{ intd.interviewer }}</td>
+                  {% endif %}
                   <td>
-                    <div class="remarks-box">
-                      FAILED
+                    <div class="remarks-box" id="i-remarks">
+                      {% if intd.interview_result == '' %}
+                      -
+                      {% else %}
+                      {{ intd.interview_result }}
+                      {% endif %}
                     </div>
                   </td>
                 </tr>
@@ -181,8 +247,13 @@
                   <td>Senior High School Card</td>
                   <td>
                     <div class="submitted-box">
-                      <i class="bi bi-check-circle-fill"></i>
-                      <span> SUBMITTED</span>
+                      {% if rq.shs_card == False %}
+                        <i class="bi bi-x-circle-fill"></i>
+                        <span> NOT YET SUBMITTED</span>
+                      {% elif rq.shs_card == True %}
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span> SUBMITTED</span>
+                      {% endif %}
                     </div>
                   </td>
                 </tr>
@@ -190,8 +261,13 @@
                   <td>Good Moral Characer</td>
                   <td>
                     <div class="submitted-box">
-                      <i class="bi bi-check-circle-fill"></i>
-                      <span> SUBMITTED</span>
+                      {% if rq.good_moral_char == False %}
+                        <i class="bi bi-x-circle-fill"></i>
+                        <span> NOT YET SUBMITTED</span>
+                      {% elif rq.good_moral_char == True %}
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span> SUBMITTED</span>
+                      {% endif %}
                     </div>
                   </td>
                 </tr>
@@ -199,8 +275,13 @@
                   <td>Barangay Clearance</td>
                   <td>
                     <div class="submitted-box">
-                      <i class="bi bi-x-circle-fill"></i>
-                      <span> NOT YET SUBMITTED</span>
+                      {% if rq.brgy_clearance == False %}
+                        <i class="bi bi-x-circle-fill"></i>
+                        <span> NOT YET SUBMITTED</span>
+                      {% elif rq.brgy_clearance == True %}
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span> SUBMITTED</span>
+                      {% endif %}
                     </div>
                   </td>
                 </tr>
@@ -208,8 +289,13 @@
                   <td>Birth Certificate (PSA)</td>
                   <td>
                     <div class="submitted-box">
-                      <i class="bi bi-x-circle-fill"></i>
-                      <span> NOT YET SUBMITTED</span>
+                      {% if rq.birth_cert == False %}
+                        <i class="bi bi-x-circle-fill"></i>
+                        <span> NOT YET SUBMITTED</span>
+                      {% elif rq.birth_cert == True %}
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span> SUBMITTED</span>
+                      {% endif %}
                     </div>
                   </td>
                 </tr>

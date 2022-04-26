@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
@@ -9,12 +10,13 @@ class User(AbstractUser):
     
 
 class ApplicantDetails(models.Model):
-    applicant_id = models.ForeignKey(settings.AUTH_USER_MODEL,
+    applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     suffix = models.CharField(max_length=10)
+    fullname = models.CharField(max_length=255)
     birth_date = models.DateField(blank=True,
                                 null=True)
     sex = models.CharField(max_length=6)
@@ -24,7 +26,7 @@ class ApplicantDetails(models.Model):
 
 
 class ApplicantRequirements(models.Model):
-    applicant_id = models.ForeignKey(settings.AUTH_USER_MODEL,
+    applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE)
     shs_card = models.BooleanField(default=False)
     good_moral_char = models.BooleanField(default=False)
@@ -33,7 +35,7 @@ class ApplicantRequirements(models.Model):
 
 
 class EntranceExamResult(models.Model):
-    applicant_id = models.ForeignKey(settings.AUTH_USER_MODEL,
+    applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE)
     room = models.CharField(max_length=30)
     date_taken = models.DateField(blank=True,
@@ -49,7 +51,7 @@ class EntranceExamResult(models.Model):
 
 
 class MedicalResult(models.Model):
-    applicant_id = models.ForeignKey(settings.AUTH_USER_MODEL,
+    applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE)
     medical_result = models.CharField(max_length=6,
                                         blank=True)
@@ -58,7 +60,7 @@ class MedicalResult(models.Model):
 
 
 class InterviewResult(models.Model):
-    applicant_id = models.ForeignKey(settings.AUTH_USER_MODEL,
+    applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE)
     date_taken = models.DateField(blank=True,
                                     null=True)
