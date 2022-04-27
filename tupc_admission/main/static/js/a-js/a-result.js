@@ -21,7 +21,7 @@ for( let b of remarks_boxes ) {
 
 let results = document.getElementsByClassName("results")
 
-for( i=0; i < results.length - 1; i++ ) {
+for( let i=0; i < results.length - 1; i++ ) {
     if( results[i].innerText == ' PASSED' ) {
         results[i].style.fontWeight = '1000';
         results[i].style.width = 'fit-content';

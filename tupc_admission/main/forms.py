@@ -1,3 +1,4 @@
+from random import choices
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import MedicalResult, User
@@ -5,16 +6,20 @@ from .models import MedicalResult, User
 
 class RegistrationCredetials(UserCreationForm):
     first_name = forms.CharField(label="First Name",
-                                widget=forms.TextInput(attrs={'placeholder':'Juan'}),
+                                widget=forms.TextInput(attrs={'placeholder': 'Juan', 
+                                                            'onkeyup': 'saveValue(this)'}),
                                 max_length=255,
                                 required=True)
                     
     last_name = forms.CharField(label="Last Name",
-                                widget=forms.TextInput(attrs={'placeholder':'Dela Cruz'}),
+                                widget=forms.TextInput(attrs={'placeholder': 'Dela Cruz', 
+                                                            'onkeyup': 'saveValue(this)'}),
                                 max_length=255,
                                 required=True)
 
     email = forms.EmailField(label="Email",
+                            widget=forms.EmailInput(attrs={'placeholder': 'you@email.com', 
+                                                        'onkeyup': 'saveValue(this)'}),
                             max_length=255,
                             required=True)
 
@@ -32,10 +37,17 @@ class RegistrationCredetials(UserCreationForm):
                             required=True,
                             widget=forms.PasswordInput)
     
+    USERTYPES = [('COORDINATOR', 'COORDINATOR'),
+                ('INTERVIEWER', 'INTERVIEWER'),
+                ('NURSE', 'NURSE')]
 
+    user_type = forms.CharField(label='Role Type',
+                                max_length=11,
+                                widget=forms.Select(choices=USERTYPES))
+                                
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2', 'user_type']
 
 
 class UpdateNurseTable(forms.ModelForm):

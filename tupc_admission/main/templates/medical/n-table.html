@@ -26,7 +26,6 @@
 <body id="body">
   <!-- sidenav -->
   <div class="sidebar" id="sidebar">
-    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
     <div class="sidebar-brand" id="sidebar-brand">
       <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo" onclick="hamburgerToggle()">
       </span><span id="tupc-text">TUP - Cavite Campus</span>
@@ -35,17 +34,17 @@
       <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
       <div id="nurse-info">
         <div id="nurse-name-wrapper">
-          <h6 id="nurse-name">Ako, Si Nurse X.</h6>
+          <h6 id="nurse-name">{{ user.last_name }}, {{ user.first_name }}</h6>
         </div>
       </div>
       <div id="download-wrapper">
         <a id="download" href="#">
-          <i class="bi bi-download"></i><span id="download-text"> Download Result</span>
+          <i class="bi bi-download"></i><span id="download-text" title="Download PDF"> Download Result</span>
         </a>
       </div>
       <div id="logout-wrapper">
         <a id="logout" href="#">
-          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span>
+          <i class="bi bi-box-arrow-left"></i><span id="logout-text" title="Logout"> Logout</span>
         </a>
       </div>
     </div>
@@ -104,7 +103,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="{% url 'nurse_update_table' %}">
+              <form method="POST"> 
                 {% csrf_token %}
                 <div class="form-group">
                   {{ form.medical_result|as_crispy_field }}

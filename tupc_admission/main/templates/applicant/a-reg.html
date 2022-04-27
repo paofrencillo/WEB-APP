@@ -22,7 +22,7 @@
 </head>
 
 
-<body>
+<body id="body">
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
     <img class="navbar-brand p-0 m-0" src="{% static 'imgs/tupc-banner-white.png' %}" alt="this is TUPC banner" width="325px">
@@ -50,128 +50,136 @@
 
   <!-- ================= REGISTRATION FORM ================= -->
   <div id="main-container" class="container-fluid">
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'error' %}
+          <div class="alert alert-danger">
+            {{ message }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
     <fieldset class="container">
       <legend>Applicant Registration</legend>
       <form method="POST" action="{% url 'applicant_registration' %}" name="reg-form" class="was-validated">
         {% csrf_token %}
-        <div class="form-group">
-          {{ form.first_name|as_crispy_field }}
-        </div>
+        <div class="reg-container" id="reg-container1">
+          <div class="form-group">
+            {{ form.first_name|as_crispy_field }}
+          </div>
+  
+          <div class="form-group">
+            <label for="m_name">Middle Name</label>
+            <input type="text" name="m_name" id="m_name" class="form-control" placeholder="Type N/A if not applicable" onkeyup="saveValue(this)" required />
+          </div>
+  
+          <div class="form-group">
+            {{ form.last_name|as_crispy_field }}
+          </div>
 
-        <div class="form-group">
-          <label for="m-name">Middle Name</label>
-          <input type="text" name="m-name" id="m-fname" class="form-control" placeholder="-" />
-          <small class="form-text mb-0 pb-0"><i>Leave it blank if has nothing to input.</i></small>
-        </div>
-
-        <div class="form-group">
-          {{ form.last_name|as_crispy_field }}
-        </div>
-
-        <div class="container-fluid row justify-content-between m-0 p-0">
-          <div class="form-group col col-md-4 col-12 pl-0">
+          <div class="form-group">
             <label for="suffix">Suffix</label>
-            <input type="text" name="suffix" id="suffix" class="form-control" placeholder="e.g. III, Jr." />
-            <small class="form-text mb-0 pb-0"><i>Leave it blank if has nothing to input.</i></small>
+            <input type="text" name="suffix" id="suffix" class="form-control" placeholder="Type N/A if not applicable" onkeyup="saveValue(this)" required />
           </div>
-          <div class="form-group col col-md-5 col-12 pl-0">
-            <label for="name">Birthdate*</label>
-            <input type="date" name="birthdate" id="birthdate" class="form-control" required />
-          </div>
-          <div id="sex" class="form-group col col-md-3 col-12 pl-0">
-            <h5>Sex*</h5>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="sex-male" name="sex" value="MALE" required>
-              <label class="custom-control-label" for="sex-male">Male</label>
+  
+          <div class="container-fluid row justify-content-between m-0 p-0">
+            <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
+              <div id="bday-container">
+                <label for="birthdate">Birthdate*</label>
+                <input type="date" name="birthdate" id="birthdate" class="form-control" onmouseleave="saveValue(this)" required />
+              </div>
             </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input" id="sex-female" name="sex" value="FEMALE" required>
-              <label class="custom-control-label" for="sex-female">Female</label>
+
+            <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
+              <div id="sex-container" class="form-group">
+                <label for="sex">Sex*</label>
+                <select name="sex" id="sex" class="form-control" onclick="saveValue(this)" required>
+                  <option value="" disabled selected>Choose your sex</option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                </select>
+              </div>  
             </div>
+          </div>  
+        </div>
+
+        <div class="reg-container" id="reg-container2">
+          <div class="form-group" class="form-group">
+            <label for="status">Admission Status*</label>
+            <select name="status" id="status" class="form-control" onclick="saveValue(this)" required>
+              <option value="" disabled selected>Choose your status</option>
+              <option value="FRESHMEN">Freshmen</option>
+              <option value="TRANSFEREE">Transferee</option>
+              <option value="RETURNEE">Returnee</option>
+              <option value="CROSS-ENROLEE">Cross-Enrollee</option>
+              <option value="ALS">Alternative Learning System (ALS)</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="course">Course (1st Choice)</label>
+            <select name="course" id="course" class="form-control" onclick="saveValue(this)" required>
+              <option value="" disabled selected>Choose your course</option>
+              <option value="BSCE">BS - Civil Engineering</option>
+              <option value="BSEE">BS - Electrical Engineering</option>
+              <option value="BSME">BS - Mechanical Engineering</option>
+              <option value="BET-ET">BET - Electrical Technology</option>
+              <option value="BET-ESET">BET - Electronics Technology Track: Industrial Automation Technology</option>
+              <option value="BET-COET">BET - Computer Engineering Technology</option>
+              <option value="BET-CT">BET - Civil Technology</option>
+              <option value="BET-MT">BET - Mechanical Technology</option>
+              <option value="BET-AT">BET - Mechanical Engineering Technology Track: Automative Technology</option>
+              <option value="BET-PPT">BET - Mechanical Engineering Technology Track: Power Plant Technology</option>
+              <option value="BSIE-ICT">BSIE - Information and Communication Technology</option>
+              <option value="BTTE-AU">BTTE - Automative</option>
+              <option value="BTTE-EL">BTTE - Electrical</option>
+              <option value="BTTE-E">BTTE - Electronics</option>
+              <option value="BTTE-HVACT">BTTE - Heating, Ventilation, and Air Conditioning</option>
+              <option value="BTTE-CP">BTTE - Computer Programming</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="strand">Senior High School Strand</label>
+            <input type="text" name="strand" id="strand" class="form-control"
+              placeholder="Science, Technology, Engineering and Mathematics" onkeyup="saveValue(this)" required />
+          </div> 
+        </div>
+
+        <div class="reg-container" id="reg-container3">
+          <div class="form-group">
+            {{ form.email|as_crispy_field }}
+          </div>
+  
+          <div class="form-group">
+            {{ form.username|as_crispy_field }}
+          </div>
+  
+          <div class="form-group">
+            {{ form.password1|as_crispy_field }}
+            <small class="form-text mb-0 pb-0"><i>Password should contain at least 8 characters.</i></small>
+          </div>
+  
+          <div class="form-group">
+            {{ form.password2|as_crispy_field }}
+          </div>
+
+          <div class="form-group" style="display: none;">
+            {{ form.user_type|as_crispy_field }}
           </div>
         </div>
-        <hr>
 
-        <div id="admission-status" class="form-group">
-          <h5>Admission Status</h5>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="freshmen" name="status" value=FRESHMEN required>
-            <label class="custom-control-label" for="freshmen">Freshmen</label>
+        <div id="btns" class="form-group">
+          <div id="submit-btn">
+            <input type="submit" id="submit" value="Register" disabled>
           </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="transferee" name="status" value=TRANSFEREE required>
-            <label class="custom-control-label" for="transferee">Transferee</label>
+          <div id="form-nums" class="form-btns">
+            <input id="prev-btn" type="button" value="<" onclick="prevBtn()" disabled>&nbsp&nbsp&nbsp
+            <div class="page-nums" id="one-btn">1</div>
+            <div class="page-nums" id="two-btn">2</div>
+            <div class="page-nums" id="three-btn">3</div>&nbsp&nbsp&nbsp
+            <input id="next-btn" type="button" value=">" onclick="nextBtn()">
           </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="returnee" name="status" value=RETURNEE required>
-            <label class="custom-control-label" for="returnee">Returnee</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="cross-enrollee" name="status" value=CROSS-ENROLEE required>
-            <label class="custom-control-label" for="cross-enrollee">Cross-Enrollee</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="als" name="status" value=ALS required>
-            <label class="custom-control-label" for="als">Alternative Learning System (ALS)</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="course">Course (1st Choice)</label>
-          <select name="course" id="course" class="custom-select" required>
-            <option value="">Select Course</option>
-            <option value="BSCE">BS - Civil Engineering</option>
-            <option value="BSEE">BS - Electrical Engineering</option>
-            <option value="BSME">BS - Mechanical Engineering</option>
-            <option value="BET-ET">BET - Electrical Technology</option>
-            <option value="BET-ESET">BET - Electronics Technology Track: Industrial Automation Technology</option>
-            <option value="BET-COET">BET - Computer Engineering Technology</option>
-            <option value="BET-CT">BET - Civil Technology</option>
-            <option value="BET-MT">BET - Mechanical Technology</option>
-            <option value="BET-AT">BET - Mechanical Engineering Technology Track: Automative Technology</option>
-            <option value="BET-PPT">BET - Mechanical Engineering Technology Track: Power Plant Technology</option>
-            <option value="BSIE-ICT">BSIE - Information and Communication Technology</option>
-            <option value="BTTE-AU">BTTE - Automative</option>
-            <option value="BTTE-EL">BTTE - Electrical</option>
-            <option value="BTTE-E">BTTE - Electronics</option>
-            <option value="BTTE-HVACT">BTTE - Heating, Ventilation, and Air Conditioning</option>
-            <option value="BTTE-CP">BTTE - Computer Programming</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="strand">Senior High School Strand</label>
-          <input type="text" name="strand" id="strand" class="form-control"
-            placeholder="Science, Technology, Engineering and Mathematics" required />
-        </div>
-
-        <div class="form-group">
-          {{ form.email|as_crispy_field }}
-        </div>
-
-        <div class="form-group">
-          {{ form.username|as_crispy_field }}
-        </div>
-
-        <div class="form-group">
-          {{ form.password1|as_crispy_field }}
-          <small class="form-text mb-0 pb-0"><i>Password should contain at least 8 characters.</i></small>
-        </div>
-
-        <div class="form-group">
-          {{ form.password2|as_crispy_field }}
-        </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="" id="check" required>
-          <label class="form-check-label" for="check">
-            All information given above was all true and correct.
-          </label>
-        </div>
-        <br>
-        <br>
-        <div class="form-group">
-          <input type="submit" value="Register">
         </div>
       </form>
     </fieldset>

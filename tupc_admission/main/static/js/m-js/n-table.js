@@ -30,7 +30,6 @@ function hamburgerToggle() {
   }
 
   if ( sidebar_width == 100 ) {
-    document.getElementById("close-btn").style.display = "inline";
     document.getElementById("sidebar").style.width = "290px";
     document.getElementById("tupc-text").style.visibility = "visible";
     document.getElementById("nurse-name").style.visibility = "visible";

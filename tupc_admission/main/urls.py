@@ -20,5 +20,6 @@ urlpatterns = [
     path("n/login/", views.nurse_login, name="nurse_login"),
     path("n/logout/", views.nurse_logout, name="nurse_logout"),
     path("n/table/", views.nurse_table, name="nurse_table"),
+    path("createAccountTUPCAdmission/", views.create_admissionAccounts, name="create_admissionAccounts"),
     # path("n/update_nurse/<str:applicant_id_id>", views.nurse_update_table, name="nurse_update_table"),
 ]

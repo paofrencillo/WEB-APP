@@ -9,31 +9,6 @@ body {
     min-height: 100vh;
 }
 
-/* ========== HEADER w/ NAVBAR ========== */
-nav {
-    background-color: #bd2031;
-    box-shadow: 0px 5px 7px rgb(0 0 0 / 30%);
-}
-
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-.nav-link {
-    color: rgb(255, 255, 255);
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-#applicant-link {
-    border-bottom: 5px solid white;
-    color: white;
-}
-
-nav a:hover  {
-    color: gray;
-}
-
 /* ========== MAIN CONTAINER ========== */
 #main-container {
     margin: auto;
@@ -46,10 +21,6 @@ nav a:hover  {
     border: 5px solid rgb(189, 32, 49);
     border-radius: 20px;
     max-width: 550px;
-}
-
-.reg-container {
-    padding: 2% 5%;
 }
 
 legend {
@@ -80,17 +51,6 @@ label {
     font-weight: 550;
 }
 
-#div_id_middle_name, #div_id_password1, #div_id_suffix {
-    margin-bottom: 0px;
-}
-
-#bday-container {
-    margin-right: 10px;
-}
-
-#sex-container {
-    margin-left: 10px;
-}
 
 .alert-danger {
     position: fixed;
@@ -105,6 +65,11 @@ label {
     to {opacity: 0;}
 }
 
+.submit-btn {
+    display: flex;
+    justify-content: center;
+}
+
 input[type=submit] {
     padding: 10px 20px;
     color: white;
@@ -113,54 +78,9 @@ input[type=submit] {
     outline: none;
     border: none;
     border-radius: 10px;
-    background-color: rgb(113, 113, 113);
+    background-color: rgb(215, 56, 56);
 }
 
-input[type=button] {
-    max-height: 35px;
-    font-size: 20px;
-}
-
-
-#btns {
-    display: flex;
-    justify-content: space-between;
-    padding: 1% 5%;
-}
-
-#submit-btn {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-
-#form-nums {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-
-}
-
-#reg-container2, #reg-container3 {
-    display: none;
-}
-
-.page-nums {
-    text-align: center;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
-    margin-left: 3px;
-    margin-right: 3px;
-    font-weight: 550;
-    margin-bottom: 0;
-    background-color: rgb(232, 88, 88);
-    border-radius: 15px;
-}
-
-#one-btn {
-    background-color: rgb(88, 232, 95);
-}
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */

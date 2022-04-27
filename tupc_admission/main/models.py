@@ -11,7 +11,8 @@ class User(AbstractUser):
 
 class ApplicantDetails(models.Model):
     applicant_id = models.OneToOneField(User,
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE,
+                                    primary_key=True)
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -27,7 +28,8 @@ class ApplicantDetails(models.Model):
 
 class ApplicantRequirements(models.Model):
     applicant_id = models.OneToOneField(User,
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE,
+                                    primary_key=True)
     shs_card = models.BooleanField(default=False)
     good_moral_char = models.BooleanField(default=False)
     brgy_clearance = models.BooleanField(default=False)
@@ -36,7 +38,8 @@ class ApplicantRequirements(models.Model):
 
 class EntranceExamResult(models.Model):
     applicant_id = models.OneToOneField(User,
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE,
+                                    primary_key=True)
     room = models.CharField(max_length=30)
     date_taken = models.DateField(blank=True,
                                     null=True)
@@ -52,7 +55,8 @@ class EntranceExamResult(models.Model):
 
 class MedicalResult(models.Model):
     applicant_id = models.OneToOneField(User,
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE,
+                                    primary_key=True)
     medical_result = models.CharField(max_length=6,
                                         blank=True)
     medical_file = models.FileField(blank=True,
@@ -61,7 +65,8 @@ class MedicalResult(models.Model):
 
 class InterviewResult(models.Model):
     applicant_id = models.OneToOneField(User,
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE,
+                                    primary_key=True)
     date_taken = models.DateField(blank=True,
                                     null=True)
     venue = models.CharField(max_length=30,

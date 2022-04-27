@@ -71,7 +71,7 @@ img {
 
 #download-wrapper, #logout-wrapper {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
 }
@@ -83,6 +83,8 @@ img {
 }
 
 #download-text, #logout-text {
+    display: none;
+    visibility: hidden;
     color: white;
 }
 

@@ -50,15 +50,15 @@
     <!-- ================= LOGIN FORM ================= -->
     <fieldset class="container">
       <legend>Nurse Login</legend>
-      <form name="login-form" action="javascript:validateLogin();" class="was-validated">
+      <form method="POST" name="login-form" action="{% url 'nurse_login' %}" class="was-validated">
         {% csrf_token %}
         <div class="form-group">
-          <label for="nurse-email">Email Address</label>
-          <input type="email" id="nurse-email" class="form-control" name="nurse-email" required />
+          <label for="nurse-username">Username</label>
+          <input type="text" id="nurse-username" class="form-control" name="nurse-username" required />
         </div>
         <div class="form-group">
           <label for="nurse-pass">Password</label>
-          <input type="password" id="nurse-pass" class="form-control" name="nurse-pass" required />
+          <input type="password" id="nurse-password" class="form-control" name="nurse-password" required />
         </div>
         <div class="form-group">
           <input type="submit" value="Login">

@@ -1,0 +1,94 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <title>TUP - Cavite | Applicant Registration</title>
+
+  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="{% static 'css/create-accounts.css' %}" />
+</head>
+
+
+<body id="body">
+  <!-- ================= REGISTRATION FORM ================= -->
+  <div id="main-container" class="container-fluid">
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'error' %}
+          <div class="alert alert-danger">
+            {{ message }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <fieldset class="container">
+      <legend>Registration</legend>
+      <form method="POST" action="{% url 'create_admissionAccounts' %}" name="reg-form" class="was-validated">
+        {% csrf_token %}
+        <div class="reg-container">
+          <div class="form-group">
+            {{ form.first_name|as_crispy_field }}
+          </div>
+
+          <div class="form-group">
+            {{ form.last_name|as_crispy_field }}
+          </div>
+
+          <div class="form-group">
+            {{ form.user_type|as_crispy_field }}
+          </div>
+
+          <div class="form-group">
+            {{ form.email|as_crispy_field }}
+          </div>
+  
+          <div class="form-group">
+            {{ form.username|as_crispy_field }}
+          </div>
+  
+          <div class="form-group">
+            {{ form.password1|as_crispy_field }}
+            <small class="form-text mb-0 pb-0"><i>Password should contain at least 8 characters.</i></small>
+          </div>
+  
+          <div class="form-group">
+            {{ form.password2|as_crispy_field }}
+          </div>
+          
+          <div class="form-group submit-btn">
+            <input type="submit" id="submit" value="Register">
+          </div>
+
+        </div>
+      </form>
+    </fieldset>
+  </div>
+
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+
+
+</html>

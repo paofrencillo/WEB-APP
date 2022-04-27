@@ -1,5 +1,6 @@
 
-from django.shortcuts import render, redirect
+from email import message
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,6 +12,36 @@ from .forms import RegistrationCredetials, UpdateNurseTable
 def blank_page(request):
     return render(request, "applicant/a-login.html")
 
+def create_admissionAccounts(request):
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result')
+        elif request.user.user_type is None or request.user.user_type == '':
+            return HttpResponse('Forbidden')
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    else:
+        if request.method == 'POST':
+            form = RegistrationCredetials(request.POST)
+
+            if form.is_valid():
+                form.save()
+                
+            else:
+                errors = form.error_messages
+                for keys in errors:
+                    messages.error(request, errors[keys])
+
+        else:
+            form = RegistrationCredetials()
+        
+    return render(request, 'create-accounts.html', {'form': form})
+        
 
 def applicant_login(request):
     if request.user.is_authenticated:
@@ -30,7 +61,7 @@ def applicant_login(request):
 
             user = authenticate(request, username=username, password=password)
 
-            if user is not None:
+            if (user is not None) and (user.user_type == 'APPLICANT'):
                 login(request, user)
                 return redirect('applicant_result')
 
@@ -68,22 +99,27 @@ def applicant_registration(request):
                 form.save()
 
                 new_userId = User.objects.get(username=user_name)
+
+                mname = request.POST.get('m_name')
+                
+                if mname.lower() == 'n/a':
+                    mname = ''
                 
                 ApplicantDetails(
                     applicant_id = new_userId,
                     first_name = f_name,
-                    middle_name = request.POST.get('m-name'),
+                    middle_name = mname,
                     last_name = l_name,
                     suffix = request.POST.get('suffix'),
                     fullname = l_name + ', ' + f_name + ' ' +
-                            request.POST.get('m-name') + ' ' +
+                            mname + ' ' +
                             request.POST.get('suffix'),
                     birth_date = request.POST.get('birthdate'),
                     sex = request.POST.get('sex'),
                     status = request.POST.get('status'),
                     course = request.POST.get('course'),
                     shs_strand = request.POST.get('strand')
-                ).save()
+                    ).save()
 
                 ApplicantRequirements.objects.create(
                     applicant_id = new_userId
@@ -103,6 +139,11 @@ def applicant_registration(request):
                 messages.add_message(request, messages.SUCCESS, "Registration complete.\
                                     You've redirected to applicant login page.")
                 return redirect('applicant_login')
+
+            else:
+                errors = form.error_messages
+                for keys in errors:
+                    messages.error(request, errors[keys])
 
         else:
             form = RegistrationCredetials()
@@ -197,6 +238,32 @@ def interviewer_table(request):
 
 
 def nurse_login(request):
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result')
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('nurse-username')
+            password = request.POST.get('nurse-password')
+
+            print(username, password)
+
+            user = authenticate(request, username=username, password=password)
+
+            if (user is not None) and (user.user_type == 'NURSE'):
+                login(request, user)
+                return redirect('nurse_table')
+
+            else:
+                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+
     return render(request, "medical/n-login.html")
 
 
