@@ -133,7 +133,7 @@ def applicant_registration(request):
                 new_user.user_img = uploaded_img
                 new_user.save()
 
-                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+           
                 _m_name = form2.cleaned_data.get('middle_name')
                 _suffix = form2.cleaned_data.get('suffix')
 
@@ -143,12 +143,15 @@ def applicant_registration(request):
                 if _suffix.upper() == 'N/A':
                     form2.instance.suffix = ''
                 
-                new_applicant = User.objects.get(username=user_name)
-                form2.instance.applicant_id  = new_applicant
+                form2.instance.applicant_id  = new_user
                 form2.instance.first_name= f_name
                 form2.instance.last_name = l_name
 
                 form2.save()
+
+                ApplicantRequirements.objects.create(
+                    applicant_id = new_user
+                )
 
                 EntranceExamResult.objects.create(
                     applicant_id = new_user
@@ -166,13 +169,12 @@ def applicant_registration(request):
                                     You've redirected to applicant login page.")
 
                 return redirect('applicant_login')
-                
+                    
             else:
                 errors = form1.error_messages
 
                 for keys in errors:
                     messages.error(request, errors[keys])
-
 
         else:
             form1 = RegistrationCredetialsForm()
@@ -186,11 +188,11 @@ def applicant_registration(request):
 
 @login_required(login_url='applicant_login')
 def applicant_result(request):
-    applicant_details = ApplicantDetails.objects.filter(applicant_id=request.user.pk)[0]
-    exam_details = EntranceExamResult.objects.filter(applicant_id=request.user.pk)[0]
-    req_details = ApplicantRequirements.objects.filter(applicant_id=request.user.pk)[0]
-    med_details = MedicalResult.objects.filter(applicant_id=request.user.pk)[0]
-    interv_details = InterviewResult.objects.filter(applicant_id=request.user.pk)[0]
+    applicant_details = ApplicantDetails.objects.filter(applicant_id_id=request.user.pk)[0]
+    exam_details = EntranceExamResult.objects.filter(applicant_id_id=request.user.pk)[0]
+    req_details = ApplicantRequirements.objects.filter(applicant_id_id=request.user.pk)[0]
+    med_details = MedicalResult.objects.filter(applicant_id_id=request.user.pk)[0]
+    interv_details = InterviewResult.objects.filter(applicant_id_id=request.user.pk)[0]
 
     res = None
     reqs = [req_details.shs_card, req_details.good_moral_char, req_details.brgy_clearance, req_details.birth_cert]

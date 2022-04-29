@@ -19,7 +19,6 @@ class ApplicantDetails(models.Model):
     middle_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     suffix = models.CharField(max_length=10)
-    fullname = models.CharField(max_length=255)
     birth_date = models.DateField(blank=True,
                                 null=True)
     sex = models.CharField(max_length=6)

@@ -12,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TUP - Cavite | Nurse Table</title>
-  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <link rel="icon" href="{% static 'res/tup_logo.png' %}" />
 
   <!-- ================= BOOTSTRAP ================= -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -27,11 +27,14 @@
   <!-- sidenav -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-brand" id="sidebar-brand">
-      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo" onclick="hamburgerToggle()">
+      <span><img class="tup-logo" id="tup-logo" src="{% static 'res/tup_logo.png' %}" alt="tup logo" onclick="hamburgerToggle()">
       </span><span id="tupc-text">TUP - Cavite Campus</span>
     </div>
     <div class="sidebar-things">
-      <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
+      {% if user.user_img is None or user.user_img == '' %}
+          {% else %}
+            <img src="{{ user.user_img.url }}" alt="avatar" id="avatar" />
+          {% endif %}
       <div id="nurse-info">
         <div id="nurse-name-wrapper">
           <h6 id="nurse-name">{{ user.last_name }}, {{ user.first_name }}</h6>
@@ -43,7 +46,7 @@
         </a>
       </div>
       <div id="logout-wrapper">
-        <a id="logout" href="#">
+        <a id="logout" href="{% url 'nurse_logout' %}">
           <i class="bi bi-box-arrow-left"></i><span id="logout-text" title="Logout"> Logout</span>
         </a>
       </div>

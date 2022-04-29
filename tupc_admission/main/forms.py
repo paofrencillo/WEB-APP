@@ -81,7 +81,7 @@ class ApplicantDetailsForm(forms.ModelForm):
             ('BTTE-HVACT', 'BTTE - Heating, Ventilation, and Air Conditioning'),
             ('BTTE-CP', 'BTTE - Computer Programming')]
 
-    applicant_id = forms.IntegerField(widget=forms.NumberInput(attrs={'type': 'hidden',
+    applicant_id_id = forms.IntegerField(widget=forms.NumberInput(attrs={'type': 'hidden',
                                                                     'value': '0'}))
 
     middle_name = forms.CharField(label='Middle Name',
@@ -96,7 +96,7 @@ class ApplicantDetailsForm(forms.ModelForm):
                             max_length=255,                               
                             required=True)
 
-    birthdate = forms.DateField(label='Birthdate',
+    birth_date = forms.DateField(label='Birthdate',
                                 widget=forms.DateInput(format='%Y-%m-%d',
                                                     attrs={'onmouseleave': 'saveValue(this)',
                                                             'type': 'date'}),
@@ -121,7 +121,7 @@ class ApplicantDetailsForm(forms.ModelForm):
                                             attrs={'onclick': 'saveValue(this)'}),
                         required=True)
 
-    strand = forms.CharField(label='Senior High School Strand',
+    shs_strand = forms.CharField(label='Senior High School Strand',
                         max_length=100,
                         widget=forms.TextInput(attrs={'placeholder': 'Science, Engineering, Technology and Mathematics', 
                                                 'onkeyup': 'saveValue(this)'}),
@@ -129,7 +129,7 @@ class ApplicantDetailsForm(forms.ModelForm):
 
     class Meta:
         model = ApplicantDetails
-        fields = ['applicant_id', 'middle_name', 'suffix', 'birthdate', 'sex', 'status', 'course', 'strand']
+        fields = ['applicant_id_id', 'middle_name', 'suffix', 'birth_date', 'sex', 'status', 'course', 'shs_strand']
 
 
 class UpdateNurseTableForm(forms.ModelForm):
@@ -138,9 +138,9 @@ class UpdateNurseTableForm(forms.ModelForm):
             ('FAILED','FAILED')]
 
 
-    applicant_id = forms.CharField(widget=forms.TextInput(attrs={'type': 'hidden'}))
-    medical_result = forms.CharField(label='Medical Result', widget=forms.RadioSelect(choices=CHOICES))
-    medical_file = forms.FileField(allow_empty_file=True, widget=forms.ClearableFileInput())
+    applicant_id_id = forms.CharField(widget=forms.TextInput(attrs={'type': 'hidden'}))
+    medical_result = forms.CharField(label='Medical Result', widget=forms.Select(choices=CHOICES))
+    medical_file = forms.FileField(label='Medical File')
     
 
     class Meta:

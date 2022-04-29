@@ -3,11 +3,11 @@ document.getElementById("id_first_name").value = getSavedValue("id_first_name");
 document.getElementById("id_middle_name").value = getSavedValue("id_middle_name");
 document.getElementById("id_last_name").value = getSavedValue("id_last_name");
 document.getElementById("id_suffix").value = getSavedValue("id_suffix");
-document.getElementById("id_birthdate").value = getSavedValue("id_birthdate")
+document.getElementById("id_birth_date").value = getSavedValue("id_birthdate")
 document.getElementById("id_sex").value = getSavedValue("id_sex")
 document.getElementById("id_status").value = getSavedValue("id_status")
 document.getElementById("id_course").value = getSavedValue("id_course");
-document.getElementById("id_strand").value = getSavedValue("id_strand");
+document.getElementById("id_shs_strand").value = getSavedValue("id_strand");
 document.getElementById("id_email").value = getSavedValue("id_email");
 
 
@@ -62,11 +62,11 @@ function nextBtn() {
             document.getElementById('id_middle_name').value,
             document.getElementById('id_last_name').value,
             document.getElementById('id_suffix').value,
-            document.getElementById('id_birthdate').value,
+            document.getElementById('id_birth_date').value,
             document.getElementById('id_sex').value,
             document.getElementById('id_status').value,
             document.getElementById('id_course').value,
-            document.getElementById('id_strand').value,
+            document.getElementById('id_shs_strand').value,
             document.getElementById('id_email').value,
             document.getElementById('id_username').value,
             document.getElementById('id_password1').value,

@@ -30,7 +30,10 @@
     <div class="sidebar-things">
       <div class="img-wrapper">
         <div class="img-container">
-          <img src="{{ user.user_img.url }}" alt="avatar" id="avatar" />
+          {% if user.user_img is None or user.user_img == '' %}
+          {% else %}
+            <img src="{{ user.user_img.url }}" alt="avatar" id="avatar" />
+          {% endif %}
         </div>
       </div>
 
