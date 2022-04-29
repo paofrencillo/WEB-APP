@@ -1,15 +1,39 @@
 
-from email import message
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import RegistrationCredetials, UpdateNurseTable
-
+from .forms import RegistrationCredetialsForm, ApplicantDetailsForm, UpdateNurseTableForm
 
 # Create your views here.
 def blank_page(request):
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result')
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('applicant-username')
+            password = request.POST.get('applicant-password')
+
+            print(username, password)
+
+            user = authenticate(request, username=username, password=password)
+
+            if (user is not None) and (user.user_type == 'APPLICANT'):
+                login(request, user)
+                return redirect('applicant_result')
+
+            else:
+                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+
     return render(request, "applicant/a-login.html")
 
 def create_admissionAccounts(request):
@@ -27,7 +51,7 @@ def create_admissionAccounts(request):
 
     else:
         if request.method == 'POST':
-            form = RegistrationCredetials(request.POST)
+            form = RegistrationCredetialsForm(request.POST)
 
             if form.is_valid():
                 form.save()
@@ -38,9 +62,11 @@ def create_admissionAccounts(request):
                     messages.error(request, errors[keys])
 
         else:
-            form = RegistrationCredetials()
+            form = RegistrationCredetialsForm()
+    
+    context = {'form': form}
         
-    return render(request, 'create-accounts.html', {'form': form})
+    return render(request, 'create-accounts.html', context)
         
 
 def applicant_login(request):
@@ -55,9 +81,11 @@ def applicant_login(request):
             return redirect('interviewer_table')
 
     else:
-        if request.method == 'POST':
+           if request.method == 'POST':
             username = request.POST.get('applicant-username')
             password = request.POST.get('applicant-password')
+
+            print(username, password)
 
             user = authenticate(request, username=username, password=password)
 
@@ -89,66 +117,71 @@ def applicant_registration(request):
 
     else:
         if request.method == 'POST':
-            form = RegistrationCredetials(request.POST)
+            form1 = RegistrationCredetialsForm(request.POST)
+            form2 = ApplicantDetailsForm(request.POST)
 
-            if form.is_valid():
-                form.instance.user_type = 'APPLICANT'
-                f_name = form.cleaned_data.get('first_name')
-                l_name = form.cleaned_data.get('last_name')
-                user_name = form.cleaned_data.get('username')
-                form.save()
+            if form1.is_valid() and form2.is_valid():
+                print("!!!!!!!!!!!!!!!!!!!!!!!!")
+                form1.instance.user_type = 'APPLICANT'
+                f_name = form1.cleaned_data.get('first_name')
+                l_name = form1.cleaned_data.get('last_name')
+                user_name = form1.cleaned_data.get('username')
+                form1.save()
 
-                new_userId = User.objects.get(username=user_name)
+                new_user = User.objects.get(username=user_name)
+                uploaded_img = request.FILES.get('img_upload')
+                new_user.user_img = uploaded_img
+                new_user.save()
 
-                mname = request.POST.get('m_name')
+                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                _m_name = form2.cleaned_data.get('middle_name')
+                _suffix = form2.cleaned_data.get('suffix')
+
+                if _m_name.upper() == 'N/A':
+                    form2.instance.middle_name = ''
+
+                if _suffix.upper() == 'N/A':
+                    form2.instance.suffix = ''
                 
-                if mname.lower() == 'n/a':
-                    mname = ''
-                
-                ApplicantDetails(
-                    applicant_id = new_userId,
-                    first_name = f_name,
-                    middle_name = mname,
-                    last_name = l_name,
-                    suffix = request.POST.get('suffix'),
-                    fullname = l_name + ', ' + f_name + ' ' +
-                            mname + ' ' +
-                            request.POST.get('suffix'),
-                    birth_date = request.POST.get('birthdate'),
-                    sex = request.POST.get('sex'),
-                    status = request.POST.get('status'),
-                    course = request.POST.get('course'),
-                    shs_strand = request.POST.get('strand')
-                    ).save()
+                new_applicant = User.objects.get(username=user_name)
+                form2.instance.applicant_id  = new_applicant
+                form2.instance.first_name= f_name
+                form2.instance.last_name = l_name
 
-                ApplicantRequirements.objects.create(
-                    applicant_id = new_userId
-                )
+                form2.save()
 
                 EntranceExamResult.objects.create(
-                    applicant_id = new_userId
+                    applicant_id = new_user
                 )
 
                 MedicalResult.objects.create(
-                    applicant_id = new_userId
+                    applicant_id = new_user
                 )
 
                 InterviewResult.objects.create(
-                    applicant_id = new_userId
+                    applicant_id = new_user
                 )
+
                 messages.add_message(request, messages.SUCCESS, "Registration complete.\
                                     You've redirected to applicant login page.")
-                return redirect('applicant_login')
 
+                return redirect('applicant_login')
+                
             else:
-                errors = form.error_messages
+                errors = form1.error_messages
+
                 for keys in errors:
                     messages.error(request, errors[keys])
 
+
         else:
-            form = RegistrationCredetials()
-        
-    return render(request, 'applicant/a-reg.html', {'form': form})
+            form1 = RegistrationCredetialsForm()
+            form2 = ApplicantDetailsForm()
+
+    context = {'form1': form1,
+                'form2': form2}
+
+    return render(request, 'applicant/a-reg.html', context)
         
 
 @login_required(login_url='applicant_login')
@@ -176,6 +209,16 @@ def applicant_result(request):
                 'intd': interv_details}
 
     return render(request, "applicant/a-result.html", context)
+
+############################################### DITO KA NA PAO!!!!!!!!!!!!!!
+@login_required(login_url='applicant_login')
+def applicant_edit_account(request, pk, username):
+    get_user_info = ApplicantDetails.objects.get(applicant_id_id=pk)
+    username = request.user.username
+    print('!!!!!!!!!!!!!!!!!!!!!!',get_user_info, username)
+
+    return render(request, 'applicant/editApplicantAccount.html/')
+    #########################################################
 
 
 def coordinator_login(request):
@@ -274,26 +317,26 @@ def nurse_logout(request):
 
 @login_required(login_url='nurse_login')
 def nurse_table(request):
-    form = UpdateNurseTable(use_required_attribute=False)
+    form = UpdateNurseTableForm()
     applicant_details = ApplicantDetails.objects.all()
     medical_result = MedicalResult.objects.all()
-    data = zip( applicant_details, medical_result)
+    data = zip(applicant_details, medical_result)
     
     return render(request, "medical/n-table.html", {'form': form,
                                                     'data': data})
 
-# def nurse_update_table(request, applicant_id_id):
-#     if request.method == 'POST':
-#         get_medical_details = MedicalResult.objects.get()
-#         form = UpdateNurseTable(request.POST)
+def nurse_update_table(request, pk):
+    if request.method == 'POST':
+        get_medical_details = MedicalResult.objects.get()
+        form = UpdateNurseTableForm(request.POST)
 
 
-#         medical_result = MedicalResult.objects.all()
-#         print(medical_result)
+        medical_result = MedicalResult.objects.all()
+        print(medical_result)
 
 
-#     return render(request, "medical/n-table.html", {'form': form,
-#                                                     'mr': medical_result})
+    return render(request, "medical/n-table.html", {'form': form,
+                                                    'mr': medical_result})
 
 
 

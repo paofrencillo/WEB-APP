@@ -1,14 +1,16 @@
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.conf import settings
 
 
 # Create your models here.
 class User(AbstractUser):
     user_type = models.CharField(max_length=20)
-    
+    user_img = models.ImageField(upload_to='imgs/',
+                                null=True,
+                                blank=True)
 
+    
 class ApplicantDetails(models.Model):
     applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE,
@@ -59,8 +61,9 @@ class MedicalResult(models.Model):
                                     primary_key=True)
     medical_result = models.CharField(max_length=6,
                                         blank=True)
-    medical_file = models.FileField(blank=True,
-                                    null=True)
+    medical_file = models.FileField(upload_to='med_files/',
+                                    null=True,
+                                    blank=True)
 
 
 class InterviewResult(models.Model):

@@ -1,5 +1,4 @@
 {% load static %}
-
 {% load crispy_forms_tags %}
 
 <!DOCTYPE html>
@@ -10,7 +9,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <link rel="icon" href="{% static 'res/tup_logo.png' %}" />
   <title>TUP - Cavite | Applicant Registration</title>
 
   <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
@@ -25,7 +24,7 @@
 <body id="body">
   <!-- ================= TUP-C BANNER w/ NAVIGATION BAR ================= -->
   <nav class="navbar navbar-expand-lg sticky-top px-5 py-1">
-    <img class="navbar-brand p-0 m-0" src="{% static 'imgs/tupc-banner-white.png' %}" alt="this is TUPC banner" width="325px">
+    <img class="navbar-brand p-0 m-0" src="{% static 'res/tupc-banner-white.png' %}" alt="this is TUPC banner" width="325px">
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -61,50 +60,53 @@
     {% endif %}
     <fieldset class="container">
       <legend>Applicant Registration</legend>
-      <form method="POST" action="{% url 'applicant_registration' %}" name="reg-form" class="was-validated">
+      <form method="POST" action="{% url 'applicant_registration' %}" name="reg-form" class="was-validated" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="reg-container" id="reg-container1">
-          <div class="form-group">
-            {{ form.first_name|as_crispy_field }}
-          </div>
+          {{ form2.applicant_id }}
+
+          {{ form1.first_name|as_crispy_field }}
   
-          <div class="form-group">
-            <label for="m_name">Middle Name</label>
-            <input type="text" name="m_name" id="m_name" class="form-control" placeholder="Type N/A if not applicable" onkeyup="saveValue(this)" required />
-          </div>
+          <!-- <div class="form-group"> -->
+            {{ form2.middle_name|as_crispy_field }}
+            <!-- <label for="m_name">Middle Name</label>
+            <input type="text" name="m_name" id="m_name" class="form-control" placeholder="Type N/A if not applicable" onkeyup="saveValue(this)" required /> -->
+          <!-- </div> -->
   
-          <div class="form-group">
-            {{ form.last_name|as_crispy_field }}
-          </div>
+          {{ form1.last_name|as_crispy_field }}
 
           <div class="form-group">
-            <label for="suffix">Suffix</label>
-            <input type="text" name="suffix" id="suffix" class="form-control" placeholder="Type N/A if not applicable" onkeyup="saveValue(this)" required />
+            {{ form2.suffix|as_crispy_field }}
+            <!-- <label for="suffix">Suffix</label>
+            <input type="text" name="suffix" id="suffix" class="form-control" placeholder="Type N/A if not applicable" onkeyup="saveValue(this)" required /> -->
           </div>
   
           <div class="container-fluid row justify-content-between m-0 p-0">
             <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
               <div id="bday-container">
-                <label for="birthdate">Birthdate*</label>
-                <input type="date" name="birthdate" id="birthdate" class="form-control" onmouseleave="saveValue(this)" required />
+                {{ form2.birthdate|as_crispy_field }}
+                <!-- <label for="birthdate">Birthdate*</label>
+                <input type="date" name="birthdate" id="birthdate" class="form-control" onmouseleave="saveValue(this)" required /> -->
               </div>
             </div>
 
             <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
               <div id="sex-container" class="form-group">
-                <label for="sex">Sex*</label>
+                {{ form2.sex|as_crispy_field }}
+                <!-- <label for="sex">Sex*</label>
                 <select name="sex" id="sex" class="form-control" onclick="saveValue(this)" required>
                   <option value="" disabled selected>Choose your sex</option>
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
-                </select>
+                </select> -->
               </div>  
             </div>
           </div>  
         </div>
 
         <div class="reg-container" id="reg-container2">
-          <div class="form-group" class="form-group">
+          {{ form2.status|as_crispy_field }}
+          <!-- <div class="form-group" class="form-group">
             <label for="status">Admission Status*</label>
             <select name="status" id="status" class="form-control" onclick="saveValue(this)" required>
               <option value="" disabled selected>Choose your status</option>
@@ -114,9 +116,10 @@
               <option value="CROSS-ENROLEE">Cross-Enrollee</option>
               <option value="ALS">Alternative Learning System (ALS)</option>
             </select>
-          </div>
-  
-          <div class="form-group">
+          </div> -->
+          {{ form2.course|as_crispy_field }}
+          <!-- <div class="form-group">
+             
             <label for="course">Course (1st Choice)</label>
             <select name="course" id="course" class="form-control" onclick="saveValue(this)" required>
               <option value="" disabled selected>Choose your course</option>
@@ -137,35 +140,46 @@
               <option value="BTTE-HVACT">BTTE - Heating, Ventilation, and Air Conditioning</option>
               <option value="BTTE-CP">BTTE - Computer Programming</option>
             </select>
-          </div>
-  
-          <div class="form-group">
+          </div> -->
+
+          {{ form2.strand|as_crispy_field }}
+          <!-- <div class="form-group">
+            
             <label for="strand">Senior High School Strand</label>
             <input type="text" name="strand" id="strand" class="form-control"
               placeholder="Science, Technology, Engineering and Mathematics" onkeyup="saveValue(this)" required />
           </div> 
+        </div> -->
         </div>
 
         <div class="reg-container" id="reg-container3">
-          <div class="form-group">
-            {{ form.email|as_crispy_field }}
-          </div>
+            {{ form1.email|as_crispy_field }}
+
+            {{ form1.username|as_crispy_field }}
+
+            {{ form1.password1|as_crispy_field }}
+            <small class="form-text mb-3 pb-0"><i>Password should contain at least 8 characters.</i></small>
   
+            {{ form1.password2|as_crispy_field }}
+
           <div class="form-group">
-            {{ form.username|as_crispy_field }}
-          </div>
-  
-          <div class="form-group">
-            {{ form.password1|as_crispy_field }}
-            <small class="form-text mb-0 pb-0"><i>Password should contain at least 8 characters.</i></small>
-          </div>
-  
-          <div class="form-group">
-            {{ form.password2|as_crispy_field }}
+            <label for="">Select your image*</label>
+            <div class="img-upload-wrapper">
+              <div class="img-container">
+                <img id="img" src="" alt="">
+              </div>
+            </div>
+            <div class="img-upload-wrapper">
+              <label for="img_upload" class="custom-file-upload">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+                Upload image
+              </label>
+              <input type="file" name="img_upload" id="img_upload" class="form-control" />
+            </div>
           </div>
 
           <div class="form-group" style="display: none;">
-            {{ form.user_type|as_crispy_field }}
+            {{ form1.user_type|as_crispy_field }}
           </div>
         </div>
 
@@ -197,6 +211,7 @@
 
   <!-- Other scripts -->
   <script src="{% static 'js/a-js/a-reg.js' %}"></script>
+  
 
 </body>
 

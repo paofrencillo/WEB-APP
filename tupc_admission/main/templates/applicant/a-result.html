@@ -8,7 +8,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+  <link rel="icon" href="{% static 'res/tup_logo.png' %}" />
   <title>TUP - Cavite | Applicant Result</title>
 
   <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
@@ -24,25 +24,39 @@
   <!-- sidenav -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-brand" id="sidebar-brand">
-      <img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo" onclick="expandSidebar()" />
+      <img class="tup-logo" id="tup-logo" src="{% static 'res/tup_logo.png' %}" alt="tup logo" onclick="expandSidebar()" />
       <span id="tupc-text">TUP - Cavite Campus</span>
     </div>
     <div class="sidebar-things">
-      <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
-      <div id="applicant-info"> 
-        <div id="applicant-name-wrapper">
-          <h6 id="applicant-name">{{ ad.fullname }}</h6>
+      <div class="img-wrapper">
+        <div class="img-container">
+          <img src="{{ user.user_img.url }}" alt="avatar" id="avatar" />
         </div>
       </div>
-      <div id="download-wrapper"> 
-        <a id="download" href="#" title="Download PDF">
-          <i class="bi bi-download"></i><span id="download-text"> Download Result</span> 
-        </a>
+
+      <div id="applicant-info"> 
+        <div id="applicant-name-wrapper">
+          <div id="applicant-name" title="{{ ad.last_name }}, {{ ad.first_name}} {{ ad.middle_name }} {{ ad.suffix }}">
+            {{ ad.last_name }}, {{ ad.first_name}} {{ ad.middle_name }} {{ ad.suffix }}
+          </div>
+        </div>
       </div>
-      <div id="logout-wrapper">
-        <a id="logout" href="{% url 'applicant_logout' %}" title="Logout">
-          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span> 
-        </a>
+      <div class="settings-wrapper">
+        <div id="edit-account-wrapper"> 
+          <a id="edit-account" href="{% url 'applicant_edit_account' user.pk user.username %}" title="Edit your Account">
+            <i class="bi bi-gear"></i><span id="edit-account-text"> Edit Account</span> 
+          </a>
+        </div>
+        <div id="download-wrapper"> 
+          <a id="download" href="#" title="You may download the PDF result">
+            <i class="bi bi-download"></i><span id="download-text"> Download Result</span> 
+          </a>
+        </div>
+        <div id="logout-wrapper">
+          <a id="logout" href="{% url 'applicant_logout' %}" title="Logout">
+            <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span> 
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -60,7 +74,7 @@
         </div>
       </div>
       <hr>
-      <div class="container">
+      <div class="container-fluid mx-0">
         <div class="row justify-content-between my-5">
           <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 applicant-details-wrapper">
             <div class="applicant-details">
@@ -115,7 +129,7 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid result-details">
+      <div class="container-fluid result-details mx-0">
         <div class="results-text">
           <h4><b>RESULTS DETAILS</b></h4>
         </div>

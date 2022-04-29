@@ -100,17 +100,17 @@ function expandSidebar() {
 
     if ( sidebar_width == "100" ) {
         document.getElementById("sidebar").style.width = "290px";
-        document.getElementById("main-content").style.marginLeft = "290px";
     
         if ( document.getElementById("sidebar").style.width == "290px" ) {
             document.getElementById("tupc-text").style.visibility= "visible";
             document.getElementById("applicant-name").style.visibility = "visible";
-            document.getElementById("applicant-name-wrapper").style.whiteSpace = "normal";
-
+            document.getElementById("edit-account-wrapper").style.justifyContent = "start";
+            document.getElementById("edit-account-text").style.visibility = "visible";
+            document.getElementById("edit-account-text").style.display = "inline";
             document.getElementById("download-wrapper").style.justifyContent = "start";
-            document.getElementById("logout-wrapper").style.justifyContent = "start";
             document.getElementById("download-text").style.visibility = "visible";
             document.getElementById("download-text").style.display = "inline";
+            document.getElementById("logout-wrapper").style.justifyContent = "start";
             document.getElementById("logout-text").style.visibility = "visible";
             document.getElementById("logout-text").style.display = "inline";
         }
@@ -118,16 +118,17 @@ function expandSidebar() {
 
     else if ( sidebar_width == "290" ) {
         document.getElementById("sidebar").style.width = "100px";
-        document.getElementById("main-content").style.marginLeft = "100px";
 
         if ( document.getElementById("sidebar").style.width == "100px" ) {
             document.getElementById("tupc-text").style.visibility = "hidden";
             document.getElementById("applicant-name").style.visibility = "hidden";
-            document.getElementById("applicant-name-wrapper").style.whiteSpace = "nowrap";
+            document.getElementById("edit-account-wrapper").style.justifyContent = "center";
+            document.getElementById("edit-account-text").style.visibility = "hidden";
+            document.getElementById("edit-account-text").style.display = "none";
             document.getElementById("download-wrapper").style.justifyContent = "center";
-            document.getElementById("logout-wrapper").style.justifyContent = "center";
             document.getElementById("download-text").style.visibility = "hidden";
             document.getElementById("download-text").style.display = "none";
+            document.getElementById("logout-wrapper").style.justifyContent = "center";
             document.getElementById("logout-text").style.visibility = "hidden";
             document.getElementById("logout-text").style.display = "none";  
         }
@@ -146,17 +147,17 @@ function hamburgerToggle() {
 
     if ( sidebar_width == "100" ) {
         document.getElementById("sidebar").style.width = "290px";
-        document.getElementById("main-content").style.marginLeft = "290px";
     
         if ( document.getElementById("sidebar").style.width == "290px" ) {
             document.getElementById("tupc-text").style.visibility= "visible";
             document.getElementById("applicant-name").style.visibility = "visible";
-            document.getElementById("applicant-name-wrapper").style.whiteSpace = "normal";
-
+            document.getElementById("edit-account-wrapper").style.justifyContent = "start";
+            document.getElementById("edit-account-text").style.visibility = "visible";
+            document.getElementById("edit-account-text").style.display = "inline";
             document.getElementById("download-wrapper").style.justifyContent = "start";
-            document.getElementById("logout-wrapper").style.justifyContent = "start";
             document.getElementById("download-text").style.visibility = "visible";
             document.getElementById("download-text").style.display = "inline";
+            document.getElementById("logout-wrapper").style.justifyContent = "start";
             document.getElementById("logout-text").style.visibility = "visible";
             document.getElementById("logout-text").style.display = "inline";
         }
@@ -164,16 +165,17 @@ function hamburgerToggle() {
 
     else if ( sidebar_width == "290" ) {
         document.getElementById("sidebar").style.width = "100px";
-        document.getElementById("main-content").style.marginLeft = "100px";
 
         if ( document.getElementById("sidebar").style.width == "100px" ) {
             document.getElementById("tupc-text").style.visibility = "hidden";
             document.getElementById("applicant-name").style.visibility = "hidden";
-            document.getElementById("applicant-name-wrapper").style.whiteSpace = "nowrap";
-            document.getElementById("download-wrapper").style.justifyContent = "center";
-            document.getElementById("logout-wrapper").style.justifyContent = "center";
+            document.getElementById("edit-account-wrapper").style.justifyContent = "center";   
+            document.getElementById("edit-account-text").style.visibility = "hidden";
+            document.getElementById("edit-account-text").style.display = "none";
+            document.getElementById("download-wrapper").style.justifyContent = "center";   
             document.getElementById("download-text").style.visibility = "hidden";
             document.getElementById("download-text").style.display = "none";
+            document.getElementById("logout-wrapper").style.justifyContent = "center";
             document.getElementById("logout-text").style.visibility = "hidden";
             document.getElementById("logout-text").style.display = "none";  
         }
@@ -195,11 +197,13 @@ $(window).resize(function() {
         document.getElementById("main-content").style.marginLeft = "100px";
         document.getElementById("tupc-text").style.visibility = "hidden";
         document.getElementById("applicant-name").style.visibility = "hidden";
-        document.getElementById("applicant-name-wrapper").style.whiteSpace = "nowrap";
+        document.getElementById("edit-account-wrapper").style.justifyContent = "center";
+        document.getElementById("edit-account-text").style.visibility = "hidden";
+        document.getElementById("edit-account-text").style.display = "none";
         document.getElementById("download-wrapper").style.justifyContent = "center";
-        document.getElementById("logout-wrapper").style.justifyContent = "center";
         document.getElementById("download-text").style.visibility = "hidden";
         document.getElementById("download-text").style.display = "none";
+        document.getElementById("logout-wrapper").style.justifyContent = "center";
         document.getElementById("logout-text").style.visibility = "hidden";
         document.getElementById("logout-text").style.display = "none";   
     }
@@ -217,11 +221,13 @@ $('#main-content').click(function() {
         document.getElementById("sidebar").style.width = "100px";
         document.getElementById("tupc-text").style.visibility = "hidden";
         document.getElementById("applicant-name").style.visibility = "hidden";
-        document.getElementById("applicant-name-wrapper").style.whiteSpace = "nowrap";
+        document.getElementById("edit-account-wrapper").style.justifyContent = "center";
+        document.getElementById("edit-account-text").style.visibility = "hidden";
+        document.getElementById("edit-account-text").style.display = "none";
         document.getElementById("download-wrapper").style.justifyContent = "center";
-        document.getElementById("logout-wrapper").style.justifyContent = "center";
         document.getElementById("download-text").style.visibility = "hidden";
         document.getElementById("download-text").style.display = "none";
+        document.getElementById("logout-wrapper").style.justifyContent = "center";
         document.getElementById("logout-text").style.visibility = "hidden";
         document.getElementById("logout-text").style.display = "none";  
     }

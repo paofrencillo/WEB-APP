@@ -140,10 +140,10 @@
                   Update
                   </button>
                 </td> 
-                <td style="vertical-align: middle;">{{ a.fullname }}</td>
+                <td style="vertical-align: middle;">{{ a.last_name }}, {{ a.first_name }}</td>
                 <td style="vertical-align: middle;">{{ a.course }}</td>
-                <td style="vertical-align: middle;">{{ b.result }}</td>
-                <td style="vertical-align: middle;">No file</td>
+                <td style="vertical-align: middle;">{{ b.medical_result }}</td>
+                <td style="vertical-align: middle;">{{ b.medical_file}}</td>
               </tr>
               {% endfor %}
             </tbody>
