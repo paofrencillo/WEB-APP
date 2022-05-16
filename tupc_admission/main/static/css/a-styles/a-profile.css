@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+
+body {
+    overflow-x: hidden !important;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* === SIDENAV === */
+.sidebar {
+    z-index: 100;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 1%;
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #a7545c;
+    overflow-x: hidden;
+    transition: 0.5s;
+    white-space: nowrap;
+    border-radius: 0px 20px 20px 0;
+}
+
+.sidebar-brand {
+    color: white;
+    font-weight: 700;
+}
+
+#tup-logo {
+    max-width: 60px;
+    cursor: pointer;
+}
+
+#tupc-text {
+    visibility: hidden;
+}
+
+.sidebar-things {
+    margin-top: 80px;
+}
+
+.img-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.img-container {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.img {
+    display: block;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#applicant-name {
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    visibility: hidden;
+}
+
+.bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
+    padding-right: 0.4rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+#home-wrapper, #profile-wrapper, #download-wrapper, #logout-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#home, #profile, #download, #logout {
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+#home-text, #profile-text, #download-text, #logout-text {
+    display: none;
+    visibility: hidden;
+    color: white;
+}
+
+#home:hover, #profile:hover, #download:hover, #logout:hover {
+    color: gray;
+}
+
+
+/* === MAIN CONTAINER === */
+.main-content {
+    margin-top: 1%;
+    margin-left: 100px;
+}
+
+.main-container {
+    margin: 1% 3%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.bi-list {
+    display: none;
+}
+
+#dashboard-text {
+    color: #bd2031;
+    font-size: 2rem;
+    font-weight: 1000;
+}
+
+#fname {
+    float: right;
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+hr {
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #bd2031;
+    min-height: 2px;
+}
+
+button {
+    padding: 0px;
+    border: none;
+    background: none;
+}
+
+button:hover, button:focus {
+    outline: none;
+}
+
+.this-btn {
+    color: blue;
+    text-decoration: underline;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.img-upload-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.img-container2 {
+    text-align: center;
+    border: 2px solid rgb(78, 78, 78);
+    border-radius: 50px;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+#applicant-profile-container {
+    margin: 2% 5%;
+}
+
+.bi-pencil-square {
+    cursor: pointer;
+    font-size: 20px;
+    color: rgb(57, 190, 50);
+}
+
+#applicant-details-wrapper {
+    margin: 1% 5%;
+    padding: 2% 2%;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    margin-bottom: 3%;
+}
+
+#applicant-creds-wrapper {
+    margin: 1% 5%;
+    padding: 2% 2%;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    margin-bottom: 3%;
+}
+
+.img-container2 {
+    border: 2px solid rgb(255, 0, 0);
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    display: block;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#applicant {
+    font-size: 20px;
+}
+
+#bday-container {
+    margin-right: 10px;
+}
+
+#sex-container {
+    margin-left: 10px;
+}
+
+.profile {
+    margin: 2% auto;
+    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 0px;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+h6, h4 {
+    font-weight: 600;
+}
+
+
+/* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (max-width: 576px) {
+    .sidebar {
+        left: -100px;
+    }
+
+    #fname {
+        display: none;
+    }
+
+    #applicant-name {
+        font-size: 16px;
+    }
+    
+    .bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
+        font-size: 1.2rem;
+    }
+    
+    #home, #profile, #download, #logout {
+        color: white;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    
+    #dashboard-text {
+        font-size: 1.3rem;
+    }
+    
+    .applicant-details > h4 {
+        font-size: 14px;
+    }
+
+    .main-content {
+        margin-left: 0px !important;
+    }
+
+    .bi-list {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: white;
+        background-color: #bd2031;
+        padding-left: 6px;
+        padding-right: 6px;
+        border-radius: 20px;
+    }
+
+    .table-details {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -100px;
+    }
+
+    #fname {
+        display: none;
+    }
+
+    .bi-list {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: white;
+        background-color: #bd2031;
+        padding-left: 6px;
+        padding-right: 6px;
+        border-radius: 20px;
+    }
+
+    .main-content {
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width: 900px) {
+    #fname {
+        display: none;
+    }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 100px; /* 0 width - change this with JavaScript */
+    }
+
+    #home-wrapper, #profile-wrapper, #download-wrapper, #logout-wrapper {
+        justify-content: center;
+    }
+
+    #home-text, #profile-text, #download-text, #logout-text {
+        visibility: none;
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 100px;
+    }
+}

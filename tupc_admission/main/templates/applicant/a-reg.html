@@ -67,20 +67,16 @@
 
           {{ form1.first_name|as_crispy_field }}
   
-          {{ form2.middle_name|as_crispy_field }}
+          {{ form1.middle_name|as_crispy_field }}
   
           {{ form1.last_name|as_crispy_field }}
 
-          <div class="form-group">
-            {{ form2.suffix|as_crispy_field }}
+          {{ form1.suffix|as_crispy_field }}
         
-          </div>
-  
           <div class="container-fluid row justify-content-between m-0 p-0">
             <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
               <div id="bday-container">
-                {{ form2.birth_date|as_crispy_field }}
-                
+                {{ form2.birth_date|as_crispy_field }}  
               </div>
             </div>
 
@@ -127,7 +123,6 @@
               <input type="file" name="img_upload" id="img_upload" class="form-control" />
             </div>
           </div>
-
           <div class="form-group" style="display: none;">
             {{ form1.user_type|as_crispy_field }}
           </div>

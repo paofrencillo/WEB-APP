@@ -1,103 +1,188 @@
 
-//search table
-function tableSearch() {
-  let input, filter, table, tr, td, txtValue;
-  input = document.getElementById("search-input");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("nurse-table");
-  tr = table.getElementsByTagName('tr');
+function expandSidebar() {
+  let sidebar = document.getElementById("sidebar");
+  let sidebar_width = sidebar.offsetWidth;
+  let body_width = document.getElementById("body").offsetWidth;
 
-  for(let i = 0; i < tr.length; i++){
-    td = tr[i].getElementsByTagName('td')[1]
-    if(td) {
-      txtValue = td.textContent || td.innerText;
-      if(txtValue.toUpperCase().indexOf(filter) > -1){
-        tr[i].style.display = "";
+  if ( sidebar_width == 100 ) {
+      sidebar.style.width = "290px";
+  } else if ( sidebar_width == 290) {
+      sidebar.style.width = "100px";
+  }
+
+  if ( body_width <= 768 ) {
+      document.getElementById("main-content").style.marginLeft = "100px";
+      document.getElementById("sidebar").style.left = "-100px";   
+  }
+
+  if ( sidebar_width == "100" ) {
+      document.getElementById("sidebar").style.width = "290px";
+  
+      if ( document.getElementById("sidebar").style.width == "290px" ) {
+          document.getElementById("tupc-text").style.visibility= "visible";
+          document.getElementById("nurse-name").style.visibility = "visible";
+          document.getElementById("home-wrapper").style.justifyContent = "start";
+          document.getElementById("home-text").style.visibility = "visible";
+          document.getElementById("home-text").style.display = "inline";
+          document.getElementById("profile-wrapper").style.justifyContent = "start";
+          document.getElementById("profile-text").style.visibility = "visible";
+          document.getElementById("profile-text").style.display = "inline";
+          document.getElementById("download-wrapper").style.justifyContent = "start";
+          document.getElementById("download-text").style.visibility = "visible";
+          document.getElementById("download-text").style.display = "inline";
+          document.getElementById("logout-wrapper").style.justifyContent = "start";
+          document.getElementById("logout-text").style.visibility = "visible";
+          document.getElementById("logout-text").style.display = "inline";
       }
-      else {
-        tr[i].style.display = "none";
+  }
+
+  else if ( sidebar_width == "290" ) {
+      document.getElementById("sidebar").style.width = "100px";
+
+      if ( document.getElementById("sidebar").style.width == "100px" ) {
+          document.getElementById("tupc-text").style.visibility = "hidden";
+          document.getElementById("nurse-name").style.visibility = "hidden";
+          document.getElementById("home-wrapper").style.justifyContent = "center";
+          document.getElementById("home-text").style.visibility = "hidden";
+          document.getElementById("home-text").style.display = "none";
+          document.getElementById("profile-wrapper").style.justifyContent = "center";
+          document.getElementById("profile-text").style.visibility = "hidden";
+          document.getElementById("profile-text").style.display = "none";
+          document.getElementById("download-wrapper").style.justifyContent = "center";
+          document.getElementById("download-text").style.visibility = "hidden";
+          document.getElementById("download-text").style.display = "none";
+          document.getElementById("logout-wrapper").style.justifyContent = "center";
+          document.getElementById("logout-text").style.visibility = "hidden";
+          document.getElementById("logout-text").style.display = "none";  
       }
-    }
   }
 }
+
 
 function hamburgerToggle() {
   let body_width = document.getElementById("body").offsetWidth;
-  let sidebar_width = document.getElementById("sidebar").offsetWidth;
-
-  if ( body_width <= 656 ) {
-    document.getElementById("sidebar").style.left= "0px";
+  
+  if ( body_width <= 768 ) {
+      document.getElementById("sidebar").style.left= "0px";
   }
 
-  if ( sidebar_width == 100 ) {
-    document.getElementById("sidebar").style.width = "290px";
-    document.getElementById("tupc-text").style.visibility = "visible";
-    document.getElementById("nurse-name").style.visibility = "visible";
-    document.getElementById("download-text").style.color = "white";
-    document.getElementById("logout-text").style.color = "white";
-    document.getElementById("download-text").style.display = "inline";
-    document.getElementById("logout-text").style.display = "inline";
-    document.getElementById("download-wrapper").style.justifyContent = "start";
-    document.getElementById("logout-wrapper").style.justifyContent = "start";
+  let sidebar_width = document.getElementById("sidebar").offsetWidth;
+
+  if ( sidebar_width == "100" ) {
+      document.getElementById("sidebar").style.width = "290px";
+  
+      if ( document.getElementById("sidebar").style.width == "290px" ) {
+          document.getElementById("tupc-text").style.visibility= "visible";
+          document.getElementById("nurse-name").style.visibility = "visible";
+          document.getElementById("home-wrapper").style.justifyContent = "start";
+          document.getElementById("home-text").style.visibility = "visible";
+          document.getElementById("home-text").style.display = "inline";
+          document.getElementById("profile-wrapper").style.justifyContent = "start";
+          document.getElementById("profile-text").style.visibility = "visible";
+          document.getElementById("profile-text").style.display = "inline";
+          document.getElementById("download-wrapper").style.justifyContent = "start";
+          document.getElementById("download-text").style.visibility = "visible";
+          document.getElementById("download-text").style.display = "inline";
+          document.getElementById("logout-wrapper").style.justifyContent = "start";
+          document.getElementById("logout-text").style.visibility = "visible";
+          document.getElementById("logout-text").style.display = "inline";
+      }
+  }
+
+  else if ( sidebar_width == "290" ) {
+      document.getElementById("sidebar").style.width = "100px";
+
+      if ( document.getElementById("sidebar").style.width == "100px" ) {
+          document.getElementById("tupc-text").style.visibility = "hidden";
+          document.getElementById("nurse-name").style.visibility = "hidden";
+          document.getElementById("home-wrapper").style.justifyContent = "center";   
+          document.getElementById("home-text").style.visibility = "hidden";
+          document.getElementById("home-text").style.display = "none";
+          document.getElementById("profile-wrapper").style.justifyContent = "center";   
+          document.getElementById("profile-text").style.visibility = "hidden";
+          document.getElementById("profile-text").style.display = "none";
+          document.getElementById("download-wrapper").style.justifyContent = "center";   
+          document.getElementById("download-text").style.visibility = "hidden";
+          document.getElementById("download-text").style.display = "none";
+          document.getElementById("logout-wrapper").style.justifyContent = "center";
+          document.getElementById("logout-text").style.visibility = "hidden";
+          document.getElementById("logout-text").style.display = "none";  
+      }
   }
 }
 
-function closeBtn() {
-  let body_width = document.getElementById("body").offsetWidth;
-  let sidebar_width = document.getElementById("sidebar").offsetWidth;
-    
-  if ( sidebar_width == 290 && body_width <= 656 ) {
-    document.getElementById("sidebar").style.width = "100px"
-    document.getElementById("sidebar").style.left = "-100px";
-  }
-
-  document.getElementById("close-btn").style.display = "none";
-  document.getElementById("sidebar").style.width = "100px";
-  document.getElementById("tupc-text").style.visibility = "hidden";
-  document.getElementById("nurse-name").style.visibility = "hidden";
-  document.getElementById("download-text").style.color = "#a7545c";
-  document.getElementById("logout-text").style.color = "#a7545c";
-  document.getElementById("download-text").style.display = "none";
-  document.getElementById("logout-text").style.display = "none";
-  document.getElementById("download-wrapper").style.justifyContent = "center";
-  document.getElementById("logout-wrapper").style.justifyContent = "center";
-}
-
-//select course
-var rows = $("#tabledata tr");
-$("#select-course").on("change", function() {
-    var selected = this.value;
-    if (selected != "All") {
-        rows.filter("[course=" + selected + "]").show();
-        rows.not("[course=" + selected + "]").hide(); 
-    } else {
-        rows.show();
-    }
-});
-
-//select file
-$(document).ready(function() {
-  $('input[type="file"]').change(function(e){
-      filename = e.target.files[0].name;
-  });
-});
-
-// show/hide hamburger icon
+// show/hide hamburger icon and sidebar
 $(window).resize(function() {
   let body_width = document.getElementById("body").offsetWidth;
 
-  if ( body_width <= 656 ) {
-    document.getElementById("hamburger").style.display = "inline";
-  } else if ( body_width > 656 ) {
-    document.getElementById("hamburger").style.display = "none";
+  if ( body_width <= 768 ) {
+      document.getElementById("hamburger").style.display = "inline-block";
+      document.getElementById("sidebar").style.width = "100px";
+      document.getElementById("sidebar").style.left = "-100px";
+  } else if ( body_width > 768 ) {
+      document.getElementById("hamburger").style.display = "none";
+      document.getElementById("sidebar").style.width = "100px";
+      document.getElementById("sidebar").style.left = "0";
+      document.getElementById("main-content").style.marginLeft = "100px";
+      document.getElementById("tupc-text").style.visibility = "hidden";
+      document.getElementById("nurse-name").style.visibility = "hidden";
+      document.getElementById("home-wrapper").style.justifyContent = "center";
+      document.getElementById("home-text").style.visibility = "hidden";
+      document.getElementById("home-text").style.display = "none";
+      document.getElementById("profile-wrapper").style.justifyContent = "center";
+      document.getElementById("profile-text").style.visibility = "hidden";
+      document.getElementById("profile-text").style.display = "none";
+      document.getElementById("download-wrapper").style.justifyContent = "center";
+      document.getElementById("download-text").style.visibility = "hidden";
+      document.getElementById("download-text").style.display = "none";
+      document.getElementById("logout-wrapper").style.justifyContent = "center";
+      document.getElementById("logout-text").style.visibility = "hidden";
+      document.getElementById("logout-text").style.display = "none";   
   }
 });
 
-// Change the modal-title when update button was clicked
-$('.update-btn').on('click', function() {
-  let name = this.parentNode.parentNode.childNodes[3].innerHTML;
-  console.log(name);
-  document.getElementById('modal-title').innerText = name;
+$('#main-content').click(function() {
+  let body_width = document.getElementById("body").offsetWidth;
+  let sidebar_width = document.getElementById("sidebar").offsetWidth;
+
+  if( body_width <= 768 && sidebar_width == 290 ) {
+      document.getElementById("sidebar").style.width = "100px";
+      document.getElementById("sidebar").style.left = "-100px";
+  }  else if( body_width > 768 && sidebar_width == 290 ) {
+      document.getElementById("main-content").style.marginLeft = "100px";
+      document.getElementById("sidebar").style.width = "100px";
+      document.getElementById("tupc-text").style.visibility = "hidden";
+      document.getElementById("nurse-name").style.visibility = "hidden";
+      document.getElementById("home-wrapper").style.justifyContent = "center";
+      document.getElementById("home-text").style.visibility = "hidden";
+      document.getElementById("home-text").style.display = "none";
+      document.getElementById("profile-wrapper").style.justifyContent = "center";
+      document.getElementById("profile-text").style.visibility = "hidden";
+      document.getElementById("profile-text").style.display = "none";
+      document.getElementById("download-wrapper").style.justifyContent = "center";
+      document.getElementById("download-text").style.visibility = "hidden";
+      document.getElementById("download-text").style.display = "none";
+      document.getElementById("logout-wrapper").style.justifyContent = "center";
+      document.getElementById("logout-text").style.visibility = "hidden";
+      document.getElementById("logout-text").style.display = "none";  
+  }
+});
+
+$(document).ready(function () {
+  var table = $('#nurse-table').DataTable({
+    "pagingType": "simple_numbers" // "simple" option for 'Previous' and 'Next' buttons only
+  });
+  table = document.getElementById("nurse-table_wrapper").getElementsByClassName('row');
+  table[1].getElementsByTagName('div')[0].setAttribute('class', 'row table-responsive');
+  table[1].getElementsByTagName('div')[0].style.width = '100%';
 });
 
 
+// Get the applicant ID
+function getid(button) {
+  let button_tag = document.getElementById(button.id)
+  let aid = button_tag.id;
+  let setid = document.getElementById("applicant-id");
+  let converted_a_Id = parseInt(aid)
+  setid.value = parseInt(converted_a_Id);
+} 

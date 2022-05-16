@@ -10,8 +10,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
-  <title>TUP - Cavite | Applicant Registration</title>
+  <link rel="icon" href="{% static 'res/tup_logo.png' %}" />
+  <title>TUP - Cavite | Registration</title>
 
   <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -39,39 +39,47 @@
       <form method="POST" action="{% url 'create_admissionAccounts' %}" name="reg-form" class="was-validated">
         {% csrf_token %}
         <div class="reg-container">
-          <div class="form-group">
-            {{ form.first_name|as_crispy_field }}
-          </div>
+          {{ form.first_name|as_crispy_field }}
 
-          <div class="form-group">
-            {{ form.last_name|as_crispy_field }}
-          </div>
+          {{ form.middle_name|as_crispy_field }}
 
-          <div class="form-group">
-            {{ form.user_type|as_crispy_field }}
-          </div>
+          {{ form.last_name|as_crispy_field }}
 
-          <div class="form-group">
-            {{ form.email|as_crispy_field }}
-          </div>
-  
-          <div class="form-group">
-            {{ form.username|as_crispy_field }}
-          </div>
+          {{ form.suffix|as_crispy_field }}
+
+          {{ form.user_type|as_crispy_field }}
+
+          {{ form.email|as_crispy_field }}
+
+          {{ form.username|as_crispy_field }}
+
   
           <div class="form-group">
             {{ form.password1|as_crispy_field }}
             <small class="form-text mb-0 pb-0"><i>Password should contain at least 8 characters.</i></small>
           </div>
   
+          {{ form.password2|as_crispy_field }}
+
           <div class="form-group">
-            {{ form.password2|as_crispy_field }}
+            <label for="">Select your image*</label>
+            <div class="img-upload-wrapper">
+              <div class="img-container">
+                <img id="img" src="" alt="">
+              </div>
+            </div>
+            <div class="img-upload-wrapper">
+              <label for="img_upload" class="custom-file-upload">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+                Upload image
+              </label>
+              <input type="file" name="img_upload" id="img_upload" class="form-control" />
+            </div>
           </div>
-          
+
           <div class="form-group submit-btn">
             <input type="submit" id="submit" value="Register">
           </div>
-
         </div>
       </form>
     </fieldset>
@@ -86,6 +94,9 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Other JS -->
+  <script src="{% static 'js/create-accounts.js' %}"></script>
 
 
 </body>

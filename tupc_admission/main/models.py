@@ -5,6 +5,9 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
+    middle_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    suffix = models.CharField(max_length=10)
     user_type = models.CharField(max_length=20)
     user_img = models.ImageField(upload_to='imgs/',
                                 null=True,
@@ -15,10 +18,6 @@ class ApplicantDetails(models.Model):
     applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE,
                                     primary_key=True)
-    first_name = models.CharField(max_length=100)
-    middle_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    suffix = models.CharField(max_length=10)
     birth_date = models.DateField(blank=True,
                                 null=True)
     sex = models.CharField(max_length=6)
@@ -59,6 +58,8 @@ class MedicalResult(models.Model):
                                     on_delete=models.CASCADE,
                                     primary_key=True)
     medical_result = models.CharField(max_length=6,
+                                        blank=True)
+    medical_filename = models.CharField(max_length=255,
                                         blank=True)
     medical_file = models.FileField(upload_to='med_files/',
                                     null=True,

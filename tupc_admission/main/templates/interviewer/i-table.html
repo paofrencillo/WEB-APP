@@ -1,131 +1,79 @@
+
+{% extends 'base-templates/interviewer-base.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}
+<title>TUP - Cavite | Interviewer Table</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/i-styles/i-table.css' %}" />
+{% endblock %}
 
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TUP - Cavite | Interviewer Table</title>
-  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
+{% block content %}
+<!-- ================= TABLE ================= -->
+<div class="container-fluid table-wrapper">
+  <div class="table-responsive">
+    <table id="interviewer-table" class="table table-bordered table-hover table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th></th>
+          <th>NAME</th>
+          <th>COURSE</th>
+          <th>INTERVIEW DATE</th>
+          <th>VENUE</th>
+          <th>INTERVIEWER</th>
+          <th>RESULT</th>
+        </tr>
+      </thead>
+      <tbody id="tabledata">
+      {% for a, b, c in data %}
+        <tr course = {{a.course}} id="row{{a.pk}}">
+          <td style="vertical-align: middle;">
+            <a href="{% url 'interviewer_update' a.pk %}" title="Edit details">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+          </td> 
+          <td style="vertical-align: middle;">{{ a.last_name }}, {{ a.first_name }}</td>
+          <td style="vertical-align: middle;">{{ b.course }}</td>
 
-  <!-- ================= BOOTSTRAP ================= -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+          {% if c.date_taken is None or c.date_taken == '' %}
+            <td style="vertical-align: middle;">-</td>
+          {% else %}
+            <td style="vertical-align: middle;">{{ c.date_taken }}</td>
+          {% endif %}
 
-  <!-- ================= CSS ================= -->
-  <link rel="stylesheet" href="{% static 'css/i-styles/i-table.css' %}" />
-</head>
+          {% if c.venue == '' %}
+            <td style="vertical-align: middle;">-</td>
+          {% else %}
+            <td style="vertical-align: middle;">{{ c.venue }}</td>
+          {% endif %}
 
+          {% if c.interviewer == '' %}
+            <td style="vertical-align: middle;">-</td>
+          {% else %}
+            <td style="vertical-align: middle;">{{ c.interviewer }}</td>
+          {% endif %}
 
-<body id="body">
-  <!-- sidenav -->
-  <div class="sidebar" id="sidebar">
-    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
-    <div class="sidebar-brand" id="sidebar-brand">
-      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo">
-      </span>TUP - Cavite Campus
-    </div>
-    <div class="sidebar-things">
-      <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
-      <div id="interviewer-info">
-        <div id="interviewer-name-wrapper">
-          <h6 id="interviewer-name">Ako, Si Interviewer X.</h6>
-        </div>
-      </div>
-      <div id="download-wrapper">
-        <a id="download" href="#">
-          <i class="bi bi-download"></i><span id="download-text"> Download Result</span>
-        </a>
-      </div>
-      <div id="logout-wrapper">
-        <a id="logout" href="#">
-          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span>
-        </a>
-      </div>
-    </div>
+          {% if c.interview_result == 'PASSED' %}
+            <td class="passed-text" style="vertical-align: middle;">{{ c.interview_result }}</td>
+          {% elif c.interview_result == 'FAILED' %}
+            <td class="failed-text" style="vertical-align: middle;">{{ c.interview_result }}</td>
+          {% else %}
+            <td style="vertical-align: middle;">-</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
   </div>
-    <!-- ================= MAIN CONTENT ================= -->
-    <div class="main-content" id="main-content">
-      <div class="main-container">
-        <div class="row justify-content-between header" id="header">
-          <div class="interviewer-text-wrapper">
-            <i class="bi bi-list" onclick="hamburgerToggle()"></i><span class="interviewer-table-text">
-              INTERVIEWER TABLE</span>
-          </div>
-          <!-- ================= SEARCH ================= -->
-          <div class="search-combo-wrapper">
-            <div class="search-wrapper">
-              <i class="bi bi-search"></i>
-              <input type="search" name="search"
-                id="search-input" onkeyup="tableSearch()" placeholder="Search here">
-            </div>
-            <!-- ================= SELECT COURSE ================= -->
-            <div class="select-wrapper">
-              <label id="label-course">Course</label>
-              <select id="select-course">
-                <option label="--Select Course--" disabled></option>
-                <option value="All" selected>All</option>
-                <option value="BSCE">BSCE</option>
-                <option value="BSEE">BSEE</option>
-                <option value="BSME">BSME</option>
-                <option value="BET-ET">BET-ET</option>
-                <option value="BET-ESET">BET-ESET</option>
-                <option value="BET-COET">BET-COET</option>
-                <option value="BET-CT">BET-CT</option>
-                <option value="BET-MT">BET-MT</option>
-                <option value="BET-AT">BET-AT</option>
-                <option value="BET-PPET">BET-PPET</option>
-                <option value="BSIE-ICT">BSIE-ICT</option>
-                <option value="BTTE-AU">BTTE-AU</option>
-                <option value="BTTE-EL">BTTE-EL</option>
-                <option value="BTTE-E">BTTE-E</option>
-                <option value="BTTE-HVACT">BTTE-HVACT</option>
-                <option value="BTTE-CP">BTTE-CP</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <!-- ================= TABLE ================= -->
-        <div class="container-fluid table-wrapper">
-          <div class="table-responsive">
-            <table id="interviewer-table" class="table table-bordered table-hover table-striped">
-              <thead class="thead-dark">
-                <tr>
-                  <th></th>
-                  <th>NAME</th>
-                  <th>CONTROL #</th>
-                  <th>COURSE</th>
-                  <th>INTERVIEW DATE</th>
-                  <th>VENUE</th>
-                  <th>INTERVIEWER</th>
-                  <th>RESULT</th>
-                </tr>
-              </thead>
-              <tbody id="tabledata"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
+{% endblock %}
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- Other scripts -->
-  <script src="{% static 'js/i-js/i-table.js' %}"></script>
-  
-
-</body>
-
-
-</html>
+{% block js %}
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+<script src="{% static 'js/i-js/i-table.js' %}"></script>
+{% endblock %}

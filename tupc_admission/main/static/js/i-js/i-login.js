@@ -1,21 +1,17 @@
-// tempo account
-var emailAdd = "test@email.com";
-var password = "123";
 
-function validateLogin() {
-    //get login entries from user
-    let a = document.forms["login-form"]['interviewer-email'].value;
-    let b = document.forms["login-form"]['interviewer-pass'].value;
-
-    // if user entries is incorrect
-    if (( a !=emailAdd) || ( b != password)) {
-        alert("Incorrect credentials");
-        location.reload();
+function togglePass(e) {
+    if ( e.id == 'togglePass' ) {
+        let pass_field = document.getElementById('interviewer-password');
+        let eye_icon = document.getElementById('eye_icon');
+        if ( pass_field.type === 'password' ) {
+            pass_field.type = 'text';
+            eye_icon.removeAttribute('class', 'bi bi-eye-fill')
+            eye_icon.setAttribute('class', 'bi bi-eye-slash-fill')
+            
+        } else if ( pass_field.type === 'text' ) {
+            pass_field.type = 'password';
+            eye_icon.removeAttribute('class', 'bi bi-eye-slash-fill')
+            eye_icon.setAttribute('class', 'bi bi-eye-fill') 
+        }
     }
-
-    // if user entries is correct
-    else if (( a == emailAdd) && ( b == password)) {
-        location.href = "../interviewer/interviewer-table.html"
-    }
-
 }

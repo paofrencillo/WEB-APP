@@ -1,0 +1,89 @@
+{% extends 'base-templates/interviewer-base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>TUP - Cavite | {{ user.username }} Profile</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/i-styles/i-profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid row">
+    <div class="col col-xl-5 col-lg-5 col-md-12 col-sm-12">
+        <div class="container mb-3">
+            <div class="division">
+                <div class="img-wrapper">
+                  <div class="img-container2">
+                    {% if user.user_img is None or user.user_img == '' %}
+                    {% else %}
+                      <img src="{{ user.user_img.url }}" alt="avatar" id="avatar" />
+                    {% endif %}
+                  </div>
+                </div>
+                <h5 class="interviewer-name2">
+                    {{ user.first_name }} {{ user.last_name }}
+                </h5>
+                <br>
+                <div class="container-fluid row justify-content-center m-0">
+                    <a href="{% url 'change_interviewer_password' user.pk user.username %}">
+                        <button type="button" class="btn btn-info">Change my password</button>
+                    </a>             
+                </div>          
+            </div>
+        </div>
+    </div>
+    <div class="col col-xl-7 col-lg-7 col-md-12 col-sm-12">
+        <div class="container">
+          <div class="division">
+            <h4>My Profile
+                <span>
+                  <i class="bi bi-pencil-square" onclick="getid()"></i>
+                </span>
+            </h4>
+            <form action="{% url 'interviewer_profile' user.pk user.username %}" method="POST" enctype="multipart/form-data" id="update-profile-form">
+                {% csrf_token %}
+                <center>
+                    <div class="form-group" id="img-upload">
+                        <div class="img-upload-wrapper">
+                            <div class="img-container2">
+                                {% if user.user_img is None or user.user_img == '' %}
+                                <img src="{% static 'res/no-image.png' %}" alt="avatar" class="img" id="display-img" />
+                                {% else %}
+                                <img src="{{ user.user_img.url }}" alt="avatar" class="img" id="display-img" />
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="img-upload-wrapper">
+                            <label for="img_upload" class="custom-file-upload">
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+                                Upload image
+                            </label>
+                            <input type="file" name="img_upload" id="img_upload" class="form-control" />
+                        </div>
+                    </div>
+                </center>
+                  
+                {{ form.first_name|as_crispy_field }}
+                {{ form.middle_name|as_crispy_field }}
+                {{ form.last_name|as_crispy_field }}
+                {{ form.suffix|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
+                {{ form.username|as_crispy_field }} 
+                
+                <input type="reset" class="btn btn-danger" value=" Cancel " onclick="hidebtn()">
+                <input type="submit" class="btn btn-primary" value=" Save ">
+            </form> 
+          </div>
+        </div>
+      </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/i-js/i-profile.js' %}"></script>
+{% endblock %}

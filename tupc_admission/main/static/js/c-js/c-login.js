@@ -1,18 +1,17 @@
-//Temporary login credentials
-var emailAdd = "test@email.com";
-var password = "123";
 
-function validateLogin() {
-    //Get the entries from the input boxes
-    let a = document.forms["login-form"]['coordinator-email'].value;
-    let b = document.forms["login-form"]['coordinator-pass'].value;
-    // if credentials not matched
-    if (( a != emailAdd ) || ( b != password )) {
-        alert("Incorrect credentials");
-        location.reload();
-    }
-    //if credentials are matched
-    else if (( a == emailAdd ) && ( b == password )) {
-        location.href = "../coordinator/coordinator-table.html";
+function togglePass(e) {
+    if ( e.id == 'togglePass' ) {
+        let pass_field = document.getElementById('coordinator-password');
+        let eye_icon = document.getElementById('eye_icon');
+        if ( pass_field.type === 'password' ) {
+            pass_field.type = 'text';
+            eye_icon.removeAttribute('class', 'bi bi-eye-fill')
+            eye_icon.setAttribute('class', 'bi bi-eye-slash-fill')
+            
+        } else if ( pass_field.type === 'text' ) {
+            pass_field.type = 'password';
+            eye_icon.removeAttribute('class', 'bi bi-eye-slash-fill')
+            eye_icon.setAttribute('class', 'bi bi-eye-fill') 
+        }
     }
 }

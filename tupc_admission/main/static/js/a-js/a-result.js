@@ -22,14 +22,14 @@ for( let b of remarks_boxes ) {
 let results = document.getElementsByClassName("results")
 
 for( let i=0; i < results.length - 1; i++ ) {
-    if( results[i].innerText == ' PASSED' ) {
+    if( results[i].innerText == 'PASSED' ) {
         results[i].style.fontWeight = '1000';
         results[i].style.width = 'fit-content';
         results[i].style.padding = '5px 15px 5px 15px';
         results[i].style.borderRadius = '10px';
         results[i].style.textAlign = 'center';
         results[i].style.backgroundColor = 'rgb(133, 221, 133)';
-    } else if( results[i].innerText == ' FAILED' ) {
+    } else if( results[i].innerText == 'FAILED' ) {
         results[i].style.fontWeight = '1000';
         results[i].style.width = 'fit-content';
         results[i].style.padding = '5px 15px 5px 15px';
@@ -37,7 +37,7 @@ for( let i=0; i < results.length - 1; i++ ) {
         results[i].style.textAlign = 'center';
         results[i].style.backgroundColor = 'rgb(221, 133, 133)';
     }
-    else if( results[i].innerText == ' No Result' ) {
+    else if( results[i].innerText == 'No Result' ) {
         results[i].style.fontWeight = '1000';
         results[i].style.width = 'fit-content';
         results[i].style.padding = '5px 15px 5px 15px';
@@ -48,14 +48,14 @@ for( let i=0; i < results.length - 1; i++ ) {
 }
 
 let rr = document.getElementById("req-result");
-if( rr.innerText == ' COMPLETE' ) {
+if( rr.innerText == 'COMPLETE' ) {
     rr.style.fontWeight = '1000';
     rr.style.width = 'fit-content';
     rr.style.padding = '5px 15px 5px 15px';
     rr.style.borderRadius = '10px';
     rr.style.textAlign = 'center';
     rr.style.backgroundColor = 'rgb(133, 221, 133)';
-} else if ( rr.innerText == ' INCOMPLETE' ) {
+} else if ( rr.innerText == 'INCOMPLETE' ) {
     rr.style.fontWeight = '1000';
     rr.style.width = 'fit-content';
     rr.style.padding = '5px 15px 5px 15px';
@@ -104,9 +104,12 @@ function expandSidebar() {
         if ( document.getElementById("sidebar").style.width == "290px" ) {
             document.getElementById("tupc-text").style.visibility= "visible";
             document.getElementById("applicant-name").style.visibility = "visible";
-            document.getElementById("edit-account-wrapper").style.justifyContent = "start";
-            document.getElementById("edit-account-text").style.visibility = "visible";
-            document.getElementById("edit-account-text").style.display = "inline";
+            document.getElementById("home-wrapper").style.justifyContent = "start";
+            document.getElementById("home-text").style.visibility = "visible";
+            document.getElementById("home-text").style.display = "inline";
+            document.getElementById("profile-wrapper").style.justifyContent = "start";
+            document.getElementById("profile-text").style.visibility = "visible";
+            document.getElementById("profile-text").style.display = "inline";
             document.getElementById("download-wrapper").style.justifyContent = "start";
             document.getElementById("download-text").style.visibility = "visible";
             document.getElementById("download-text").style.display = "inline";
@@ -122,9 +125,12 @@ function expandSidebar() {
         if ( document.getElementById("sidebar").style.width == "100px" ) {
             document.getElementById("tupc-text").style.visibility = "hidden";
             document.getElementById("applicant-name").style.visibility = "hidden";
-            document.getElementById("edit-account-wrapper").style.justifyContent = "center";
-            document.getElementById("edit-account-text").style.visibility = "hidden";
-            document.getElementById("edit-account-text").style.display = "none";
+            document.getElementById("home-wrapper").style.justifyContent = "center";
+            document.getElementById("home-text").style.visibility = "hidden";
+            document.getElementById("home-text").style.display = "none";
+            document.getElementById("profile-wrapper").style.justifyContent = "center";
+            document.getElementById("profile-text").style.visibility = "hidden";
+            document.getElementById("profile-text").style.display = "none";
             document.getElementById("download-wrapper").style.justifyContent = "center";
             document.getElementById("download-text").style.visibility = "hidden";
             document.getElementById("download-text").style.display = "none";
@@ -151,9 +157,12 @@ function hamburgerToggle() {
         if ( document.getElementById("sidebar").style.width == "290px" ) {
             document.getElementById("tupc-text").style.visibility= "visible";
             document.getElementById("applicant-name").style.visibility = "visible";
-            document.getElementById("edit-account-wrapper").style.justifyContent = "start";
-            document.getElementById("edit-account-text").style.visibility = "visible";
-            document.getElementById("edit-account-text").style.display = "inline";
+            document.getElementById("home-wrapper").style.justifyContent = "start";
+            document.getElementById("home-text").style.visibility = "visible";
+            document.getElementById("home-text").style.display = "inline";
+            document.getElementById("profile-wrapper").style.justifyContent = "start";
+            document.getElementById("profile-text").style.visibility = "visible";
+            document.getElementById("profile-text").style.display = "inline";
             document.getElementById("download-wrapper").style.justifyContent = "start";
             document.getElementById("download-text").style.visibility = "visible";
             document.getElementById("download-text").style.display = "inline";
@@ -169,9 +178,12 @@ function hamburgerToggle() {
         if ( document.getElementById("sidebar").style.width == "100px" ) {
             document.getElementById("tupc-text").style.visibility = "hidden";
             document.getElementById("applicant-name").style.visibility = "hidden";
-            document.getElementById("edit-account-wrapper").style.justifyContent = "center";   
-            document.getElementById("edit-account-text").style.visibility = "hidden";
-            document.getElementById("edit-account-text").style.display = "none";
+            document.getElementById("home-wrapper").style.justifyContent = "center";   
+            document.getElementById("home-text").style.visibility = "hidden";
+            document.getElementById("home-text").style.display = "none";
+            document.getElementById("profile-wrapper").style.justifyContent = "center";   
+            document.getElementById("profile-text").style.visibility = "hidden";
+            document.getElementById("profile-text").style.display = "none";
             document.getElementById("download-wrapper").style.justifyContent = "center";   
             document.getElementById("download-text").style.visibility = "hidden";
             document.getElementById("download-text").style.display = "none";
@@ -190,16 +202,19 @@ $(window).resize(function() {
         document.getElementById("hamburger").style.display = "inline-block";
         document.getElementById("sidebar").style.width = "100px";
         document.getElementById("sidebar").style.left = "-100px";
-    } if ( body_width > 768 ) {
+    } else if ( body_width > 768 ) {
         document.getElementById("hamburger").style.display = "none";
         document.getElementById("sidebar").style.width = "100px";
         document.getElementById("sidebar").style.left = "0";
         document.getElementById("main-content").style.marginLeft = "100px";
         document.getElementById("tupc-text").style.visibility = "hidden";
         document.getElementById("applicant-name").style.visibility = "hidden";
-        document.getElementById("edit-account-wrapper").style.justifyContent = "center";
-        document.getElementById("edit-account-text").style.visibility = "hidden";
-        document.getElementById("edit-account-text").style.display = "none";
+        document.getElementById("home-wrapper").style.justifyContent = "center";
+        document.getElementById("home-text").style.visibility = "hidden";
+        document.getElementById("home-text").style.display = "none";
+        document.getElementById("profile-wrapper").style.justifyContent = "center";
+        document.getElementById("profile-text").style.visibility = "hidden";
+        document.getElementById("profile-text").style.display = "none";
         document.getElementById("download-wrapper").style.justifyContent = "center";
         document.getElementById("download-text").style.visibility = "hidden";
         document.getElementById("download-text").style.display = "none";
@@ -221,9 +236,12 @@ $('#main-content').click(function() {
         document.getElementById("sidebar").style.width = "100px";
         document.getElementById("tupc-text").style.visibility = "hidden";
         document.getElementById("applicant-name").style.visibility = "hidden";
-        document.getElementById("edit-account-wrapper").style.justifyContent = "center";
-        document.getElementById("edit-account-text").style.visibility = "hidden";
-        document.getElementById("edit-account-text").style.display = "none";
+        document.getElementById("home-wrapper").style.justifyContent = "center";
+        document.getElementById("home-text").style.visibility = "hidden";
+        document.getElementById("home-text").style.display = "none";
+        document.getElementById("profile-wrapper").style.justifyContent = "center";
+        document.getElementById("profile-text").style.visibility = "hidden";
+        document.getElementById("profile-text").style.display = "none";
         document.getElementById("download-wrapper").style.justifyContent = "center";
         document.getElementById("download-text").style.visibility = "hidden";
         document.getElementById("download-text").style.display = "none";

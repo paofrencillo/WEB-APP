@@ -1,16 +1,21 @@
 
 from django.shortcuts import render, redirect, HttpResponse
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.views.decorators.cache import cache_control
 from .models import *
-from .forms import RegistrationCredetialsForm, ApplicantDetailsForm, UpdateNurseTableForm
+from .forms import *
+
 
 # Create your views here.
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def blank_page(request):
     if request.user.is_authenticated:
+        pk = request.user.pk
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
@@ -23,18 +28,19 @@ def blank_page(request):
             username = request.POST.get('applicant-username')
             password = request.POST.get('applicant-password')
 
-            print(username, password)
-
             user = authenticate(request, username=username, password=password)
 
             if (user is not None) and (user.user_type == 'APPLICANT'):
+                pk = request.user.pk
+
                 login(request, user)
-                return redirect('applicant_result')
+                return redirect('applicant_result', pk)
 
             else:
                 messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "applicant/a-login.html")
+
 
 def create_admissionAccounts(request):
     if request.user.is_authenticated:
@@ -54,7 +60,25 @@ def create_admissionAccounts(request):
             form = RegistrationCredetialsForm(request.POST)
 
             if form.is_valid():
+                user_name = form.cleaned_data.get('username')
+                _m_name = form.cleaned_data.get('middle_name')
+                _suffix = form.cleaned_data.get('suffix')
+                
+                if _m_name.upper() == 'N/A':
+                    form.instance.middle_name = 'N/A'
+
+                if _suffix.upper() == 'N/A':
+                    form.instance.suffix = 'N/A'
+
                 form.save()
+
+                new_user = User.objects.get(username=user_name)
+                uploaded_img = request.FILES.get('img_upload')
+                new_user.user_img = uploaded_img
+                new_user.save()  
+
+                messages.add_message(request, messages.SUCCESS, 'Account created successfully!')
+                return redirect('/')
                 
             else:
                 errors = form.error_messages
@@ -69,10 +93,12 @@ def create_admissionAccounts(request):
     return render(request, 'create-accounts.html', context)
         
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def applicant_login(request):
     if request.user.is_authenticated:
+        pk = request.user.pk
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
@@ -85,13 +111,13 @@ def applicant_login(request):
             username = request.POST.get('applicant-username')
             password = request.POST.get('applicant-password')
 
-            print(username, password)
-
             user = authenticate(request, username=username, password=password)
 
             if (user is not None) and (user.user_type == 'APPLICANT'):
                 login(request, user)
-                return redirect('applicant_result')
+                pk = request.user.pk
+                username = request.user.username
+                return redirect('applicant_result', pk)
 
             else:
                 messages.add_message(request, messages.ERROR, "Username or password incorrect.")
@@ -106,8 +132,9 @@ def applicant_logout(request):
 
 def applicant_registration(request):
     if request.user.is_authenticated:
+        pk = request.user.pk
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
@@ -121,60 +148,35 @@ def applicant_registration(request):
             form2 = ApplicantDetailsForm(request.POST)
 
             if form1.is_valid() and form2.is_valid():
-                print("!!!!!!!!!!!!!!!!!!!!!!!!")
-                form1.instance.user_type = 'APPLICANT'
-                f_name = form1.cleaned_data.get('first_name')
-                l_name = form1.cleaned_data.get('last_name')
                 user_name = form1.cleaned_data.get('username')
+                _m_name = form1.cleaned_data.get('middle_name')
+                _suffix = form1.cleaned_data.get('suffix')
+                
+                if _m_name.upper() == 'N/A':
+                    form1.instance.middle_name = 'N/A'
+
+                if _suffix.upper() == 'N/A':
+                    form1.instance.suffix = 'N/A'
+
                 form1.save()
 
                 new_user = User.objects.get(username=user_name)
                 uploaded_img = request.FILES.get('img_upload')
                 new_user.user_img = uploaded_img
-                new_user.save()
+                new_user.save()     
 
-           
-                _m_name = form2.cleaned_data.get('middle_name')
-                _suffix = form2.cleaned_data.get('suffix')
-
-                if _m_name.upper() == 'N/A':
-                    form2.instance.middle_name = ''
-
-                if _suffix.upper() == 'N/A':
-                    form2.instance.suffix = ''
-                
                 form2.instance.applicant_id  = new_user
-                form2.instance.first_name= f_name
-                form2.instance.last_name = l_name
-
                 form2.save()
 
-                ApplicantRequirements.objects.create(
-                    applicant_id = new_user
-                )
-
-                EntranceExamResult.objects.create(
-                    applicant_id = new_user
-                )
-
-                MedicalResult.objects.create(
-                    applicant_id = new_user
-                )
-
-                InterviewResult.objects.create(
-                    applicant_id = new_user
-                )
+                ApplicantRequirements.objects.create(applicant_id = new_user)
+                EntranceExamResult.objects.create(applicant_id = new_user)
+                MedicalResult.objects.create(applicant_id = new_user)
+                InterviewResult.objects.create(applicant_id = new_user)
 
                 messages.add_message(request, messages.SUCCESS, "Registration complete.\
                                     You've redirected to applicant login page.")
 
                 return redirect('applicant_login')
-                    
-            else:
-                errors = form1.error_messages
-
-                for keys in errors:
-                    messages.error(request, errors[keys])
 
         else:
             form1 = RegistrationCredetialsForm()
@@ -186,13 +188,16 @@ def applicant_registration(request):
     return render(request, 'applicant/a-reg.html', context)
         
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='applicant_login')
-def applicant_result(request):
-    applicant_details = ApplicantDetails.objects.filter(applicant_id_id=request.user.pk)[0]
-    exam_details = EntranceExamResult.objects.filter(applicant_id_id=request.user.pk)[0]
-    req_details = ApplicantRequirements.objects.filter(applicant_id_id=request.user.pk)[0]
-    med_details = MedicalResult.objects.filter(applicant_id_id=request.user.pk)[0]
-    interv_details = InterviewResult.objects.filter(applicant_id_id=request.user.pk)[0]
+def applicant_result(request, pk):
+    pk = request.user.pk
+
+    applicant_details = ApplicantDetails.objects.get(applicant_id_id=pk)
+    exam_details = EntranceExamResult.objects.get(applicant_id_id=pk)
+    req_details = ApplicantRequirements.objects.get(applicant_id_id=pk)
+    med_details = MedicalResult.objects.get(applicant_id_id=pk)
+    interv_details = InterviewResult.objects.get(applicant_id_id=pk)
 
     res = None
     reqs = [req_details.shs_card, req_details.good_moral_char, req_details.brgy_clearance, req_details.birth_cert]
@@ -212,17 +217,149 @@ def applicant_result(request):
 
     return render(request, "applicant/a-result.html", context)
 
-############################################### DITO KA NA PAO!!!!!!!!!!!!!!
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='applicant_login')
-def applicant_edit_account(request, pk, username):
-    get_user_info = ApplicantDetails.objects.get(applicant_id_id=pk)
+def applicant_profile(request, pk, username):
+    pk = request.user.pk
     username = request.user.username
-    print('!!!!!!!!!!!!!!!!!!!!!!',get_user_info, username)
 
-    return render(request, 'applicant/editApplicantAccount.html/')
-    #########################################################
+    if request.user.is_authenticated:
+        if pk != pk :
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    applicant_details = ApplicantDetails.objects.get(applicant_id_id=pk)
+
+    context = {'ad': applicant_details}
+
+    return render(request, 'applicant/a-profile.html', context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='applicant_login')
+def applicant_details(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+    user_applicant = ApplicantDetails.objects.get(applicant_id_id=pk)
+
+    if request.user.is_authenticated:
+        if pk != pk :
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    if request.method == 'POST':
+        user_form1 = EditUserForm1(request.POST, instance=request.user)
+        details_form = ApplicantEditDetailsForm(request.POST, instance=user_applicant)
+
+        if user_form1.is_valid() and details_form.is_valid():
+            user_form1.save()
+            details_form.save()
+
+            applicant = User.objects.get(id=pk)
+            uploaded_img = request.FILES.get('img_upload')
+            
+            if uploaded_img:   
+                applicant.user_img = uploaded_img
+                applicant.save() 
+
+            return redirect('applicant_profile', pk, username)
+                
+        else:
+            for field in user_form1.errors.items():
+                for item in user_form1.errors:
+                    print(messages.error(request, '{}: {}'.format(field, item)))
+
+    else:       
+        user_form1 = EditUserForm1(instance=User.objects.get(id=pk))
+        details_form = ApplicantEditDetailsForm(instance=user_applicant)
+
+    context = {'user_form1': user_form1,
+            'details_form': details_form}
+            
+    return render(request, 'applicant/a-details.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='applicant_login')
+def applicant_credentials(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+
+    if request.user.is_authenticated:
+        if pk != pk :
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    if request.method == 'POST':
+        user_form2 = EditUserForm2(request.POST, instance=request.user)
+
+        if user_form2.is_valid():
+            user_form2.save()
+
+            return redirect('applicant_profile', pk, username)
+                
+        else:
+            for field in user_form2.errors.items():
+                for item in user_form2.errors:
+                    print(messages.error(request, '{}: {}'.format(field, item)))
+
+    else:       
+        user_form2 = EditUserForm2(instance=User.objects.get(id=pk))
+
+    context = {'user_form2': user_form2}
+        
+    return render(request, 'applicant/a-credentials.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='applicant_login')
+def change_applicant_password(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.pk != request.user.pk :
+            return redirect('applicant_result')
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if password_form.is_valid():
+            password_form.save()
+            update_session_auth_hash(request, request.user)
+            return redirect('applicant_profile', pk, username)
+                
+    else:       
+        password_form = PasswordChangeForm(user=request.user)
+
+    context = {'password_form': password_form}
+        
+    return render(request, 'applicant/a-change-pass.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def coordinator_login(request):
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
@@ -235,7 +372,18 @@ def coordinator_login(request):
             return redirect('interviewer_table')
 
     else:
-        pass
+        if request.method == 'POST':
+            username = request.POST.get('coordinator-username')
+            password = request.POST.get('coordinator-password')
+
+            user = authenticate(request, username=username, password=password)
+
+            if (user is not None) and (user.user_type == 'COORDINATOR'):
+                login(request, user)
+                return redirect('coordinator_table')
+
+            else:
+                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "coordinator/c-login.html")
 
@@ -245,16 +393,135 @@ def coordinator_logout(request):
     return redirect('coordinator_login')
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_table(request):
-    return render(request, "coordinator/c-table.html")
+    applicant_names = User.objects.filter(user_type='APPLICANT')
+    applicant_details = ApplicantDetails.objects.all()
+    exam_results = EntranceExamResult.objects.all()
+    interview_results = InterviewResult.objects.all()
+    medical_results = MedicalResult.objects.all()
+    applicant_requirements = ApplicantRequirements.objects.all()
+    data = zip(applicant_details, exam_results, medical_results, interview_results, applicant_requirements, applicant_names)
+    
+    context = {'data': data}
+
+    return render(request, "coordinator/c-table.html", context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
-def exam_table(request):
-    return render(request, "coordinator/exam-table.html")
+def coordinator_update(request, pk):
+    applicant = User.objects.get(id=pk)
+    applicant_exam = EntranceExamResult.objects.get(applicant_id_id=pk)
+    applicant_req = ApplicantRequirements.objects.get(applicant_id_id=pk)
+
+    exam_result_form = EntranceExamResultForm(instance=applicant_exam)
+    requirements_form = ApplicantRequirementsForm(instance=applicant_req)
+
+    context = {'applicant': applicant,
+                'ae': applicant_exam,
+                'ef': exam_result_form,
+                'rf': requirements_form}
+        
+    return render(request, "coordinator/c-update.html", context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='coordinator_login')
+def coordinator_update_exam(request, pk):
+    applicant_exam = EntranceExamResult.objects.get(applicant_id_id=pk)
+
+    if request.method == 'POST':
+        exam_result_form = EntranceExamResultForm(request.POST, instance=applicant_exam)    
+        
+        if exam_result_form.is_valid():
+            exam_result_form.save()
+
+        return redirect("coordinator_update", pk)
+        
+    return redirect("coordinator_update", pk)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='coordinator_login')
+def coordinator_update_reqs(request, pk):
+    applicant_req = ApplicantRequirements.objects.get(applicant_id_id=pk)
+
+    if request.method == 'POST':
+        requirements_form = ApplicantRequirementsForm(request.POST, instance=applicant_req)
+              
+        if requirements_form.is_valid():
+            requirements_form.save()
+            
+        return redirect("coordinator_update", pk)
+
+    return redirect("coordinator_update", pk)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='coordinator_login')
+def coordinator_profile(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+    coor_profile = User.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = EditUserForm3(request.POST, instance=coor_profile)
+
+        if form.is_valid():
+            form.save()
+
+        c_user = User.objects.get(username=username)
+        uploaded_img = request.FILES.get('img_upload')
+
+        if uploaded_img is not None:
+            c_user.user_img = uploaded_img
+            c_user.save()
+
+        return redirect('coordinator_profile', pk, username)
+    
+    else:
+        form = EditUserForm3(instance=coor_profile)
+
+    context = {'form': form}
+
+    return render(request, 'coordinator/c-profile.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='coordinator_login')
+def change_coordinator_password(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.pk != pk :
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'APPLICANT': 
+            return redirect('applicant_result')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if password_form.is_valid():
+            password_form.save()
+            update_session_auth_hash(request, request.user)
+            return redirect('coordinator_profile', pk, username)
+                
+    else:       
+        password_form = PasswordChangeForm(user=request.user)
+
+    context = {'password_form': password_form}
+        
+    return render(request, 'coordinator/c-change-pass.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def interviewer_login(request):
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
@@ -267,7 +534,18 @@ def interviewer_login(request):
             return redirect('interviewer_table')
     
     else:
-        pass
+        if request.method == 'POST':
+            username = request.POST.get('interviewer-username')
+            password = request.POST.get('interviewer-password')
+
+            user = authenticate(request, username=username, password=password)
+
+            if (user is not None) and (user.user_type == 'INTERVIEWER'):
+                login(request, user)
+                return redirect('interviewer_table')
+
+            else:
+                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "interviewer/i-login.html")
 
@@ -275,13 +553,106 @@ def interviewer_login(request):
 def interviewer_logout(request):
     logout(request)
     return redirect('interviewer_login')
+    
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='interviewer_login')
 def interviewer_table(request):
-    return render(request, "interviewer/i-table.html")
+    applicants = User.objects.filter(user_type='APPLICANT')
+    applicants_details = ApplicantDetails.objects.all()
+    interview_results = InterviewResult.objects.all()
+    data = zip(applicants, applicants_details, interview_results)
+    
+    context = {'data': data}
+
+    return render(request, "interviewer/i-table.html", context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='interviewer_login')
+def interviewer_update(request, pk):
+    applicant = User.objects.get(id=pk)
+    applicant_interview = InterviewResult.objects.get(applicant_id_id=pk)
+
+    if request.method == 'POST':
+        interview_result_form = InterviewResultForm(request.POST, instance=applicant_interview)    
+        
+        if interview_result_form.is_valid():
+            interview_result_form.save()
+
+        return redirect("interviewer_update", pk)     
+
+    interview_result_form = InterviewResultForm(instance=applicant_interview)
+
+    context = {'applicant': applicant,
+                'irf': interview_result_form}      
+        
+    return render(request, "interviewer/i-update.html", context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='interviewer_login')
+def interviewer_profile(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+    interviewer_profile = User.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = EditUserForm3(request.POST, instance=interviewer_profile)
+
+        if form.is_valid():
+            form.save()
+
+        i_user = User.objects.get(username=username)
+        uploaded_img = request.FILES.get('img_upload')
+
+        if uploaded_img is not None:
+            i_user.user_img = uploaded_img
+            i_user.save()
+
+        return redirect('interviewer_profile', pk, username)
+    
+    else:
+        form = EditUserForm3(instance=interviewer_profile)
+
+    context = {'form': form}
+
+    return render(request, 'interviewer/i-profile.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='interviewer_login')
+def change_interviewer_password(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.pk != pk :
+            return redirect('interviewer_table')
+        elif request.user.user_type == 'APPLICANT': 
+            return redirect('applicant_result')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if password_form.is_valid():
+            password_form.save()
+            update_session_auth_hash(request, request.user)
+            return redirect('interviewer_profile', pk, username)
+                
+    else:       
+        password_form = PasswordChangeForm(user=request.user)
+
+    context = {'password_form': password_form}
+        
+    return render(request, 'interviewer/i-change-pass.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def nurse_login(request):
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
@@ -297,8 +668,6 @@ def nurse_login(request):
         if request.method == 'POST':
             username = request.POST.get('nurse-username')
             password = request.POST.get('nurse-password')
-
-            print(username, password)
 
             user = authenticate(request, username=username, password=password)
 
@@ -317,30 +686,103 @@ def nurse_logout(request):
     return redirect('nurse_login')
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='nurse_login')
-def nurse_table(request):
-    form = UpdateNurseTableForm()
-    applicant_details = ApplicantDetails.objects.all()
-    medical_result = MedicalResult.objects.all()
-    data = zip(applicant_details, medical_result)
+def nurse_table(request):           
+    applicants = User.objects.filter(user_type='APPLICANT')
+    applicants_details = ApplicantDetails.objects.all()
+    medical_results = MedicalResult.objects.all()
+    data = zip(applicants, applicants_details, medical_results)
     
-    return render(request, "medical/n-table.html", {'form': form,
-                                                    'data': data})
+    context = {'data': data}
 
-def nurse_update_table(request, pk):
+    return render(request, "medical/n-table.html", context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='nurse_login')
+def nurse_update(request, pk):
+    applicant = User.objects.get(id=pk)
+    applicant_medical = MedicalResult.objects.get(applicant_id_id=pk)
+
     if request.method == 'POST':
-        get_medical_details = MedicalResult.objects.get()
-        form = UpdateNurseTableForm(request.POST)
+        medical_result_form = MedicalResultForm(request.POST, request.FILES, instance=applicant_medical)    
+        
+        if medical_result_form.is_valid():
+            print(medical_result_form)
+            medical_result_form.save()
+
+        else:
+            print(medical_result_form)
+
+        return redirect("nurse_update", pk)  
+
+    else:
+        medical_result_form = MedicalResultForm(instance=applicant_medical)
+
+    context = {'applicant': applicant,
+                'mf': medical_result_form}      
+        
+    return render(request, "medical/n-update.html", context)
 
 
-        medical_result = MedicalResult.objects.all()
-        print(medical_result)
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='nurse_login')
+def nurse_profile(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+    nurse_profile = User.objects.get(id=pk)
 
+    if request.method == 'POST':
+        form = EditUserForm3(request.POST, instance=nurse_profile)
 
-    return render(request, "medical/n-table.html", {'form': form,
-                                                    'mr': medical_result})
+        if form.is_valid():
+            form.save()
 
+        n_user = User.objects.get(username=username)
+        uploaded_img = request.FILES.get('img_upload')
 
+        if uploaded_img is not None:
+            n_user.user_img = uploaded_img
+            n_user.save()
 
-
+        return redirect('nurse_profile', pk, username)
     
+    else:
+        form = EditUserForm3(instance=nurse_profile)
+
+    context = {'form': form}
+
+    return render(request, 'medical/n-profile.html', context)
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='nurse_login')
+def change_nurse_password(request, pk, username):
+    pk = request.user.pk
+    username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.pk != pk :
+            return redirect('nurse_table')
+        elif request.user.user_type == 'APPLICANT': 
+            return redirect('applicant_result')
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if password_form.is_valid():
+            password_form.save()
+            update_session_auth_hash(request, request.user)
+            return redirect('nurse_profile', pk, username)
+                
+    else:       
+        password_form = PasswordChangeForm(user=request.user)
+
+    context = {'password_form': password_form}
+        
+    return render(request, 'medical/n-change-pass.html', context)

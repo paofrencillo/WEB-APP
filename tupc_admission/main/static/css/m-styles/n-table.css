@@ -9,7 +9,9 @@ body {
     max-height: 100vh;
 }
 
+/* === SIDENAV === */
 .sidebar {
+    z-index: 100;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 1%;
@@ -18,84 +20,100 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
     background-color: #a7545c;
     overflow-x: hidden;
     transition: 0.5s;
     white-space: nowrap;
     border-radius: 0px 20px 20px 0;
-    background: #a7545c;
 }
 
-
-#close-btn {
-    display: none;
-    cursor: pointer;
+.sidebar-brand {
     color: white;
-    font-weight: 500;
-    top: 5px;
-    right: 15px;
-    position: absolute;
+    font-weight: 700;
 }
 
-.tup-logo {
+img {
+    max-width: 60px;
+}
+
+#tup-logo {
     cursor: pointer;
 }
 
 #tupc-text {
-    color: white;
-    font-weight: 700;
     visibility: hidden;
-}
-
-img {
-    width: 60px;
 }
 
 .sidebar-things {
     margin-top: 80px;
 }
 
+.img-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.img-container {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: white;
+
+}
+
 #avatar {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #nurse-name {
+    white-space: nowrap;
     font-weight: 500;
     font-size: 16px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     text-align: center;
     color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
     visibility: hidden;
 }
 
-#download-wrapper, #logout-wrapper {
+.bi-pencil-square {
+    color: green;
+    font-size: 12px;
+}
+
+.bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
+    padding-right: 0.4rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+#home-wrapper, #profile-wrapper, #download-wrapper, #logout-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
 }
 
-.bi-download, .bi-box-arrow-left {
-    padding-right: 0.4rem;
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-#download, #logout {
+#home, #profile, #download, #logout {
     color: white;
     font-weight: 500;
     font-size: 1.1rem;
 }
 
-#download-text, #logout-text {
-    color: #a7545c;
+#home-text, #profile-text, #download-text, #logout-text {
     display: none;
+    visibility: hidden;
+    color: white;
 }
 
-#download:hover, #logout:hover {
+#home:hover, #profile:hover, #download:hover, #logout:hover {
     color: gray;
 }
 
@@ -103,10 +121,11 @@ img {
 .main-content {
     margin-top: 1%;
     margin-left: 100px;
+    padding-left: 1%;
 }
 
 .main-container {
-    margin: 1% 2%;
+    margin: 1% 1%;
 }
 
 .header {
@@ -127,7 +146,7 @@ img {
 
 .nurse-table-text {
     color: #bd2031;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 1000;
 }
 
@@ -135,52 +154,29 @@ img {
     margin-right: 50px;
 }
 
-.search-combo-wrapper {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-
-.search-wrapper {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    border: 1px solid rgb(70, 70, 70);
-    border-radius: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-right: 35px;
-}
-
-input[type="search"] {
-    height: 40px;
-    outline: none;
-    border: none;
-}
-
-
-#select-course {
-    outline: none;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid rgb(70, 70, 70);
-}
-
 hr {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 1%;
     background-color: #bd2031;
     min-height: 2px;
 }
 
 /* === TABLE === */
-.table-wrapper {
-    margin-top: 25px;
+input[type="search"] {
+    height: 30px;
+    width: 300px;
+    outline: none;
+    border: 1px solid gray;
 }
 
 .thead-dark {
     position: sticky;
     top: 0; 
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .table-striped > tbody > tr:nth-child(odd) {
@@ -193,7 +189,7 @@ hr {
 }
 
 th {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 td {
@@ -202,120 +198,99 @@ td {
 }
 
 .table-responsive {
-    overflow-y: scroll;
-    height: 82vh;
+    margin: 0;
 }
 
 .btn {
     font-size: 12px;
 }
 
-#passed {
+.passed-text {
     color: green;
-    font-weight: 700
+    font-weight: 700;
 }
 
-#failed {
+.failed-text {
     color: red;
-    font-weight: 700
+    font-weight: 700;
 }
 
 .table td, tr{
     text-align: center;
 }
 
+.bi-check-lg {
+    color: green;
+}
 
+.bi-x-lg {
+    color: red;   
+}
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
-@media screen and (max-width: 550px) {
-    nav img {
-        width: 80%;
-    }
-
-    #coor-table {
-        padding: 0 10vw;
-    }
-}
-
-@media screen and (max-width: 1095px) {
-    .search-combo-wrapper {
-        display: block;
-    }
-
-    .search-wrapper {
-        margin-right: 0px;
-    }
-
-    .select-wrapper {
-        margin-top: 10px;
-        margin-bottom: 5px;
-    }
-    
-}
-
-@media screen and (max-width: 814px) {
-    .search-combo-wrapper {
-        display: flex;
-    }
-
-    .search-wrapper {
-        margin-right: 50px;
-    }
-
-    .select-wrapper {
-        margin-top: 10px;
-        margin-bottom: 5px;
-    }
-}
-
-@media screen and (max-width: 656px) {
-    body {
-        margin: 3%;
-    }
-
+@media (max-width: 550px) {
     .sidebar {
         left: -100px;
     }
 
+    #nurse-name {
+        font-size: 16px;
+    }
+    
+    .bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
+        font-size: 1.2rem;
+    }
+    
+    #home, #profile, #download, #logout {
+        color: white;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    
+    #nurse-table-text {
+        font-size: 1.3rem;
+    }
+
     .main-content {
-        margin-left: 0px;
+        margin-left: 0px !important;
     }
 
-    .coor-text-wrapper {
-        margin-right: 0px;
+    .bi-list {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: white;
+        background-color: #bd2031;
+        padding-left: 6px;
+        padding-right: 6px;
+        border-radius: 20px;
     }
 
-    .coor-table-text {
-        color: #bd2031;
-        font-size: 1.5rem;
-        font-weight: 700;
+    #nurse-table {
+        padding: 0 10vw;
     }
 
-    .search-combo-wrapper {
-        margin-top: 10px;
-        margin-left: 30px;
-        width: 100%;
-        display: block;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -100px;
     }
 
-    .search-wrapper {
-        margin-bottom: 20px;
-        margin-right: 0px;
+    .bi-list {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: white;
+        background-color: #bd2031;
+        padding-left: 6px;
+        padding-right: 6px;
+        border-radius: 20px;
     }
 
-    #search-input {
-        width: 100%;
-        margin-right: 0px;
-    }
-
-    .select-wrapper {
-        display: block;
-        width: 100%;
-    }
-
-    select {
-        width: 100%;
-        margin-bottom: 5px;
-    }
+    .main-content {
+        margin-left: 0px!important;
+    }  
 }

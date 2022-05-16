@@ -34,6 +34,30 @@ nav a:hover  {
     color: gray;
 }
 
+#togglePass {
+    cursor: pointer;
+}
+
+.alert-success {
+    position: fixed;
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+    animation: fadeOut 1s forwards;
+    animation-delay: 4s;
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.alert-danger {
+    position: relative;
+    padding: 0.75rem 1rem;
+    font-size: 12px; 
+    background-color: rgb(241, 180, 180);
+}
+
 /* ========== MAIN CONTAINER ========== */
 #main-container {
     padding: 15vh 20vw;
@@ -69,15 +93,6 @@ label {
     font-size: 1.1rem;
 }
 
-#coordinator-email, #coordinator-pass {
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-    margin-bottom: 1.2rem;
-    padding-left: 5%;
-    font-size: 0.8rem;
-}
-
 input[type=submit] {
     padding: 10px 20px;
     color: white;
@@ -92,6 +107,7 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: rgb(189, 32, 49);
 }
+
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */

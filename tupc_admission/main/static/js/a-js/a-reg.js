@@ -173,6 +173,9 @@ $(document).ready(function() {
             '<div id="togglePass1" class="input-group-append" onclick="togglePass(this)"><span class="input-group-text"><i id="eye_icon1" class="bi bi-eye-fill"></i></span></div>';
     password2_container.getElementsByTagName('div')[0].innerHTML += 
             '<div id="togglePass2" class="input-group-append" onclick="togglePass(this)"><span class="input-group-text"><i id="eye_icon2" class="bi bi-eye-fill"></i></span></div>';
+
+    user_type_field = document.getElementById('id_user_type');
+    user_type_field.removeAttribute('required', '');
 });
 
 
@@ -199,4 +202,4 @@ window.addEventListener('load', function() {
             img.style.display = 'block';
         }
     });
-  });
+});

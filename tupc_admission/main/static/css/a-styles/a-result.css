@@ -48,7 +48,6 @@ img {
     margin-top: 80px;
 }
 
-
 .img-wrapper {
     display: flex;
     justify-content: center;
@@ -61,22 +60,21 @@ img {
     height: 60px;
     margin-bottom: 10px;
     background-color: white;
-
 }
 
-#avatar {
+.img {
     display: block;
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 #applicant-name {
     white-space: nowrap;
     font-weight: 500;
     font-size: 16px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     text-align: center;
     color: white;
     overflow: hidden;
@@ -84,33 +82,32 @@ img {
     visibility: hidden;
 }
 
-.bi-gear, .bi-download, .bi-box-arrow-left {
+.bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
     padding-right: 0.4rem;
     font-size: 1.8rem;
     font-weight: 700;
 }
 
-
-#edit-account-wrapper, #download-wrapper, #logout-wrapper {
+#home-wrapper, #profile-wrapper, #download-wrapper, #logout-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
 }
 
-#edit-account, #download, #logout {
+#home, #profile, #download, #logout {
     color: white;
     font-weight: 500;
     font-size: 1.1rem;
 }
 
-#edit-account-text, #download-text, #logout-text {
+#home-text, #profile-text, #download-text, #logout-text {
     display: none;
     visibility: hidden;
     color: white;
 }
 
-#edit-account:hover, #download:hover, #logout:hover {
+#home:hover, #profile:hover, #download:hover, #logout:hover {
     color: gray;
 }
 
@@ -165,41 +162,33 @@ h6 > span {
     font-weight: normal;
 }
 
-.applicant-details-wrapper, .applicant-remarks-wrapper {
-    margin-bottom: 20px;
+.remarks {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 150px;
+    line-height: 150px;
+    margin-bottom: 3%;
+    border: 2px solid gray;
+    border-radius: 20px;
+    background-color: #f1f1f1;
 }
 
-.applicant-details {
-    padding: 2rem;
-
-    border-radius: 50px;
-    background: #fcd4d4;
-    box-shadow:  8px 8px 10px #fdcbcb,
-            -8px -8px 20px #ffe9e9;
+.remarks h4 {
+    font-weight: 700;
     width: 100%;
-    height: 100%;
+    text-align: center;   
 }
 
-.applicant-remarks {
-    padding: 2rem;
-    border-radius: 50px;
-    background: #fcd4d4;
-    box-shadow:  8px 8px 10px #fdcbcb,
-            -8px -8px 20px #ffe9e9;
-    height: 100%;
+.remarks h5 {
+    font-weight: 1000;
     width: 100%;
-}
-
-.applicant-remarks h6 {
-    margin-bottom: 20px;
-}
-
-.applicant-details > h4 {
-    font-size: 16px;
+    text-align: center;
 }
 
 .result-details {
-    margin-top: 100px;
+    margin-top: 8%;
 }
 
 .table-details {
@@ -209,18 +198,14 @@ h6 > span {
     margin-bottom: 30px;
     border-radius: 20px;
     background: #f0f0f0;
-    box-shadow:  10px 10px 30px #bebebe,
-             -10px -10px 30px #ffffff;
+    box-shadow:  10px 10px 10px #bebebe,
+             -10px -10px 10px #ffffff;
 }
 
-
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
-
 /* Small devices (landscape phones, 576px and up) */
-
 @media (max-width: 576px) {
     .sidebar {
-        z-index: 100;
         left: -100px;
     }
 
@@ -232,11 +217,11 @@ h6 > span {
         font-size: 16px;
     }
     
-    .bi-gear, .bi-download, .bi-box-arrow-left {
+    .bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
         font-size: 1.2rem;
     }
     
-    #edit-account, #download, #logout {
+    #home, #profile, #download, #logout {
         color: white;
         font-weight: 500;
         font-size: 0.9rem;
@@ -254,6 +239,17 @@ h6 > span {
         margin-left: 0px !important;
     }
 
+    .bi-list {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: white;
+        background-color: #bd2031;
+        padding-left: 6px;
+        padding-right: 6px;
+        border-radius: 20px;
+    }
+
     .table-details {
         margin-left: 0px;
         margin-right: 0px;
@@ -264,7 +260,6 @@ h6 > span {
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
     .sidebar {
-        z-index: 100;
         left: -100px;
     }
 
@@ -301,11 +296,11 @@ h6 > span {
         width: 100px; /* 0 width - change this with JavaScript */
     }
 
-    #download-wrapper, #logout-wrapper {
+    #home-wrapper, #profile-wrapper, #download-wrapper, #logout-wrapper {
         justify-content: center;
     }
 
-    #download-text, #logout-text {
+    #home-text, #profile-text, #download-text, #logout-text {
         visibility: none;
         display: none;
     }

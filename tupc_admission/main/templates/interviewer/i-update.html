@@ -1,0 +1,60 @@
+{% extends 'base-templates/interviewer-base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>TUP - Cavite | Admission interviewer Table</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/i-styles/i-update.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid row mt-4">
+  <div class="col col-xl-5 col-lg-5 col-md-12 col-sm-12">
+      <div class="container mb-3">
+          <div class="division">
+              <div class="img-wrapper">
+                <div class="img-container2">
+                  {% if applicant.user_img is None or applicant.user_img == '' %}
+                  {% else %}
+                    <img src="{{ applicant.user_img.url }}" alt="avatar" id="avatar" />
+                  {% endif %}
+                </div>
+              </div>
+              <h5 class="applicant-name">
+                  {{ applicant.first_name }} {{ applicant.last_name }}
+              </h5>
+          </div>
+      </div>
+  </div>
+  <div class="col col-xl-7 col-lg-7 col-md-12 col-sm-12">
+    <div class="container">
+      <div class="division">
+        <h4>Interview Details
+            <span>
+              <i class="bi bi-pencil-square" id="update-form-interview" onclick="getid(this)"></i>
+            </span>
+        </h4>
+        <form action="{% url 'interviewer_update' applicant.pk %}" method="POST" id="interview-form">
+            {% csrf_token %}
+
+            {{ irf.date_taken|as_crispy_field }}
+            {{ irf.venue|as_crispy_field }}
+            {{ irf.interviewer|as_crispy_field }}
+            {{ irf.interview_result|as_crispy_field }}
+            
+            <input type="reset" class="btn btn-danger" value=" Cancel " onclick="hidebtn(this)">
+            <input type="submit" class="btn btn-primary" value=" Save ">
+        </form> 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+    
+{% block js %}
+<script src="{% static 'js/i-js/i-update.js' %}"></script>
+{% endblock %}

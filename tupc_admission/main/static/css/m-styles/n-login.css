@@ -2,7 +2,7 @@
 
 
 body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -16,11 +16,11 @@ nav {
 }
 
 .custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .nav-link {
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     font-size: 1.1rem;
 }
@@ -32,6 +32,30 @@ nav {
 
 nav a:hover  {
     color: gray;
+}
+
+#togglePass {
+    cursor: pointer;
+}
+
+.alert-success {
+    position: fixed;
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+    animation: fadeOut 1s forwards;
+    animation-delay: 4s;
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.alert-danger {
+    position: relative;
+    padding: 0.75rem 1rem;
+    font-size: 12px; 
+    background-color: rgb(241, 180, 180);
 }
 
 /* ========== MAIN CONTAINER ========== */
@@ -56,26 +80,17 @@ legend {
     width: fit-content;
 }
 
-fieldset {
-    background: rgba(189, 32, 49, 0.1)
-}
-
 fieldset > form > div {
     text-align: center;
+}
+
+fieldset {
+    background: rgba(189, 32, 49, 0.1)
 }
 
 label {
     color:rgb(30, 30, 30);
     font-size: 1.1rem;
-}
-
-#nurse-username, #nurse-password {
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-    margin-bottom: 1.25rem;
-    padding-left: 5%;
-    font-size: 0.8rem;
 }
 
 input[type=submit] {
@@ -93,17 +108,6 @@ input[type=submit]:hover {
     background-color: rgb(189, 32, 49);
 }
 
-form p {
-    color: #181818;
-    font-size: 0.9rem;
-    text-align: left;
-    margin: 0;
-}
-
-form p a{
-    color: rgb(189, 32, 49);
-    font-weight: 1000;
-}
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
 @media screen and (max-width: 550px) {

@@ -1,0 +1,85 @@
+{% extends 'base-templates/applicant-base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>TUP - Cavite | {{ user.username }} Details</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/a-styles/a-details.css' %}" />
+{% endblock %}
+
+
+{% block content %}
+<div class="header" id="header">
+    <div>
+        <i class="bi bi-list" id="hamburger" onclick="hamburgerToggle()"></i>
+        <span id="dashboard-text">APPLICANT PROFILE</span>
+    </div>
+</div>
+<hr>
+<form method="POST" action="{% url 'applicant_details' user.pk user.username %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container-fluid row">
+        <div class="col col-xl-3 col-lg-3 col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="img-upload-wrapper">
+                    <div class="img-container2">
+                        {% if user.user_img is None or user.user_img == '' %}
+                        <img src="{% static 'res/no-image.png' %}" class="img" id="display-img" />
+                        {% else %}
+                        <img src="{{ user.user_img.url }}" alt="avatar" class="img" id="display-img" />
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="img-upload-wrapper">
+                    <label for="img_upload" class="custom-file-upload">
+                        <i class="bi bi-cloud-arrow-up-fill"></i>
+                        Upload image
+                    </label>
+                    <input type="file" name="img_upload" id="img_upload" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="col col-xl-9 col-lg-9 col-md-12 col-sm-12">
+            {{ user_form1.first_name|as_crispy_field }}
+
+            {{ user_form1.middle_name|as_crispy_field }}
+
+            {{ user_form1.last_name|as_crispy_field }}
+
+            {{ user_form1.suffix|as_crispy_field }}
+
+            <div class="container-fluid row justify-content-between m-0 p-0">
+                <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
+                    <div id="bday-container">
+                        {{ details_form.birth_date|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div class="form-group col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 m-0 p-0">
+                    <div id="sex-container" class="form-group">
+                        {{ details_form.sex|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+
+            {{ details_form.status|as_crispy_field }}
+
+            {{ details_form.course|as_crispy_field }}
+
+            {{ details_form.shs_strand|as_crispy_field }}
+            <br>
+            
+            <input type="reset" class="btn btn-danger" value=" Cancel ">
+            <input type="submit" class="btn btn-primary" value=" Save ">
+
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/a-js/a-details.js' %}"></script>
+{% endblock %}

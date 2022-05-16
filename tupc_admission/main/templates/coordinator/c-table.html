@@ -1,148 +1,107 @@
+{% extends 'base-templates/coordinator-base.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}
+<title>TUP - Cavite | Admission Coordinator Table</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/c-styles/c-table.css' %}" />
+{% endblock %}
 
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="{% static 'imgs/tup_logo.png' %}" />
-  <title>TUP - Cavite | Admission Coordinator Table</title>
+{% block content %}
+<!-- ================= TABLE ================= -->
+<div class="container-fluid table-wrapper">
+  <table id="coordinator-table" class="table table-bordered table-hover table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th rowspan="2" style="vertical-align: middle;"></th>
+        <th rowspan="2" style="vertical-align: middle;">APPLICANT NAME</th>
+        <th rowspan="2" style="vertical-align: middle;">SEX</th>
+        <th rowspan="2" class="searchable" style="vertical-align: middle;">COURSE</th>
+        <th rowspan="2" style="vertical-align: middle;">EXAM RESULT</th>
+        <th rowspan="2" style="vertical-align: middle;">MEDICAL</th>
+        <th rowspan="2" style="vertical-align: middle;">INTERVIEW</th>
+        <th colspan="4" style="vertical-align: middle;">REQUIREMENT</th>
+      </tr>
+      <tr>
+        <th>Card</th>
+        <th>BC</th>
+        <th>GMC</th>
+        <th>PSA</th>
+      </tr>
+    </thead>
+    <tbody id="tabledata">
+      {% for a, b, c, d, e, f in data %}
+      <tr course={{a.course}} id="row{{a.pk}}">
+        <td style="vertical-align: middle;">
+          <a href="{% url 'coordinator_update' a.pk %}" title="Edit details">
+            <i class="bi bi-pencil-square"></i>
+          </a>
+        </td>
+        <td style="vertical-align: middle;">{{ f.last_name }}, {{ f.first_name }}</td>
+        <td style="vertical-align: middle;">{{ a.sex }}</td>
+        <td style="vertical-align: middle;">{{ a.course }}</td>
 
-  <!-- ================= BOOTSTRAP CSS (kopyahin to sa bawat html files!!!) ================= -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+        {% if b.exam_result == 'PASSED' %}
+        <td class="passed-text" style="vertical-align: middle;">{{ b.exam_result }}</td>
+        {% elif b.exam_result == 'FAILED' %}
+        <td class="failed-text" style="vertical-align: middle;">{{ b.exam_result }}</td>
+        {% else %}
+        <td style="vertical-align: middle;">-</td>
+        {% endif %}
 
-  <!-- ================= CSS ================= -->
-  <link rel="stylesheet" href="{% static 'css/c-styles/c-table.css' %}" />
-</head>
+        {% if c.medical_result == 'PASSED' %}
+        <td class="passed-text" style="vertical-align: middle;">{{ c.medical_result }}</td>
+        {% elif c.medical_result == 'FAILED' %}
+        <td class="failed-text" style="vertical-align: middle;">{{ c.medical_result }}</td>
+        {% else %}
+        <td style="vertical-align: middle;">-</td>
+        {% endif %}
 
+        {% if d.interview_result == 'PASSED' %}
+        <td class="passed-text" style="vertical-align: middle;">{{ d.interview_result }}</td>
+        {% elif d.interview_result == 'FAILED' %}
+        <td class="failed-text" style="vertical-align: middle;">{{ d.interview_result }}</td>
+        {% else %}
+        <td style="vertical-align: middle;">-</td>
+        {% endif %}
 
-<body id="body">
-  <!-- sidenav -->
-  <div class="sidebar" id="sidebar">
-    <i class="bi bi-x-lg" id="close-btn" onclick="closeBtn()"></i>
-    <div class="sidebar-brand" id="sidebar-brand">
-      <span><img class="tup-logo" id="tup-logo" src="{% static 'imgs/tup_logo.png' %}" alt="tup logo">
-      </span>TUP - Cavite Campus
-    </div>
-    <div class="sidebar-things">
-      <img src="{% static 'imgs/avatar-male.png' %}" alt="avatar" id="avatar" />
-      <div id="coordinator-info">
-        <div id="coor-name-wrapper">
-          <h6 id="coor-name"></h6>
-        </div>
-      </div>
-      <div id="overview-wrapper">
-        <a id="overview" href="{% url 'coordinator_table' %}">
-          <i class="bi bi-binoculars"></i><span id="overview-text"> Overview</span>
-        </a>
-      </div>
-      <div id="exam-details-wrapper">
-        <a id="exam-details" href="{% url 'exam_table' %}">
-          <i class="bi bi-clipboard-data"></i><span id="exam-details-text"> Exam Details</span>
-        </a>
-      </div>
-      <div id="download-wrapper">
-        <a id="download" href="#">
-          <i class="bi bi-download"></i><span id="download-text"> Download Result</span>
-        </a>
-      </div>
-      <div id="logout-wrapper">
-        <a id="logout" href="#">
-          <i class="bi bi-box-arrow-left"></i><span id="logout-text"> Logout</span>
-        </a>
-      </div>
-    </div>
-  </div>
+        {% if e.shs_card == True %}
+        <td style="vertical-align: middle;"><i class="bi bi-check-lg"></i></td>
+        {% elif e.shs_card == False %}
+        <td style="vertical-align: middle;"><i class="bi bi-x-lg"></i></td>
+        {% endif %}
 
-  <!-- ================= MAIN CONTENT ================= -->
-  <div class="main-content" id="main-content">
-    <div class="main-container">
-      <div class="row justify-content-between header" id="header">
-        <div class="coor-text-wrapper">
-          <i class="bi bi-list" onclick="hamburgerToggle()"></i><span class="coor-table-text">
-            COORDINATOR TABLE</span>
-        </div>
-        <!-- ================= SEARCH ================= -->
-        <div class="search-combo-wrapper">
-          <div class="search-wrapper">
-            <i class="bi bi-search"></i>
-            <input type="search" name="search"
-              id="search-input" onkeyup="tableSearch()" placeholder="Search here">
-          </div>
-          <!-- ================= SELECT COURSE ================= -->
-          <div class="select-wrapper">
-            <label id="label-course">Course</label>
-            <select id="select-course">
-              <option label="--Select Course--" disabled></option>
-              <option value="All" selected>All</option>
-              <option value="BSCE">BSCE</option>
-              <option value="BSEE">BSEE</option>
-              <option value="BSME">BSME</option>
-              <option value="BET-ET">BET-ET</option>
-              <option value="BET-ESET">BET-ESET</option>
-              <option value="BET-COET">BET-COET</option>
-              <option value="BET-CT">BET-CT</option>
-              <option value="BET-MT">BET-MT</option>
-              <option value="BET-AT">BET-AT</option>
-              <option value="BET-PPET">BET-PPET</option>
-              <option value="BSIE-ICT">BSIE-ICT</option>
-              <option value="BTTE-AU">BTTE-AU</option>
-              <option value="BTTE-EL">BTTE-EL</option>
-              <option value="BTTE-E">BTTE-E</option>
-              <option value="BTTE-HVACT">BTTE-HVACT</option>
-              <option value="BTTE-CP">BTTE-CP</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <!-- ================= TABLE ================= -->
-      <div class="container-fluid table-wrapper">
-        <div class="table-responsive">
-          <table id="coor-table" class="table table-bordered table-hover table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th rowspan="2" style="vertical-align: middle;"></th>
-                <th rowspan="2" style="vertical-align: middle;">NAME OF APPLICANT</th>
-                <th rowspan="2" style="vertical-align: middle;">SEX</th>
-                <th rowspan="2" style="vertical-align: middle;">COURSE</th>
-                <th rowspan="2" style="vertical-align: middle;">EXAM RESULT</th>
-                <th rowspan="2" style="vertical-align: middle;">MEDICAL</th>
-                <th rowspan="2" style="vertical-align: middle;">INTERVIEW</th>
-                <th colspan="4" style="vertical-align: middle;">REQUIREMENT</th>
-              </tr>
-              <tr>
-                <th>Card</th>
-                <th>BC</th>
-                <th>GMC</th>
-                <th>PSA</th>
-              </tr>
-            </thead>
-            <tbody id="tabledata"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+        {% if e.good_moral_char == True %}
+        <td style="vertical-align: middle;"><i class="bi bi-check-lg"></i></td>
+        {% elif e.good_moral_char == False %}
+        <td style="vertical-align: middle;"><i class="bi bi-x-lg"></i></td>
+        {% endif %}
 
+        {% if e.brgy_clearance == True %}
+        <td style="vertical-align: middle;"><i class="bi bi-check-lg"></i></td>
+        {% elif e.brgy_clearance == False %}
+        <td style="vertical-align: middle;"><i class="bi bi-x-lg"></i></td>
+        {% endif %}
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {% if e.birth_cert == True %}
+        <td style="vertical-align: middle;"><i class="bi bi-check-lg"></i></td>
+        {% elif e.birth_cert == False %}
+        <td style="vertical-align: middle;"><i class="bi bi-x-lg"></i></td>
+        {% endif %}
 
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- Other scripts -->
-  <script src="{% static 'js/c-js/c-table.js' %}"></script>
-
-</body>
-
-
-</html>
+{% block js %}
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+<script src="{% static 'js/c-js/c-table.js' %}"></script>
+{% endblock %}

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 
@@ -6,7 +7,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    max-height: 100vh;
 }
 
 /* === SIDENAV === */
@@ -32,11 +33,9 @@ body {
     font-weight: 700;
 }
 
-img {
-    max-width: 60px;
-}
 
 #tup-logo {
+    max-width: 60px;
     cursor: pointer;
 }
 
@@ -47,7 +46,6 @@ img {
 .sidebar-things {
     margin-top: 80px;
 }
-
 
 .img-wrapper {
     display: flex;
@@ -61,7 +59,15 @@ img {
     height: 60px;
     margin-bottom: 10px;
     background-color: white;
+}
 
+.img-container2 {
+    border: 2px solid gray;
+    border-radius: 45px;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+    background-color: white;
 }
 
 #avatar {
@@ -69,14 +75,14 @@ img {
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
-#applicant-name {
+#interviewer-name {
     white-space: nowrap;
     font-weight: 500;
     font-size: 16px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     text-align: center;
     color: white;
     overflow: hidden;
@@ -84,179 +90,148 @@ img {
     visibility: hidden;
 }
 
-.bi-gear, .bi-download, .bi-box-arrow-left {
+.bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
     padding-right: 0.4rem;
     font-size: 1.8rem;
     font-weight: 700;
 }
 
-
-#edit-account-wrapper, #download-wrapper, #logout-wrapper {
+#home-wrapper, #profile-wrapper, #download-wrapper, #logout-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
 }
 
-#edit-account, #download, #logout {
+#home, #profile, #download, #logout {
     color: white;
     font-weight: 500;
     font-size: 1.1rem;
 }
 
-#edit-account-text, #download-text, #logout-text {
+#home-text, #profile-text, #download-text, #logout-text {
     display: none;
     visibility: hidden;
     color: white;
 }
 
-#edit-account:hover, #download:hover, #logout:hover {
+#home:hover, #profile:hover, #download:hover, #logout:hover {
     color: gray;
 }
-
 
 /* === MAIN CONTAINER === */
 .main-content {
     margin-top: 1%;
     margin-left: 100px;
+    padding-left: 1%;
 }
 
 .main-container {
-    margin: 1% 3%;
+    margin: 1% 1%;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .bi-list {
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+    background-color: #bd2031;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 20px;
     display: none;
 }
 
-#dashboard-text {
+.interviewer-table-text {
     color: #bd2031;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 1000;
 }
 
-#fname {
-    float: right;
-    font-size: 1rem;
-    margin-bottom: 0;
-    font-weight: 700;
+.interviewer-text-wrapper {
+    margin-right: 50px;
 }
 
 hr {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 1%;
     background-color: #bd2031;
     min-height: 2px;
 }
 
-h6 {
-    font-weight: 600;
+.applicant-name {
+    text-align: center;
 }
 
-h6 > span {
-    padding-left: 1rem;
-    font-weight: normal;
-}
-
-.applicant-details-wrapper, .applicant-remarks-wrapper {
-    margin-bottom: 20px;
-}
-
-.applicant-details {
-    padding: 2rem;
-
-    border-radius: 50px;
-    background: #fcd4d4;
-    box-shadow:  8px 8px 10px #fdcbcb,
-            -8px -8px 20px #ffe9e9;
-    width: 100%;
-    height: 100%;
-}
-
-.applicant-remarks {
-    padding: 2rem;
-    border-radius: 50px;
-    background: #fcd4d4;
-    box-shadow:  8px 8px 10px #fdcbcb,
-            -8px -8px 20px #ffe9e9;
-    height: 100%;
-    width: 100%;
-}
-
-.applicant-remarks h6 {
-    margin-bottom: 20px;
-}
-
-.applicant-details > h4 {
-    font-size: 16px;
-}
-
-.result-details {
-    margin-top: 100px;
-}
-
-.table-details {
-    margin-left: 2%;
-    margin-right: 2%;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 20px;
+.division {
+    padding: 30px;
+    border-radius: 40px;
     background: #f0f0f0;
-    box-shadow:  10px 10px 30px #bebebe,
-             -10px -10px 30px #ffffff;
+    box-shadow:  6px 6px 10px #d1d1d1,
+                -6px -6px 10px #ffffff;
+}
+
+.bi-pencil-square {
+    font-size: 20px;
+    color: green;
+    cursor: pointer;
+}
+
+h4 {
+    margin-bottom: 3%;
+    font-weight: 700;
+}
+
+input[type="reset"], input[type="submit"], #div_id_time_taken, #div_id_time_finished {
+    display: none;
 }
 
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
-
-/* Small devices (landscape phones, 576px and up) */
-
-@media (max-width: 576px) {
+@media (max-width: 550px) {
     .sidebar {
-        z-index: 100;
         left: -100px;
     }
 
-    #fname {
-        display: none;
-    }
-
-    #applicant-name {
+    #interviewer-name {
         font-size: 16px;
     }
-    
-    .bi-gear, .bi-download, .bi-box-arrow-left {
+
+    .bi-house, .bi-person, .bi-download, .bi-box-arrow-left {
         font-size: 1.2rem;
     }
     
-    #edit-account, #download, #logout {
+    #home, #profile, #download, #logout {
         color: white;
         font-weight: 500;
         font-size: 0.9rem;
     }
     
-    #dashboard-text {
+    #interviewer-table-text {
         font-size: 1.3rem;
-    }
-    
-    .applicant-details > h4 {
-        font-size: 14px;
     }
 
     .main-content {
         margin-left: 0px !important;
     }
 
-    .table-details {
-        margin-left: 0px;
-        margin-right: 0px;
+    .bi-list {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: white;
+        background-color: #bd2031;
+        padding-left: 6px;
+        padding-right: 6px;
+        border-radius: 20px;
+    }
+
+    #interviewer-table {
+        padding: 0 10vw;
     }
 }
 
@@ -264,12 +239,7 @@ h6 > span {
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
     .sidebar {
-        z-index: 100;
         left: -100px;
-    }
-
-    #fname {
-        display: none;
     }
 
     .bi-list {
@@ -284,33 +254,6 @@ h6 > span {
     }
 
     .main-content {
-        margin-left: 0px !important;
-    }
-}
-
-@media (max-width: 900px) {
-    #fname {
-        display: none;
-    }
-}
-
-
-/* Large devices (desktops, 992px and up) */
-@media (max-width: 992px) {
-    .sidebar {
-        width: 100px; /* 0 width - change this with JavaScript */
-    }
-
-    #download-wrapper, #logout-wrapper {
-        justify-content: center;
-    }
-
-    #download-text, #logout-text {
-        visibility: none;
-        display: none;
-    }
-
-    .main-content {
-        margin-left: 100px;
+        margin-left: 0px!important;
     }
 }
