@@ -36,7 +36,7 @@
     {% endif %}
     <fieldset class="container">
       <legend>Registration</legend>
-      <form method="POST" action="{% url 'create_admissionAccounts' %}" name="reg-form" class="was-validated">
+      <form method="POST" action="{% url 'create_admissionAccounts' %}" name="reg-form" class="was-validated" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="reg-container">
           {{ form.first_name|as_crispy_field }}

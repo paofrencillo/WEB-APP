@@ -43,9 +43,11 @@ def blank_page(request):
 
 
 def create_admissionAccounts(request):
+    pk = request.user.pk
+
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
+            return redirect('applicant_result', pk)
         elif request.user.user_type is None or request.user.user_type == '':
             return HttpResponse('Forbidden')
         elif request.user.user_type == 'COORDINATOR':
@@ -74,6 +76,7 @@ def create_admissionAccounts(request):
 
                 new_user = User.objects.get(username=user_name)
                 uploaded_img = request.FILES.get('img_upload')
+                print("!!!!!!!!!!!!!!!!",uploaded_img)
                 new_user.user_img = uploaded_img
                 new_user.save()  
 
@@ -95,8 +98,9 @@ def create_admissionAccounts(request):
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def applicant_login(request):
+    pk = request.user.pk
+    
     if request.user.is_authenticated:
-        pk = request.user.pk
         if request.user.user_type == 'APPLICANT':
             return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
@@ -131,8 +135,9 @@ def applicant_logout(request):
 
 
 def applicant_registration(request):
+    pk = request.user.pk
+
     if request.user.is_authenticated:
-        pk = request.user.pk
         if request.user.user_type == 'APPLICANT':
             return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
@@ -193,6 +198,14 @@ def applicant_registration(request):
 def applicant_result(request, pk):
     pk = request.user.pk
 
+    if request.user.is_authenticated:
+        if request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+    
     applicant_details = ApplicantDetails.objects.get(applicant_id_id=pk)
     exam_details = EntranceExamResult.objects.get(applicant_id_id=pk)
     req_details = ApplicantRequirements.objects.get(applicant_id_id=pk)
@@ -225,9 +238,7 @@ def applicant_profile(request, pk, username):
     username = request.user.username
 
     if request.user.is_authenticated:
-        if pk != pk :
-            return redirect('applicant_result', pk)
-        elif request.user.user_type == 'COORDINATOR':
+        if request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
@@ -249,9 +260,7 @@ def applicant_details(request, pk, username):
     user_applicant = ApplicantDetails.objects.get(applicant_id_id=pk)
 
     if request.user.is_authenticated:
-        if pk != pk :
-            return redirect('applicant_result', pk)
-        elif request.user.user_type == 'COORDINATOR':
+        if request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
@@ -297,9 +306,7 @@ def applicant_credentials(request, pk, username):
     username = request.user.username
 
     if request.user.is_authenticated:
-        if pk != pk :
-            return redirect('applicant_result', pk)
-        elif request.user.user_type == 'COORDINATOR':
+        if request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
@@ -334,9 +341,7 @@ def change_applicant_password(request, pk, username):
     username = request.user.username
 
     if request.user.is_authenticated:
-        if request.user.pk != request.user.pk :
-            return redirect('applicant_result')
-        elif request.user.user_type == 'COORDINATOR':
+        if request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
@@ -361,11 +366,11 @@ def change_applicant_password(request, pk, username):
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def coordinator_login(request):
+    pk = request.user.pk
+
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
-        elif request.user.user_type == 'COORDINATOR':
-            return redirect('coordinator_table')
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
@@ -396,6 +401,16 @@ def coordinator_logout(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_table(request):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     applicant_names = User.objects.filter(user_type='APPLICANT')
     applicant_details = ApplicantDetails.objects.all()
     exam_results = EntranceExamResult.objects.all()
@@ -412,6 +427,16 @@ def coordinator_table(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_update(request, pk):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     applicant = User.objects.get(id=pk)
     applicant_exam = EntranceExamResult.objects.get(applicant_id_id=pk)
     applicant_req = ApplicantRequirements.objects.get(applicant_id_id=pk)
@@ -430,6 +455,16 @@ def coordinator_update(request, pk):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_update_exam(request, pk):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     applicant_exam = EntranceExamResult.objects.get(applicant_id_id=pk)
 
     if request.method == 'POST':
@@ -446,6 +481,16 @@ def coordinator_update_exam(request, pk):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_update_reqs(request, pk):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     applicant_req = ApplicantRequirements.objects.get(applicant_id_id=pk)
 
     if request.method == 'POST':
@@ -464,6 +509,15 @@ def coordinator_update_reqs(request, pk):
 def coordinator_profile(request, pk, username):
     pk = request.user.pk
     username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+            
     coor_profile = User.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -472,12 +526,11 @@ def coordinator_profile(request, pk, username):
         if form.is_valid():
             form.save()
 
-        c_user = User.objects.get(username=username)
         uploaded_img = request.FILES.get('img_upload')
 
         if uploaded_img is not None:
-            c_user.user_img = uploaded_img
-            c_user.save()
+            coor_profile.user_img = uploaded_img
+            coor_profile.save()
 
         return redirect('coordinator_profile', pk, username)
     
@@ -496,10 +549,8 @@ def change_coordinator_password(request, pk, username):
     username = request.user.username
 
     if request.user.is_authenticated:
-        if request.user.pk != pk :
-            return redirect('coordinator_table')
-        elif request.user.user_type == 'APPLICANT': 
-            return redirect('applicant_result')
+        if request.user.user_type == 'APPLICANT': 
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
@@ -523,15 +574,17 @@ def change_coordinator_password(request, pk, username):
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def interviewer_login(request):
+    pk = request.user.pk
+
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
-        elif request.user.user_type == 'NURSE':
-            return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
             return redirect('interviewer_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
     
     else:
         if request.method == 'POST':
@@ -558,6 +611,16 @@ def interviewer_logout(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='interviewer_login')
 def interviewer_table(request):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+
     applicants = User.objects.filter(user_type='APPLICANT')
     applicants_details = ApplicantDetails.objects.all()
     interview_results = InterviewResult.objects.all()
@@ -571,6 +634,16 @@ def interviewer_table(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='interviewer_login')
 def interviewer_update(request, pk):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+
     applicant = User.objects.get(id=pk)
     applicant_interview = InterviewResult.objects.get(applicant_id_id=pk)
 
@@ -595,6 +668,15 @@ def interviewer_update(request, pk):
 def interviewer_profile(request, pk, username):
     pk = request.user.pk
     username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
+
     interviewer_profile = User.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -603,12 +685,11 @@ def interviewer_profile(request, pk, username):
         if form.is_valid():
             form.save()
 
-        i_user = User.objects.get(username=username)
         uploaded_img = request.FILES.get('img_upload')
 
         if uploaded_img is not None:
-            i_user.user_img = uploaded_img
-            i_user.save()
+            interviewer_profile.user_img = uploaded_img
+            interviewer_profile.save()
 
         return redirect('interviewer_profile', pk, username)
     
@@ -627,10 +708,8 @@ def change_interviewer_password(request, pk, username):
     username = request.user.username
 
     if request.user.is_authenticated:
-        if request.user.pk != pk :
-            return redirect('interviewer_table')
-        elif request.user.user_type == 'APPLICANT': 
-            return redirect('applicant_result')
+        if request.user.user_type == 'APPLICANT': 
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
         elif request.user.user_type == 'COORDINATOR':
@@ -654,15 +733,17 @@ def change_interviewer_password(request, pk, username):
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def nurse_login(request):
+    pk = request.user.pk
+
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result')
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
-        elif request.user.user_type == 'NURSE':
-            return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
             return redirect('interviewer_table')
+        elif request.user.user_type == 'NURSE':
+            return redirect('nurse_table')
 
     else:
         if request.method == 'POST':
@@ -688,7 +769,17 @@ def nurse_logout(request):
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='nurse_login')
-def nurse_table(request):           
+def nurse_table(request):     
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     applicants = User.objects.filter(user_type='APPLICANT')
     applicants_details = ApplicantDetails.objects.all()
     medical_results = MedicalResult.objects.all()
@@ -702,6 +793,16 @@ def nurse_table(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='nurse_login')
 def nurse_update(request, pk):
+    pk = request.user.pk
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     applicant = User.objects.get(id=pk)
     applicant_medical = MedicalResult.objects.get(applicant_id_id=pk)
 
@@ -731,6 +832,15 @@ def nurse_update(request, pk):
 def nurse_profile(request, pk, username):
     pk = request.user.pk
     username = request.user.username
+
+    if request.user.is_authenticated:
+        if request.user.user_type == 'APPLICANT':
+            return redirect('applicant_result', pk)
+        elif request.user.user_type == 'COORDINATOR':
+            return redirect('coordinator_table')
+        elif request.user.user_type == 'INTERVIEWER':
+            return redirect('interviewer_table')
+
     nurse_profile = User.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -739,12 +849,11 @@ def nurse_profile(request, pk, username):
         if form.is_valid():
             form.save()
 
-        n_user = User.objects.get(username=username)
         uploaded_img = request.FILES.get('img_upload')
 
         if uploaded_img is not None:
-            n_user.user_img = uploaded_img
-            n_user.save()
+            nurse_profile.user_img = uploaded_img
+            nurse_profile.save()
 
         return redirect('nurse_profile', pk, username)
     
@@ -763,10 +872,8 @@ def change_nurse_password(request, pk, username):
     username = request.user.username
 
     if request.user.is_authenticated:
-        if request.user.pk != pk :
-            return redirect('nurse_table')
-        elif request.user.user_type == 'APPLICANT': 
-            return redirect('applicant_result')
+        if request.user.user_type == 'APPLICANT': 
+            return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'INTERVIEWER':
