@@ -121,8 +121,8 @@ form p a{
     text-decoration: underline;
 }
 
-.register-here {
-    font-size: 0.7rem;
+.forgot-password ,.register-here {
+    font-size: 0.8rem;
 }
 
 
