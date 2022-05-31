@@ -257,8 +257,6 @@ def applicant_profile(request, pk, username):
 def applicant_details(request, pk, username):
     pk = request.user.pk
     username = request.user.username
-    user_applicant = ApplicantDetails.objects.get(applicant_id_id=pk)
-
     if request.user.is_authenticated:
         if request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
@@ -266,6 +264,8 @@ def applicant_details(request, pk, username):
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
             return redirect('interviewer_table')
+
+    user_applicant = ApplicantDetails.objects.get(applicant_id_id=pk)
 
     if request.method == 'POST':
         user_form1 = EditUserForm1(request.POST, instance=request.user)
@@ -455,11 +455,9 @@ def coordinator_update(request, pk):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_update_exam(request, pk):
-    pk = request.user.pk
-
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result', pk)
+            return redirect('applicant_result', request.user.pk)
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
@@ -481,11 +479,9 @@ def coordinator_update_exam(request, pk):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_update_reqs(request, pk):
-    pk = request.user.pk
-
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result', pk)
+            return redirect('applicant_result', request.user.pk)
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
@@ -634,11 +630,9 @@ def interviewer_table(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='interviewer_login')
 def interviewer_update(request, pk):
-    pk = request.user.pk
-
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result', pk)
+            return redirect('applicant_result', request.user.pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'NURSE':
@@ -793,11 +787,9 @@ def nurse_table(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='nurse_login')
 def nurse_update(request, pk):
-    pk = request.user.pk
-
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
-            return redirect('applicant_result', pk)
+            return redirect('applicant_result', request.user.pk)
         elif request.user.user_type == 'COORDINATOR':
             return redirect('coordinator_table')
         elif request.user.user_type == 'INTERVIEWER':

@@ -52,7 +52,8 @@ class RegistrationCredetialsForm(UserCreationForm):
                                 widget=forms.PasswordInput)
         
 
-        USERTYPES = [('APPLICANT', 'APPLICANT'),
+        USERTYPES = [('', ''),
+                ('APPLICANT', 'APPLICANT'),
                 ('COORDINATOR', 'COORDINATOR'),
                 ('INTERVIEWER', 'INTERVIEWER'),
                 ('NURSE', 'NURSE')]
@@ -102,7 +103,7 @@ class ApplicantDetailsForm(forms.ModelForm):
 
         birth_date = forms.DateField(label='Birthdate',
                                         widget=forms.DateInput(format='%Y-%m-%d',
-                                                        attrs={'onmouseleave': 'saveValue(this)',
+                                                                attrs={'onmouseleave': 'saveValue(this)',
                                                                 'type': 'date'}),
                                         input_formats=['%Y-%m-%d'],
                                         required=True)
