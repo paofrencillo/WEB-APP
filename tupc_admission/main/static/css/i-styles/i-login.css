@@ -94,20 +94,29 @@ label {
 }
 
 input[type=submit] {
-    padding: 10px 20px;
+    padding: 5px 10px;
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
     outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgba(189, 32, 49, 0.5);
+    width: 100%;
 }
 
 input[type=submit]:hover {
     background-color: rgb(189, 32, 49);
 }
 
+.forgot-password > a {
+    font-size: 0.9rem;
+    text-align: left;
+    margin: 0 0 10px 0;
+    color: rgb(189, 32, 49);
+    font-weight: 1000;
+    font-size: 0.8rem;
+}
 
 /* ========== MEDIA QUERRIES (CONTENT RESPONSIVENESS) ========== */
 @media screen and (max-width: 550px) {

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
@@ -50,6 +50,7 @@ def login_page(request):
 
         else:
             messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+            return redirect('/')
 
     return render(request, "applicant/a-login.html")
 
@@ -107,7 +108,6 @@ def create_admissionAccounts(request):
     return render(request, 'create-accounts.html', context)
 
 
-@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def applicant_login(request):
     pk = request.user.pk
     
@@ -133,6 +133,7 @@ def applicant_login(request):
 
         else:
             messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+            return redirect('applicant_login')
 
     return render(request, "applicant/a-login.html")
 
@@ -399,6 +400,7 @@ def coordinator_login(request):
 
         else:
             messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+            return redirect('coordinator_table')
 
     return render(request, "coordinator/c-login.html")
 
@@ -604,6 +606,7 @@ def interviewer_login(request):
 
         else:
             messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+            return redirect('interviewer_table')
 
     return render(request, "interviewer/i-login.html")
 
@@ -760,6 +763,7 @@ def nurse_login(request):
 
         else:
             messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+            return redirect('nurse_login')
 
     return render(request, "medical/n-login.html")
 
@@ -917,20 +921,22 @@ def reset_password(request):
                     }
 
                     message = render_to_string(email_temp_name, parameters)
-                    try:
-                        send_mail(subject=subject,
+                    send_mail(subject=subject,
                                     message=message,
                                     from_email=settings.EMAIL_HOST_USER,
                                     recipient_list=[user.email],
                                     fail_silently=False)
 
-                    except:
-                        return HttpResponse('Invalid Header')
+                    return redirect('reset_password_sent')
+            
+            else:
+                messages.add_message(request, messages.ERROR, "Use the registered email of your account.")
+                return redirect('reset_password')
 
-                    return redirect('reset_password_done')
     
     else:
         password_form = PasswordResetForm()
         context = {'pf' : password_form}
 
-    return render(request, 'password_reset/password_reset.html', context)
+    return render(request, 'password_reset/reset_password.html', context)
+    
