@@ -31,13 +31,13 @@
 <form method="POST" name="login-form" action="{% url 'coordinator_login' %}" class="was-validated">
   {% csrf_token %}
   <div class="form-group">
-    <label for="coordinator-username">Username</label>
-    <input type="text" id="coordinator-username" class="form-control" name="coordinator-username" required />
+    <label for="username">Username</label>
+    <input type="text" id="username" class="form-control" name="username" required />
   </div>
   <div class="form-group">
-    <label for="coordinator-password">Password</label>
+    <label for="password">Password</label>
     <div class="input-group">
-      <input type="password" id="coordinator-password" class="form-control" name="coordinator-password" required />
+      <input type="password" id="password" class="form-control" name="password" required />
       <div id="togglePass" class="input-group-append" onclick="togglePass(this)">
         <span class="input-group-text"><i id="eye_icon" class="bi bi-eye-fill">
         </i></span>

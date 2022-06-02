@@ -1,7 +1,7 @@
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import ApplicantDetails, ApplicantRequirements, EntranceExamResult, InterviewResult, MedicalResult, User
+from .models import *
 
 
 class RegistrationCredetialsForm(UserCreationForm):
@@ -52,8 +52,7 @@ class RegistrationCredetialsForm(UserCreationForm):
                                 widget=forms.PasswordInput)
         
 
-        USERTYPES = [('', ''),
-                ('APPLICANT', 'APPLICANT'),
+        USERTYPES = [('APPLICANT', 'APPLICANT'),
                 ('COORDINATOR', 'COORDINATOR'),
                 ('INTERVIEWER', 'INTERVIEWER'),
                 ('NURSE', 'NURSE')]

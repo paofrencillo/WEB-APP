@@ -5,7 +5,7 @@ from . import views
 
 
 urlpatterns = [
-    path("", views.blank_page, name="blank_page"),
+    path("", views.login_page, name="login_page"),
     
     ##### ---------- APPLICANT'S URLS ---------- #####
     path("a/login/", views.applicant_login, name="applicant_login"),
@@ -48,12 +48,14 @@ urlpatterns = [
     path("create_account/TUPCAdmission/", views.create_admissionAccounts, name="create_admissionAccounts"),
 
     ##### ---------- RESET PASSWORD URLS ---------- #####
-    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
-         name='password_reset'),
-    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'),
-         name='password_reset_done'),
-    path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
-         name='password_reset_confirm'),
-    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
-         name='password_reset_complete'),
+    path("reset_password/", views.reset_password, name="reset_password"),
+    path('reset_password_done/',
+            auth_views.PasswordResetDoneView.as_view(template_name='password_reset/password_reset_done.html'),
+            name='reset_password_done'),
+    path('reset_password_confirm/<uidb64>/<token>/',
+            auth_views.PasswordResetConfirmView.as_view(template_name='password_reset/password_reset_confirm.html'),
+            name='reset_password_confirm'),
+    path('reset_password/complete/',
+            auth_views.PasswordResetCompleteView.as_view(template_name='password_reset/password_reset_complete.html'),
+            name='reset_password_complete'),
 ]

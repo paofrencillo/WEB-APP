@@ -31,13 +31,13 @@
   <form method="POST" name="login-form" class="was-validated" action="{% url 'applicant_login' %}">
     {% csrf_token %}
     <div class="form-group">
-      <label for="applicant-username">Username</label>
-      <input type="text" id="applicant-username" class="form-control" name="applicant-username" required />
+      <label for="username">Username</label>
+      <input type="text" id="username" class="form-control" name="username" required />
     </div>
     <div class="form-group">
-      <label for="applicant-password">Password</label>
+      <label for="password">Password</label>
       <div class="input-group">
-        <input type="password" id="applicant-password" class="form-control" name="applicant-password" required />
+        <input type="password" id="password" class="form-control" name="password" required />
         <div id="togglePass" class="input-group-append" onclick="togglePass(this)">
           <span class="input-group-text"><i id="eye_icon" class="bi bi-eye-fill">
             </i></span>
@@ -56,7 +56,7 @@
     <div class="form-group">
       <input type="submit" value="Login">
     </div>
-    <p class="forgot-password"><a href="">Forgot your password?</a></p>
+    <p class="forgot-password"><a href="{% url 'reset_password' %}">Forgot your password?</a></p>
     <p class="register-here">
       If you are new applicant,
       <a href="{% url 'applicant_registration' %}">click here</a> to

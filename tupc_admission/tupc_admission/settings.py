@@ -33,7 +33,7 @@ if DEBUG:  # for DEVELOPMENT ONLY!!
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = 'tupcadmission.webdev@gmail.com'
-    EMAIL_HOST_PASSWORD = 'tupcavite@1901'
+    EMAIL_HOST_PASSWORD = 'tupcadmission'
 
 
 ALLOWED_HOSTS = []

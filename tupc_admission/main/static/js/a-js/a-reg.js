@@ -1,4 +1,6 @@
 
+document.getElementById('id_user_type').setAttribute('value', 'APPLICANT');
+
 document.getElementById("id_first_name").value = getSavedValue("id_first_name");
 document.getElementById("id_middle_name").value = getSavedValue("id_middle_name");
 document.getElementById("id_last_name").value = getSavedValue("id_last_name");
