@@ -13,7 +13,6 @@ class User(AbstractUser):
                                 null=True,
                                 blank=True)
 
-    
 class ApplicantDetails(models.Model):
     applicant_id = models.OneToOneField(User,
                                     on_delete=models.CASCADE,

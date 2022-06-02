@@ -1,12 +1,25 @@
 
+<<<<<<< HEAD
 from base64 import urlsafe_b64decode, urlsafe_b64encode
 from math import fabs
 from django import http
+=======
+from django.conf import settings
+>>>>>>> 2512997fb151ed2269b5c1a50d3a1289b7a9cfc1
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
+<<<<<<< HEAD
+=======
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+>>>>>>> 2512997fb151ed2269b5c1a50d3a1289b7a9cfc1
 from django.views.decorators.cache import cache_control
 from django.core.mail import send_mail, BadHeaderError
 from django.template.loader import render_to_string
@@ -20,9 +33,10 @@ from .forms import *
 
 # Create your views here.
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
-def blank_page(request):
+def login_page(request):
+    pk = request.user.pk
+    
     if request.user.is_authenticated:
-        pk = request.user.pk
         if request.user.user_type == 'APPLICANT':
             return redirect('applicant_result', pk)
         elif request.user.user_type == 'COORDINATOR':
@@ -31,22 +45,26 @@ def blank_page(request):
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
             return redirect('interviewer_table')
+        
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('applicant-username')
-            password = request.POST.get('applicant-password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            if user.user_type == 'APPLICANT':
+                return redirect('applicant_result', request.user.pk)
+            elif user.user_type == 'COORDINATOR': 
+                return redirect('coordinator_table')
+            elif user.user_type == 'INTERVIEWER': 
+                return redirect('interviewer_table')
+            elif user.user_type == 'NURSE': 
+                return redirect('nurse_table')
 
-            user = authenticate(request, username=username, password=password)
-
-            if (user is not None) and (user.user_type == 'APPLICANT'):
-                pk = request.user.pk
-
-                login(request, user)
-                return redirect('applicant_result', pk)
-
-            else:
-                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+        else:
+            messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "applicant/a-login.html")
 
@@ -85,7 +103,6 @@ def create_admissionAccounts(request):
 
                 new_user = User.objects.get(username=user_name)
                 uploaded_img = request.FILES.get('img_upload')
-                print("!!!!!!!!!!!!!!!!",uploaded_img)
                 new_user.user_img = uploaded_img
                 new_user.save()  
 
@@ -103,7 +120,7 @@ def create_admissionAccounts(request):
     context = {'form': form}
         
     return render(request, 'create-accounts.html', context)
-        
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def applicant_login(request):
@@ -118,22 +135,19 @@ def applicant_login(request):
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
             return redirect('interviewer_table')
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    else:
-           if request.method == 'POST':
-            username = request.POST.get('applicant-username')
-            password = request.POST.get('applicant-password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None and user.user_type == 'APPLICANT':
+            login(request, user)
+            return redirect('applicant_result', request.user.pk)
 
-            user = authenticate(request, username=username, password=password)
-
-            if (user is not None) and (user.user_type == 'APPLICANT'):
-                login(request, user)
-                pk = request.user.pk
-                username = request.user.username
-                return redirect('applicant_result', pk)
-
-            else:
-                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+        else:
+            messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "applicant/a-login.html")
 
@@ -181,7 +195,7 @@ def applicant_registration(request):
 
                 form2.instance.applicant_id  = new_user
                 form2.save()
-
+                
                 ApplicantRequirements.objects.create(applicant_id = new_user)
                 EntranceExamResult.objects.create(applicant_id = new_user)
                 MedicalResult.objects.create(applicant_id = new_user)
@@ -191,6 +205,9 @@ def applicant_registration(request):
                                     You've redirected to applicant login page.")
 
                 return redirect('applicant_login')
+
+            else:
+                print(form1.error_messages)
 
         else:
             form1 = RegistrationCredetialsForm()
@@ -384,20 +401,19 @@ def coordinator_login(request):
             return redirect('nurse_table')
         elif request.user.user_type == 'INTERVIEWER':
             return redirect('interviewer_table')
+        
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('coordinator-username')
-            password = request.POST.get('coordinator-password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None and user.user_type == 'COORDINATOR':
+            login(request, user)
+            return redirect('coordinator_login')
 
-            user = authenticate(request, username=username, password=password)
-
-            if (user is not None) and (user.user_type == 'COORDINATOR'):
-                login(request, user)
-                return redirect('coordinator_table')
-
-            else:
-                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+        else:
+            messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "coordinator/c-login.html")
 
@@ -590,20 +606,19 @@ def interviewer_login(request):
             return redirect('interviewer_table')
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
-    
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('interviewer-username')
-            password = request.POST.get('interviewer-password')
 
-            user = authenticate(request, username=username, password=password)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-            if (user is not None) and (user.user_type == 'INTERVIEWER'):
-                login(request, user)
-                return redirect('interviewer_table')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None and user.user_type == 'INTERVIEWER':
+            login(request, user)
+            return redirect('interviewer_login')
 
-            else:
-                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+        else:
+            messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "interviewer/i-login.html")
 
@@ -748,19 +763,18 @@ def nurse_login(request):
         elif request.user.user_type == 'NURSE':
             return redirect('nurse_table')
 
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('nurse-username')
-            password = request.POST.get('nurse-password')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-            user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None and user.user_type == 'NURSE':
+            login(request, user)
+            return redirect('nurse_login')
 
-            if (user is not None) and (user.user_type == 'NURSE'):
-                login(request, user)
-                return redirect('nurse_table')
-
-            else:
-                messages.add_message(request, messages.ERROR, "Username or password incorrect.")
+        else:
+            messages.add_message(request, messages.ERROR, "Username or password incorrect.")
 
     return render(request, "medical/n-login.html")
 
@@ -896,14 +910,22 @@ def change_nurse_password(request, pk, username):
     return render(request, 'medical/n-change-pass.html', context)
 
 
+<<<<<<< HEAD
 def password_reset_request(request):
     if request.method == "POST":
         password_form = PasswordResetForm(request.POST)
+=======
+def reset_password(request):
+    if request.method == 'POST':
+        password_form = PasswordResetForm(request.POST)
+        
+>>>>>>> 2512997fb151ed2269b5c1a50d3a1289b7a9cfc1
         if password_form.is_valid():
             data = password_form.cleaned_data['email']
             user_email = User.objects.filter(Q(email=data))
             if user_email.exists():
                 for user in user_email:
+<<<<<<< HEAD
                     subject = 'Password Request'
                     email_temp_name = 'password_reset/email_pass_message.txt'
                     para = {
@@ -928,3 +950,35 @@ def password_reset_request(request):
 
     }
     return render(request, 'password_reset/password_reset.html', context)
+=======
+                    subject = 'Password Reset Request'
+                    email_temp_name = 'password_reset/email_pass_message.txt'
+                    parameters = {
+                        'email' : user.email,
+                        'first_name' : user.first_name,
+                        'username' : user.username,
+                        'domain' : '127.0.0.1:8000',
+                        'uid' : urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token' : default_token_generator.make_token(user),
+                        'protocol' : 'http', 
+                    }
+
+                    message = render_to_string(email_temp_name, parameters)
+                    try:
+                        send_mail(subject=subject,
+                                    message=message,
+                                    from_email=settings.EMAIL_HOST_USER,
+                                    recipient_list=[user.email],
+                                    fail_silently=False)
+
+                    except:
+                        return HttpResponse('Invalid Header')
+
+                    return redirect('reset_password_done')
+    
+    else:
+        password_form = PasswordResetForm()
+        context = {'pf' : password_form}
+
+    return render(request, 'password_reset/password_reset.html', context)
+>>>>>>> 2512997fb151ed2269b5c1a50d3a1289b7a9cfc1
