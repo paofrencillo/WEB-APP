@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
+from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
