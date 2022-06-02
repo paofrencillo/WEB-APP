@@ -52,8 +52,7 @@ class RegistrationCredetialsForm(UserCreationForm):
                                 widget=forms.PasswordInput)
         
 
-        USERTYPES = [('', ''),
-                ('APPLICANT', 'APPLICANT'),
+        USERTYPES = [('APPLICANT', 'APPLICANT'),
                 ('COORDINATOR', 'COORDINATOR'),
                 ('INTERVIEWER', 'INTERVIEWER'),
                 ('NURSE', 'NURSE')]

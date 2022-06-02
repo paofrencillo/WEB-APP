@@ -1,0 +1,15 @@
+{% autoescape %}
+Hello {{ user.first_name }},
+
+We received a request to reset the password for your account for this email address. Click the link below to set a new pasword.
+{{ protocol }}://{{ domain }} {% url 'password_reset_confrim' uidb64=uid token=token %}
+
+If you did not make this request, you can simply ignore this email
+
+Your username is: {{ user.username }}
+
+Sinscerely,
+
+Admisiont Team
+
+{% endautoescape %}

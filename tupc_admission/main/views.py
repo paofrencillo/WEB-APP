@@ -1,10 +1,19 @@
 
+from base64 import urlsafe_b64decode, urlsafe_b64encode
+from math import fabs
+from django import http
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from django.views.decorators.cache import cache_control
+from django.core.mail import send_mail, BadHeaderError
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
 from .models import *
 from .forms import *
 
@@ -885,3 +894,37 @@ def change_nurse_password(request, pk, username):
     context = {'password_form': password_form}
         
     return render(request, 'medical/n-change-pass.html', context)
+
+
+def password_reset_request(request):
+    if request.method == "POST":
+        password_form = PasswordResetForm(request.POST)
+        if password_form.is_valid():
+            data = password_form.cleaned_data['email']
+            user_email = User.objects.filter(Q(email=data))
+            if user_email.exists():
+                for user in user_email:
+                    subject = 'Password Request'
+                    email_temp_name = 'password_reset/email_pass_message.txt'
+                    para = {
+                        'email': user.email,
+                        'name': user.first_name,
+                        'username': user.username,
+                        'domain': '127.0.0.1:8000',
+                        'sitename': 'admission',
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token': default_token_generator.make_token(user),
+                        'protocol': 'http',
+                    }
+                    email = render_to_string(email_temp_name, para)
+                    try:
+                        send_mail(subject, email, '', [user.email], fail_silently=False)
+                    except:
+                        return HttpResponse('Invalid Header')
+                    return redirect('password_reset_done')
+    else:
+        password_form = PasswordResetForm
+    context = {
+
+    }
+    return render(request, 'password_reset/password_reset.html', context)
