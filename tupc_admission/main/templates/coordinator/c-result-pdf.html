@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @page {
+            size: "A4";
+            margin: 2.54cm 1.28cm 2.54cm 1.28cm;
+        }
+
+        h1 {
+          font-size: 25px;
+          color: #bd2131;
+          text-align: center;
+        }
+        
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+
+        td, th {
+          font-size: 10px;
+          height: 20px;
+          text-align: left;
+          padding: 1px;
+        }
+    </style>
+</head>
+<body>
+  <h1>TUP-C ADMISSION RESULT</h1>
+  <br>
+  <h4>Coordinator: {{ c.first_name}} {{ c.last_name }}</h4>
+  <div class="table_wrapper">
+    <table class="">
+      <thead class="">
+        <tr>
+          <th rowspan="2" ></th>
+          <th rowspan="2" >APPLICANT NAME</th>
+          <th rowspan="2" >SEX</th>
+          <th rowspan="2" >COURSE</th>
+          <th rowspan="2" >EXAM RESULT</th>
+          <th rowspan="2" >MEDICAL</th>
+          <th rowspan="2" >INTERVIEW</th>
+          <th colspan="4" >REQUIREMENT</th>
+        </tr>
+        <tr>
+          <th>Card</th>
+          <th>BC</th>
+          <th>GMC</th>
+          <th>PSA</th>
+        </tr>
+      </thead>
+      <tbody id="">
+        {% for a, b, c, d, e, f in data %}
+        <tr course={{a.course}} id="row{{a.pk}}">
+          <td style="width: 5%;"></td>
+          <td style="width: 20%;">{{ f.last_name }}, {{ f.first_name }}</td>
+          <td style="width: 10%;">{{ a.sex }}</td>
+          <td style="width: 15%;">{{ a.course }}</td>
+  
+          {% if b.exam_result == 'PASSED' %}
+          <td style="width: 10%;">{{ b.exam_result }}</td>
+          {% elif b.exam_result == 'FAILED' %}
+          <td style="width: 10%;" >{{ b.exam_result }}</td>
+          {% else %}
+          <td style="width: 10%;">-</td>
+          {% endif %}
+  
+          {% if c.medical_result == 'PASSED' %}
+          <td style="width: 10%;">{{ c.medical_result }}</td>
+          {% elif c.medical_result == 'FAILED' %}
+          <td style="width: 10%;">{{ c.medical_result }}</td>
+          {% else %}
+          <td style="width: 10%;">-</td>
+          {% endif %}
+  
+          {% if d.interview_result == 'PASSED' %}
+          <td style="width: 10%;">{{ d.interview_result }}</td>
+          {% elif d.interview_result == 'FAILED' %}
+          <td style="width: 10%;">{{ d.interview_result }}</td>
+          {% else %}
+          <td style="width: 10%;">-</td>
+          {% endif %}
+  
+          {% if e.shs_card == True %}
+          <td style="width: 5%;">S</td>
+          {% elif e.shs_card == False %}
+          <td style="width: 5%;">NS</td>
+          {% endif %}
+  
+          {% if e.good_moral_char == True %}
+          <td style="width: 5%;">S</td>
+          {% elif e.good_moral_char == False %}
+          <td style="width: 5%;">NS</td>
+          {% endif %}
+  
+          {% if e.brgy_clearance == True %}
+          <td style="width: 5%;">S</td>
+          {% elif e.brgy_clearance == False %}
+          <td style="width: 5%;">NS</td>
+          {% endif %}
+  
+          {% if e.birth_cert == True %}
+          <td style="width: 5%;">S</td>
+          {% elif e.birth_cert == False %}
+          <td style="width: 5%;">NS</td>
+          {% endif %}
+  
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

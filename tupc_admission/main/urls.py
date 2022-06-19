@@ -58,4 +58,10 @@ urlpatterns = [
         path("accounts/reset/done/",
                 auth_views.PasswordResetCompleteView.as_view(template_name='password_reset/reset_password_complete.html'),
                 name="reset_password_complete"),
+
+        # URL for generating pdf
+        path('a/generate_pdf/<int:pk>', views.applicant_pdf, name="applicant_pdf"),
+        path('c/generate_pdf/<int:pk>', views.coordinator_pdf, name="coordinator_pdf"),  
+        path('i/generate_pdf/<int:pk>', views.interviewer_pdf, name="interviewer_pdf"),  
+        path('n/generate_pdf/<int:pk>', views.nurse_pdf, name="nurse_pdf"),  
 ]

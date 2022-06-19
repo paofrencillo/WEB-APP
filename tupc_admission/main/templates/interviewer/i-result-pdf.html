@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @page {
+            size: "A4";
+            margin: 2.54cm 1.28cm 2.54cm 1.28cm;
+        }
+
+        h1 {
+          font-size: 25px;
+          color: #bd2131;
+          text-align: center;
+        }
+
+        h4 {
+          font-size: 16px;
+          text-decoration: underline;
+        }
+        
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+
+        td, th {
+          font-size: 10px;
+          height: 20px;
+          text-align: left;
+          padding: 1px;
+        }
+    </style>
+</head>
+<body>
+  <h1>TUP-C ADMISSION RESULT</h1>
+  <br>
+  <h4>Interviewer: {{ i.first_name}} {{ i.last_name }}</h4>
+  <div class="">
+    <table class="">
+      <thead class="">
+        <tr>
+          <th style="width: 5%"></th>
+          <th style="width: 20%">NAME</th>
+          <th style="width: 15%">COURSE</th>
+          <th style="width: 15%">INTERVIEW DATE</th>
+          <th style="width: 15%">VENUE</th>
+          <th style="width: 20%">INTERVIEWER</th>
+          <th style="width: 10%">RESULT</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for a, b, c in data %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>{{ a.last_name }}, {{ a.first_name }}</td>
+          <td>{{ b.course }}</td>
+
+          {% if c.date_taken is None or c.date_taken == '' %}
+            <td>-</td>
+          {% else %}
+            <td>{{ c.date_taken }}</td>
+          {% endif %}
+
+          {% if c.venue == '' %}
+            <td>-</td>
+          {% else %}
+            <td>{{ c.venue }}</td>
+          {% endif %}
+
+          {% if c.interviewer == '' %}
+            <td>-</td>
+          {% else %}
+            <td>{{ c.interviewer }}</td>
+          {% endif %}
+
+          {% if c.interview_result == 'PASSED' %}
+            <td>{{ c.interview_result }}</td>
+          {% elif c.interview_result == 'FAILED' %}
+            <td>{{ c.interview_result }}</td>
+          {% else %}
+            <td>-</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

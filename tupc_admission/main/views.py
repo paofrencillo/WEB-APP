@@ -1,15 +1,16 @@
 
 from django.conf import settings
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode
 from django.views.decorators.cache import cache_control
 from .models import *
@@ -17,6 +18,142 @@ from .forms import *
 
 
 # Create your views here.
+
+# PDF Generation
+from django.http import HttpResponse
+from django.template.loader import get_template #importing get_template from loader
+ 
+#pisa is a html2pdf converter using the ReportLab Toolkit, the HTML5lib and pyPdf.
+from xhtml2pdf import pisa
+
+@login_required(login_url="applicant_login")
+def applicant_pdf(request, pk):
+    applicant = User.objects.get(id=pk)
+    applicant_details = ApplicantDetails.objects.get(applicant_id_id=request.user.pk)
+    exam_details = EntranceExamResult.objects.get(applicant_id_id=request.user.pk)
+    req_details = ApplicantRequirements.objects.get(applicant_id_id=request.user.pk)
+    med_details = MedicalResult.objects.get(applicant_id_id=request.user.pk)
+    interv_details = InterviewResult.objects.get(applicant_id_id=request.user.pk)
+
+    res = None
+    reqs = [req_details.shs_card, req_details.good_moral_char, req_details.brgy_clearance,
+            req_details.birth_cert]
+    for i in reqs:
+        if i == False:
+            res = 'INCOMPLETE'
+            break
+        else:
+            res = 'COMPLETE'
+
+    template_path = "applicant/a-result-pdf.html"
+
+    context = {'a': applicant,
+            'ad': applicant_details,
+            'ed': exam_details,
+            'rq': req_details,
+            'res': res,
+            'md': med_details,
+            'intd': interv_details}
+
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{request.user.last_name}.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    # if there's an error
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+@login_required(login_url="coordinator_login")
+def coordinator_pdf(request, pk):
+    coordinator = User.objects.get(id=pk)
+    applicant_names = User.objects.filter(user_type='APPLICANT')
+    applicant_details = ApplicantDetails.objects.all()
+    exam_results = EntranceExamResult.objects.all()
+    interview_results = InterviewResult.objects.all()
+    medical_results = MedicalResult.objects.all()
+    applicant_requirements = ApplicantRequirements.objects.all()
+    data = zip(applicant_details, exam_results, medical_results, interview_results, applicant_requirements, applicant_names)
+    
+    template_path = "coordinator/c-result-pdf.html"
+
+    context = {'data': data, "c": coordinator}
+
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{request.user.user_type}.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+@login_required(login_url="interviewer_login")
+def interviewer_pdf(request, pk):
+    interviewer = User.objects.get(id=pk)
+    applicants = User.objects.filter(user_type='APPLICANT')
+    applicants_details = ApplicantDetails.objects.all()
+    interview_results = InterviewResult.objects.all()
+    data = zip(applicants, applicants_details, interview_results)
+    
+    template_path = "interviewer/i-result-pdf.html"
+
+    context = {'data': data, "i": interviewer}
+
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{request.user.user_type}.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+@login_required(login_url="nurse_login")
+def nurse_pdf(request, pk):
+    nurse = User.objects.get(id=pk)
+    applicants = User.objects.filter(user_type='APPLICANT')
+    applicants_details = ApplicantDetails.objects.all()
+    medical_results = MedicalResult.objects.all()
+    data = zip(applicants, applicants_details, medical_results)
+    
+    template_path = "medical/n-result-pdf.html"
+
+    context = {'data': data, "n": nurse}
+
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{request.user.user_type}.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def login_page(request):
     pk = request.user.pk
@@ -910,25 +1047,32 @@ def reset_password(request):
                 for user in user_email:
                     subject = 'Password Reset Request'
                     email_temp_name = 'password_reset/email_pass_message.txt'
+                    current_site = get_current_site(request)
                     parameters = {
                         'email' : user.email,
                         'first_name' : user.first_name,
                         'username' : user.username,
-                        'domain' : '127.0.0.1:8000',
+                        'domain' : current_site.domain,
                         'uid' : urlsafe_base64_encode(force_bytes(user.pk)),
                         'token' : default_token_generator.make_token(user),
                         'protocol' : 'http', 
                     }
 
                     message = render_to_string(email_temp_name, parameters)
-                    send_mail(subject=subject,
-                                    message=message,
-                                    from_email=settings.EMAIL_HOST_USER,
-                                    recipient_list=[user.email],
-                                    fail_silently=False)
 
-                    return redirect('reset_password_sent')
+                    try:
+                        send_mail(auth_user=settings.EMAIL_HOST_USER,
+                                subject=subject,
+                                message=message,
+                                from_email='TUP-C Admission',
+                                recipient_list=[user.email],
+                                fail_silently=False)
+
+                        return redirect('reset_password_sent')
             
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+       
             else:
                 messages.add_message(request, messages.ERROR, "Use the registered email of your account.")
                 return redirect('reset_password')
