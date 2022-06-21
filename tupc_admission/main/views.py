@@ -533,11 +533,11 @@ def coordinator_login(request):
         
         if user is not None and user.user_type == 'COORDINATOR':
             login(request, user)
-            return redirect('coordinator_login')
+            return redirect('coordinator_table')
 
         else:
             messages.add_message(request, messages.ERROR, "Username or password incorrect.")
-            return redirect('coordinator_table')
+            return redirect('coordinator_login')
 
     return render(request, "coordinator/c-login.html")
 
@@ -576,8 +576,6 @@ def coordinator_table(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='coordinator_login')
 def coordinator_update(request, pk):
-    pk = request.user.pk
-
     if request.user.is_authenticated:
         if request.user.user_type == 'APPLICANT':
             return redirect('applicant_result', pk)
